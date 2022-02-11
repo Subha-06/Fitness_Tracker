@@ -41,15 +41,137 @@ public class TicTacToe extends Canvas {
     //Put your code here
 
     //createBoard
+    /**
+     *
+     * @param row The positive integer value in range [3,5]
+     * @param column The positive integer value in range [3,5]
+     * @return A 2D integer array for the board of the game
+     */
+    public static int[][] createBoard(int row, int column){
+
+        int [][] boardArray = new int [row][column];
+
+        for (int r = 0; r < boardArray.length; r++){
+            for (int c = 0; c < boardArray.length; c++){
+
+                boardArray[r][c] = EMPTY;
+            }
+        }
+    return boardArray;
+    }
+
     //rowsIn
+    /**
+     *
+     * @param board A 2D integer array board
+     * @return The integer number of rows that board has
+     */
+    public static int rowsIn(int[][] board){
+
+        int noOfRows = board[0].length;
+
+        return noOfRows;
+    }
+
     //columnsIn
+    /**
+     *
+     * @param board A 2D integer array board
+     * @return The integer number of columns that board has
+     */
+    public static int columnsIn(int[][] board){
+
+        int noOfColumns = board[1].length;
+
+        return noOfColumns;
+    }
+
     //canPlay
+    /**
+     *
+     * @param board A 2D integer array board
+     * @param row A valid integer index of the board
+     * @param column A valid integer index of the board
+     * @return A boolean returned if the row/column index is open
+     */
+    public static boolean canPlay(int[][] board, int row, int column){
+
+        if (board[row][column] == EMPTY){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     //play
+    /**
+     *
+     * @param board A valid 2D integer array
+     * @param row A valid integer index of the board
+     * @param column A valid integer index of the board
+     * @param piece It is X==1/O==2
+     */
+    public static void play(int[][] board, int row, int column, int piece){
+
+        board[row][column] = piece;
+
+    }
+
     //full
-    //wininRow
+    public static boolean full(int[][] board){
+
+        for (int r = 0; r < board.length; r++) {
+            for (int c = 0; c < board.length; c++) {
+
+                if (board[r][c] != EMPTY) {
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    //winInRow
+    public static boolean winInRow(int[][] board, int row, int piece){
+
+        for(int r = 0; r+2 < board.length; r++){
+            if (board[row][0] == piece && board[row][1] == piece && board[row][2] == piece){
+
+                return true;
+            }
+        }
+        return false;
+    }
+
     //winInColumn
+    public static boolean winInColumn(int[][] board, int column, int piece){
+
+        for(int c = 0; c+2 < board.length; c++){
+            if (board[0][column] == piece && board[1][column] == piece && board[2][column] == piece){
+
+                return true;
+            }
+        }
+        return false;
+    }
+
     //winInDiagonalBS
-    //winInDigonalFS
+    public static boolean winInDiagonalBS(int[][] board, int piece){
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+    //winInDiagonalFS
     //hint
 
     //The following are completed for you already
