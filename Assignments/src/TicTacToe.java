@@ -135,8 +135,8 @@ public class TicTacToe extends Canvas {
     //winInRow
     public static boolean winInRow(int[][] board, int row, int piece){
 
-        for(int r = 0; r+2 < board.length; r++){
-            if (board[row][0] == piece && board[row][1] == piece && board[row][2] == piece){
+        for(int c = 0; c < board.length-2; c++){
+            if (board[row][c] == piece && board[row][c+1] == piece && board[row][c+2] == piece){
 
                 return true;
             }
@@ -147,8 +147,8 @@ public class TicTacToe extends Canvas {
     //winInColumn
     public static boolean winInColumn(int[][] board, int column, int piece){
 
-        for(int c = 0; c+2 < board.length; c++){
-            if (board[0][column] == piece && board[1][column] == piece && board[2][column] == piece){
+        for(int r = 0; r < board.length-2; r++){
+            if (board[r][column] == piece && board[r+1][column] == piece && board[r+2][column] == piece){
 
                 return true;
             }
@@ -159,19 +159,20 @@ public class TicTacToe extends Canvas {
     //winInDiagonalBS
     public static boolean winInDiagonalBS(int[][] board, int piece){
 
+        for(int r = 0; r < board.length-2; r++){
+            for(int c = 0; c < board.length-2; c++){
 
+                if(board[r][c] == piece && board[r+1][c+1] == piece && board[r+2][c+2] == piece){
 
-
-
-
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
-
-
-
-
-
     //winInDiagonalFS
+
     //hint
 
     //The following are completed for you already
