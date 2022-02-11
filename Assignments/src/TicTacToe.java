@@ -16,6 +16,13 @@ import java.util.List;
  *
  * @author Jonathan Hudson
  * @version 1.0
+ *
+ * Student Information
+ * Name: Fabiha Fairuzz Subha
+ * UCID: 30148674
+ * Course: CPSC 233 W22
+ * TA and TUT: Anika Achari and T05
+ * Date: 11th Feb 2022
  */
 public class TicTacToe extends Canvas {
 
@@ -118,24 +125,36 @@ public class TicTacToe extends Canvas {
     }
 
     //full
+    /**
+     *
+     * @param board A valid 2D integer array
+     * @return A boolean value
+     */
     public static boolean full(int[][] board){
 
-        for (int r = 0; r < board.length-1; r++) {
-            for (int c = 0; c < board[0].length-1; c++) {
+        for (int r = 0; r < board.length; r++) {
+            for (int c = 0; c < board[0].length; c++) {
 
-                if (board[r][c] != EMPTY) {
+                if (board[r][c] == EMPTY) {
 
-                    return true;
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     //winInRow
+    /**
+     *
+     * @param board A valid 2D integer array
+     * @param row A valid integer index of the board
+     * @param piece It is X==1/O==2
+     * @return A boolean value true if 3 consecutive piece is same, otherwise false
+     */
     public static boolean winInRow(int[][] board, int row, int piece){
 
-        for(int c = 0; c < board.length; c++){
+        for(int c = 0; c < board[0].length-2; c++){
             if (board[row][c] == piece && board[row][c+1] == piece && board[row][c+2] == piece){
 
                 return true;
@@ -146,9 +165,16 @@ public class TicTacToe extends Canvas {
     }
 
     //winInColumn
+    /**
+     *
+     * @param board A valid 2D integer array
+     * @param column A valid integer index of the board
+     * @param piece It is X==1/O==2
+     * @return A boolean value true if 3 consecutive piece is same, otherwise false
+     */
     public static boolean winInColumn(int[][] board, int column, int piece){
 
-        for(int r = 0; r < board[0].length; r++){
+        for(int r = 0; r < board.length-2; r++){
             if (board[r][column] == piece && board[r+1][column] == piece && board[r+2][column] == piece){
 
                 return true;
@@ -158,9 +184,15 @@ public class TicTacToe extends Canvas {
     }
 
     //winInDiagonalBS
+    /**
+     *
+     * @param board A valid 2D integer array
+     * @param piece It is X==1/O==2
+     * @return A boolean value true if 3 consecutive piece is same, otherwise false
+     */
     public static boolean winInDiagonalBS(int[][] board, int piece){
 
-        for(int r = 0; r < board.length-2; r++){
+        for(int r = 0; r+2 < board.length; r++){
             for(int c = 0; c+2 < board[0].length; c++){
 
                 if(board[r][c] == piece && board[r+1][c+1] == piece && board[r+2][c+2] == piece){
@@ -173,10 +205,16 @@ public class TicTacToe extends Canvas {
     }
 
     //winInDiagonalFS
+    /**
+     *
+     * @param board A valid 2D integer array
+     * @param piece It is X==1/O==2
+     * @return A boolean value true if 3 consecutive piece is same, otherwise false
+     */
     public static boolean winInDiagonalFS(int[][] board, int piece){
 
-        for(int r = board.length-2; r > 0; r--){
-            for(int c = board[0].length-2; c > 0; c--){
+        for(int r = 0; r+2 < board.length; r++){
+            for(int c = board[0].length-1; c >= 2 ; c--){
 
                 if(board[r][c] == piece && board[r+1][c-1] == piece && board[r+2][c-2] == piece){
 
@@ -188,6 +226,12 @@ public class TicTacToe extends Canvas {
     }
 
     //hint
+    /**
+     *
+     * @param board A valid 2D integer array
+     * @param piece It is X==1/O==2
+     * @return The array with the hint
+     */
     public static int[] hint(int[][] board, int piece){
 
         for(int r = 0; r < board.length; r++){
@@ -205,7 +249,7 @@ public class TicTacToe extends Canvas {
                         hint[1] = c;
 
                         return hint;
-                    }else if(isGameOver(board)){
+                    }else{
 
                         board[r][c] = EMPTY;
                     }
