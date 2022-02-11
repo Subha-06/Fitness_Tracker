@@ -52,7 +52,7 @@ public class TicTacToe extends Canvas {
         int [][] boardArray = new int [row][column];
 
         for (int r = 0; r < boardArray.length; r++){
-            for (int c = 0; c < boardArray.length; c++){
+            for (int c = 0; c < boardArray[0].length; c++){
 
                 boardArray[r][c] = EMPTY;
             }
@@ -68,7 +68,7 @@ public class TicTacToe extends Canvas {
      */
     public static int rowsIn(int[][] board){
 
-        int noOfRows = board[0].length;
+        int noOfRows = board.length;
 
         return noOfRows;
     }
@@ -81,7 +81,7 @@ public class TicTacToe extends Canvas {
      */
     public static int columnsIn(int[][] board){
 
-        int noOfColumns = board[1].length;
+        int noOfColumns = board[0].length;
 
         return noOfColumns;
     }
@@ -121,7 +121,7 @@ public class TicTacToe extends Canvas {
     public static boolean full(int[][] board){
 
         for (int r = 0; r < board.length; r++) {
-            for (int c = 0; c < board.length; c++) {
+            for (int c = 0; c < board[0].length; c++) {
 
                 if (board[r][c] != EMPTY) {
 
@@ -147,7 +147,7 @@ public class TicTacToe extends Canvas {
     //winInColumn
     public static boolean winInColumn(int[][] board, int column, int piece){
 
-        for(int r = 0; r < board.length-2; r++){
+        for(int r = 0; r < board[0].length-2; r++){
             if (board[r][column] == piece && board[r+1][column] == piece && board[r+2][column] == piece){
 
                 return true;
@@ -160,7 +160,7 @@ public class TicTacToe extends Canvas {
     public static boolean winInDiagonalBS(int[][] board, int piece){
 
         for(int r = 0; r < board.length-2; r++){
-            for(int c = 0; c < board.length-2; c++){
+            for(int c = 0; c < board[0].length-2; c++){
 
                 if(board[r][c] == piece && board[r+1][c+1] == piece && board[r+2][c+2] == piece){
 
@@ -172,8 +172,47 @@ public class TicTacToe extends Canvas {
     }
 
     //winInDiagonalFS
+    public static boolean winInDiagonalFS(int[][] board, int piece){
+
+        for(int r = board.length-2; r > 0; r--){
+            for(int c = board[0].length-2; c > 0; c--){
+
+                if(board[r][c] == piece && board[r+1][c-1] == piece && board[r+2][c-2] == piece){
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     //hint
+    public static int[] hint(int[][] board, int piece){
+
+        for(int r = 0; r < board.length; r++){
+            for(int c = 0; c < board[0].length; c++){
+
+                if(canPlay(board, r, c)){
+
+                    play(board, r, c, piece);
+
+                    if(won(board, piece)){
+                        board[r][c] = EMPTY;
+
+                        int[] hint = new int[2];
+                        hint[0] = r;
+                        hint[1] = c;
+
+                        return hint;
+                    }else if(isGameOver(board)){
+
+                        board[r][c] = EMPTY;
+                    }
+                }
+            }
+        }
+        return new int[] {-1,-1};
+    }
 
     //The following are completed for you already
 
