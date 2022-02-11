@@ -96,11 +96,11 @@ public class TicTacToe extends Canvas {
      */
     public static boolean canPlay(int[][] board, int row, int column){
 
-        if (board[row][column] == EMPTY){
+        if(board[row][column] == EMPTY){
+
             return true;
-        }else{
-            return false;
         }
+        return false;
     }
 
     //play
@@ -120,8 +120,8 @@ public class TicTacToe extends Canvas {
     //full
     public static boolean full(int[][] board){
 
-        for (int r = 0; r < board.length; r++) {
-            for (int c = 0; c < board[0].length; c++) {
+        for (int r = 0; r < board.length-1; r++) {
+            for (int c = 0; c < board[0].length-1; c++) {
 
                 if (board[r][c] != EMPTY) {
 
@@ -135,19 +135,20 @@ public class TicTacToe extends Canvas {
     //winInRow
     public static boolean winInRow(int[][] board, int row, int piece){
 
-        for(int c = 0; c < board.length-2; c++){
+        for(int c = 0; c < board.length; c++){
             if (board[row][c] == piece && board[row][c+1] == piece && board[row][c+2] == piece){
 
                 return true;
             }
         }
         return false;
+
     }
 
     //winInColumn
     public static boolean winInColumn(int[][] board, int column, int piece){
 
-        for(int r = 0; r < board[0].length-2; r++){
+        for(int r = 0; r < board[0].length; r++){
             if (board[r][column] == piece && board[r+1][column] == piece && board[r+2][column] == piece){
 
                 return true;
@@ -160,7 +161,7 @@ public class TicTacToe extends Canvas {
     public static boolean winInDiagonalBS(int[][] board, int piece){
 
         for(int r = 0; r < board.length-2; r++){
-            for(int c = 0; c < board[0].length-2; c++){
+            for(int c = 0; c+2 < board[0].length; c++){
 
                 if(board[r][c] == piece && board[r+1][c+1] == piece && board[r+2][c+2] == piece){
 
