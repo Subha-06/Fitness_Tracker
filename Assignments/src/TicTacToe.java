@@ -56,8 +56,10 @@ public class TicTacToe extends Canvas {
      */
     public static int[][] createBoard(int row, int column){
 
+        //Creating 2D integer array for the board
         int [][] boardArray = new int [row][column];
 
+        //Looping through the array
         for (int r = 0; r < boardArray.length; r++){
             for (int c = 0; c < boardArray[0].length; c++){
 
@@ -75,6 +77,7 @@ public class TicTacToe extends Canvas {
      */
     public static int rowsIn(int[][] board){
 
+        //Calculating the total number of rows
         int noOfRows = board.length;
 
         return noOfRows;
@@ -88,6 +91,7 @@ public class TicTacToe extends Canvas {
      */
     public static int columnsIn(int[][] board){
 
+        //Calculating the total number of columns
         int noOfColumns = board[0].length;
 
         return noOfColumns;
@@ -103,6 +107,7 @@ public class TicTacToe extends Canvas {
      */
     public static boolean canPlay(int[][] board, int row, int column){
 
+        //Checking if the row/column index are empty or not
         if(board[row][column] == EMPTY){
 
             return true;
@@ -120,8 +125,8 @@ public class TicTacToe extends Canvas {
      */
     public static void play(int[][] board, int row, int column, int piece){
 
+        //Assigning the piece value to the corresponding row/column index of the board
         board[row][column] = piece;
-
     }
 
     //full
@@ -132,9 +137,11 @@ public class TicTacToe extends Canvas {
      */
     public static boolean full(int[][] board){
 
+        //Looping through the 2D integer board
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[0].length; c++) {
 
+                //Checking if the row/column index position is empty
                 if (board[r][c] == EMPTY) {
 
                     return false;
@@ -154,6 +161,7 @@ public class TicTacToe extends Canvas {
      */
     public static boolean winInRow(int[][] board, int row, int piece){
 
+        //Looping through the column
         for(int c = 0; c < board[0].length-2; c++){
             if (board[row][c] == piece && board[row][c+1] == piece && board[row][c+2] == piece){
 
@@ -174,6 +182,7 @@ public class TicTacToe extends Canvas {
      */
     public static boolean winInColumn(int[][] board, int column, int piece){
 
+        //Looping through the row
         for(int r = 0; r < board.length-2; r++){
             if (board[r][column] == piece && board[r+1][column] == piece && board[r+2][column] == piece){
 
@@ -192,9 +201,11 @@ public class TicTacToe extends Canvas {
      */
     public static boolean winInDiagonalBS(int[][] board, int piece){
 
+        //Looping through row and column
         for(int r = 0; r+2 < board.length; r++){
             for(int c = 0; c+2 < board[0].length; c++){
 
+                //Checking if the pieces match 3 times consecutively
                 if(board[r][c] == piece && board[r+1][c+1] == piece && board[r+2][c+2] == piece){
 
                     return true;
@@ -213,9 +224,11 @@ public class TicTacToe extends Canvas {
      */
     public static boolean winInDiagonalFS(int[][] board, int piece){
 
+        //Looping through row and column
         for(int r = 0; r+2 < board.length; r++){
             for(int c = board[0].length-1; c >= 2 ; c--){
 
+                //Checking if the pieces match 3 times consecutively
                 if(board[r][c] == piece && board[r+1][c-1] == piece && board[r+2][c-2] == piece){
 
                     return true;
@@ -234,13 +247,16 @@ public class TicTacToe extends Canvas {
      */
     public static int[] hint(int[][] board, int piece){
 
+        //Looping through the row and column
         for(int r = 0; r < board.length; r++){
             for(int c = 0; c < board[0].length; c++){
 
+                //Checking condition of the play
                 if(canPlay(board, r, c)){
 
                     play(board, r, c, piece);
 
+                    //Checking condition if the player won
                     if(won(board, piece)){
                         board[r][c] = EMPTY;
 
