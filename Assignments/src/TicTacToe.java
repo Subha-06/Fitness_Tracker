@@ -22,7 +22,7 @@ import java.util.List;
  * UCID: 30148674
  * Course: CPSC 233 W22
  * TA and TUT: Anika Achari and T05
- * Date: 11th Feb 2022
+ * Date: 11th February 2022
  */
 public class TicTacToe extends Canvas {
 
