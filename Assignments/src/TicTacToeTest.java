@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TicTacToeTest {
 
-
-
     /**
      * Test for checking if the board of the game is created correctly
      * Test should be successful for board dimensions - 3x3, 4x3, 4x5
