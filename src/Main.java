@@ -241,6 +241,7 @@ public class Main {
                 double ex_burnt = (total_calories * 200) / (array[0] * userWeight * 3.5 * 60);
                 System.out.printf("You need to exercise %.1f hours to burn %d calories%n", ex_burnt, total_calories);
 
+
             } else if (checkoption == 2) {
 
                 double ex_burnt = (total_calories * 200) / (array[1] * userWeight * 3.5 * 60);
