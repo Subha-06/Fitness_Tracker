@@ -10,11 +10,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Hello, This is a fitness tracking program");
-        System.out.println("If you want to enter your information press 'Y'" + "To exit the program press 'N'");
-        String userchoice =
-                input.nextLine();
+        System.out.println("If you want to enter your information press 'Y'" + "To exit the program press anything else");
+        String userchoice = input.nextLine();
         if (userchoice.equals("Y")) {
             getuserinput();
+        }
+        else{
+            System.out.println("You choose to exit the program.");
+            System.exit(0);
         }
     }
 
