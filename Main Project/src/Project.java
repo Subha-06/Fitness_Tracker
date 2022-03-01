@@ -5,20 +5,20 @@ import java.util.HashMap;
 
 
 public class Project {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to this fitness tracking program");
         System.out.println("If you want to enter your information press 'Y' or to exit the program press 'N'");
         String userchoice = input.nextLine();
         if (userchoice.equals("Y")) {
             getUserInfo();
-        }else{
+        } else {
             System.out.println("Program Exited");
         }
 
     }
 
-    public static void getUserInfo (){
+    public static void getUserInfo() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter your name: ");
         String userName;
@@ -49,7 +49,7 @@ public class Project {
 
     }
 
-    public static int outMenu(String userName, String userGender, double userAge, double userWeight, double userHeight, HashMap<String, ArrayList> userInfo2){
+    public static int outMenu(String userName, String userGender, double userAge, double userWeight, double userHeight, HashMap<String, ArrayList> userInfo2) {
         int checkinput;
         do {
             System.out.println("""
@@ -58,52 +58,52 @@ public class Project {
                     Press 2: Change user information
                     Press 3: Check BMI of the user
                     Press 4: Check the weight status of user according to BMI
-                    Press 5: Estimate how much calories need to burn to reach certain BMI
+                    Press 5: Estimate how much calories need to burn to lose certain amount of weight
                     Press 6: Estimate how many hours needed to exercise to reach a goal
                     Press 0: To exit the program
                     """);
             Scanner input = new Scanner(System.in);
             checkinput = input.nextInt();
-            if (checkinput == 1){
-                printUserInfo(userName, userGender, userAge, userWeight, userHeight,userInfo2);
+            if (checkinput == 1) {
+                printUserInfo(userName, userGender, userAge, userWeight, userHeight, userInfo2);
 
-            } else if (checkinput == 2){
+            } else if (checkinput == 2) {
                 input.nextLine();
                 System.out.println("Do you want to change your inputs: (Press Y to change or N to return to menu)");
                 String userinput;
                 userinput = input.nextLine();
                 inputChange(userinput);
 
-            } else if (checkinput == 3){
+            } else if (checkinput == 3) {
                 double BMI = BMI(userWeight, userHeight);
                 System.out.println(String.format("Your BMI: %.2f", BMI));
 
-            } else if (checkinput == 4){
+            } else if (checkinput == 4) {
                 double BMI = BMI(userWeight, userHeight);
                 System.out.println(BMI_Compare(BMI));
 
-            }else if (checkinput == 5){
+            } else if (checkinput == 5) {
 
                 System.out.println("You need to burn " + estimateCalories() + " calories");
 
-            }else if (checkinput == 6){
+            } else if (checkinput == 6) {
 
-                System.out.println("Not complete");
+                int total_calories = estimateCalories();
+                estimateExercise(total_calories, userWeight);
 
-            }else{
+            } else {
 
                 System.out.println("Program Exited");
             }
 
 
-        }while (checkinput == 1 || checkinput == 2 || checkinput == 3 || checkinput == 4 || checkinput == 5 || checkinput == 6);
+        } while (checkinput == 1 || checkinput == 2 || checkinput == 3 || checkinput == 4 || checkinput == 5 || checkinput == 6);
         return checkinput;
 
     }
 
 
-
-    public static void printUserInfo(String userName, String userGender, double userAge, double userWeight, double userHeight, HashMap<String, ArrayList> userInfo2){
+    public static void printUserInfo(String userName, String userGender, double userAge, double userWeight, double userHeight, HashMap<String, ArrayList> userInfo2) {
         userInfo2.get(1);
 
         System.out.println("You are " + userName);
@@ -114,7 +114,7 @@ public class Project {
 
     }
 
-    public static void inputChange(String checkinput){
+    public static void inputChange(String checkinput) {
         Scanner input = new Scanner(System.in);
 
 
@@ -148,34 +148,34 @@ public class Project {
 
     }
 
-    public static double BMI(double userWeight, double userHeight){
+    public static double BMI(double userWeight, double userHeight) {
         //cm square to meter square conversion constant
         final int CONVERT = 10000;
 
-        double BMI = (userWeight/ (userHeight * userHeight) * CONVERT);
+        double BMI = (userWeight / (userHeight * userHeight) * CONVERT);
         return BMI;
     }
 
-    public static String BMI_Compare(double BMI){
+    public static String BMI_Compare(double BMI) {
 
-        if(BMI < 18.5){
+        if (BMI < 18.5) {
 
             return "You are underweight";
 
-        }else if(BMI <= 25){
+        } else if (BMI <= 25) {
             return "You are normal weight";
 
-        }else if(BMI <= 29 ){
+        } else if (BMI <= 29) {
             return "You are overweight";
 
-        }else
+        } else
             return "You are obese";
     }
 
-    public static int estimateCalories(){
+    public static int estimateCalories() {
 
         //Calories needed to burn 1 kg
-        Scanner input =  new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.print("How much weight in KGs do you want to lose?");
         int kg_input = input.nextInt();
 
@@ -187,13 +187,82 @@ public class Project {
         return total_calories;
     }
 
-    public static void estimateExercise(){
+    public static void estimateExercise(int total_calories, double userWeight) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("""
+                Which type of exercise do you want to do?
+                A. Cycling
+                B. Running
+                """);
+        String userinput;
+        userinput = input.nextLine();
+        if (userinput.equals("A")) {
 
+            //MET constant value for cycling
+            int[] array = {6, 8, 10}; //Order respective to the options below
+
+            System.out.println("You have chosen to do cycling");
+            System.out.println("""
+                    Select the speed of cycling:
+                    1. 16-19 km/h
+                    2. 19-22 km/h
+                    3. 22-25 km/h
+                    """);
+            int checkoption;
+            checkoption = input.nextInt();
+            if (checkoption == 1) {
+
+                double ex_burnt = (total_calories * 200) / (array[0] * userWeight * 3.5 * 60);
+                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+
+            } else if (checkoption == 2) {
+
+                double ex_burnt = (total_calories * 200) / (array[1] * userWeight * 3.5 * 60);
+                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+
+            } else if (checkoption == 3) {
+
+                double ex_burnt = (total_calories * 200) / (array[2] * userWeight * 3.5 * 60);
+                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+
+            }
+
+        } else if (userinput.equals("B")) {
+
+            //MET constant value for running
+            int[] array2 = {5, 8, 11}; //Order respective to the options below
+
+            System.out.println("You have chosen to do running");
+            System.out.println("""
+                    Select the speed of cycling:
+                    1. 6-7 km/h
+                    2. 7-8 km/h
+                    3. 9-11 km/h
+                    """);
+            int checkoption;
+            checkoption = input.nextInt();
+            if (checkoption == 1) {
+
+                double ex_burnt = (total_calories * 200) / (array2[0] * userWeight * 3.5 * 60);
+                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+
+            } else if (checkoption == 2) {
+
+                double ex_burnt = (total_calories * 200) / (array2[1] * userWeight * 3.5 * 60);
+                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+
+            } else if (checkoption == 3) {
+
+                double ex_burnt = (total_calories * 200) / (array2[2] * userWeight * 3.5 * 60);
+                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+
+            }
+
+        } else {
+
+            System.out.println("Program Exited");
+        }
     }
-
-
-
-
 
 
 }
