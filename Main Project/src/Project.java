@@ -1,3 +1,4 @@
+import java.time.Year;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class Project {
         System.out.println("Enter your weight in kilograms: ");
         double userWeight;
         userWeight = scan.nextDouble();
-        System.out.println("Enter your height in meters: ");
+        System.out.println("Enter your height in centimeters: ");
         double userHeight;
         userHeight = scan.nextDouble();
 
@@ -44,7 +45,7 @@ public class Project {
         HashMap<String, ArrayList> userInfo2 = new HashMap<>();
         userInfo2.put(userName, userInfo);
         outMenu(userName, userGender, userAge, userWeight, userHeight, userInfo2);
-        System.out.println(userInfo2);
+
 
     }
 
@@ -68,14 +69,14 @@ public class Project {
 
             } else if (checkinput == 2){
                 input.nextLine();
-                System.out.println("Do you want to change your inputs: (Press Y to change or N to view)");
+                System.out.println("Do you want to change your inputs: (Press Y to change or N to return to menu)");
                 String userinput;
                 userinput = input.nextLine();
                 inputChange(userinput);
 
             } else if (checkinput == 3){
                 double BMI = BMI(userWeight, userHeight);
-                System.out.println("Your BMI:" + BMI);
+                System.out.println(String.format("Your BMI: %.2f", BMI));
 
             } else if (checkinput == 4){
                 double BMI = BMI(userWeight, userHeight);
@@ -109,7 +110,7 @@ public class Project {
         System.out.println("Your weight is " + userWeight + " kg");
         System.out.println("Gender:" + userGender);
         System.out.println("Your age is " + userAge + " years");
-        System.out.println("You are " + userHeight + " meters tall");
+        System.out.println("You are " + userHeight + " centimeters tall");
 
     }
 
@@ -130,7 +131,7 @@ public class Project {
             System.out.println("Please Enter your weight in Kilograms: ");
             double userWeight;
             userWeight = input.nextDouble();
-            System.out.println("Please Enter your height in meters: ");
+            System.out.println("Please Enter your height in centimeters: ");
             double userHeight;
             userHeight = input.nextDouble();
             System.out.println("Do you want to change your inputs: (Press Y to change or N to return to menu)");
@@ -148,8 +149,10 @@ public class Project {
     }
 
     public static double BMI(double userWeight, double userHeight){
+        //cm square to meter square conversion constant
+        final int CONVERT = 10000;
 
-        double BMI = userWeight/ (userHeight * userHeight);
+        double BMI = (userWeight/ (userHeight * userHeight) * CONVERT);
         return BMI;
     }
 
