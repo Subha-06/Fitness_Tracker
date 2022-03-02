@@ -77,7 +77,42 @@ class ProjectTest {
 
 
     @Test
-    void estimateCalories() {
+    void estimateCaloriesTest_1() {
+        int kg_input = 2;
 
+        int expResult = 15400;
+        int actResult = Project.estimateCalories(kg_input);
+        assertEquals(expResult, actResult);
     }
+    @Test
+    void estimateCaloriesTest_2() {
+        int kg_input = 6;
+
+        int expResult = 46200;
+        int actResult = Project.estimateCalories(kg_input);
+        assertEquals(expResult, actResult);
+    }
+    @Test
+    void estimateCaloriesTest_3() {
+        int kg_input = 10;
+
+        int expResult = 77000;
+        int actResult = Project.estimateCalories(kg_input);
+        assertEquals(expResult, actResult);
+    }
+    @Test
+    void estimateCaloriesTest_4() {
+        int kg_input = 9;
+
+        int expResult = 69300;
+        int actResult = Project.estimateCalories(kg_input);
+        assertEquals(expResult, actResult);
+    }
+
+
+
+
+
+
+
 }

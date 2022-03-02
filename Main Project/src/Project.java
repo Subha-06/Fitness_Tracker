@@ -101,11 +101,15 @@ public class Project {
 
             } else if (checkinput == 5) {
                 //Calculating the total calories need to burn according the user input using estimateCalories function
-                System.out.println("You need to burn " + estimateCalories() + " calories");
+                System.out.print("How much weight in Kgs do you want to lose?");
+                int kg_input = input.nextInt();
+                System.out.println("You need to burn " + estimateCalories(kg_input) + " calories");
 
             } else if (checkinput == 6) {
                 //Calculating the total number of hours needed to exercise using the estimateExercise function
-                int total_calories = estimateCalories();
+                System.out.print("How much weight in Kgs do you want to lose?");
+                int kg_input = input.nextInt();
+                int total_calories = estimateCalories(kg_input);
                 estimateExercise(total_calories, userWeight);
 
             } else {
@@ -222,12 +226,7 @@ public class Project {
      *
      * @return Total number of calories needed to burn to lose the user inputted weight
      */
-    public static int estimateCalories() {
-
-        //Calories needed to burn 1 kg
-        Scanner input = new Scanner(System.in);
-        System.out.print("How much weight in KGs do you want to lose?");
-        int kg_input = input.nextInt();
+    public static int estimateCalories(int kg_input) {
 
         //Calories needed to burn 1 kg
         final int CALORIES = 7700;
