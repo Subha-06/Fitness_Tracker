@@ -1,28 +1,29 @@
+import java.lang.reflect.Array;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
     /**
+     * Start the tracking program
      *
-     * @param args
+     * @param args No arguments expected
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Hello, This is a fitness tracking program");
         System.out.println("If you want to enter your information press 'Y'" + "To exit the program press anything else");
         String userchoice = input.nextLine();
-        if (userchoice.equals("Y")) {
+        if (userchoice.equals("Y") || userchoice.equals("y")) {
             getuserinput();
-        }
-        else{
+        } else {
             System.out.println("You choose to exit the program.");
             System.exit(0);
         }
     }
 
     /**
-     *
+     * Get information from user and add them to a hashmap
      */
 
     public static void getuserinput() {
@@ -31,45 +32,55 @@ public class Main {
         System.out.println("Please Enter your name:");
         String name;
         name = input.nextLine();
-        System.out.println("Please Enter your Gender");
+        System.out.println("Please Enter your Gender:");
         String gender;
         gender = input.nextLine();
-        System.out.println("Please enter your age as an Integer");
+        System.out.println("Please enter your age:");
         double age;
         age = input.nextInt();
-        System.out.println("Please Enter your weight in Kilograms");
+        System.out.println("Please Enter your weight in Kilograms:");
         double weight;
         weight = input.nextDouble();
-        System.out.println("Please Enter your height in meters");
+        System.out.println("Please Enter your height in meters:");
         double height;
         height = input.nextDouble();
+
+
+        //Add the user information to an arraylist then add that arraylist to hashmap with the name as the key
 
         ArrayList<Double> userinfo = new ArrayList<>();
         userinfo.add(age);
         userinfo.add(weight);
         userinfo.add(height);
-        HashMap<String, ArrayList> userinfo2 = new HashMap<>();
-        userinfo2.put(name, userinfo);
-        getuserchoice(name, gender, age, weight, height, userinfo2);
-        System.out.println(userinfo2);
 
+
+        HashMap<String, ArrayList> userinfo2 = new HashMap<>();
+
+        //
+        userinfo2.put(name, userinfo);
+        getuserchoice(name, gender, userinfo2);
     }
 
+
     /**
+     * Outputs the menu and allows the user to choose what to do
      *
-     * @param name
-     * @param gender
-     * @param age
-     * @param weight
-     * @param height
-     * @param userinfo
-     * @return
+     * @param name     The name the user input
+     * @param userinfo The hashmap with the users information
      */
 
-    public static int getuserchoice(String name, String gender, double age, double weight, double height, HashMap<String, ArrayList> userinfo) {
+    public static void getuserchoice(String name, String gender, HashMap<String, ArrayList> userinfo) {
         int userinput;
+        double age = (double) userinfo.get(name).get(0);
+        double weight = (double) userinfo.get(name).get(1);
+        double height = (double) userinfo.get(name).get(2);
+
+
         do {
             System.out.println("""
+                                        
+                                        
+                                        
                     Menu:
                     Press 1: View user information
                     Press 2: Change input
@@ -78,107 +89,106 @@ public class Main {
                     Press 5: Estimate how much calories need to burn to reach a certain weight.
                     Press 6: Estimate how many hours needed to exercise to reach a goal
                     Press 0: To exit the program
+                                        
+                                        
+                                        
                     """);
             Scanner input = new Scanner(System.in);
             userinput = input.nextInt();
             if (userinput == 1) {
-                printinfo(name, gender, age, weight, height, userinfo);
+                printinfo(name, gender, age, weight, height);
             } else if (userinput == 2) {
                 input.nextLine();
-                System.out.println("Do you want to change your inputs: (Press Y to change or N to view)");
+                System.out.println("Do you want to change your inputs: (Press Y to change)");
                 String checkinput;
                 checkinput = input.nextLine();
-                reenter(checkinput);
+                reenter();
 
 
             } else if (userinput == 3) {
-                double bmi = bmi(weight, height);
+                String bmi = bmi(weight, height);
                 System.out.println(bmi);
-            } else if (userinput == 4) ;
-            {
+            } else if (userinput == 4) {
+
+
+            } else if (userinput == 5) {
+
+            } else if (userinput == 6) {
+
+            } else if (userinput == 7) {
+                System.out.println("You choose to exit the program.");
+                System.exit(0);
             }
         } while (userinput == 1 || userinput == 2 || userinput == 3 || userinput == 4);
-        return userinput;
-
-
     }
 
     /**
-     *
-     * @param name
-     * @param gender
-     * @param age
-     * @param weight
-     * @param height
-     * @param userinfo
+     * @param name   The name of the user
+     * @param gender The gender of the user
+     * @param age    The age of the user
+     * @param weight The weight of the user
+     * @param height The height of the user
      */
-    public static void printinfo(String name, String gender, double age, double weight, double height, HashMap<String, ArrayList> userinfo) {
-        userinfo.get(1);
+    public static void printinfo(String name, String gender, double age, double weight, double height) {
 
         System.out.println("You are " + name);
         System.out.println("Your weight is " + weight + "kg.");
-        System.out.println("Gender:" + gender);
-        System.out.println("Your age is " + age + "years");
-        System.out.println("You are ");
-        System.out.println(userinfo);
+        System.out.println("Gender: " + gender);
+        System.out.println("Your age is " + age + " years");
+        System.out.println("You are " + height + " meters tall");
     }
 
     /**
-     *
-     * @param checkinput
+     * @param
      */
-    public static void reenter(String checkinput) {
+    public static void reenter() {
         Scanner input = new Scanner(System.in);
+        System.out.println("Please Enter your name:");
+        String name;
+        name = input.nextLine();
+        System.out.println("Please Enter your Gender");
+        String gender;
+        gender = input.nextLine();
+        System.out.println("Please enter your age:");
+        double age;
+        age = input.nextInt();
+        System.out.println("Please Enter your weight in Kilograms:");
+        double weight;
+        weight = input.nextDouble();
+        System.out.println("Please Enter your height in meters:");
+        double height;
+        height = input.nextDouble();
+
+        //Add the user information to an arraylist then add that arraylist to hashmap with the name as the key
+
+        ArrayList<Double> userinfo = new ArrayList<>();
+        userinfo.add(age);
+        userinfo.add(weight);
+        userinfo.add(height);
 
 
-        while (checkinput.equals("Y") || checkinput.equals("y") || checkinput.equals("yes")) {
-            System.out.println("Please Enter your name:");
-            String name;
-            name =
-                    input.nextLine();
-            System.out.println("Please Enter your Gender");
-            String gender;
-            gender =
-                    input.nextLine();
-            System.out.println("Please enter your age as an Integer");
-            double age;
-            age =
-                    input.nextInt();
-            System.out.println("Please Enter your weight in Kilograms");
-            double weight;
-            weight =
-                    input.nextDouble();
-            System.out.println("Please Enter your height in meters");
-            double height;
-            height =
-                    input.nextDouble();
-            System.out.println("Do you want to change your inputs: (Press Y to change or N to view)");
-            checkinput = input.nextLine();
-            ArrayList<Double> userinfo = new ArrayList<Double>();
-            userinfo.add(age);
-            userinfo.add(weight);
-            userinfo.add(height);
-            HashMap<String, ArrayList> userinfo2 = new HashMap<>();
-            userinfo2.put(name, userinfo);
-            getuserchoice(name, gender, age, weight, height, userinfo2);
+        HashMap<String, ArrayList> userinfo2 = new HashMap<>();
+        userinfo2.put(name, userinfo);
+        getuserchoice(name, gender, userinfo2);
 
-        }
+
     }
 
     /**
+     * Calculates the BMI of the user and returns it in a formatted to a two decimal point.
      *
-     * @param weight
-     * @param height
-     * @return
+     * @param weight The weight of the user
+     * @param height The height of the user
+     * @return The BMI in formatted to two decimal points
      */
 
-    public static double bmi(double weight, double height) {
-        return weight / (height * height);
+    public static String bmi(double weight, double height) {
+        double calculatedBMI = weight / (height * height);
+        return String.format("%.02f", calculatedBMI);
 
     }
 
     /**
-     *
      * @param bmi
      * @return
      */
@@ -191,7 +201,6 @@ public class Main {
     }
 
     /**
-     *
      * @return
      */
     public static int estimateCalories() {
@@ -208,7 +217,6 @@ public class Main {
     }
 
     /**
-     *
      * @param total_calories
      * @param userWeight
      */
