@@ -12,9 +12,9 @@ public class Project {
         if (userchoice.equals("Y")) {
             getUserInfo();
         } else {
-            System.out.println("Program Exited");
+            System.out.println("You choose to exit the program.");
+            System.exit(0);
         }
-
     }
 
     /**
@@ -35,7 +35,7 @@ public class Project {
         System.out.println("Enter your weight in kilograms: ");
         double userWeight;
         userWeight = scan.nextDouble();
-        System.out.println("Enter your height in centimeters: ");
+        System.out.println("Enter your height in meters: ");
         double userHeight;
         userHeight = scan.nextDouble();
 
@@ -47,8 +47,8 @@ public class Project {
         //Including the array in a hashmap and assigning the key to be the name of the user
         HashMap<String, ArrayList> userInfo2 = new HashMap<>();
         userInfo2.put(userName, userInfo);
-        outMenu(userName, userGender, userAge, userWeight, userHeight, userInfo2);
-
+        //Calls menu after getting user input
+        outMenu(userName, userGender, userInfo2);
 
     }
 
@@ -56,14 +56,19 @@ public class Project {
      *
      * @param userName The name of the user
      * @param userGender The gender of the user
-     * @param userAge The age of the user
-     * @param userWeight The weight of the user
-     * @param userHeight The height of the user
      * @param userInfo2 The hashmap where the user information are stored
-     * @return A variable to check the choice input of the user
      */
-    public static int outMenu(String userName, String userGender, double userAge, double userWeight, double userHeight, HashMap<String, ArrayList> userInfo2) {
+    public static void outMenu(String userName, String userGender, HashMap<String, ArrayList> userInfo2) {
         int checkinput;
+        // We know that the first element of the arraylist that is passed in as a value of hashmap here is the age
+        //The second element is weight
+        //The third element is height
+        // Here we are extracting this information from the hashmap and casting as double so that we can pass them as
+        // parameters for other functions.
+        double userAge = (double) userInfo2.get(userName).get(0);
+        double userWeight = (double) userInfo2.get(userName).get(1);
+        double userHeight = (double) userInfo2.get(userName).get(2);
+
         do {
             System.out.println("""
                     Menu:
@@ -79,13 +84,10 @@ public class Project {
             checkinput = input.nextInt();
             if (checkinput == 1) {
                 //Calling the print user info function to print all the information
-                printUserInfo(userName, userGender, userAge, userWeight, userHeight, userInfo2);
+                printUserInfo(userName, userGender, userAge, userWeight, userHeight);
 
             } else if (checkinput == 2) {
                 input.nextLine();
-                System.out.println("Do you want to change your inputs: (Press Y to change or N to return to menu)");
-                String userinput;
-                userinput = input.nextLine();
                 //Calling the change input function to enable the user to re-enter the details
                 inputChange();
 
@@ -112,15 +114,15 @@ public class Project {
                 int total_calories = estimateCalories(kg_input);
                 estimateExercise(total_calories, userWeight);
 
-            } else {
+            } else if (checkinput == 0) {
                 //Program should exit if the user input matches 0 or anything else that is not defined in the menu
-                System.out.println("Program Exited");
+                System.out.println("You choose to exit the program.");
+                System.exit(0);
+
             }
 
 
         } while (checkinput == 1 || checkinput == 2 || checkinput == 3 || checkinput == 4 || checkinput == 5 || checkinput == 6);
-        return checkinput;
-
     }
 
     /**
@@ -130,19 +132,16 @@ public class Project {
      * @param userAge The age of the user
      * @param userWeight The weight of the user
      * @param userHeight The height of the user
-     * @param userInfo2 The hashmap where the user information are stored
      *
      */
-    public static void printUserInfo(String userName, String userGender, double userAge, double userWeight, double userHeight, HashMap<String, ArrayList> userInfo2) {
-        userInfo2.get(1);
+    public static void printUserInfo(String userName, String userGender, double userAge, double userWeight, double userHeight) {
 
         //Printing out the user information
         System.out.println("You are " + userName);
         System.out.println("Your weight is " + userWeight + " kg");
         System.out.println("Gender:" + userGender);
         System.out.println("Your age is " + userAge + " years");
-        System.out.println("You are " + userHeight + " centimeters tall");
-
+        System.out.println("You are " + userHeight + " meters tall");
     }
 
 
@@ -164,7 +163,7 @@ public class Project {
         System.out.println("Please Enter your weight in Kilograms: ");
         double userWeight;
         userWeight = input.nextDouble();
-        System.out.println("Please Enter your height in centimeters: ");
+        System.out.println("Please Enter your height in meters: ");
         double userHeight;
         userHeight = input.nextDouble();
 
@@ -177,10 +176,8 @@ public class Project {
 
         HashMap<String, ArrayList> userInfo2 = new HashMap<>();
         userInfo2.put(userName, userInfo);
-        outMenu(userName, userGender, userAge, userWeight, userHeight, userInfo2);
-
+        outMenu(userName, userGender, userInfo2);
     }
-
 
 
     /**
@@ -190,10 +187,8 @@ public class Project {
      * @return The calculated BMI of the user
      */
     public static String BMI(double userWeight, double userHeight) {
-        //cm square to meter square conversion constant
-        final int CONVERT = 10000;
 
-        double BMI = (userWeight / (userHeight * userHeight) * CONVERT);
+        double BMI = userWeight / (userHeight * userHeight);
 
         String sBMI = String.format("%.2f", BMI);
         return sBMI;

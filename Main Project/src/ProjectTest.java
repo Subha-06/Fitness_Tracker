@@ -7,7 +7,7 @@ class ProjectTest {
     @Test
     void BMITest_1() {
         double weight = 56;
-        double height = 156;
+        double height = 1.56;
 
         String expResult = "23.01";
         String actResult = Project.BMI(weight, height);
@@ -16,7 +16,7 @@ class ProjectTest {
     @Test
     void BMITest_2() {
         double weight = 40;
-        double height = 170;
+        double height = 1.70;
 
         String expResult = "13.84";
         String actResult = Project.BMI(weight, height);
@@ -25,7 +25,7 @@ class ProjectTest {
     @Test
     void BMITest_3() {
         double weight = 79;
-        double height = 168;
+        double height = 1.68;
 
         String expResult = "27.99";
         String actResult = Project.BMI(weight, height);
@@ -34,7 +34,7 @@ class ProjectTest {
     @Test
     void BMITest_4() {
         double weight = 89;
-        double height = 169;
+        double height = 1.69;
 
         String expResult = "31.16";
         String actResult = Project.BMI(weight, height);
