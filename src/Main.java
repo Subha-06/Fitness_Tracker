@@ -3,7 +3,7 @@
  * *Members:
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
- * * Date: 1 March, 2022
+ * * Date: 1 March 2022
  * * Demo 1 Tutorial 10
  */
 
@@ -106,7 +106,7 @@ public class Main {
                     Press 4: Check the weight status of user according to BMI
                     Press 5: Estimate how much calories need to burn to reach a certain weight.
                     Press 6: Estimate how many hours needed to exercise to reach a certain weight.
-                    Press 0: To exit the program           
+                    Press 0: To exit the program
                     """);
             Scanner input = new Scanner(System.in);
             userinput = input.nextInt();
