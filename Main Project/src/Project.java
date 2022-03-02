@@ -115,8 +115,7 @@ public class Project {
 
             } else if (checkinput == 4) {
                 //Comparing and printing out the statement using BMI_compare function
-                String BMI = BMI(userWeight, userHeight);
-                System.out.println(BMI_Compare(BMI));
+                System.out.println(BMI_Compare(userWeight, userHeight));
 
             } else if (checkinput == 5) {
                 //Calculating the total calories need to burn according the user input using estimateCalories function
@@ -213,21 +212,22 @@ public class Project {
 
     /**
      *
-     * @param sBMI The calculated BMI of the user
+     * @param userWeight The weight of the user
+     * @param userHeight The Height of the user
      * @return A string to give the user weight status
      */
-    public static String BMI_Compare(String sBMI) {
+    public static String BMI_Compare(double userWeight, double userHeight) {
 
-        double dBMI = Double.parseDouble(sBMI);
+        double BMI = userWeight/(userHeight * userHeight);
 
-        if (dBMI < 18.5) {
+        if (BMI < 18.5) {
 
             return "You are underweight";
 
-        } else if (dBMI <= 25) {
+        } else if (BMI <= 25) {
             return "You are normal weight";
 
-        } else if (dBMI <= 29) {
+        } else if (BMI <= 29) {
             return "You are overweight";
 
         } else
