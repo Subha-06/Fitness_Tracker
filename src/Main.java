@@ -274,6 +274,7 @@ public class Main {
         userinput = input.nextLine();
         if (userinput.equals("A")) {
 
+
             //MET constant value for cycling
             //Met are constant values, so we just assign them to an array.
             //Formula from omni calculator https://www.omnicalculator.com/sports/calories-burned-biking
