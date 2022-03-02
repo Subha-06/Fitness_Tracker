@@ -1,12 +1,24 @@
-import org.testng.annotations.Test;
+/**
+ * A fitness tracking program that allows the user to input their information and get back various results form that
+ * <p>
+ * *Members:
+ * Fabiha Fairuzz Subha (UCID: 30148674)
+ * Amasil Rahim Zihad (UCID: 30164830)
+ * * Date: 1 March 2022
+ * * Demo 1 Tutorial 10
+ */
+import org.junit.jupiter.api.Test;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
-
+    /**
+     *
+     */
 
     @Test
-    void BMITest_1() {
+    void bmi1() {
         double weight = 56;
         double height = 1.56;
 
@@ -46,59 +58,47 @@ class MainTest {
     }
 
 
-    //    @Test
-//    void BMI_CompareTest_1() {
-//        double weight = ;
-//        double height = ;
-//
-//        String BMI = "23.01";
-//
-//
-//        String expResult = "You are normal weight";
-//        String actResult = Main.bmicompare();
-//        assertEquals(expResult, actResult);
-//    }
     @Test
-    void BMI_CompareTest_2() {
+    void BMI_CompareTest_1() {
         double weight = 50;
         double height = 1.83;
         String BMI = "14.93";
 
         String expResult = "You are underweight";
-        String actResult = Main.bmi(weight, height);
+        String actResult = Main.bmicompare(weight, height);
         assertEquals(expResult, actResult);
     }
 
     @Test
-    void BMI_CompareTest_3() {
+    void BMI_CompareTest_2() {
         double weight = 100;
         double height = 1.83;
         String BMI = "29.86";
 
         String expResult = "You are overweight";
-        String actResult = Main.bmi(weight, height);
+        String actResult = Main.bmicompare(weight, height);
         assertEquals(expResult, actResult);
     }
 
     @Test
-    void BMI_CompareTest_4() {
+    void BMI_CompareTest_3() {
         double weight = 120;
         double height = 1.83;
         String BMI = "35.83";
 
         String expResult = "You are obese";
-        String actResult = Main.bmi(weight, height);
+        String actResult = Main.bmicompare(weight, height);
         assertEquals(expResult, actResult);
     }
 
     @Test
-    void BMI_CompareTest_5() {
+    void BMI_CompareTest_4() {
         double weight = 70;
         double height = 1.83;
         String BMI = "20.90";
 
         String expResult = "You are normal";
-        String actResult = Main.bmi(weight, height);
+        String actResult = Main.bmicompare(weight, height);
         assertEquals(expResult, actResult);
     }
 
@@ -138,6 +138,7 @@ class MainTest {
         int actResult = Main.estimateCalories(kg_input);
         assertEquals(expResult, actResult);
     }
+
 
 
 }

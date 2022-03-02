@@ -1,3 +1,14 @@
+/**
+ *         A fitness tracking program that allows the user to input their information and get back various results form that
+ *         *Members:
+ *         Fabiha Fairuzz Subha (UCID: 30148674)
+ *         Amasil Rahim Zihad (UCID: 30164830)
+ *         * Date: 1 March, 2022
+ *         * Demo 1 Tutorial 10
+ */
+
+
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -221,7 +232,7 @@ public class Main {
      */
     public static String bmicompare(double weight, double height) {
         double bmi = weight / (height * height);
-        if (bmi < 18.5) return "You are thin";
+        if (bmi < 18.5) return "You are underweight";
         else if (bmi < 25) return "You are normal";
         else if (bmi < 30) return "You are overweight";
         else return "You are obese";
