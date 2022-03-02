@@ -255,6 +255,7 @@ public class Main {
 
     public static void estimateExercise(int total_calories, double userWeight, int kginput) {
         Scanner input = new Scanner(System.in);
+        //Giving the user to choose the type of exercise they want to do
         System.out.println("""
                 Which type of exercise do you want to do?
                 A. Cycling
@@ -268,6 +269,7 @@ public class Main {
             int[] array = {6, 8, 10}; //Order respective to the options below
 
             System.out.println("You have chosen to do cycling");
+            //Number of hours of exercise will depend on the speed of the exercise due to MET value
             System.out.println("""
                     Select the speed of cycling:
                     1. 16-19 km/h
@@ -299,8 +301,8 @@ public class Main {
 
             //MET constant value for running
             int[] array2 = {5, 8, 11}; //Order respective to the options below
-
             System.out.println("You have chosen running");
+            //Number of hours of exercise will depend on the speed of the exercise due to MET value
             System.out.println("""
                     Select the speed of running:
                     1. 6-7 km/h
@@ -327,7 +329,11 @@ public class Main {
             }
 
 
-        } else {
+        }
+
+        //If anything other than the inputs defined in menu is pressed, program will exit
+
+        else {
 
             System.out.println("Program Exited");
         }
