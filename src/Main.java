@@ -154,6 +154,7 @@ public class Main {
     }
 
     /**
+     * Prints the user information
      * @param name   The name of the user
      * @param gender The gender of the user
      * @param age    The age of the user

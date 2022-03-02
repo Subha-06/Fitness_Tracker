@@ -139,6 +139,11 @@ class MainTest {
         assertEquals(expResult, actResult);
     }
 
+    @Test
+    void printinfo (){
+
+    }
+
 
 
 }
