@@ -289,6 +289,7 @@ public class Main {
 
         } else if (userinput.equals("B")) {
 
+
             //MET constant value for running
             int[] array2 = {5, 8, 11}; //Order respective to the options below
 
