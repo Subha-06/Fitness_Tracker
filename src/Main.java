@@ -246,6 +246,7 @@ public class Main {
     public static int estimateCalories(int kg_input) {
 
         //Calories needed to burn 1 kg is 7700.
+
         final int CALORIES = 7700;
 
         //You need to eat or burn 7700 calories to gain 1 k.g
