@@ -264,17 +264,17 @@ public class Project {
             if (checkoption == 1) {
 
                 double ex_burnt = (total_calories * 200) / (array[0] * userWeight * 3.5 * 60);
-                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+                System.out.println(String.format("You need to exercise %.1f hours at 16-19 km/h to burn %d calories", ex_burnt, total_calories));
 
             } else if (checkoption == 2) {
 
                 double ex_burnt = (total_calories * 200) / (array[1] * userWeight * 3.5 * 60);
-                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+                System.out.println(String.format("You need to exercise %.1f hours at 19-22 km/h to burn %d calories", ex_burnt, total_calories));
 
             } else if (checkoption == 3) {
 
                 double ex_burnt = (total_calories * 200) / (array[2] * userWeight * 3.5 * 60);
-                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+                System.out.println(String.format("You need to exercise %.1f hours at 22-25 km/h to burn %d calories", ex_burnt, total_calories));
 
             }
 
@@ -296,17 +296,17 @@ public class Project {
             if (checkoption == 1) {
 
                 double ex_burnt = (total_calories * 200) / (array2[0] * userWeight * 3.5 * 60);
-                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+                System.out.println(String.format("You need to exercise %.1f hours at 6-7 km/h to burn %d calories", ex_burnt, total_calories));
 
             } else if (checkoption == 2) {
 
                 double ex_burnt = (total_calories * 200) / (array2[1] * userWeight * 3.5 * 60);
-                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+                System.out.println(String.format("You need to exercise %.1f hours at 7-8 km/h to burn %d calories", ex_burnt, total_calories));
 
             } else if (checkoption == 3) {
 
                 double ex_burnt = (total_calories * 200) / (array2[2] * userWeight * 3.5 * 60);
-                System.out.println(String.format("You need to exercise %.1f hours to burn %d calories", ex_burnt, total_calories));
+                System.out.println(String.format("You need to exercise %.1f hours at 9-11 km/h to burn %d calories", ex_burnt, total_calories));
 
             }
 
