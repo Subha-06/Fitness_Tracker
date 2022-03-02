@@ -334,8 +334,8 @@ public class Main {
         //If anything other than the inputs defined in menu is pressed, program will exit
 
         else {
-
-            System.out.println("Program Exited");
+            System.out.println("You choose to exit the program.");
+            System.exit(0);
         }
     }
 
