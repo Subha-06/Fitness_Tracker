@@ -87,16 +87,16 @@ public class Project {
                 String userinput;
                 userinput = input.nextLine();
                 //Calling the change input function to enable the user to re-enter the details
-                inputChange(userinput);
+                inputChange();
 
             } else if (checkinput == 3) {
                 //Calculating and printing out BMI using BMI function
-                double BMI = BMI(userWeight, userHeight);
-                System.out.println(String.format("Your BMI: %.2f", BMI));
+                String BMI = BMI(userWeight, userHeight);
+                System.out.println("Your BMI: " + BMI);
 
             } else if (checkinput == 4) {
                 //Comparing and printing out the statement using BMI_compare function
-                double BMI = BMI(userWeight, userHeight);
+                String BMI = BMI(userWeight, userHeight);
                 System.out.println(BMI_Compare(BMI));
 
             } else if (checkinput == 5) {
@@ -141,45 +141,43 @@ public class Project {
 
     }
 
+
     /**
-     *
-     * @param checkinput A variable created to track the user input
+     * Function to enable user to re-enter data
      */
-    public static void inputChange(String checkinput) {
+    public static void inputChange() {
         Scanner input = new Scanner(System.in);
 
+        System.out.println("Please Enter your name: ");
+        String userName;
+        userName = input.nextLine();
+        System.out.println("Please Enter your gender (F for female, M for male or N if prefer not to say):: ");
+        String userGender;
+        userGender = input.nextLine();
+        System.out.println("Please enter your age: ");
+        double userAge;
+        userAge = input.nextInt();
+        System.out.println("Please Enter your weight in Kilograms: ");
+        double userWeight;
+        userWeight = input.nextDouble();
+        System.out.println("Please Enter your height in centimeters: ");
+        double userHeight;
+        userHeight = input.nextDouble();
 
-        while (checkinput.equals("Y") || checkinput.equals("y") || checkinput.equals("yes")) {
-            System.out.println("Please Enter your name: ");
-            String userName;
-            userName = input.nextLine();
-            System.out.println("Please Enter your gender (F for female, M for male or N if prefer not to say):: ");
-            String userGender;
-            userGender = input.nextLine();
-            System.out.println("Please enter your age: ");
-            double userAge;
-            userAge = input.nextInt();
-            System.out.println("Please Enter your weight in Kilograms: ");
-            double userWeight;
-            userWeight = input.nextDouble();
-            System.out.println("Please Enter your height in centimeters: ");
-            double userHeight;
-            userHeight = input.nextDouble();
-            System.out.println("Do you want to change your inputs: (Press Y to change or N to return to menu)");
-            checkinput = input.nextLine();
 
-            //Storing the newly entered data to update the Array and HashMap
-            ArrayList<Double> userInfo = new ArrayList<Double>();
-            userInfo.add(userAge);
-            userInfo.add(userWeight);
-            userInfo.add(userHeight);
-            HashMap<String, ArrayList> userInfo2 = new HashMap<>();
-            userInfo2.put(userName, userInfo);
-            outMenu(userName, userGender, userAge, userWeight, userHeight, userInfo2);
+        //Storing the newly entered data to update the Array and HashMap
+        ArrayList<Double> userInfo = new ArrayList<Double>();
+        userInfo.add(userAge);
+        userInfo.add(userWeight);
+        userInfo.add(userHeight);
 
-        }
+        HashMap<String, ArrayList> userInfo2 = new HashMap<>();
+        userInfo2.put(userName, userInfo);
+        outMenu(userName, userGender, userAge, userWeight, userHeight, userInfo2);
 
     }
+
+
 
     /**
      *
@@ -187,29 +185,33 @@ public class Project {
      * @param userHeight The height of the user
      * @return The calculated BMI of the user
      */
-    public static double BMI(double userWeight, double userHeight) {
+    public static String BMI(double userWeight, double userHeight) {
         //cm square to meter square conversion constant
         final int CONVERT = 10000;
 
         double BMI = (userWeight / (userHeight * userHeight) * CONVERT);
-        return BMI;
+
+        String sBMI = String.format("%.2f", BMI);
+        return sBMI;
     }
 
     /**
      *
-     * @param BMI The calculated BMI of the user
+     * @param sBMI The calculated BMI of the user
      * @return A string to give the user weight status
      */
-    public static String BMI_Compare(double BMI) {
+    public static String BMI_Compare(String sBMI) {
 
-        if (BMI < 18.5) {
+        double dBMI = Double.parseDouble(sBMI);
+
+        if (dBMI < 18.5) {
 
             return "You are underweight";
 
-        } else if (BMI <= 25) {
+        } else if (dBMI <= 25) {
             return "You are normal weight";
 
-        } else if (BMI <= 29) {
+        } else if (dBMI <= 29) {
             return "You are overweight";
 
         } else
