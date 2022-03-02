@@ -155,14 +155,14 @@ public class Main {
 
     /**
      * Prints the user information
+     *
      * @param name   The name of the user
      * @param gender The gender of the user
      * @param age    The age of the user
      * @param weight The weight of the user
      * @param height The height of the user
      */
-    public static void printinfo(String name, String gender, double age, double weight, double height) {
-
+    private static void printinfo(String name, String gender, double age, double weight, double height) {
         System.out.println("You are " + name);
         System.out.println("Your weight is " + weight + "kg.");
         System.out.println("Gender: " + gender);
@@ -173,7 +173,7 @@ public class Main {
     /**
      * Get information from user again and add them to a hashmap
      */
-    public static void reenter() {
+    private static void reenter() {
         Scanner input = new Scanner(System.in);
         System.out.println("Please Enter your name:");
         String name;
@@ -245,7 +245,8 @@ public class Main {
 
     public static int estimateCalories(int kg_input) {
 
-        //Calories needed to burn 1 kg
+        //Calories needed to burn 1 kg is 7700.
+
         final int CALORIES = 7700;
 
         //You need to eat or burn 7700 calories to gain 1 k.g
@@ -261,7 +262,7 @@ public class Main {
      * @param userWeight     The weight of the user
      */
 
-    public static void estimateExercise(int total_calories, double userWeight, int kginput) {
+    private static void estimateExercise(int total_calories, double userWeight, int kginput) {
         Scanner input = new Scanner(System.in);
         //Giving the user to choose the type of exercise they want to do
         System.out.println("""

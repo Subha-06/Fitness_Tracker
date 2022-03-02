@@ -10,6 +10,7 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+
 class MainTest {
     /**
      *Testing for various height and weight and to see if the output matches our desired output
