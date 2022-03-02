@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
     /**
-     *
+     *Testing for various height and weight and to see if the output matches our desired output
      */
 
     @Test
@@ -57,52 +57,51 @@ class MainTest {
         assertEquals(expResult, actResult);
     }
 
-
+    /**
+     * Testing to see if bmi comparison produces the desired result.
+     */
+    //For underweight
     @Test
     void BMI_CompareTest_1() {
         double weight = 50;
         double height = 1.83;
-        String BMI = "14.93";
 
         String expResult = "You are underweight";
         String actResult = Main.bmicompare(weight, height);
         assertEquals(expResult, actResult);
     }
-
+    //For overweight
     @Test
     void BMI_CompareTest_2() {
         double weight = 100;
         double height = 1.83;
-        String BMI = "29.86";
 
         String expResult = "You are overweight";
         String actResult = Main.bmicompare(weight, height);
         assertEquals(expResult, actResult);
     }
-
+    //For obese
     @Test
     void BMI_CompareTest_3() {
         double weight = 120;
         double height = 1.83;
-        String BMI = "35.83";
 
         String expResult = "You are obese";
         String actResult = Main.bmicompare(weight, height);
         assertEquals(expResult, actResult);
     }
-
+    //For normal
     @Test
     void BMI_CompareTest_4() {
         double weight = 70;
         double height = 1.83;
-        String BMI = "20.90";
 
         String expResult = "You are normal";
         String actResult = Main.bmicompare(weight, height);
         assertEquals(expResult, actResult);
     }
 
-
+    //Test to see if estimated calories needed to reach a certain goal is the same as desired
     @Test
     void estimateCaloriesTest_1() {
         int kg_input = 2;
