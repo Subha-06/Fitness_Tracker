@@ -11,7 +11,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Hello, This is a fitness tracking program");
-        System.out.println("If you want to enter your information press 'Y'" + "To exit the program press anything else");
+        System.out.println("""
+                If you want to enter your information press 'Y'
+                To exit the program press anything else""");
         String userchoice = input.nextLine();
         if (userchoice.equals("Y") || userchoice.equals("y")) {
             getuserinput();
@@ -91,7 +93,7 @@ public class Main {
                     Press 3: Check BMI of the user
                     Press 4: Check the weight status of user according to BMI
                     Press 5: Estimate how much calories need to burn to reach a certain weight.
-                    Press 6: Estimate how many hours needed to exercise to reach the weight entered before.
+                    Press 6: Estimate how many hours needed to exercise to reach a certain weight.
                     Press 0: To exit the program
                                         
                                         
@@ -225,10 +227,10 @@ public class Main {
      */
     public static int estimateCalories() {
         Scanner input = new Scanner(System.in);
-        System.out.print("How much weight in KGs do you want to lose or gain?");
+        System.out.println("How much weight in KGs do you want to lose or gain?");
         int kg_input = input.nextInt();
 
-        //Calories needed to burn 1 kg
+        //You need to eat or burn 7000 calories to gain 1 k.g
         final int CALORIES = 7000;
 
 
@@ -246,7 +248,7 @@ public class Main {
 
     public static void estimateExercise(int total_calories, double userWeight) {
         Scanner input = new Scanner(System.in);
-        System.out.print("""
+        System.out.println("""
                 Which type of exercise do you want to do?
                 A. Cycling
                 B. Running
@@ -270,18 +272,18 @@ public class Main {
             if (checkoption == 1) {
 
                 double ex_burnt = (total_calories * 200) / (array[0] * userWeight * 3.5 * 60);
-                System.out.printf("You need to exercise %.1f hours to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to cycle %.1f hours at 16-19 km/h to burn %d calories%n", ex_burnt, total_calories);
 
 
             } else if (checkoption == 2) {
 
                 double ex_burnt = (total_calories * 200) / (array[1] * userWeight * 3.5 * 60);
-                System.out.printf("You need to exercise %.1f hours to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to cycle %.1f hours at 19-22 km/h to burn %d calories%n", ex_burnt, total_calories);
 
             } else if (checkoption == 3) {
 
                 double ex_burnt = (total_calories * 200) / (array[2] * userWeight * 3.5 * 60);
-                System.out.printf("You need to exercise %.1f hours to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to cycle %.1f hours at 22-25 km/h to burn %d calories%n", ex_burnt, total_calories);
 
             }
 
@@ -290,9 +292,9 @@ public class Main {
             //MET constant value for running
             int[] array2 = {5, 8, 11}; //Order respective to the options below
 
-            System.out.println("You have chosen to do running");
+            System.out.println("You have chosen running");
             System.out.println("""
-                    Select the speed of cycling:
+                    Select the speed of running:
                     1. 6-7 km/h
                     2. 7-8 km/h
                     3. 9-11 km/h
@@ -302,17 +304,17 @@ public class Main {
             if (checkoption == 1) {
 
                 double ex_burnt = (total_calories * 200) / (array2[0] * userWeight * 3.5 * 60);
-                System.out.printf("You need to exercise %.1f hours to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to run %.1f hours at to burn %d calories%n", ex_burnt, total_calories);
 
             } else if (checkoption == 2) {
 
                 double ex_burnt = (total_calories * 200) / (array2[1] * userWeight * 3.5 * 60);
-                System.out.printf("You need to exercise %.1f hours to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to run %.1f hours to burn %d calories%n", ex_burnt, total_calories);
 
             } else if (checkoption == 3) {
 
                 double ex_burnt = (total_calories * 200) / (array2[2] * userWeight * 3.5 * 60);
-                System.out.printf("You need to exercise %.1f hours to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to run %.1f hours to burn %d calories%n", ex_burnt, total_calories);
 
             }
 
