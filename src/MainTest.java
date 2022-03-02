@@ -52,6 +52,7 @@ class MainTest {
         assertEquals(expResult, actResult);
     }
     @Test
+
     void BMI_CompareTest_2() {
         String BMI = "13.84";
 
