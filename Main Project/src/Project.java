@@ -85,6 +85,9 @@ public class Project {
 
         do {
             System.out.println("""
+                    
+                    
+                    
                     Menu:
                     Press 1: Check the user information
                     Press 2: Change user information
