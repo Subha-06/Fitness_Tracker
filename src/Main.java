@@ -46,6 +46,8 @@ public class Main {
         double height;
         height = input.nextDouble();
 
+        //Storing the data
+
 
         //Add the user information to an arraylist then add that arraylist to hashmap with the name as the key
 
@@ -122,11 +124,17 @@ public class Main {
             }
             //If the user wants to know how much calorie they need to burn to reach a certain weight
             else if (userinput == 5) {
-                System.out.println(estimateCalories());
+                System.out.print("How much weight in Kgs do you want to lose?");
+                int kg_input = input.nextInt();
+                System.out.println("You need to burn " + estimateCalories(kg_input) + " calories");
+
 
             } else if (userinput == 6) {
-                int total_calories = estimateCalories();
-                estimateExercise(total_calories, weight);
+                System.out.print("How much weight in Kgs do you want to lose?");
+                int kg_input = input.nextInt();
+                int total_calories = estimateCalories(kg_input);
+                estimateExercise(total_calories, weight, kg_input);
+
             }
             //Exit the program
             else if (userinput == 7) {
@@ -223,21 +231,20 @@ public class Main {
     /**
      * Calculates the estimated calories needed to reach a certain goal
      *
+     * @param kg_input The kg amount entered by the user
      * @return Returns the estimated calories needed
      */
-    public static int estimateCalories() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("How much weight in KGs do you want to lose or gain?");
-        int kg_input = input.nextInt();
+
+    public static int estimateCalories(int kg_input) {
+
+        //Calories needed to burn 1 kg
+        final int CALORIES = 7700;
 
         //You need to eat or burn 7000 calories to gain 1 k.g
-        final int CALORIES = 7000;
-
 
         return (kg_input * CALORIES);
-
-
     }
+
 
     /**
      * Calculates how much exercise the user needs to do to reach a certain goal
@@ -246,7 +253,7 @@ public class Main {
      * @param userWeight     The weight of the user
      */
 
-    public static void estimateExercise(int total_calories, double userWeight) {
+    public static void estimateExercise(int total_calories, double userWeight, int kginput) {
         Scanner input = new Scanner(System.in);
         System.out.println("""
                 Which type of exercise do you want to do?
@@ -272,18 +279,18 @@ public class Main {
             if (checkoption == 1) {
 
                 double ex_burnt = (total_calories * 200) / (array[0] * userWeight * 3.5 * 60);
-                System.out.printf("You need to cycle %.1f hours at 16-19 km/h to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to cycle %.1f hours at 16-19 km/h to burn %d calories%n and lose %d kgs", ex_burnt, total_calories, kginput);
 
 
             } else if (checkoption == 2) {
 
                 double ex_burnt = (total_calories * 200) / (array[1] * userWeight * 3.5 * 60);
-                System.out.printf("You need to cycle %.1f hours at 19-22 km/h to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to cycle %.1f hours at 19-22 km/h to burn %d calories%n  and lose %d kgs", ex_burnt, total_calories, kginput);
 
             } else if (checkoption == 3) {
 
                 double ex_burnt = (total_calories * 200) / (array[2] * userWeight * 3.5 * 60);
-                System.out.printf("You need to cycle %.1f hours at 22-25 km/h to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to cycle %.1f hours at 22-25 km/h to burn %d calories%n  and lose %d kgs", ex_burnt, total_calories, kginput);
 
             }
 
@@ -305,17 +312,17 @@ public class Main {
             if (checkoption == 1) {
 
                 double ex_burnt = (total_calories * 200) / (array2[0] * userWeight * 3.5 * 60);
-                System.out.printf("You need to run %.1f hours at to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to run %.1f hours at to burn %d calories%n and lose %d kgs", ex_burnt, total_calories, kginput);
 
             } else if (checkoption == 2) {
 
                 double ex_burnt = (total_calories * 200) / (array2[1] * userWeight * 3.5 * 60);
-                System.out.printf("You need to run %.1f hours to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to run %.1f hours to burn %d calories%n and lose %d kgs", ex_burnt, total_calories, kginput);
 
             } else if (checkoption == 3) {
 
                 double ex_burnt = (total_calories * 200) / (array2[2] * userWeight * 3.5 * 60);
-                System.out.printf("You need to run %.1f hours to burn %d calories%n", ex_burnt, total_calories);
+                System.out.printf("You need to run %.1f hours to burn %d calories%n and lose %d kgs", ex_burnt, total_calories, kginput);
 
             }
 
