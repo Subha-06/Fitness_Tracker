@@ -253,7 +253,7 @@ public class Project {
     public static void estimateExercise(int total_calories, double userWeight) {
         Scanner input = new Scanner(System.in);
         //Giving the user to chose the type of exercise they want to do
-        System.out.print("""
+        System.out.println("""
                 Which type of exercise do you want to do?
                 A. Cycling
                 B. Running
