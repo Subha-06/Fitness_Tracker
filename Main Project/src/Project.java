@@ -150,7 +150,7 @@ public class Project {
      * @param userHeight The height of the user
      *
      */
-    public static void printUserInfo(String userName, String userGender, double userAge, double userWeight, double userHeight) {
+    private static void printUserInfo(String userName, String userGender, double userAge, double userWeight, double userHeight) {
 
         //Printing out the user information
         System.out.println("You are " + userName);
@@ -164,7 +164,7 @@ public class Project {
     /**
      * Function to enable user to re-enter data
      */
-    public static void inputChange() {
+    private static void inputChange() {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Please Enter your name: ");
@@ -253,7 +253,7 @@ public class Project {
      * @param total_calories Total number of calories needed to burn to lose the user inputted weight
      * @param userWeight The weight of the user
      */
-    public static void estimateExercise(int total_calories, double userWeight) {
+    private static void estimateExercise(int total_calories, double userWeight) {
         Scanner input = new Scanner(System.in);
         //Giving the user to chose the type of exercise they want to do
         System.out.println("""
