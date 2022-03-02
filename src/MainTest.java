@@ -47,6 +47,7 @@ class MainTest {
     void BMI_CompareTest_1() {
         String BMI = "23.01";
 
+
         String expResult = "You are normal weight";
         String actResult = Project.BMI_Compare(BMI);
         assertEquals(expResult, actResult);
