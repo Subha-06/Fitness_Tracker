@@ -14,6 +14,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProjectTest {
+    /**
+     *Testing for various height and weight and to see if the output matches our desired output
+     */
 
     @Test
     void BMITest_1() {
@@ -52,41 +55,51 @@ class ProjectTest {
         assertEquals(expResult,actResult);
     }
 
-
+    /**
+     * Testing to see if bmi comparison produces the desired result.
+     */
+    //For normal weight
     @Test
     void BMI_CompareTest_1() {
-        String BMI = "23.01";
+        double weight = 56;
+        double height = 1.56;
 
         String expResult = "You are normal weight";
-        String actResult = Project.BMI_Compare(BMI);
+        String actResult = Project.BMI_Compare(weight, height);
         assertEquals(expResult, actResult);
     }
+    //For underweight
     @Test
     void BMI_CompareTest_2() {
-        String BMI = "13.84";
+        double weight = 40;
+        double height = 1.70;
 
         String expResult = "You are underweight";
-        String actResult = Project.BMI_Compare(BMI);
+        String actResult = Project.BMI_Compare(weight, height);
         assertEquals(expResult, actResult);
     }
+    //For overweight
     @Test
     void BMI_CompareTest_3() {
-        String BMI = "27.99";
+        double weight = 79;
+        double height = 1.68;
 
         String expResult = "You are overweight";
-        String actResult = Project.BMI_Compare(BMI);
+        String actResult = Project.BMI_Compare(weight, height);
         assertEquals(expResult, actResult);
     }
+    //For obese
     @Test
     void BMI_CompareTest_4() {
-        String BMI = "31.16";
+        double weight = 89;
+        double height = 1.69;
 
         String expResult = "You are obese";
-        String actResult = Project.BMI_Compare(BMI);
+        String actResult = Project.BMI_Compare(weight, height);
         assertEquals(expResult, actResult);
     }
 
-
+    //Test to see if estimated calories needed to reach a certain goal is the same as desired
     @Test
     void estimateCaloriesTest_1() {
         int kg_input = 2;
