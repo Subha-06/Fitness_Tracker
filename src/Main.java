@@ -155,6 +155,7 @@ public class Main {
 
     /**
      * Prints the user information
+     *
      * @param name   The name of the user
      * @param gender The gender of the user
      * @param age    The age of the user
@@ -162,7 +163,6 @@ public class Main {
      * @param height The height of the user
      */
     public static void printinfo(String name, String gender, double age, double weight, double height) {
-
         System.out.println("You are " + name);
         System.out.println("Your weight is " + weight + "kg.");
         System.out.println("Gender: " + gender);
