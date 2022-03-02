@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,9 +54,9 @@ public class Main {
 
 
         HashMap<String, ArrayList> userinfo2 = new HashMap<>();
-
-        //
         userinfo2.put(name, userinfo);
+
+        //Calls the menu after getting input from user.
         getuserchoice(name, gender, userinfo2);
     }
 
@@ -71,11 +70,16 @@ public class Main {
 
     public static void getuserchoice(String name, String gender, HashMap<String, ArrayList> userinfo) {
         int userinput;
+        // We know that the first element of the arraylist that is passed in as a value of hashmap here is the age
+        //The second element is weight
+        //The third element is height
+        // Here we are extracting this information from the hashmap and casting as double so that we can pass them as
+        // parameters for other functions.
         double age = (double) userinfo.get(name).get(0);
         double weight = (double) userinfo.get(name).get(1);
         double height = (double) userinfo.get(name).get(2);
 
-
+        //A do-while loop to keep printing the menu until the user exits the program.
         do {
             System.out.println("""
                                         
@@ -87,7 +91,7 @@ public class Main {
                     Press 3: Check BMI of the user
                     Press 4: Check the weight status of user according to BMI
                     Press 5: Estimate how much calories need to burn to reach a certain weight.
-                    Press 6: Estimate how many hours needed to exercise to reach a goal
+                    Press 6: Estimate how many hours needed to exercise to reach the weight entered before.
                     Press 0: To exit the program
                                         
                                         
@@ -95,31 +99,41 @@ public class Main {
                     """);
             Scanner input = new Scanner(System.in);
             userinput = input.nextInt();
+            //If the user to check the info entered.
             if (userinput == 1) {
                 printinfo(name, gender, age, weight, height);
-            } else if (userinput == 2) {
+            }
+            //If the user wants to re-enter the information call the re-enter function.
+            else if (userinput == 2) {
                 input.nextLine();
-                System.out.println("Do you want to change your inputs: (Press Y to change)");
-                String checkinput;
-                checkinput = input.nextLine();
                 reenter();
-
-
-            } else if (userinput == 3) {
+            }
+            //If the user wants to know their BMI
+            else if (userinput == 3) {
                 String bmi = bmi(weight, height);
                 System.out.println(bmi);
-            } else if (userinput == 4) {
+            }
+            //If the user wants to check their BMI.
+            else if (userinput == 4) {
+                System.out.println(bmicompare(weight, height));
 
-
-            } else if (userinput == 5) {
+            }
+            //If the user wants to know how much calorie they need to burn to reach a certain weight
+            else if (userinput == 5) {
+                System.out.println(estimateCalories());
 
             } else if (userinput == 6) {
-
-            } else if (userinput == 7) {
+                int total_calories = estimateCalories();
+                estimateExercise(total_calories, weight);
+            }
+            //Exit the program
+            else if (userinput == 7) {
                 System.out.println("You choose to exit the program.");
                 System.exit(0);
             }
-        } while (userinput == 1 || userinput == 2 || userinput == 3 || userinput == 4);
+        }
+
+        while (userinput == 1 || userinput == 2 || userinput == 3 || userinput == 4 || userinput == 5 || userinput == 6);
     }
 
     /**
@@ -139,7 +153,7 @@ public class Main {
     }
 
     /**
-     * @param
+     * Get information from user again and add them to a hashmap
      */
     public static void reenter() {
         Scanner input = new Scanner(System.in);
@@ -189,10 +203,14 @@ public class Main {
     }
 
     /**
-     * @param bmi
-     * @return
+     * Compares the bmi of the user and checks the weight status
+     *
+     * @param weight The weight of the user
+     * @param height The height of the user
+     * @return Returns the result of comparison as a string
      */
-    public static String bmicompare(double bmi) {
+    public static String bmicompare(double weight, double height) {
+        double bmi = weight / (height * height);
         if (bmi < 18.5) return "You are thin";
         else if (bmi < 25) return "You are normal";
         else if (bmi < 30) return "You are overweight";
@@ -201,7 +219,9 @@ public class Main {
     }
 
     /**
-     * @return
+     * Calculates the estimated calories needed to reach a certain goal
+     *
+     * @return Returns the estimated calories needed
      */
     public static int estimateCalories() {
         Scanner input = new Scanner(System.in);
@@ -214,11 +234,14 @@ public class Main {
 
         return (kg_input * CALORIES);
 
+
     }
 
     /**
-     * @param total_calories
-     * @param userWeight
+     * Calculates how much exercise the user needs to do to reach a certain goal
+     *
+     * @param total_calories Total number of calories needed to burn to lose the user inputted weight
+     * @param userWeight     The weight of the user
      */
 
     public static void estimateExercise(int total_calories, double userWeight) {
@@ -298,6 +321,7 @@ public class Main {
             System.out.println("Program Exited");
         }
     }
+
 
 }
 
