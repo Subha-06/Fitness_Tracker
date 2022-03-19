@@ -5,6 +5,9 @@
  * Amasil Rahim Zihad (UCID: 30164830)
  * * Date: 1 March 2022
  * * Demo 1 Tutorial 10
+ *
+ *
+ * This is to test if everything is working
  */
 
 
@@ -18,7 +21,7 @@ public class Main {
     //Calories needed to burn 1 kg
     final static int CALORIES = 7700;
 
-    //Coversion from cm square to meter square
+    //Conversion from cm square to meter square
     final static int CONVERSION = 10000;
 
     /**
