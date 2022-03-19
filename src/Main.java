@@ -13,6 +13,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
+    //Constants
+
+    //Calories needed to burn 1 kg
+    final static int CALORIES = 7700;
+
+    //Coversion from cm square to meter square
+    final static int CONVERSION = 10000;
+
     /**
      * Start the tracking program
      *
@@ -43,7 +51,7 @@ public class Main {
         System.out.println("Please Enter your name:");
         String name;
         name = input.nextLine();
-        System.out.println("Please Enter your Gender:");
+        System.out.println("Please Enter your Gender (F for Female, M for Male or N if preferred not to say):");
         String gender;
         gender = input.nextLine();
         System.out.println("Please enter your age:");
@@ -52,7 +60,7 @@ public class Main {
         System.out.println("Please Enter your weight in Kilograms:");
         double weight;
         weight = input.nextDouble();
-        System.out.println("Please Enter your height in meters:");
+        System.out.println("Please Enter your height in centimeters:");
         double height;
         height = input.nextDouble();
 
@@ -168,7 +176,7 @@ public class Main {
         System.out.println("Your weight is " + weight + "kg.");
         System.out.println("Gender: " + gender);
         System.out.println("Your age is " + age + " years");
-        System.out.println("You are " + height + " meters tall");
+        System.out.println("You are " + height + " centimeters tall");
     }
 
     /**
@@ -179,7 +187,7 @@ public class Main {
         System.out.println("Please Enter your name:");
         String name;
         name = input.nextLine();
-        System.out.println("Please Enter your Gender");
+        System.out.println("Please Enter your Gender(F for Female, M for Male or N if preferred not to say)");
         String gender;
         gender = input.nextLine();
         System.out.println("Please enter your age:");
@@ -188,7 +196,7 @@ public class Main {
         System.out.println("Please Enter your weight in Kilograms:");
         double weight;
         weight = input.nextDouble();
-        System.out.println("Please Enter your height in meters:");
+        System.out.println("Please Enter your height in centimeters:");
         double height;
         height = input.nextDouble();
 
@@ -216,7 +224,7 @@ public class Main {
      */
 
     public static String bmi(double weight, double height) {
-        double calculatedBMI = weight / (height * height);
+        double calculatedBMI = weight * CONVERSION / (height * height);
         return String.format("%.02f", calculatedBMI);
 
     }
@@ -245,11 +253,6 @@ public class Main {
      */
 
     public static int estimateCalories(int kg_input) {
-
-        //Calories needed to burn 1 kg is 7700.
-
-        final int CALORIES = 7700;
-
         //You need to eat or burn 7700 calories to gain 1 k.g
 
         return (kg_input * CALORIES);
@@ -345,8 +348,6 @@ public class Main {
                 System.out.printf("You need to run %.1f hours at 9-11 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kginput);
 
             }
-
-
         }
 
         //If anything other than the inputs defined in menu is pressed, program will exit
