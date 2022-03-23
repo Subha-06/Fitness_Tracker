@@ -5,8 +5,8 @@
  * Amasil Rahim Zihad (UCID: 30164830)
  * * Date: 1 March 2022
  * * Demo 1 Tutorial 10
- *
- *
+ * <p>
+ * <p>
  * This is to test if everything is working
  */
 
@@ -33,15 +33,24 @@ public class Main {
         Scanner input = new Scanner(System.in);
         System.out.println("Hello, This is a fitness tracking program");
         System.out.println("""
-                If you want to enter your information press 'Y'
-                To exit the program press anything else""");
+                If you want to enter your information press '1'
+                If you want to enter your information from a file press '2'
+                """);
         String userchoice = input.nextLine();
-        if (userchoice.equals("Y") || userchoice.equals("y")) {
+        if (userchoice.equals("1")) {
             getUserInput();
+        }
+        if (userchoice.equals("2")) {
+            reader();
+
         } else {
             System.out.println("You choose to exit the program.");
             System.exit(0);
         }
+    }
+
+    public static void reader() {
+
     }
 
     /**
