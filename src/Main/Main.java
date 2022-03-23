@@ -12,7 +12,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static Util.Menu.checkOption;
+import static Util.Menu.*;
 
 public class Main {
     //Constants
