@@ -10,10 +10,7 @@ import java.util.HashMap;
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
  * * Date: 1 March 2022
- * * Demo 1 Tutorial 10
- * <p>
- * <p>
- * This is to test if everything is working
+ * * Demo 2 Tutorial 05
  */
 
 
@@ -158,16 +155,16 @@ public class Main {
      */
 
     public static void getUserChoice(String name, String gender, HashMap<String, ArrayList> userinfo) {
-        //int userinput;
+        int userinput;
         // We know that the first element of the arraylist that is passed in as a value of hashmap here is the age
         //The second element is weight
         //The third element is height
         // Here we are extracting this information from the hashmap and casting as double so that we can pass them as
         // parameters for other functions.
 
-        double age = (double) userinfo.get(name).get(0);
-        double weight = (double) userinfo.get(name).get(1);
-        double height = (double) userinfo.get(name).get(2);
+//        double age = (double) userinfo.get(name).get(0);
+//        double weight = (double) userinfo.get(name).get(1);
+//        double height = (double) userinfo.get(name).get(2);
 
         double age = (double) userinfo.get(name).get(0);
         double weight = (double) userinfo.get(name).get(1);
