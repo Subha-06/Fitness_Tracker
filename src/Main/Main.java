@@ -1,3 +1,9 @@
+package Main;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * A fitness tracking program that allows the user to input their information and get back various results form that
  * *Members:
@@ -10,10 +16,6 @@
  * This is to test if everything is working
  */
 
-
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Main {
     //Constants
@@ -156,12 +158,17 @@ public class Main {
      */
 
     public static void getUserChoice(String name, String gender, HashMap<String, ArrayList> userinfo) {
-        int userinput;
+        //int userinput;
         // We know that the first element of the arraylist that is passed in as a value of hashmap here is the age
         //The second element is weight
         //The third element is height
         // Here we are extracting this information from the hashmap and casting as double so that we can pass them as
         // parameters for other functions.
+
+        double age = (double) userinfo.get(name).get(0);
+        double weight = (double) userinfo.get(name).get(1);
+        double height = (double) userinfo.get(name).get(2);
+
         double age = (double) userinfo.get(name).get(0);
         double weight = (double) userinfo.get(name).get(1);
         double height = (double) userinfo.get(name).get(2);
