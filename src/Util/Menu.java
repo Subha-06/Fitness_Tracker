@@ -1,5 +1,7 @@
 package Util;
 
+import Main.User;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -33,21 +35,19 @@ public final class Menu {
 
     public static void getUserInput() {
 
+        Scanner input = new Scanner(System.in);
         System.out.println("Please Enter your name:");
         String name;
-        name = scanner.nextLine();
+        name = input.nextLine();
         System.out.println("Please Enter your Gender (F for Female, M for Male or N if preferred not to say):");
         String gender;
-        gender = scanner.nextLine();
+        gender = input.nextLine();
         System.out.println("Please enter your age:");
-        double age;
-        age = scanner.nextInt();
-        System.out.println("Please Enter your weight in Kilograms:");
-        double weight;
-        weight = scanner.nextDouble();
-        System.out.println("Please Enter your height in centimeters:");
-        double height;
-        height = scanner.nextDouble();
+        //Get user age,height,weight and make sure they are valid numbers
+        User user = new User();
+        double age = user.getUserAge();
+        double weight = user.getUserWeight();
+        double height = user.getUserHeight();
 
         //Storing the data
 
@@ -66,8 +66,5 @@ public final class Menu {
         //Calls the menu after getting input from user.
         getUserChoice(name, gender, userinfo2);
     }
-
-
-
 
 }
