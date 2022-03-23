@@ -54,6 +54,63 @@ public class Main {
     }
 
     /**
+     * This function makes sure the user inputs a valid number because age has to be over 0.
+     *
+     * @return returns the age of the user
+     */
+
+    public static double getAge() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please Enter your age in centimeters:");
+        double age;
+        age = input.nextDouble();
+        //If the age is less than or equals to zero ask the user for input again.
+        if (age < 0 || age == 0) {
+            System.out.println("The input is not valid, height cannot be a negative number or zero");
+            age = getHeight();
+        }
+        return age;
+    }
+
+    /**
+     * This function makes sure the user inputs a valid number because weight has to be over 0.
+     *
+     * @return returns the weight of the user
+     */
+
+    public static double getWeight() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please Enter your weight in centimeters:");
+        double weight;
+        weight = input.nextDouble();
+        //If the weight is less than or equals to zero ask the user for input again.
+        if (weight < 0 || weight == 0) {
+            System.out.println("The input is not valid, weight cannot be a negative number or zero");
+            weight = getWeight();
+        }
+        return weight;
+    }
+
+    /**
+     * This function makes sure the user inputs a valid number because height has to be over 0.
+     *
+     * @return returns the height of the user
+     */
+
+    public static double getHeight() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please Enter your height in centimeters:");
+        double height;
+        height = input.nextDouble();
+        //If the height is less than or equals to zero ask the user for input again.
+        if (height < 0 || height == 0) {
+            System.out.println("The input is not valid, height cannot be a negative number or zero");
+            height = getHeight();
+        }
+        return height;
+    }
+
+    /**
      * Get information from user and add them to a hashmap
      */
 
@@ -67,14 +124,10 @@ public class Main {
         String gender;
         gender = input.nextLine();
         System.out.println("Please enter your age:");
-        double age;
-        age = input.nextInt();
-        System.out.println("Please Enter your weight in Kilograms:");
-        double weight;
-        weight = input.nextDouble();
-        System.out.println("Please Enter your height in centimeters:");
-        double height;
-        height = input.nextDouble();
+        //Get user age,height,weight and make sure they are valid numbers
+        double age = getAge();
+        double weight = getWeight();
+        double height = getHeight();
 
         //Storing the data
 
