@@ -13,25 +13,30 @@ public final class Menu {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void checkOption(){
+    public static void checkOption() {
         System.out.println("Hello, This is a fitness tracking program");
-        System.out.println("""
-                If you want to enter your information press '1'
-                If you want to enter your information from a file press '2'
-                """);
-        String userchoice = scanner.nextLine();
-        if (userchoice.equals("1")) {
-            getUserInput();
-        }
-        if (userchoice.equals("2")) {
-            reader();
-
-        } else {
-            System.out.println("You choose to exit the program.");
-            System.exit(0);
-        }
+//        System.out.println("""
+//                If you want to enter your information press '1'
+//                If you want to enter your information from a file press '2'
+//                """);
+//        String userchoice = scanner.nextLine();
+//        if (userchoice.equals("1")) {
+//            getUserInput();
+//        }
+//        if (userchoice.equals("2")) {
+//            reader();
+//
+//        } else {
+//            System.out.println("You choose to exit the program.");
+//            System.exit(0);
+//        }
+        getUserInput();
 
     }
+
+    /**
+     * Getting the users information and storing it in a hashmap.
+     */
 
     public static void getUserInput() {
 
@@ -42,7 +47,6 @@ public final class Menu {
         System.out.println("Please Enter your Gender (F for Female, M for Male or N if preferred not to say):");
         String gender;
         gender = input.nextLine();
-        System.out.println("Please enter your age:");
         //Get user age,height,weight and make sure they are valid numbers
         User user = new User();
         double age = user.getUserAge();

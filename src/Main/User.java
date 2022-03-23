@@ -12,17 +12,22 @@ public class User {
     private double userHeight;
 
     //Getter
-    public String getUserName(){
+    public String getUserName() {
         return userName;
     }
 
-    public String getUserGender(){
+    public String getUserGender() {
         return userGender;
     }
 
-    public double getUserAge(){
-        System.out.println("Please Enter your age in centimeters:");
+    /**
+     * This function makes sure the user inputs a valid number because age has to be over 0.
+     *
+     * @return returns the age of the user
+     */
 
+    public double getUserAge() {
+        System.out.println("Please Enter your age:");
         userAge = scanner.nextDouble();
         //If the age is less than or equals to zero ask the user for input again.
         if (userAge < 0 || userAge == 0) {
@@ -32,9 +37,14 @@ public class User {
         return userAge;
     }
 
-    public double getUserWeight(){
-        System.out.println("Please Enter your height in centimeters:");
+    /**
+     * This function makes sure the user inputs a valid number because weight has to be over 0.
+     *
+     * @return returns the weight of the user
+     */
 
+    public double getUserWeight() {
+        System.out.println("Please Enter your weight in Kilograms:");
         userWeight = scanner.nextDouble();
         //If the weight is less than or equals to zero ask the user for input again.
         if (userWeight < 0 || userWeight == 0) {
@@ -44,9 +54,15 @@ public class User {
         return userWeight;
     }
 
-    public double getUserHeight(){
-        System.out.println("Please Enter your height in centimeters:");
+    /**
+     * This function makes sure the user inputs a valid number because height has to be over 0.
+     *
+     * @return returns the height of the user
+     */
 
+
+    public double getUserHeight() {
+        System.out.println("Please Enter your height in centimeters:");
         userHeight = scanner.nextDouble();
         //If the height is less than or equals to zero ask the user for input again.
         if (userHeight < 0 || userHeight == 0) {
@@ -57,23 +73,23 @@ public class User {
     }
 
     //Setter
-    public void setUserName(String userName){
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public void setUserGender(String userGender){
+    public void setUserGender(String userGender) {
         this.userGender = userGender;
     }
 
-    public void setUserAge(int userAge){
+    public void setUserAge(int userAge) {
         this.userAge = userAge;
     }
 
-    public void setUserWeight(int userWeight){
+    public void setUserWeight(int userWeight) {
         this.userWeight = userWeight;
     }
 
-    public void setUserHeight(int userHeight){
+    public void setUserHeight(int userHeight) {
         this.userHeight = userHeight;
     }
 }
