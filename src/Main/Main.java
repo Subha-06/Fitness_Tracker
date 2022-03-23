@@ -32,10 +32,6 @@ public class Main {
         checkOption();
     }
 
-    public static void reader() {
-
-    }
-
 
     /**
      * Outputs the menu and allows the user to choose what to do
