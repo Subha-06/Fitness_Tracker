@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static Util.Menu.checkOption;
+
 /**
  * A fitness tracking program that allows the user to input their information and get back various results form that
  * *Members:
@@ -29,23 +31,7 @@ public class Main {
      * @param args No arguments expected
      */
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Hello, This is a fitness tracking program");
-        System.out.println("""
-                If you want to enter your information press '1'
-                If you want to enter your information from a file press '2'
-                """);
-        String userchoice = input.nextLine();
-        if (userchoice.equals("1")) {
-            getUserInput();
-        }
-        if (userchoice.equals("2")) {
-            reader();
-
-        } else {
-            System.out.println("You choose to exit the program.");
-            System.exit(0);
-        }
+        checkOption();
     }
 
     public static void reader() {
@@ -166,9 +152,6 @@ public class Main {
 //        double weight = (double) userinfo.get(name).get(1);
 //        double height = (double) userinfo.get(name).get(2);
 
-        double age = (double) userinfo.get(name).get(0);
-        double weight = (double) userinfo.get(name).get(1);
-        double height = (double) userinfo.get(name).get(2);
 
         //A do-while loop to keep printing the menu until the user exits the program.
         do {
