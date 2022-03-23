@@ -11,7 +11,7 @@ public final class Menu {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void checkYes(){
+    public static void checkOption(){
         System.out.println("Hello, This is a fitness tracking program");
         System.out.println("""
                 If you want to enter your information press '1'
