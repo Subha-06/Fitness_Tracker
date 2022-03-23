@@ -148,9 +148,9 @@ public class Main {
         // Here we are extracting this information from the hashmap and casting as double so that we can pass them as
         // parameters for other functions.
 
-//        double age = (double) userinfo.get(name).get(0);
-//        double weight = (double) userinfo.get(name).get(1);
-//        double height = (double) userinfo.get(name).get(2);
+        double age = (double) userinfo.get(name).get(0);
+        double weight = (double) userinfo.get(name).get(1);
+        double height = (double) userinfo.get(name).get(2);
 
 
         //A do-while loop to keep printing the menu until the user exits the program.
