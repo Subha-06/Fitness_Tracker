@@ -10,6 +10,7 @@ import static Main.Main.getUserChoice;
 import static Main.Main.reader;
 
 public final class Menu {
+    //Creating a scanner
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -40,13 +41,12 @@ public final class Menu {
 
     public static void getUserInput() {
 
-        Scanner input = new Scanner(System.in);
         System.out.println("Please Enter your name:");
         String name;
-        name = input.nextLine();
+        name = scanner.nextLine();
         System.out.println("Please Enter your Gender (F for Female, M for Male or N if preferred not to say):");
         String gender;
-        gender = input.nextLine();
+        gender = scanner.nextLine();
         //Get user age,height,weight and make sure they are valid numbers
         User user = new User();
         double age = user.getUserAge();
