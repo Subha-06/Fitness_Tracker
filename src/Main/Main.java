@@ -48,19 +48,19 @@ public class Main {
             getUserInput();
 
         } if (userchoice.equals("2")) {
-            File fileInput = new File(args[0]);
-            if (fileInput.exists()) {
-                User user = Reader.reader(fileInput);
-                Main.getUserChoice(user);
-
+            if (args.length != 0){
+                File fileInput = new File(args[0]);
+                if (fileInput.exists()) {
+                    User user = Reader.reader(fileInput);
+                    Main.getUserChoice(user);
+                }
             }else{
-                throw new FileNotFoundException("File not found");
+                System.err.println("File Not Found!");
             }
         } else {
             System.out.println("You choose to exit the program.");
             System.exit(0);
         }
-        getUserInput();
     }
 
     /**
