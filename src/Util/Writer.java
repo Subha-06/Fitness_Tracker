@@ -14,17 +14,18 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Writer {
 
-    public static void writer(String[] out_info, File fileOutput) throws IOException{
+    public static void writer(ArrayList<Integer> out_info, File fileOutput) throws IOException{
 
-        if(fileOutput.exists() && fileOutput.canWrite()){
-            try{
+        if (fileOutput.exists() && fileOutput.canWrite()) {
+            try {
                 FileWriter f_writer = new FileWriter(fileOutput);
                 BufferedWriter b_writer = new BufferedWriter(f_writer);
 
-                for (int i = 0; i < out_info.length; i++){
+                for (int i = 0; i < out_info.size(); i++) {
                     b_writer.write(i + "\n");
                 }
                 b_writer.flush();

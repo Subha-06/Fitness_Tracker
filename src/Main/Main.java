@@ -50,9 +50,9 @@ public class Main {
         } if (userchoice.equals("2")) {
             if (args.length != 0){
                 File fileInput = new File(args[0]);
-                if (fileInput.exists()) {
+                if (fileInput.exists() && fileInput.canRead()) {
                     User user = Reader.reader(fileInput);
-                    Main.getUserChoice(user);
+                    getUserChoice(user);
                 }
             }else{
                 System.err.println("File Not Found!");
@@ -97,6 +97,7 @@ public class Main {
                     Press 4: Check the weight status of user according to BMI
                     Press 5: Estimate how much calories need to burn to reach a certain weight.
                     Press 6: Estimate how many hours needed to exercise to reach a certain weight.
+                    Press 7: Add how much calories you have burnt daily
                     Press 0: To exit the program
                     """);
             Scanner input = new Scanner(System.in);
@@ -133,9 +134,14 @@ public class Main {
                 int total_calories = estimateCalories(kg_input);
                 estimateExercise(total_calories, weight, kg_input);
 
+            } else if(userinput == 7){
+                System.out.println("How much calories you have burnt today?");
+                int cal_burnt = input.nextInt();
+                ArrayList<Integer> calBurntList = new ArrayList<>();
+
             }
             //Exit the program
-            else if (userinput == 7) {
+            else if (userinput == 8) {
                 System.out.println("You choose to exit the program.");
                 System.exit(0);
             }
