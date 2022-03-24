@@ -31,10 +31,10 @@ public final class Menu {
         System.out.println("Please Enter your Gender (F for Female, M for Male or N if preferred not to say):");
         String gender;
         gender = scanner.nextLine();
-//Get user age,height,weight and make sure they are valid numbers
-        double age = getUserAge();
-        double weight = getUserWeight();
-        double height = getUserHeight();
+        //Get user age,height,weight and make sure they are valid numbers
+        double age = getInputAge();
+        double weight = getInputWeight();
+        double height = getInputHeight();
 
 
         User user = new User();
@@ -54,14 +54,14 @@ public final class Menu {
      * @return returns the age of the user
      */
 
-    public static double getUserAge() {
+    public static double getInputAge() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter your age:");
         double userAge = scanner.nextDouble();
         //If the age is less than or equals to zero ask the user for input again.
         if (userAge < 0 || userAge == 0) {
             System.out.println("The input is not valid, height cannot be a negative number or zero");
-            userAge = getUserAge();
+            userAge = getInputAge();
         }
         return userAge;
     }
@@ -72,14 +72,14 @@ public final class Menu {
      * @return returns the weight of the user
      */
 
-    public static double getUserWeight() {
+    public static double getInputWeight() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter your weight in Kilograms:");
         double userWeight = scanner.nextDouble();
         //If the weight is less than or equals to zero ask the user for input again.
         if (userWeight < 0 || userWeight == 0) {
             System.out.println("The input is not valid, height cannot be a negative number or zero");
-            userWeight = getUserWeight();
+            userWeight = getInputWeight();
         }
         return userWeight;
     }
@@ -91,14 +91,14 @@ public final class Menu {
      */
 
 
-    public static double getUserHeight() {
+    public static double getInputHeight() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter your height in centimeters:");
         double userHeight = scanner.nextDouble();
         //If the height is less than or equals to zero ask the user for input again.
         if (userHeight < 0 || userHeight == 0) {
             System.out.println("The input is not valid, height cannot be a negative number or zero");
-            userHeight = getUserHeight();
+            userHeight = getInputHeight();
         }
         return userHeight;
     }
