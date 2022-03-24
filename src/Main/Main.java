@@ -110,7 +110,8 @@ public class Main {
             //If the user wants to re-enter the information call the re-enter function.
             else if (userinput == 2) {
                 input.nextLine();
-                reEnter();
+                System.out.println("Press Reenter your Information");
+                getUserInput();
             }
             //If the user wants to know their BMI
             else if (userinput == 3) {

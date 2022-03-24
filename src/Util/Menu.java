@@ -27,7 +27,6 @@ public final class Menu {
      */
 
     public static void getUserInput() throws IOException {
-
         System.out.println("Please Enter your name:");
         String name;
         name = scanner.nextLine();
