@@ -27,10 +27,10 @@ public class Reader {
         User user = new User();
 
         String line = b_reader.readLine();
-        while (line != null){
+        while (line != null) {
 
             String[] userInfo = line.split(",");
-            if (userInfo[USER_GEN].equals("M")){
+            if (userInfo[USER_GEN].equals("M")) {
 
                 String userName = userInfo[USER_NAME];
                 String userGender = userInfo[USER_GEN];
@@ -44,7 +44,7 @@ public class Reader {
                 user.setUserWeight(userWeight);
                 user.setUserHeight(userHeight);
 
-            } else if (userInfo[USER_GEN].equals("F")){
+            } else if (userInfo[USER_GEN].equals("F")) {
 
                 String userName = userInfo[USER_NAME];
                 String userGender = userInfo[USER_GEN];
