@@ -12,21 +12,20 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Writer {
 
-    public static void writer(int out_info) throws IOException {
+    public static void writer(int out_info){
 
         File newFile = new File ("User.txt");
-        newFile.createNewFile();
+//        newFile.createNewFile();
 
         if (newFile.exists() && newFile.canWrite()) {
             try {
-                FileWriter f_writer = new FileWriter(newFile);
+                FileWriter f_writer = new FileWriter(newFile, true);
                 BufferedWriter b_writer = new BufferedWriter(f_writer);
 
-                    b_writer.append(out_info + "\n");
+                    b_writer.write(out_info + "\n");
 
                 b_writer.flush();
             } catch (IOException e) {
