@@ -36,13 +36,6 @@ public class User {
      */
 
     public double getUserAge() {
-        System.out.println("Please Enter your age:");
-        userAge = scanner.nextDouble();
-        //If the age is less than or equals to zero ask the user for input again.
-        if (userAge < 0 || userAge == 0) {
-            System.out.println("The input is not valid, height cannot be a negative number or zero");
-            userAge = getUserAge();
-        }
         return userAge;
     }
 
@@ -53,13 +46,6 @@ public class User {
      */
 
     public double getUserWeight() {
-        System.out.println("Please Enter your weight in Kilograms:");
-        userWeight = scanner.nextDouble();
-        //If the weight is less than or equals to zero ask the user for input again.
-        if (userWeight < 0 || userWeight == 0) {
-            System.out.println("The input is not valid, height cannot be a negative number or zero");
-            userWeight = getUserWeight();
-        }
         return userWeight;
     }
 
@@ -71,13 +57,6 @@ public class User {
 
 
     public double getUserHeight() {
-        System.out.println("Please Enter your height in centimeters:");
-        userHeight = scanner.nextDouble();
-        //If the height is less than or equals to zero ask the user for input again.
-        if (userHeight < 0 || userHeight == 0) {
-            System.out.println("The input is not valid, height cannot be a negative number or zero");
-            userHeight = getUserHeight();
-        }
         return userHeight;
     }
 
@@ -90,15 +69,15 @@ public class User {
         this.userGender = userGender;
     }
 
-    public void setUserAge(int userAge) {
+    public void setUserAge(double userAge) {
         this.userAge = userAge;
     }
 
-    public void setUserWeight(int userWeight) {
+    public void setUserWeight(double userWeight) {
         this.userWeight = userWeight;
     }
 
-    public void setUserHeight(int userHeight) {
+    public void setUserHeight(double userHeight) {
         this.userHeight = userHeight;
     }
 }

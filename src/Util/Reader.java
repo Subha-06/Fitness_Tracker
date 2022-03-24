@@ -8,6 +8,8 @@
  */
 package Util;
 
+import Main.*;
+
 import java.io.*;
 
 public class Reader {
@@ -18,12 +20,59 @@ public class Reader {
     static final int USER_WEIGHT = 3;
     static final int USER_HEIGHT = 4;
 
-    public static String[] reader(File userInfo) throws FileNotFoundException {
+    public static User reader(File fileInput) throws IOException {
 
-        FileReader file_reader = new FileReader(userInfo);
+        FileReader file_reader = new FileReader(fileInput);
         BufferedReader b_reader = new BufferedReader(file_reader);
-        return null;
+        User user = new User();
+
+        String line = b_reader.readLine();
+        while (line != null){
+
+            String[] userInfo = line.split(",");
+            if (userInfo[USER_GEN].equals("M")){
+
+                String userName = userInfo[USER_NAME];
+                String userGender = userInfo[USER_GEN];
+                double userAge = Double.parseDouble(userInfo[USER_AGE]);
+                double userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                double userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+
+                user.setUserName(userName);
+                user.setUserGender(userGender);
+                user.setUserAge(userAge);
+                user.setUserWeight(userWeight);
+                user.setUserHeight(userHeight);
+
+            } else if (userInfo[USER_GEN].equals("F")){
+
+                String userName = userInfo[USER_NAME];
+                String userGender = userInfo[USER_GEN];
+                double userAge = Double.parseDouble(userInfo[USER_AGE]);
+                double userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                double userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+
+                user.setUserName(userName);
+                user.setUserGender(userGender);
+                user.setUserAge(userAge);
+                user.setUserWeight(userWeight);
+                user.setUserHeight(userHeight);
+
+            } else {
+                String userName = userInfo[USER_NAME];
+                String userGender = userInfo[USER_GEN];
+                double userAge = Double.parseDouble(userInfo[USER_AGE]);
+                double userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                double userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+
+                user.setUserName(userName);
+                user.setUserGender(userGender);
+                user.setUserAge(userAge);
+                user.setUserWeight(userWeight);
+                user.setUserHeight(userHeight);
+            }
+            line = b_reader.readLine();
+        }
+        return user;
     }
-
-
 }

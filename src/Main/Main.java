@@ -8,6 +8,9 @@
  */
 package Main;
 
+import Util.Reader;
+
+import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,25 +26,50 @@ public class Main {
     //Conversion from cm square to meter square
     final static int CONVERSION = 10000;
 
+    //Arraylist for the user information
+
+    //public static ArrayList<User> info = new ArrayList<>();
+
     /**
      * Start the tracking program
      *
      * @param args No arguments expected
      */
-    public static void main(String[] args) {
-        checkOption();
-    }
+    public static void main(String[] args) throws IOException {
+        //Getting file names
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Hello, This is a fitness tracking program");
+        System.out.println("""
+                If you want to enter your information press '1'
+                If you want to enter your information from a file press '2'
+                """);
+        String userchoice = scanner.nextLine();
+        if (userchoice.equals("1")) {
+            getUserInput();
 
+        } if (userchoice.equals("2")) {
+            File fileInput = new File(args[0]);
+            if (fileInput.exists()) {
+                User user = Reader.reader(fileInput);
+                Main.getUserChoice(user);
+
+            }else{
+                throw new FileNotFoundException("File not found");
+            }
+        } else {
+            System.out.println("You choose to exit the program.");
+            System.exit(0);
+        }
+        getUserInput();
+    }
 
     /**
      * Outputs the menu and allows the user to choose what to do
      *
-     * @param name     The name the user input
-     * @param userinfo The hashmap with the users information
-     * @param gender   The gender of the user
+     * @param user    The user object
      */
 
-    public static void getUserChoice(String name, String gender, HashMap<String, ArrayList> userinfo) {
+    public static void getUserChoice(User user) {
         int userinput;
         // We know that the first element of the arraylist that is passed in as a value of hashmap here is the age
         //The second element is weight
@@ -49,10 +77,11 @@ public class Main {
 
         // Here we are extracting this information from the hashmap and casting as double so that we can pass them as
         // parameters for other functions.
-
-        double age = (double) userinfo.get(name).get(0);
-        double weight = (double) userinfo.get(name).get(1);
-        double height = (double) userinfo.get(name).get(2);
+        String name = user.getUserName();
+        String gender = user.getUserGender();
+        double age = user.getUserAge();
+        double weight = user.getUserWeight();
+        double height = user.getUserHeight();
 
 
         //A do-while loop to keep printing the menu until the user exits the program.
@@ -156,17 +185,23 @@ public class Main {
 
         //Add the user information to an arraylist then add that arraylist to hashmap with the name as the key
 
-        ArrayList<Double> userinfo = new ArrayList<>();
-        userinfo.add(age);
-        userinfo.add(weight);
-        userinfo.add(height);
+//        ArrayList<Double> userinfo = new ArrayList<>();
+//        userinfo.add(age);
+//        userinfo.add(weight);
+//        userinfo.add(height);
+//
+//
+//        HashMap<String, ArrayList> userinfo2 = new HashMap<>();
+//        userinfo2.put(name, userinfo);
+        User user = new User();
 
+        user.setUserName(name);
+        user.setUserGender(gender);
+        user.setUserAge(age);
+        user.setUserWeight(weight);
+        user.setUserHeight(height);
 
-        HashMap<String, ArrayList> userinfo2 = new HashMap<>();
-        userinfo2.put(name, userinfo);
-        getUserChoice(name, gender, userinfo2);
-
-
+        getUserChoice(user);
     }
 
     /**
@@ -217,10 +252,10 @@ public class Main {
      * Calculates how much exercise the user needs to do to reach a certain goal
      *
      * @param total_calories Total number of calories needed to burn to lose the user inputted weight
-     * @param userWeight     The weight of the user
+     * @param weight     The weight of the user
      */
 
-    private static void estimateExercise(int total_calories, double userWeight, int kginput) {
+    private static void estimateExercise(int total_calories, double weight, int kg_input) {
         Scanner input = new Scanner(System.in);
         //Giving the user to choose the type of exercise they want to do
         System.out.println("""
@@ -251,19 +286,19 @@ public class Main {
             checkoption = input.nextInt();
             if (checkoption == 1) {
 
-                double ex_burnt = (total_calories * 200) / (array[0] * userWeight * 3.5 * 60);
-                System.out.printf("You need to cycle %.1f hours at 16-19 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kginput);
+                double ex_burnt = (total_calories * 200) / (array[0] * weight * 3.5 * 60);
+                System.out.printf("You need to cycle %.1f hours at 16-19 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
 
 
             } else if (checkoption == 2) {
 
-                double ex_burnt = (total_calories * 200) / (array[1] * userWeight * 3.5 * 60);
-                System.out.printf("You need to cycle %.1f hours at 19-22 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kginput);
+                double ex_burnt = (total_calories * 200) / (array[1] * weight * 3.5 * 60);
+                System.out.printf("You need to cycle %.1f hours at 19-22 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
 
             } else if (checkoption == 3) {
 
-                double ex_burnt = (total_calories * 200) / (array[2] * userWeight * 3.5 * 60);
-                System.out.printf("You need to cycle %.1f hours at 22-25 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kginput);
+                double ex_burnt = (total_calories * 200) / (array[2] * weight * 3.5 * 60);
+                System.out.printf("You need to cycle %.1f hours at 22-25 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
 
             }
 
@@ -288,18 +323,18 @@ public class Main {
             checkoption = input.nextInt();
             if (checkoption == 1) {
 
-                double ex_burnt = (total_calories * 200) / (array2[0] * userWeight * 3.5 * 60);
-                System.out.printf("You need to run %.1f hours at 6-7 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kginput);
+                double ex_burnt = (total_calories * 200) / (array2[0] * weight * 3.5 * 60);
+                System.out.printf("You need to run %.1f hours at 6-7 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
 
             } else if (checkoption == 2) {
 
-                double ex_burnt = (total_calories * 200) / (array2[1] * userWeight * 3.5 * 60);
-                System.out.printf("You need to run %.1f hours at 7-8 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kginput);
+                double ex_burnt = (total_calories * 200) / (array2[1] * weight * 3.5 * 60);
+                System.out.printf("You need to run %.1f hours at 7-8 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
 
             } else if (checkoption == 3) {
 
-                double ex_burnt = (total_calories * 200) / (array2[2] * userWeight * 3.5 * 60);
-                System.out.printf("You need to run %.1f hours at 9-11 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kginput);
+                double ex_burnt = (total_calories * 200) / (array2[2] * weight * 3.5 * 60);
+                System.out.printf("You need to run %.1f hours at 9-11 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
 
             }
         }
