@@ -43,9 +43,6 @@ public class User {
         return userHeight;
     }
 
-    public File getFileOutput(){
-        return fileOutput;
-    }
 
     //Setter
     public void setUserName(String userName) {
