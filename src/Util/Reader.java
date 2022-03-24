@@ -11,6 +11,7 @@ package Util;
 import Main.*;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Reader {
 
@@ -30,7 +31,8 @@ public class Reader {
         while (line != null) {
 
             String[] userInfo = line.split(",");
-            if (userInfo[USER_GEN].equals("M")) {
+
+            if (userInfo[USER_GEN].equals("F")) {
 
                 String userName = userInfo[USER_NAME];
                 String userGender = userInfo[USER_GEN];
@@ -44,7 +46,7 @@ public class Reader {
                 user.setUserWeight(userWeight);
                 user.setUserHeight(userHeight);
 
-            } else if (userInfo[USER_GEN].equals("F")) {
+            } else if (userInfo[USER_GEN].equals("M")) {
 
                 String userName = userInfo[USER_NAME];
                 String userGender = userInfo[USER_GEN];
@@ -58,7 +60,7 @@ public class Reader {
                 user.setUserWeight(userWeight);
                 user.setUserHeight(userHeight);
 
-            } else {
+            } else if (userInfo[USER_GEN].equals("N")){
                 String userName = userInfo[USER_NAME];
                 String userGender = userInfo[USER_GEN];
                 double userAge = Double.parseDouble(userInfo[USER_AGE]);
@@ -74,5 +76,24 @@ public class Reader {
             line = b_reader.readLine();
         }
         return user;
+    }
+
+    public static ArrayList outReader() throws IOException {
+        File outFile = new File("User.txt");
+        ArrayList<String> outInfo = null;
+        if (outFile.exists()) {
+
+            FileReader f_reader = new FileReader(outFile);
+            BufferedReader b_reader = new BufferedReader(f_reader);
+
+            String line = b_reader.readLine();
+            outInfo = new ArrayList<>();
+            while (line != null) {
+
+                outInfo.add(line);
+            }
+            line = b_reader.readLine();
+        }
+        return outInfo;
     }
 }
