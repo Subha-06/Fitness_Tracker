@@ -44,7 +44,6 @@ public class Main {
                 If you want to enter your information from a file press '2'
                 """);
         String userchoice = scanner.nextLine();
-        User user = new User();
         if (userchoice.equals("1")) {
             getUserInput();
 
@@ -52,9 +51,7 @@ public class Main {
         if (userchoice.equals("2")) {
             if (args.length != 0) {
                 File fileInput = new File(args[0]);
-                File fileOutput = new File(args[1]);
                 if (fileInput.exists() && fileInput.canRead()) {
-                    user.setFileOutput(fileOutput);
                     getUserChoice(Reader.reader(fileInput));
                 }
             } else {
@@ -140,9 +137,9 @@ public class Main {
             } else if (userinput == 7) {
                 System.out.println("How much calories you have burnt today?");
                 int cal_burnt = input.nextInt();
-                ArrayList<Integer> calBurntList = new ArrayList<>();
-                File fileOutput = user.getFileOutput();
-                Util.Writer.writer(calBurntList, fileOutput);
+
+                Util.Writer.writer(cal_burnt);
+
             }
             //Exit the program
             else if (userinput == 8) {
@@ -151,7 +148,7 @@ public class Main {
             }
         }
 
-        while (userinput == 1 || userinput == 2 || userinput == 3 || userinput == 4 || userinput == 5 || userinput == 6);
+        while (userinput == 1 || userinput == 2 || userinput == 3 || userinput == 4 || userinput == 5 || userinput == 6 || userinput == 7);
     }
 
     /**
@@ -193,16 +190,6 @@ public class Main {
         double height;
         height = input.nextDouble();
 
-        //Add the user information to an arraylist then add that arraylist to hashmap with the name as the key
-
-//        ArrayList<Double> userinfo = new ArrayList<>();
-//        userinfo.add(age);
-//        userinfo.add(weight);
-//        userinfo.add(height);
-//
-//
-//        HashMap<String, ArrayList> userinfo2 = new HashMap<>();
-//        userinfo2.put(name, userinfo);
         User user = new User();
 
         user.setUserName(name);
@@ -356,7 +343,6 @@ public class Main {
             System.exit(0);
         }
     }
-
 
 }
 

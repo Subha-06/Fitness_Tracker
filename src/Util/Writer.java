@@ -8,8 +8,6 @@
  */
 package Util;
 
-import Main.User;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,16 +16,18 @@ import java.util.ArrayList;
 
 public class Writer {
 
-    public static void writer(ArrayList<Integer> out_info, File fileOutput) throws IOException{
+    public static void writer(int out_info) throws IOException {
 
-        if (fileOutput.exists() && fileOutput.canWrite()) {
+        File newFile = new File ("User.txt");
+        newFile.createNewFile();
+
+        if (newFile.exists() && newFile.canWrite()) {
             try {
-                FileWriter f_writer = new FileWriter(fileOutput);
+                FileWriter f_writer = new FileWriter(newFile);
                 BufferedWriter b_writer = new BufferedWriter(f_writer);
 
-                for (int i = 0; i < out_info.size(); i++) {
-                    b_writer.write(i + "\n");
-                }
+                    b_writer.append(out_info + "\n");
+
                 b_writer.flush();
             } catch (IOException e) {
                 System.err.println("Cannot access the file to write it!");
