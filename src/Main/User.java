@@ -18,7 +18,6 @@ public class User {
     private double userAge;
     private double userWeight;
     private double userHeight;
-    private File fileOutput;
 
     //Getter
     public String getUserName() {
@@ -33,7 +32,6 @@ public class User {
         return userAge;
     }
 
-
     public double getUserWeight() {
         return userWeight;
     }
@@ -42,7 +40,6 @@ public class User {
     public double getUserHeight() {
         return userHeight;
     }
-
 
     //Setter
     public void setUserName(String userName) {
@@ -65,7 +62,4 @@ public class User {
         this.userHeight = userHeight;
     }
 
-    public void setFileOutput(File fileOutput) {
-        this.fileOutput = fileOutput;
-    }
 }
