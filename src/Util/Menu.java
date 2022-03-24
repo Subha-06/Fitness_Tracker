@@ -26,7 +26,7 @@ public final class Menu {
      * Getting the users information and storing it in a hashmap.
      */
 
-    public static void getUserInput() {
+    public static void getUserInput() throws IOException {
 
         System.out.println("Please Enter your name:");
         String name;

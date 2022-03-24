@@ -8,6 +8,7 @@
  */
 package Main;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class User {
@@ -19,6 +20,7 @@ public class User {
     private double userAge;
     private double userWeight;
     private double userHeight;
+    private File fileOutput;
 
     //Getter
     public String getUserName() {
@@ -29,35 +31,22 @@ public class User {
         return userGender;
     }
 
-    /**
-     * This function makes sure the user inputs a valid number because age has to be over 0.
-     *
-     * @return returns the age of the user
-     */
-
     public double getUserAge() {
         return userAge;
     }
 
-    /**
-     * This function makes sure the user inputs a valid number because weight has to be over 0.
-     *
-     * @return returns the weight of the user
-     */
 
     public double getUserWeight() {
         return userWeight;
     }
 
-    /**
-     * This function makes sure the user inputs a valid number because height has to be over 0.
-     *
-     * @return returns the height of the user
-     */
-
 
     public double getUserHeight() {
         return userHeight;
+    }
+
+    public File getFileOutput(){
+        return fileOutput;
     }
 
     //Setter
@@ -79,5 +68,9 @@ public class User {
 
     public void setUserHeight(double userHeight) {
         this.userHeight = userHeight;
+    }
+
+    public void setFileOutput(File fileOutput) {
+        this.fileOutput = fileOutput;
     }
 }

@@ -44,15 +44,17 @@ public class Main {
                 If you want to enter your information from a file press '2'
                 """);
         String userchoice = scanner.nextLine();
+        User user = new User();
         if (userchoice.equals("1")) {
             getUserInput();
 
         } if (userchoice.equals("2")) {
             if (args.length != 0){
                 File fileInput = new File(args[0]);
+                File fileOutput = new File(args[1]);
                 if (fileInput.exists() && fileInput.canRead()) {
-                    User user = Reader.reader(fileInput);
-                    getUserChoice(user);
+                    user.setFileOutput(fileOutput);
+                    getUserChoice(Reader.reader(fileInput));
                 }
             }else{
                 System.err.println("File Not Found!");
@@ -69,7 +71,7 @@ public class Main {
      * @param user    The user object
      */
 
-    public static void getUserChoice(User user) {
+    public static void getUserChoice(User user) throws IOException {
         int userinput;
         // We know that the first element of the arraylist that is passed in as a value of hashmap here is the age
         //The second element is weight
@@ -138,7 +140,8 @@ public class Main {
                 System.out.println("How much calories you have burnt today?");
                 int cal_burnt = input.nextInt();
                 ArrayList<Integer> calBurntList = new ArrayList<>();
-
+                File fileOutput = user.getFileOutput();
+                Util.Writer.writer(calBurntList, fileOutput);
             }
             //Exit the program
             else if (userinput == 8) {
@@ -171,7 +174,7 @@ public class Main {
     /**
      * Get information from user again and add them to a hashmap
      */
-    private static void reEnter() {
+    private static void reEnter() throws IOException {
         Scanner input = new Scanner(System.in);
         System.out.println("Please Enter your name:");
         String name;
