@@ -106,6 +106,7 @@ public class Main {
             if (userinput == 1) {
                 printInfo(name, gender, age, weight, height);
             }
+
             //If the user wants to re-enter the information call the re-enter function.
             else if (userinput == 2) {
                 input.nextLine();

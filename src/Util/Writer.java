@@ -17,6 +17,7 @@ public class Writer {
 
     public static void writer(int out_info){
 
+
         File newFile = new File ("User.txt");
 //        newFile.createNewFile();
 
