@@ -48,15 +48,16 @@ public class Main {
         if (userchoice.equals("1")) {
             getUserInput();
 
-        } if (userchoice.equals("2")) {
-            if (args.length != 0){
+        }
+        if (userchoice.equals("2")) {
+            if (args.length != 0) {
                 File fileInput = new File(args[0]);
                 File fileOutput = new File(args[1]);
                 if (fileInput.exists() && fileInput.canRead()) {
                     user.setFileOutput(fileOutput);
                     getUserChoice(Reader.reader(fileInput));
                 }
-            }else{
+            } else {
                 System.err.println("File Not Found!");
             }
         } else {
@@ -68,7 +69,7 @@ public class Main {
     /**
      * Outputs the menu and allows the user to choose what to do
      *
-     * @param user    The user object
+     * @param user The user object
      */
 
     public static void getUserChoice(User user) throws IOException {
@@ -136,7 +137,7 @@ public class Main {
                 int total_calories = estimateCalories(kg_input);
                 estimateExercise(total_calories, weight, kg_input);
 
-            } else if(userinput == 7){
+            } else if (userinput == 7) {
                 System.out.println("How much calories you have burnt today?");
                 int cal_burnt = input.nextInt();
                 ArrayList<Integer> calBurntList = new ArrayList<>();
@@ -261,7 +262,7 @@ public class Main {
      * Calculates how much exercise the user needs to do to reach a certain goal
      *
      * @param total_calories Total number of calories needed to burn to lose the user inputted weight
-     * @param weight     The weight of the user
+     * @param weight         The weight of the user
      */
 
     private static void estimateExercise(int total_calories, double weight, int kg_input) {
