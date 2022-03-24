@@ -12,6 +12,7 @@ import Util.Reader;
 
 import java.io.*;
 import java.util.Scanner;
+
 import static Util.Menu.*;
 
 public class Main {
@@ -200,8 +201,6 @@ public class Main {
      */
 
     public static int estimateCalories(int kg_input) {
-        //You need to eat or burn 7700 calories to gain 1 k.g
-
         return (kg_input * CALORIES);
     }
 
