@@ -9,11 +9,9 @@
 package Main;
 
 import java.io.File;
-import java.util.Scanner;
 
 public class User {
-    //Creating a scanner
-    private static final Scanner scanner = new Scanner(System.in);
+
 
     private String userName;
     private String userGender;
