@@ -12,9 +12,6 @@ import Util.Reader;
 
 import java.io.*;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import static Util.Menu.*;
 
 public class Main {
@@ -71,12 +68,7 @@ public class Main {
 
     public static void getUserChoice(User user) throws IOException {
         int userinput;
-        // We know that the first element of the arraylist that is passed in as a value of hashmap here is the age
-        //The second element is weight
-        //The third element is height
 
-        // Here we are extracting this information from the hashmap and casting as double so that we can pass them as
-        // parameters for other functions.
         String name = user.getUserName();
         String gender = user.getUserGender();
         double age = user.getUserAge();
@@ -110,7 +102,7 @@ public class Main {
             //If the user wants to re-enter the information call the re-enter function.
             else if (userinput == 2) {
                 input.nextLine();
-                reEnter();
+                getUserInput();
             }
             //If the user wants to know their BMI
             else if (userinput == 3) {
@@ -168,38 +160,6 @@ public class Main {
         System.out.println("Gender: " + gender);
         System.out.println("Your age is " + age + " years");
         System.out.println("You are " + height + " centimeters tall");
-    }
-
-    /**
-     * Get information from user again and add them to a hashmap
-     */
-    private static void reEnter() throws IOException {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Please Enter your name:");
-        String name;
-        name = input.nextLine();
-        System.out.println("Please Enter your Gender(F for Female, M for Male or N if preferred not to say)");
-        String gender;
-        gender = input.nextLine();
-        System.out.println("Please enter your age:");
-        double age;
-        age = input.nextInt();
-        System.out.println("Please Enter your weight in Kilograms:");
-        double weight;
-        weight = input.nextDouble();
-        System.out.println("Please Enter your height in centimeters:");
-        double height;
-        height = input.nextDouble();
-
-        User user = new User();
-
-        user.setUserName(name);
-        user.setUserGender(gender);
-        user.setUserAge(age);
-        user.setUserWeight(weight);
-        user.setUserHeight(height);
-
-        getUserChoice(user);
     }
 
     /**

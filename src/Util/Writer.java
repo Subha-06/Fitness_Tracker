@@ -15,11 +15,11 @@ import java.io.IOException;
 
 public class Writer {
 
-    public static void writer(int out_info){
+    public static void writer(int out_info) throws IOException {
 
 
         File newFile = new File ("User.txt");
-//        newFile.createNewFile();
+        newFile.createNewFile();
 
         if (newFile.exists() && newFile.canWrite()) {
             try {

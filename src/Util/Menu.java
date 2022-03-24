@@ -18,16 +18,13 @@ import Util.*;
 
 
 public final class Menu {
-    //Creating a scanner
-
-    private static final Scanner scanner = new Scanner(System.in);
 
     /**
      * Getting the users information and storing it in a hashmap.
      */
 
     public static void getUserInput() throws IOException {
-
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter your name:");
         String name;
         name = scanner.nextLine();
@@ -41,7 +38,7 @@ public final class Menu {
         System.out.println("Enter your weight in kilograms: ");
         double weight;
         weight = scanner.nextDouble();
-        System.out.println("Enter your height in meters: ");
+        System.out.println("Enter your height in centimeters: ");
         double height;
         height = scanner.nextDouble();
 
