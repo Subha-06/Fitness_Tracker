@@ -51,7 +51,6 @@ public class Reader {
                 Main.femaleList.add(user);
 
 
-
             } else if (userInfo[USER_GEN].equals("M")) {
 
                 userName = userInfo[USER_NAME];
@@ -63,7 +62,7 @@ public class Reader {
                 user = new Male(userName, userGender, userAge, userWeight, userHeight);
                 Main.maleList.add(user);
 
-            } else if (userInfo[USER_GEN].equals("N")){
+            } else if (userInfo[USER_GEN].equals("N")) {
                 userName = userInfo[USER_NAME];
                 userGender = userInfo[USER_GEN];
                 userAge = Double.parseDouble(userInfo[USER_AGE]);

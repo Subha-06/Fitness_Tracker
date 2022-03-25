@@ -18,7 +18,7 @@ public class Writer {
     public static void writer(int out_info) throws IOException {
 
 
-        File newFile = new File ("User.txt");
+        File newFile = new File("User.txt");
         newFile.createNewFile();
 
         if (newFile.exists() && newFile.canWrite()) {
@@ -26,7 +26,7 @@ public class Writer {
                 FileWriter f_writer = new FileWriter(newFile, true);
                 BufferedWriter b_writer = new BufferedWriter(f_writer);
 
-                    b_writer.write(out_info + "\n");
+                b_writer.write(out_info + "\n");
 
                 b_writer.flush();
             } catch (IOException e) {

@@ -17,12 +17,12 @@ public class User {
     public double userWeight;
     public double userHeight;
 
-    public User(String name, String gender, double age, double weight, double height){
-         userName = name;
-         userGender = gender;
-         userAge = age;
-         userWeight = weight;
-         userHeight = height;
+    public User(String name, String gender, double age, double weight, double height) {
+        userName = name;
+        userGender = gender;
+        userAge = age;
+        userWeight = weight;
+        userHeight = height;
     }
 
     //Getter

@@ -133,7 +133,7 @@ public class Main {
 
                 Util.Writer.writer(cal_burnt);
 
-            } else if (userinput == 8){
+            } else if (userinput == 8) {
 
                 int cal = getTotalCalories(Reader.outReader());
                 System.out.println("Total calories lost: " + cal);

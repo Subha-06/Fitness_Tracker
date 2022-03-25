@@ -42,20 +42,20 @@ public final class Menu {
         System.out.println("Which user did you give information for? ('1' for User 1, '2' for User 2, '3' for User 3): ");
         userinput = scanner.nextInt();
 
-        if (userinput == 1){
+        if (userinput == 1) {
 
-           user = new Female(name,gender,age,weight,height);
-           Main.femaleList.set(0,user);
+            user = new Female(name, gender, age, weight, height);
+            Main.femaleList.set(0, user);
 
-        }else if(userinput == 2){
+        } else if (userinput == 2) {
 
-            user = new Male(name,gender,age,weight,height);
-            Main.maleList.set(0,user);
+            user = new Male(name, gender, age, weight, height);
+            Main.maleList.set(0, user);
 
-        }else if(userinput == 3){
+        } else if (userinput == 3) {
 
-            user = new NGender(name,gender,age,weight,height);
-            Main.nUserList.set(0,user);
+            user = new NGender(name, gender, age, weight, height);
+            Main.nUserList.set(0, user);
 
         }
         return user;
