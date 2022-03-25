@@ -35,6 +35,7 @@ public class Main {
         System.out.println("""
                 If you want to enter your information press '1'
                 If you want to enter your information from a file press '2'
+                If you want to exit the program press anything else
                 """);
         String userchoice = scanner.nextLine();
         if (userchoice.equals("1")) {
@@ -142,15 +143,15 @@ public class Main {
         while (userinput == 1 || userinput == 2 || userinput == 3 || userinput == 4 || userinput == 5 || userinput == 6 || userinput == 7);
     }
 
-    /**
-     * Prints the user information
-     *
-     * @param name   The name of the user
-     * @param gender The gender of the user
-     * @param age    The age of the user
-     * @param weight The weight of the user
-     * @param height The height of the user
-     */
+//    /**
+//     * Prints the user information
+//     *
+//     * @param name   The name of the user
+//     * @param gender The gender of the user
+//     * @param age    The age of the user
+//     * @param weight The weight of the user
+//     * @param height The height of the user
+//     */
 
 //    private static void printInfo(String name, String gender, double age, double weight, double height) {
 //        System.out.println("You are " + name);
