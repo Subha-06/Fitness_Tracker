@@ -65,13 +65,8 @@ public class Main {
     public static void getUserChoice(User user) throws IOException {
         int userinput;
 
-        String name = user.getUserName();
-        String gender = user.getUserGender();
-        double age = user.getUserAge();
         double weight = user.getUserWeight();
         double height = user.getUserHeight();
-
-
 
 
         //A do-while loop to keep printing the menu until the user exits the program.
@@ -99,7 +94,6 @@ public class Main {
                 System.out.println(maleList.toString());
                 System.out.println(nUserList.toString());
 
-                //printInfo(name, gender, age, weight, height);
             }
 
             //If the user wants to re-enter the information call the re-enter function.
@@ -158,13 +152,13 @@ public class Main {
      * @param height The height of the user
      */
 
-    private static void printInfo(String name, String gender, double age, double weight, double height) {
-        System.out.println("You are " + name);
-        System.out.println("Your weight is " + weight + "kg.");
-        System.out.println("Gender: " + gender);
-        System.out.println("Your age is " + age + " years");
-        System.out.println("You are " + height + " centimeters tall");
-    }
+//    private static void printInfo(String name, String gender, double age, double weight, double height) {
+//        System.out.println("You are " + name);
+//        System.out.println("Your weight is " + weight + "kg.");
+//        System.out.println("Gender: " + gender);
+//        System.out.println("Your age is " + age + " years");
+//        System.out.println("You are " + height + " centimeters tall");
+//    }
 
 }
 
