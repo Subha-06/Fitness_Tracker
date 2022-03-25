@@ -73,7 +73,6 @@ public class Calculations {
         userinput = input.nextLine();
         if (userinput.equals("A")) {
 
-
             //MET constant value for cycling
             //Met are constant values, so we just assign them to an array.
             //Formula from omni calculator https://www.omnicalculator.com/sports/calories-burned-biking
@@ -110,7 +109,6 @@ public class Calculations {
 
         } else if (userinput.equals("B")) {
 
-
             //MET constant value for running
             //Met are constant values, so we just assign them to an array.
             //Formula from omni calculator https://www.omnicalculator.com/sports/calories-burned-biking
@@ -141,30 +139,31 @@ public class Calculations {
 
                 double ex_burnt = (total_calories * 200) / (array2[2] * weight * 3.5 * 60);
                 System.out.printf("You need to run %.1f hours at 9-11 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
-
             }
         }
-
         //If anything other than the inputs defined in menu is pressed, program will exit
-
         else {
             System.out.println("You choose to exit the program.");
             System.exit(0);
         }
     }
 
+    /**
+     *
+     * @param calInfo The arraylist containing the data read from the saved file
+     * @return Number of total calories burnt
+     */
     public static int getTotalCalories(ArrayList<String> calInfo){
 
-        int index = 0;
         int sum = 0;
-        int[] calories = new int[calInfo.size()];
-        for (int i = 0; i < calInfo.size(); i++){
+        ArrayList<Integer> calories = new ArrayList<>();
+        for (String s : calInfo) {
 
-            try{
-                calories[index] = Integer.parseInt(calInfo.get(i));
-                index++;
-            }catch (NumberFormatException nfe) {
-                //Do nothing or you could print error if you want
+            try {
+                    calories.add(Integer.parseInt(s));
+
+            } catch (NumberFormatException nfe) {
+                System.err.println("Cannot convert string to integer type");
             }
 
         }

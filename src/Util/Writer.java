@@ -15,12 +15,18 @@ import java.io.IOException;
 
 public class Writer {
 
+    /**
+     *
+     * @param out_info The information that the user wants to save in a file
+     * @throws IOException
+     */
     public static void writer(int out_info) throws IOException {
 
 
         File newFile = new File("User.txt");
         newFile.createNewFile();
 
+        //Checking if the file exits and can write on it
         if (newFile.exists() && newFile.canWrite()) {
             try {
                 FileWriter f_writer = new FileWriter(newFile, true);
