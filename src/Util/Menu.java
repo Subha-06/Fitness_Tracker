@@ -23,7 +23,10 @@ public final class Menu {
      * Getting the users information and storing it in a hashmap.
      */
 
-    public static void getUserInput() throws IOException {
+    public static User getUserInput() throws IOException {
+        User user = null;
+
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter your name:");
         String name;
@@ -36,16 +39,28 @@ public final class Menu {
         double weight = getInputWeight();
         double height = getInputHeight();
 
+        int userinput;
+        System.out.println("Which user did you change information for? ('1' for User 1, '2' for User 2, '3' for User 3): ");
+        userinput = scanner.nextInt();
 
-        User user = new User(name,gender, age, weight, height);
+        if (userinput == 1){
 
-        user.setUserName(name);
-        user.setUserGender(gender);
-        user.setUserAge(age);
-        user.setUserWeight(weight);
-        user.setUserHeight(height);
+           user = new Female(name,gender,age,weight,height);
+           Main.femaleList.set(0,user);
 
-        Main.getUserChoice(user);
+        }else if(userinput == 2){
+
+            user = new Male(name,gender,age,weight,height);
+            Main.maleList.set(0,user);
+
+        }else if(userinput == 3){
+
+            user = new NGender(name,gender,age,weight,height);
+            Main.nUserList.set(0,user);
+
+        }
+        return user;
+        //Main.getUserChoice(user);
     }
 
     /**

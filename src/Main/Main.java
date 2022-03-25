@@ -11,12 +11,17 @@ package Main;
 import Util.Reader;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static Main.Calculations.*;
 import static Util.Menu.*;
 
 public class Main {
+
+    public static ArrayList<User> nUserList = new ArrayList<>();
+    public static ArrayList<User> femaleList = new ArrayList<>();
+    public static ArrayList<User> maleList = new ArrayList<>();
 
     /**
      * Start the tracking program
@@ -67,6 +72,8 @@ public class Main {
         double height = user.getUserHeight();
 
 
+
+
         //A do-while loop to keep printing the menu until the user exits the program.
         do {
             System.out.println("""
@@ -87,13 +94,19 @@ public class Main {
             userinput = input.nextInt();
             //If the user to check the info entered.
             if (userinput == 1) {
-                printInfo(name, gender, age, weight, height);
+
+                System.out.println(femaleList.toString());
+                System.out.println(maleList.toString());
+                System.out.println(nUserList.toString());
+
+                //printInfo(name, gender, age, weight, height);
             }
 
             //If the user wants to re-enter the information call the re-enter function.
             else if (userinput == 2) {
                 input.nextLine();
-                getUserInput();
+                user = getUserInput();
+                getUserChoice(user);
             }
             //If the user wants to know their BMI
             else if (userinput == 3) {
