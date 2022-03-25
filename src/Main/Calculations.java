@@ -1,5 +1,6 @@
 package Main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Calculations {
@@ -152,4 +153,25 @@ public class Calculations {
         }
     }
 
+    public static int getTotalCalories(ArrayList<String> calInfo){
+
+        int index = 0;
+        int sum = 0;
+        int[] calories = new int[calInfo.size()];
+        for (int i = 0; i < calInfo.size(); i++){
+
+            try{
+                calories[index] = Integer.parseInt(calInfo.get(i));
+                index++;
+            }catch (NumberFormatException nfe) {
+                //Do nothing or you could print error if you want
+            }
+
+        }
+        for (int i: calories){
+
+            sum = sum + i;
+        }
+        return sum;
+    }
 }

@@ -39,7 +39,8 @@ public class Main {
                 """);
         String userchoice = scanner.nextLine();
         if (userchoice.equals("1")) {
-            getUserInput();
+
+            getUserChoice(getUserInput());
 
         }
         if (userchoice.equals("2")) {
@@ -84,6 +85,7 @@ public class Main {
                     Press 5: Estimate how much calories need to burn to reach a certain weight.
                     Press 6: Estimate how many hours needed to exercise to reach a certain weight.
                     Press 7: Add how much calories you have burnt daily
+                    Press 8: Calculate Total calories lost
                     Press 0: To exit the program
                     """);
             Scanner input = new Scanner(System.in);
@@ -97,11 +99,10 @@ public class Main {
 
             }
 
-            //If the user wants to re-enter the information call the re-enter function.
+            //If the user wants to re-enter the information.
             else if (userinput == 2) {
                 input.nextLine();
-                user = getUserInput();
-                getUserChoice(user);
+                getUserChoice(getUserInput());
             }
             //If the user wants to know their BMI
             else if (userinput == 3) {
@@ -132,15 +133,20 @@ public class Main {
 
                 Util.Writer.writer(cal_burnt);
 
+            } else if (userinput == 8){
+
+                int cal = getTotalCalories(Reader.outReader());
+                System.out.println("Total calories lost: " + cal);
+
             }
             //Exit the program
-            else if (userinput == 8) {
+            else if (userinput == 0) {
                 System.out.println("You choose to exit the program.");
                 System.exit(0);
             }
         }
 
-        while (userinput == 1 || userinput == 2 || userinput == 3 || userinput == 4 || userinput == 5 || userinput == 6 || userinput == 7);
+        while (userinput == 1 || userinput == 2 || userinput == 3 || userinput == 4 || userinput == 5 || userinput == 6 || userinput == 7 || userinput == 8);
     }
 
 //    /**

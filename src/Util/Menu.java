@@ -23,9 +23,7 @@ public final class Menu {
      * Getting the users information and storing it in a hashmap.
      */
 
-    public static User getUserInput() throws IOException {
-        User user = null;
-
+    public static User getUserInput() {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter your name:");
@@ -39,8 +37,9 @@ public final class Menu {
         double weight = getInputWeight();
         double height = getInputHeight();
 
+        User user = null;
         int userinput;
-        System.out.println("Which user did you change information for? ('1' for User 1, '2' for User 2, '3' for User 3): ");
+        System.out.println("Which user did you give information for? ('1' for User 1, '2' for User 2, '3' for User 3): ");
         userinput = scanner.nextInt();
 
         if (userinput == 1){
