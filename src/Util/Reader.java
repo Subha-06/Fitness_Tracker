@@ -25,7 +25,16 @@ public class Reader {
 
         FileReader file_reader = new FileReader(fileInput);
         BufferedReader b_reader = new BufferedReader(file_reader);
-        User user = new User();
+
+        String userName;
+        String userGender;
+        double userAge;
+        double userWeight;
+        double userHeight;
+
+        User Female = null;
+        User Male = null;
+        User user = null;
 
         String line = b_reader.readLine();
         while (line != null) {
@@ -34,51 +43,41 @@ public class Reader {
 
             if (userInfo[USER_GEN].equals("F")) {
 
-                String userName = userInfo[USER_NAME];
-                String userGender = userInfo[USER_GEN];
-                double userAge = Double.parseDouble(userInfo[USER_AGE]);
-                double userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
-                double userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+                userName = userInfo[USER_NAME];
+                userGender = userInfo[USER_GEN];
+                userAge = Double.parseDouble(userInfo[USER_AGE]);
+                userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
 
-                user.setUserName(userName);
-                user.setUserGender(userGender);
-                user.setUserAge(userAge);
-                user.setUserWeight(userWeight);
-                user.setUserHeight(userHeight);
+                Female = new User(userName, userGender, userAge, userWeight, userHeight);
 
             } else if (userInfo[USER_GEN].equals("M")) {
 
-                String userName = userInfo[USER_NAME];
-                String userGender = userInfo[USER_GEN];
-                double userAge = Double.parseDouble(userInfo[USER_AGE]);
-                double userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
-                double userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+                userName = userInfo[USER_NAME];
+                userGender = userInfo[USER_GEN];
+                userAge = Double.parseDouble(userInfo[USER_AGE]);
+                userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
 
-                user.setUserName(userName);
-                user.setUserGender(userGender);
-                user.setUserAge(userAge);
-                user.setUserWeight(userWeight);
-                user.setUserHeight(userHeight);
+                Male = new User(userName, userGender, userAge, userWeight, userHeight);
 
             } else if (userInfo[USER_GEN].equals("N")){
-                String userName = userInfo[USER_NAME];
-                String userGender = userInfo[USER_GEN];
-                double userAge = Double.parseDouble(userInfo[USER_AGE]);
-                double userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
-                double userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+                userName = userInfo[USER_NAME];
+                userGender = userInfo[USER_GEN];
+                userAge = Double.parseDouble(userInfo[USER_AGE]);
+                userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
 
-                user.setUserName(userName);
-                user.setUserGender(userGender);
-                user.setUserAge(userAge);
-                user.setUserWeight(userWeight);
-                user.setUserHeight(userHeight);
+                user = new User(userName, userGender, userAge, userWeight, userHeight);
+
             }
             line = b_reader.readLine();
         }
         return user;
     }
 
-    public static ArrayList outReader() throws IOException {
+
+    public static ArrayList<String> outReader() throws IOException {
         File outFile = new File("User.txt");
         ArrayList<String> outInfo = null;
         if (outFile.exists()) {
@@ -91,8 +90,9 @@ public class Reader {
             while (line != null) {
 
                 outInfo.add(line);
+
+                line = b_reader.readLine();
             }
-            line = b_reader.readLine();
         }
         return outInfo;
     }
