@@ -13,11 +13,19 @@ import java.io.File;
 public class User {
 
 
-    private String userName;
-    private String userGender;
-    private double userAge;
-    private double userWeight;
-    private double userHeight;
+    public String userName;
+    public String userGender;
+    public double userAge;
+    public double userWeight;
+    public double userHeight;
+
+    public User(String name, String gender, double age, double weight, double height){
+         userName = name;
+         userGender = gender;
+         userAge = age;
+         userWeight = weight;
+         userHeight = height;
+    }
 
     //Getter
     public String getUserName() {

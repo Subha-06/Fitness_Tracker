@@ -37,7 +37,7 @@ public final class Menu {
         double height = getInputHeight();
 
 
-        User user = new User();
+        User user = new User(name,gender, age, weight, height);
 
         user.setUserName(name);
         user.setUserGender(gender);
