@@ -11,12 +11,17 @@ package Main;
 import Util.Reader;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static Main.Calculations.*;
 import static Util.Menu.*;
 
 public class Main {
+
+    public static ArrayList<User> nUserList = new ArrayList<>();
+    public static ArrayList<User> femaleList = new ArrayList<>();
+    public static ArrayList<User> maleList = new ArrayList<>();
 
     /**
      * Start the tracking program
@@ -60,9 +65,6 @@ public class Main {
     public static void getUserChoice(User user) throws IOException {
         int userinput;
 
-        String name = user.getUserName();
-        String gender = user.getUserGender();
-        double age = user.getUserAge();
         double weight = user.getUserWeight();
         double height = user.getUserHeight();
 
@@ -87,13 +89,18 @@ public class Main {
             userinput = input.nextInt();
             //If the user to check the info entered.
             if (userinput == 1) {
-                printInfo(name, gender, age, weight, height);
+
+                System.out.println(femaleList.toString());
+                System.out.println(maleList.toString());
+                System.out.println(nUserList.toString());
+
             }
 
             //If the user wants to re-enter the information call the re-enter function.
             else if (userinput == 2) {
                 input.nextLine();
-                getUserInput();
+                user = getUserInput();
+                getUserChoice(user);
             }
             //If the user wants to know their BMI
             else if (userinput == 3) {
@@ -145,13 +152,13 @@ public class Main {
      * @param height The height of the user
      */
 
-    private static void printInfo(String name, String gender, double age, double weight, double height) {
-        System.out.println("You are " + name);
-        System.out.println("Your weight is " + weight + "kg.");
-        System.out.println("Gender: " + gender);
-        System.out.println("Your age is " + age + " years");
-        System.out.println("You are " + height + " centimeters tall");
-    }
+//    private static void printInfo(String name, String gender, double age, double weight, double height) {
+//        System.out.println("You are " + name);
+//        System.out.println("Your weight is " + weight + "kg.");
+//        System.out.println("Gender: " + gender);
+//        System.out.println("Your age is " + age + " years");
+//        System.out.println("You are " + height + " centimeters tall");
+//    }
 
 }
 

@@ -8,8 +8,6 @@
  */
 package Main;
 
-import java.io.File;
-
 public class User {
 
 

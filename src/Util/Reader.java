@@ -32,8 +32,6 @@ public class Reader {
         double userWeight;
         double userHeight;
 
-        User Female = null;
-        User Male = null;
         User user = null;
 
         String line = b_reader.readLine();
@@ -49,7 +47,10 @@ public class Reader {
                 userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
                 userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
 
-                Female = new User(userName, userGender, userAge, userWeight, userHeight);
+                user = new Female(userName, userGender, userAge, userWeight, userHeight);
+                Main.femaleList.add(user);
+
+
 
             } else if (userInfo[USER_GEN].equals("M")) {
 
@@ -59,7 +60,8 @@ public class Reader {
                 userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
                 userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
 
-                Male = new User(userName, userGender, userAge, userWeight, userHeight);
+                user = new Male(userName, userGender, userAge, userWeight, userHeight);
+                Main.maleList.add(user);
 
             } else if (userInfo[USER_GEN].equals("N")){
                 userName = userInfo[USER_NAME];
@@ -68,7 +70,8 @@ public class Reader {
                 userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
                 userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
 
-                user = new User(userName, userGender, userAge, userWeight, userHeight);
+                user = new NGender(userName, userGender, userAge, userWeight, userHeight);
+                Main.nUserList.add(user);
 
             }
             line = b_reader.readLine();
