@@ -32,9 +32,7 @@ public final class Menu {
         System.out.println("Please Enter your name:");
         String name;
         name = scanner.nextLine();
-        System.out.println("Please Enter your Gender (F for Female, M for Male or N if preferred not to say):");
-        String gender;
-        gender = scanner.nextLine();
+        String gender = getUserGender();
         //Get user age,height,weight and make sure they are valid numbers
         double age = getInputAge();
         double weight = getInputWeight();
@@ -74,6 +72,32 @@ public final class Menu {
     }
 
     /**
+     * Making sure the gender is one of the three options
+     * @return returns a string of the gender
+     */
+
+
+    public static String getUserGender() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please Enter your Gender (F for Female, M for Male or N if preferred not to say):");
+        String gender = scanner.nextLine();
+        if (Objects.equals(gender, "n") || Objects.equals(gender, "N")) {
+            gender = "N";
+            return gender;
+        } else if (Objects.equals(gender, "m") || Objects.equals(gender, "M")) {
+            gender = "M";
+            return gender;
+        } else if (Objects.equals(gender, "f") || Objects.equals(gender, "F")) {
+            gender = "F";
+            return gender;
+        } else {
+            System.out.println("Please enter F,M or N");
+            gender = getUserGender();
+        }
+        return gender;
+    }
+
+    /**
      * This function makes sure the user inputs a valid number because age has to be over 0.
      *
      * @return returns the age of the user
@@ -90,6 +114,7 @@ public final class Menu {
         }
         return userAge;
     }
+
 
     /**
      * This function makes sure the user inputs a valid number because weight has to be over 0.
