@@ -23,7 +23,7 @@ public class Writer {
 
 
         File newFile = new File("User.txt");
-//        newFile.createNewFile();
+        newFile.createNewFile();
 
         //Checking if the file exits and can write on it
         if (newFile.exists() && newFile.canWrite()) {

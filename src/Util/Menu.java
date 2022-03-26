@@ -175,6 +175,7 @@ public final class Menu {
                     Press 6: Estimate how many hours needed to exercise to reach a certain weight.
                     Press 7: Add how much calories you have burnt daily
                     Press 8: Calculate Total calories lost
+                    Press 9: Calculate the highest number of calories lost in a day
                     Press 0: To exit the program
                     """);
             Scanner input = new Scanner(System.in);
@@ -280,6 +281,13 @@ public final class Menu {
                     int total = getTotalCalories(cal);
                     System.out.println("Total calories lost: " + total);
                 }
+            }else if(userinput == 9){
+                ArrayList<String> cal = new ArrayList<>(Reader.outReader());
+                if (cal.isEmpty()) {
+                    System.err.println("File is empty!");
+                } else {
+                    getMaxCalories(cal);
+                }
             }
             //Exit the program
             else if (userinput == 0) {
@@ -287,6 +295,6 @@ public final class Menu {
                 System.exit(0);
             }
         }
-        while (userinput == 1 || userinput == 2 || userinput == 3 || userinput == 4 || userinput == 5 || userinput == 6 || userinput == 7 || userinput == 8);
+        while (userinput == 1 || userinput == 2 || userinput == 3 || userinput == 4 || userinput == 5 || userinput == 6 || userinput == 7 || userinput == 8 || userinput == 9);
     }
 }
