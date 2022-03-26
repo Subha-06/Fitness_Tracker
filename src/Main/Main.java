@@ -27,7 +27,6 @@ public class Main {
     public static HashMap<String, Double> userInfo2 = new HashMap<>();
 
 
-
     /**
      * Start the tracking program
      *
@@ -64,15 +63,14 @@ public class Main {
     }
 
     /**
-     *
      * @param userInfo1 The HashMap containing string type information of the user entered manually
      * @param userInfo2 The HashMap containing double type information of the user entered manually
      */
     public static void printInfo(HashMap<String, String> userInfo1, HashMap<String, Double> userInfo2) {
-        for(String i: userInfo1.keySet()){
+        for (String i : userInfo1.keySet()) {
             System.out.println(i + userInfo1.get(i));
         }
-        for(String j: userInfo2.keySet()){
+        for (String j : userInfo2.keySet()) {
             System.out.println(j + userInfo2.get(j));
         }
     }

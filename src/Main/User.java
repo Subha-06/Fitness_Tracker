@@ -48,7 +48,9 @@ public class User {
     }
 
     //Setter
-    public void setUserName(String userName) { this.userName = userName;}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public void setUserGender(String userGender) {
         this.userGender = userGender;

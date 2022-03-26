@@ -22,10 +22,8 @@ public class Reader {
     static final int USER_HEIGHT = 4;
 
     /**
-     *
      * @param fileInput The input file containing the user information to be read
      * @return User the user class containing the identity of different users
-     * @throws IOException
      */
     public static User reader(File fileInput) throws IOException {
 
@@ -61,7 +59,7 @@ public class Reader {
                 user = new Female(userName, userGender, userAge, userWeight, userHeight);
                 Main.femaleList.add(user);
 
-            //Checking the gender of the user to assign the information accordingly
+                //Checking the gender of the user to assign the information accordingly
             } else if (userInfo[USER_GEN].equals("M")) {
 
                 //Assigning the information of the file to variables
@@ -75,8 +73,8 @@ public class Reader {
                 user = new Male(userName, userGender, userAge, userWeight, userHeight);
                 Main.maleList.add(user);
 
-            //Checking the gender of the user to assign the information accordingly
-            } else if (userInfo[USER_GEN].equals("N")){
+                //Checking the gender of the user to assign the information accordingly
+            } else if (userInfo[USER_GEN].equals("N")) {
 
                 //Assigning the information of the file to variables
                 userName = userInfo[USER_NAME];
@@ -96,9 +94,7 @@ public class Reader {
     }
 
     /**
-     *
      * @return An array list containing the user input data about calories burnt
-     * @throws IOException
      */
     public static ArrayList<String> outReader() throws IOException {
         File outFile = new File("User.txt");
@@ -116,7 +112,7 @@ public class Reader {
 
                 line = b_reader.readLine();
             }
-        } else{
+        } else {
             System.err.println("Cannot find a file to read!");
         }
         return outInfo;
