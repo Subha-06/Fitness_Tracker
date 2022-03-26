@@ -46,11 +46,11 @@ public class Reader {
             String[] userInfo = line.split(",");
 
             //Checking the gender of the user to assign the information accordingly
-            if (userInfo[USER_GEN].equals("Female")) {
+            if ((userInfo[USER_GEN].equals("Female")) || (userInfo[USER_GEN].equals("F")) || userInfo[USER_GEN].equals("f")) {
 
                 //Assigning the information of the file to variables
                 userName = userInfo[USER_NAME];
-                userGender = userInfo[USER_GEN];
+                userGender = "Female";
                 userAge = Double.parseDouble(userInfo[USER_AGE]);
                 userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
                 userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
@@ -60,11 +60,11 @@ public class Reader {
                 Main.femaleList.add(user);
 
                 //Checking the gender of the user to assign the information accordingly
-            } else if (userInfo[USER_GEN].equals("Male")) {
+            } else if ((userInfo[USER_GEN].equals("Male")) || (userInfo[USER_GEN].equals("M")) || userInfo[USER_GEN].equals("m")) {
 
                 //Assigning the information of the file to variables
                 userName = userInfo[USER_NAME];
-                userGender = userInfo[USER_GEN];
+                userGender = "Male";
                 userAge = Double.parseDouble(userInfo[USER_AGE]);
                 userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
                 userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
@@ -74,11 +74,11 @@ public class Reader {
                 Main.maleList.add(user);
 
                 //Checking the gender of the user to assign the information accordingly
-            } else if (userInfo[USER_GEN].equals("Preferred not to say")) {
+            } else if (userInfo[USER_GEN].equals("Preferred not to say") || userInfo[USER_GEN].equals("N") || userInfo[USER_GEN].equals("n")) {
 
                 //Assigning the information of the file to variables
                 userName = userInfo[USER_NAME];
-                userGender = userInfo[USER_GEN];
+                userGender = "You choose not to say";
                 userAge = Double.parseDouble(userInfo[USER_AGE]);
                 userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
                 userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
