@@ -281,7 +281,7 @@ public final class Menu {
                     int total = getTotalCalories(cal);
                     System.out.println("Total calories lost: " + total);
                 }
-            }else if(userinput == 9){
+            } else if (userinput == 9) {
                 ArrayList<String> cal = new ArrayList<>(Reader.outReader());
                 if (cal.isEmpty()) {
                     System.err.println("File is empty!");
@@ -291,8 +291,7 @@ public final class Menu {
             }
             //Exit the program
             else if (userinput == 0) {
-                System.out.println("You choose to exit the program.");
-                System.exit(0);
+                System.err.println("You choose to exit the program.");
             }
         }
         while (userinput == 1 || userinput == 2 || userinput == 3 || userinput == 4 || userinput == 5 || userinput == 6 || userinput == 7 || userinput == 8 || userinput == 9);
