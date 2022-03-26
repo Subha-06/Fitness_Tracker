@@ -66,9 +66,8 @@ public class Main {
      * @param userInfo2 The HashMap containing double type information of the user entered manually
      */
     public static void printInfo(HashMap<String, String> userInfo1, HashMap<String, Double> userInfo2) {
-//        System.out.println(userInfo1.values().toArray()[1]);
-        ;
-        String gender = null;
+        String gender = "";
+        //Changing the gender of the user from a short version to abbreviated version.
         if (userInfo1.values().toArray()[1] == "M") {
             gender = "Male";
         } else if (userInfo1.values().toArray()[1] == "N") {
@@ -76,11 +75,14 @@ public class Main {
         } else if (userInfo1.values().toArray()[1] == "F") {
             gender = "Female";
         }
+        //The 0 element is the name and "Name:"
+        //The 1 element is the gender of the user
         String name = (String) userInfo1.values().toArray()[0];
+        //Printing the name
         System.out.println(userInfo1.keySet().toArray()[0] + name);
+        //Printing the gender
         System.out.println(userInfo1.keySet().toArray()[1] + gender);
-
-
+        //Printing the age, height. weight
         for (String j : userInfo2.keySet()) {
             System.out.println(j + userInfo2.get(j));
         }
