@@ -39,7 +39,7 @@ public class Main {
         System.out.println("""
                 If you want to enter your information press '1'
                 If you want to enter your information from a file press '2'
-                If you want to exit the program press anything else
+                To exit the program press anything else
                 """);
         String userchoice = scanner.nextLine();
         if (userchoice.equals("1")) {

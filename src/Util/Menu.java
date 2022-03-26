@@ -73,13 +73,17 @@ public final class Menu {
 
     /**
      * Making sure the gender is one of the three options
+     *
      * @return returns a string of the gender
      */
 
 
     public static String getUserGender() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please Enter your Gender (F for Female, M for Male or N if preferred not to say):");
+        System.out.println("""
+                Please Enter your Gender:
+                (F for Female, M for Male or N if preferred not to say):
+                """);
         String gender = scanner.nextLine();
         if (Objects.equals(gender, "n") || Objects.equals(gender, "N")) {
             gender = "N";
