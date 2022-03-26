@@ -57,8 +57,7 @@ public class Main {
                 System.err.println("File Not Found!");
             }
         } else {
-            System.out.println("You choose to exit the program.");
-            System.exit(0);
+            System.err.println("You choose to exit the program.");
         }
     }
 
