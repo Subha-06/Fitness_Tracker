@@ -33,7 +33,7 @@ public class Calculations {
      * @param height The height of the user
      * @return Returns the result of comparison as a string
      */
-    public static String bmicompare(double weight, double height) {
+    public static String bmiCompare(double weight, double height) {
         double bmi = weight * CONVERSION / (height * height);
         if (bmi < 18.5) return "You are underweight";
         else if (bmi < 25) return "You are normal";
