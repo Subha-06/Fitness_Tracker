@@ -212,33 +212,83 @@ public final class Menu {
             //If the user wants to know their BMI
             else if (userinput == 3) {
                 //Checking if the user object is null
-                if (user == null) {
+                int choice;
+                System.out.println("Which user BMI do you want to calculate?('1' for manual input user or '2' for file read users)");
+                choice = input.nextInt();
+                if (choice == 1){
                     double weight = userInfo2.get("Weight: ");
                     double height = userInfo2.get("Height: ");
 
                     String bmi = bmi(weight, height);
                     System.out.println("Your BMI is " + bmi);
-                } else {
-                    double weight = user.getUserWeight();
-                    double height = user.getUserWeight();
+                }else if(choice == 2){
+                    System.out.println("Which user you want to calculate for?('1' for User 1, '2' for User 2, '3' for User 3)");
+                    choice = input.nextInt();
 
-                    String bmi = bmi(weight, height);
-                    System.out.println("Your BMI is " + bmi);
+                    if (user == null) {
+                        System.err.println("No User found");
+                    }else {
+                        if (choice == 1){
+                            double weight = femaleList.get(0).getUserWeight();
+                            double height = femaleList.get(0).getUserHeight();
+
+                            String bmi = bmi(weight, height);
+                            System.out.println("Your BMI is " + bmi);
+
+                        } else if (choice == 2){
+                            double weight = maleList.get(0).getUserWeight();
+                            double height = maleList.get(0).getUserHeight();
+
+                            String bmi = bmi(weight, height);
+                            System.out.println("Your BMI is " + bmi);
+
+                        } else if (choice == 3){
+                            double weight = nUserList.get(0).getUserWeight();
+                            double height = nUserList.get(0).getUserHeight();
+
+                            String bmi = bmi(weight, height);
+                            System.out.println("Your BMI is " + bmi);
+                        }
+                    }
                 }
             }
             //If the user wants to check their BMI.
             else if (userinput == 4) {
-                //Checking if the user object is null
-                if (user == null) {
+                int choice;
+                System.out.println("Which user BMI do you want to compare?('1' for manual input user or '2' for file read users)");
+                choice = input.nextInt();
+                if (choice == 1){
                     double weight = userInfo2.get("Weight: ");
                     double height = userInfo2.get("Height: ");
 
                     System.out.println(bmiCompare(weight, height));
-                } else {
-                    double weight = user.getUserWeight();
-                    double height = user.getUserWeight();
 
-                    System.out.println(bmiCompare(weight, height));
+                }else if(choice == 2){
+                    System.out.println("Which user you want to compare for?('1' for User 1, '2' for User 2, '3' for User 3)");
+                    choice = input.nextInt();
+
+                    if (user == null) {
+                        System.err.println("No User found");
+                    }else {
+                        if (choice == 1){
+                            double weight = femaleList.get(0).getUserWeight();
+                            double height = femaleList.get(0).getUserHeight();
+
+                            System.out.println(bmiCompare(weight, height));
+
+                        } else if (choice == 2){
+                            double weight = maleList.get(0).getUserWeight();
+                            double height = maleList.get(0).getUserHeight();
+
+                            System.out.println(bmiCompare(weight, height));
+
+                        } else if (choice == 3){
+                            double weight = nUserList.get(0).getUserWeight();
+                            double height = nUserList.get(0).getUserHeight();
+
+                            System.out.println(bmiCompare(weight, height));
+                        }
+                    }
                 }
             }
             //If the user wants to know how much calorie they need to burn to reach a certain weight
@@ -251,18 +301,41 @@ public final class Menu {
             } else if (userinput == 6) {
                 System.out.println("How much weight in Kgs do you want to lose?");
                 int kg_input = input.nextInt();
-
-                //Checking if the user object is null
-                if (user == null) {
+                int choice;
+                System.out.println("Which user do you want to calculate for?('1' for manual input user or '2' for file read users)");
+                choice = input.nextInt();
+                if (choice == 1){
                     double weight = userInfo2.get("Weight: ");
 
                     int total_calories = estimateCalories(kg_input);
                     estimateExercise(total_calories, weight, kg_input);
-                } else {
-                    double weight = user.getUserWeight();
 
-                    int total_calories = estimateCalories(kg_input);
-                    estimateExercise(total_calories, weight, kg_input);
+                }else if(choice == 2){
+                    System.out.println("Which user you want to compare for?('1' for User 1, '2' for User 2, '3' for User 3)");
+                    choice = input.nextInt();
+
+                    if (user == null) {
+                        System.err.println("No User found");
+                    }else {
+                        if (choice == 1){
+                            double weight = femaleList.get(0).getUserWeight();
+
+                            int total_calories = estimateCalories(kg_input);
+                            estimateExercise(total_calories, weight, kg_input);
+
+                        } else if (choice == 2){
+                            double weight = maleList.get(0).getUserWeight();
+
+                            int total_calories = estimateCalories(kg_input);
+                            estimateExercise(total_calories, weight, kg_input);
+
+                        } else if (choice == 3){
+                            double weight = nUserList.get(0).getUserWeight();
+
+                            int total_calories = estimateCalories(kg_input);
+                            estimateExercise(total_calories, weight, kg_input);
+                        }
+                    }
                 }
                 //If the user wants to save how many calories they burnt each day
             } else if (userinput == 7) {
