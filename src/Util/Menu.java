@@ -185,13 +185,19 @@ public final class Menu {
                 System.out.println("Which information do you want to view?('1' for manually entered info, '2' for file read info)");
                 int choice = input.nextInt();
                 if (choice == 1) {
+
                     Main.printInfo(userInfo1, userInfo2);
 
-                } else if (choice == 2) {
 
-                    System.out.println(femaleList.toString());
-                    System.out.println(maleList.toString());
-                    System.out.println(nUserList.toString());
+                } else if (choice == 2) {
+                    try {
+                        System.out.println(femaleList.toString());
+                        System.out.println(maleList.toString());
+                        System.out.println(nUserList.toString());
+
+                    }catch (NullPointerException e){
+                        System.err.println("No information is found!");
+                    }
                 }
             }
             //If the user wants to re-enter the information.
