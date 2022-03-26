@@ -46,7 +46,7 @@ public class Reader {
             String[] userInfo = line.split(",");
 
             //Checking the gender of the user to assign the information accordingly
-            if (userInfo[USER_GEN].equals("F")) {
+            if (userInfo[USER_GEN].equals("Female")) {
 
                 //Assigning the information of the file to variables
                 userName = userInfo[USER_NAME];
@@ -60,7 +60,7 @@ public class Reader {
                 Main.femaleList.add(user);
 
                 //Checking the gender of the user to assign the information accordingly
-            } else if (userInfo[USER_GEN].equals("M")) {
+            } else if (userInfo[USER_GEN].equals("Male")) {
 
                 //Assigning the information of the file to variables
                 userName = userInfo[USER_NAME];
@@ -74,7 +74,7 @@ public class Reader {
                 Main.maleList.add(user);
 
                 //Checking the gender of the user to assign the information accordingly
-            } else if (userInfo[USER_GEN].equals("N")) {
+            } else if (userInfo[USER_GEN].equals("Preferred not to say")) {
 
                 //Assigning the information of the file to variables
                 userName = userInfo[USER_NAME];
