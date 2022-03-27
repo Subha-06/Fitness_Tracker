@@ -180,6 +180,10 @@ public class Calculations {
         return sum;
     }
 
+    /**
+     *
+     * @param calInfo The arraylist containing the data read from the saved file
+     */
     public static void getMaxCalories(ArrayList<String> calInfo){
 
         ArrayList<Integer> calories = new ArrayList<>();
