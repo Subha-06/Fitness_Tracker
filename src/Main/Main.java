@@ -43,16 +43,21 @@ public class Main {
                 To exit the program press anything else
                 """);
         String userchoice = scanner.nextLine();
+        //Choice 1 lets the user manually enter info
         if (userchoice.equals("1")) {
+            //A flag to keep track the user is manually inputting info
             int flag = 0;
             getUserInput(flag);
             getUserChoice(flag);
         }
+        //Choice 2 lets the user read from a file
         if (userchoice.equals("2")) {
             if (args.length != 0) {
                 File fileInput = new File(args[0]);
                 if (fileInput.exists() && fileInput.canRead()) {
+                    //The reader is called to read the file
                     Reader.reader(fileInput);
+                    //A flag to keep track that the user is reading from a file
                     getUserChoice(1);
                 }
             } else {

@@ -32,6 +32,8 @@ public final class Menu {
         int userinput = 0;
 
         Scanner scanner = new Scanner(System.in);
+        //A flag is used to check if the user is entering the information manually or from a file
+
         if (flag != 0) {
             System.out.println("Which user did you give information for? ('1' for User 1, '2' for User 2, '3' for User 3): ");
             userinput = scanner.nextInt();
@@ -46,28 +48,25 @@ public final class Menu {
         double age = getInputAge();
         double weight = getInputWeight();
         double height = getInputHeight();
+        //Initializing user
         User user;
-
         //A flag is used to check if the user is entering the information manually or from a file
         //If user enters information from a file then the information will be stored in object type arraylist for individual user subclass
         if (flag != 0) {
             if (userinput == 1) {
-
+                //Construct the user
                 user = new Female(name, gender, age, weight, height);
                 Main.femaleList.set(0, user);
-
             } else if (userinput == 2) {
-
+                //Construct the user
                 user = new Male(name, gender, age, weight, height);
                 Main.maleList.set(0, user);
-
             } else if (userinput == 3) {
-
+                //Construct the user
                 user = new NGender(name, gender, age, weight, height);
                 Main.nUserList.set(0, user);
             } else {
                 System.err.println("You didn't choose any option");
-
             }
             //If user enters information manually then the information will be stored in Hashmaps to be accessed later
         } else {
@@ -80,6 +79,8 @@ public final class Menu {
     }
 
     /**
+     * A menu to get choice from the user
+     *
      * @param inputFlag This Flag determines which information to access (0 for manual, 1 for file read)
      */
 
@@ -106,15 +107,20 @@ public final class Menu {
                     """);
             Scanner input = new Scanner(System.in);
             userinput = input.nextInt();
-            //If the user to check the info entered.
+            //If the user to view the info entered.
             if (userinput == 1) {
+                //If the user manually entered info it will just print out that users information
                 if (inputFlag == 0) {
                     Main.printInfo(userInfo1, userInfo2);
-                } else if (inputFlag == 1) {
+                }
+                //If the user read the info from a file it will print out all information from that file
+                else if (inputFlag == 1) {
                     try {
                         System.out.println(femaleList.toString().replace("[", "").replace("]", ""));
                         System.out.println(maleList.toString().replace("[", "").replace("]", ""));
                         System.out.println(nUserList.toString().replace("[", "").replace("]", ""));
+                        System.out.println(nUserList.toString());
+
                     } catch (NullPointerException e) {
                         System.err.println("No information is found!");
                     }

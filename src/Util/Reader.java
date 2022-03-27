@@ -23,7 +23,6 @@ public class Reader {
 
     /**
      * @param fileInput The input file containing the user information to be read
-     * @return User the user class containing the identity of different users
      */
     public static void reader(File fileInput) throws IOException {
         //Creating a file reader and a buffered reader
@@ -36,7 +35,7 @@ public class Reader {
         double userAge;
         double userWeight;
         double userHeight;
-        User user = null;
+        User user;
 
         //Looping through the file to read all lines of information from the file
         String line = b_reader.readLine();
@@ -91,7 +90,6 @@ public class Reader {
             }
             line = b_reader.readLine();
         }
-        //return user;
     }
 
     /**

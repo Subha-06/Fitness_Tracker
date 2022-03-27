@@ -16,7 +16,6 @@ import java.io.IOException;
 public class Writer {
 
     /**
-     *
      * @param out_info The information that the user wants to save in a file
      */
     public static void writer(int out_info) throws IOException {
@@ -39,7 +38,6 @@ public class Writer {
             }
         } else {
             System.err.println("Cannot access the file to write it!");
-            System.exit(1);
         }
     }
 }
