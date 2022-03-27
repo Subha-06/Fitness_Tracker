@@ -71,6 +71,11 @@ public final class Menu {
         return user;
     }
 
+    /**
+     * @param user
+     * @param inputFlag This Flag determines which information to access (0 for manual, 1 for file read)
+     */
+
     public static void getUserChoice(User user, int inputFlag) throws IOException {
         int userinput;
 
@@ -96,8 +101,6 @@ public final class Menu {
             userinput = input.nextInt();
             //If the user to check the info entered.
             if (userinput == 1) {
-//                System.out.println("Which information do you want to view?('1' for manually entered info, '2' for file read info)");
-//                int choice = input.nextInt();
                 if (inputFlag == 0) {
                     Main.printInfo(userInfo1, userInfo2);
                 } else if (inputFlag == 1) {
@@ -113,31 +116,27 @@ public final class Menu {
             //If the user wants to re-enter the information.
             else if (userinput == 2) {
                 input.nextLine();
-                System.out.println("Which information do you want to edit?('1' for manually entered info, '2' for file read info)");
-                int choice = input.nextInt();
-                if (choice == 1) {
+                if (inputFlag == 0) {
                     //A flag is used to determine which information the user wants to edit
                     int flag = 0;
-                    getUserChoice(getUserInput(flag),0);
-                } else if (choice == 2) {
+                    getUserChoice(getUserInput(flag), 0);
+                } else if (inputFlag == 1) {
                     //A flag is used to determine which information the user wants to edit
                     int flag = 1;
-                    getUserChoice(getUserInput(flag),0);
+                    getUserChoice(getUserInput(flag), 0);
                 }
             }
             //If the user wants to know their BMI
             else if (userinput == 3) {
                 //Checking if the user object is null
                 int choice;
-                System.out.println("Which user BMI do you want to calculate?('1' for manual input user or '2' for file read users)");
-                choice = input.nextInt();
-                if (choice == 1) {
+                if (inputFlag == 0) {
                     double weight = userInfo2.get("Weight: ");
                     double height = userInfo2.get("Height: ");
 
                     String bmi = bmi(weight, height);
                     System.out.println("Your BMI is " + bmi);
-                } else if (choice == 2) {
+                } else if (inputFlag == 1) {
                     System.out.println("Which user you want to calculate for?('1' for User 1, '2' for User 2, '3' for User 3)");
                     choice = input.nextInt();
 
@@ -173,13 +172,13 @@ public final class Menu {
                 int choice;
                 System.out.println("Which user BMI do you want to compare?('1' for manual input user or '2' for file read users)");
                 choice = input.nextInt();
-                if (choice == 1) {
+                if (inputFlag == 0) {
                     double weight = userInfo2.get("Weight: ");
                     double height = userInfo2.get("Height: ");
 
                     System.out.println(bmiCompare(weight, height));
 
-                } else if (choice == 2) {
+                } else if (inputFlag == 1) {
                     System.out.println("Which user you want to compare for?('1' for User 1, '2' for User 2, '3' for User 3)");
                     choice = input.nextInt();
 
@@ -218,15 +217,13 @@ public final class Menu {
                 System.out.println("How much weight in Kgs do you want to lose?");
                 int kg_input = input.nextInt();
                 int choice;
-                System.out.println("Which user do you want to calculate for?('1' for manual input user or '2' for file read users)");
-                choice = input.nextInt();
-                if (choice == 1) {
+                if (inputFlag == 0) {
                     double weight = userInfo2.get("Weight: ");
 
                     int total_calories = estimateCalories(kg_input);
                     estimateExercise(total_calories, weight, kg_input);
 
-                } else if (choice == 2) {
+                } else if (inputFlag == 1) {
                     System.out.println("Which user you want to compare for?('1' for User 1, '2' for User 2, '3' for User 3)");
                     choice = input.nextInt();
 
