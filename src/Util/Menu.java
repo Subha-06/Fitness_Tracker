@@ -105,9 +105,9 @@ public final class Menu {
                     Main.printInfo(userInfo1, userInfo2);
                 } else if (inputFlag == 1) {
                     try {
-                        System.out.println(femaleList.toString());
-                        System.out.println(maleList.toString());
-                        System.out.println(nUserList.toString());
+                        System.out.println(femaleList.toString().replace("[", "").replace("]", ""));
+                        System.out.println(maleList.toString().replace("[", "").replace("]", ""));
+                        System.out.println(nUserList.toString().replace("[", "").replace("]", ""));
                     } catch (NullPointerException e) {
                         System.err.println("No information is found!");
                     }
@@ -123,7 +123,7 @@ public final class Menu {
                 } else if (inputFlag == 1) {
                     //A flag is used to determine which information the user wants to edit
                     int flag = 1;
-                    getUserChoice(getUserInput(flag), 0);
+                    getUserChoice(getUserInput(flag), 1);
                 }
             }
             //If the user wants to know their BMI
