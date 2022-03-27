@@ -24,16 +24,29 @@ public final class Menu {
 
     /**
      * Getting the users information and storing it.
+     *
+     * @param flag a flag to keep track of input
+     * @return user
      */
 
     public static User getUserInput(int flag) {
+        int userinput = 0;
 
         Scanner scanner = new Scanner(System.in);
+        if (flag != 0) {
+            System.out.println("Which user did you give information for? ('1' for User 1, '2' for User 2, '3' for User 3): ");
+            userinput = scanner.nextInt();
+            scanner.nextLine();
+        } else {
+            System.err.println("You didn't choose any option");
+        }
+
         System.out.println("Please Enter your name:");
         String name;
         name = scanner.nextLine();
+        scanner.nextLine();
+        //Get users gender, age,height,weight and make sure they are valid inputs
         String gender = getInputGender();
-        //Get user age,height,weight and make sure they are valid numbers
         double age = getInputAge();
         double weight = getInputWeight();
         double height = getInputHeight();
@@ -42,9 +55,8 @@ public final class Menu {
         //A flag is used to check if the user is entering the information manually or from a file
         //If user enters information from a file then the information will be stored in object type arraylist for individual user subclass
         if (flag != 0) {
-            int userinput;
-            System.out.println("Which user did you give information for? ('1' for User 1, '2' for User 2, '3' for User 3): ");
-            userinput = scanner.nextInt();
+//            System.out.println("Which user did you give information for? ('1' for User 1, '2' for User 2, '3' for User 3): ");
+//            userinput = scanner.nextInt();
             if (userinput == 1) {
 
                 user = new Female(name, gender, age, weight, height);
@@ -59,6 +71,9 @@ public final class Menu {
 
                 user = new NGender(name, gender, age, weight, height);
                 Main.nUserList.set(0, user);
+            } else if (userinput == 0) {
+                System.err.println("You didn't choose any option");
+
             }
             //If user enters information manually then the information will be stored in Hashmaps to be accessed later
         } else {
@@ -72,7 +87,7 @@ public final class Menu {
     }
 
     /**
-     * @param user
+     * @param user      user is class object that stores users info
      * @param inputFlag This Flag determines which information to access (0 for manual, 1 for file read)
      */
 
@@ -170,8 +185,6 @@ public final class Menu {
             //If the user wants to check their BMI.
             else if (userinput == 4) {
                 int choice;
-                System.out.println("Which user BMI do you want to compare?('1' for manual input user or '2' for file read users)");
-                choice = input.nextInt();
                 if (inputFlag == 0) {
                     double weight = userInfo2.get("Weight: ");
                     double height = userInfo2.get("Height: ");
