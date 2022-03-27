@@ -159,17 +159,14 @@ public class Calculations {
         int sum = 0;
         ArrayList<Integer> calories = new ArrayList<>();
         for (String s : calInfo) {
-
             try {
                     calories.add(Integer.parseInt(s));
 
             } catch (NumberFormatException nfe) {
                 System.err.println("Cannot convert string to integer type");
             }
-
         }
         for (int i: calories){
-
             sum = sum + i;
         }
         return sum;
@@ -179,14 +176,12 @@ public class Calculations {
 
         ArrayList<Integer> calories = new ArrayList<>();
         for (String s : calInfo) {
-
             try {
                 calories.add(Integer.parseInt(s));
 
             } catch (NumberFormatException nfe) {
                 System.err.println("Cannot convert string to integer type");
             }
-
         }
         Collections.sort(calories);
         System.out.println("The highest number of calories burnt in a day: " + calories.get(calories.size()-1));
