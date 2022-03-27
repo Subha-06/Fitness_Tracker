@@ -14,7 +14,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Reader {
-
+    //We know that the information will always be in this order.
     static final int USER_NAME = 0;
     static final int USER_GEN = 1;
     static final int USER_AGE = 2;
@@ -26,7 +26,7 @@ public class Reader {
      * @return User the user class containing the identity of different users
      */
     public static User reader(File fileInput) throws IOException {
-
+        //Creating a file reader and a buffered reader
         FileReader file_reader = new FileReader(fileInput);
         BufferedReader b_reader = new BufferedReader(file_reader);
 
@@ -36,57 +36,58 @@ public class Reader {
         double userAge;
         double userWeight;
         double userHeight;
-
         User user = null;
 
         //Looping through the file to read all lines of information from the file
         String line = b_reader.readLine();
         while (line != null) {
-
+            //The file is csv so separating them and storing them in a string
             String[] userInfo = line.split(",");
 
             //Checking the gender of the user to assign the information accordingly
-            if ((userInfo[USER_GEN].equals("Female")) || (userInfo[USER_GEN].equals("F")) || userInfo[USER_GEN].equals("f")) {
+            switch (userInfo[USER_GEN]) {
+                case "Female", "F", "f" -> {
+                    //Assigning the information of the file to variables
+                    userName = userInfo[USER_NAME];
+                    userGender = "Female";
+                    userAge = Double.parseDouble(userInfo[USER_AGE]);
+                    userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                    userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
 
-                //Assigning the information of the file to variables
-                userName = userInfo[USER_NAME];
-                userGender = "Female";
-                userAge = Double.parseDouble(userInfo[USER_AGE]);
-                userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
-                userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
-
-                //Creating new user object to store individual user information
-                user = new Female(userName, userGender, userAge, userWeight, userHeight);
-                Main.femaleList.add(user);
-
-                //Checking the gender of the user to assign the information accordingly
-            } else if ((userInfo[USER_GEN].equals("Male")) || (userInfo[USER_GEN].equals("M")) || userInfo[USER_GEN].equals("m")) {
-
-                //Assigning the information of the file to variables
-                userName = userInfo[USER_NAME];
-                userGender = "Male";
-                userAge = Double.parseDouble(userInfo[USER_AGE]);
-                userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
-                userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
-
-                //Creating new user object to store individual user information
-                user = new Male(userName, userGender, userAge, userWeight, userHeight);
-                Main.maleList.add(user);
+                    //Creating new user object to store individual user information
+                    user = new Female(userName, userGender, userAge, userWeight, userHeight);
+                    Main.femaleList.add(user);
+                }
 
                 //Checking the gender of the user to assign the information accordingly
-            } else if (userInfo[USER_GEN].equals("Preferred not to say") || userInfo[USER_GEN].equals("N") || userInfo[USER_GEN].equals("n")) {
+                case "Male", "M", "m" -> {
 
-                //Assigning the information of the file to variables
-                userName = userInfo[USER_NAME];
-                userGender = "You choose not to say";
-                userAge = Double.parseDouble(userInfo[USER_AGE]);
-                userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
-                userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+                    //Assigning the information of the file to variables
+                    userName = userInfo[USER_NAME];
+                    userGender = "Male";
+                    userAge = Double.parseDouble(userInfo[USER_AGE]);
+                    userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                    userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
 
-                //Creating new user object to store individual user information
-                user = new NGender(userName, userGender, userAge, userWeight, userHeight);
-                Main.nUserList.add(user);
+                    //Creating new user object to store individual user information
+                    user = new Male(userName, userGender, userAge, userWeight, userHeight);
+                    Main.maleList.add(user);
+                }
 
+                //Checking the gender of the user to assign the information accordingly
+                case "Preferred not to say", "N", "n" -> {
+
+                    //Assigning the information of the file to variables
+                    userName = userInfo[USER_NAME];
+                    userGender = "You choose not to say";
+                    userAge = Double.parseDouble(userInfo[USER_AGE]);
+                    userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                    userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+
+                    //Creating new user object to store individual user information
+                    user = new NGender(userName, userGender, userAge, userWeight, userHeight);
+                    Main.nUserList.add(user);
+                }
             }
             line = b_reader.readLine();
         }

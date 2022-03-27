@@ -26,7 +26,6 @@ public class Main {
     public static HashMap<String, String> userInfo1 = new HashMap<>();
     public static HashMap<String, Double> userInfo2 = new HashMap<>();
 
-
     /**
      * Start the tracking program
      *
@@ -45,7 +44,6 @@ public class Main {
         if (userchoice.equals("1")) {
             int flag = 0;
             getUserChoice(getUserInput(flag));
-
         }
         if (userchoice.equals("2")) {
             if (args.length != 0) {
@@ -62,22 +60,21 @@ public class Main {
     }
 
     /**
-     * @param userInfo1 The HashMap containing string type information of the user entered manually
-     * @param userInfo2 The HashMap containing double type information of the user entered manually
+     * @param userInfo1 The HashMap containing string type information of the user entered manually (Contains name and gender)
+     * @param userInfo2 The HashMap containing double type information of the user entered manually (Contains age, height and weight)
      */
     public static void printInfo(HashMap<String, String> userInfo1, HashMap<String, Double> userInfo2) {
         String gender = "";
         //Changing the gender of the user from a short version to abbreviated version.
         if (userInfo1.isEmpty() && userInfo2.isEmpty()) {
             System.err.println("No information found!");
-
         } else {
-            if (userInfo1.values().toArray()[1] == "M") {
-                gender = "Male";
-            } else if (userInfo1.values().toArray()[1] == "N") {
-                gender = "You choose not to say";
-            } else if (userInfo1.values().toArray()[1] == "F") {
-                gender = "Female";
+            //The second element of this hashmap will always be the keyword of the gender.
+            String genderWord = (String) userInfo1.values().toArray()[1];
+            switch (genderWord) {
+                case "M" -> gender = "Male";
+                case "N" -> gender = "You choose not to say";
+                case "F" -> gender = "Female";
             }
             //The 0 element is the name and "Name:"
             //The 1 element is the gender of the user
@@ -92,7 +89,6 @@ public class Main {
             }
         }
     }
-
 }
 
 
