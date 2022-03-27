@@ -45,7 +45,6 @@ public class Main {
         String userchoice = scanner.nextLine();
         if (userchoice.equals("1")) {
             int flag = 0;
-
             getUserChoice(flag);
         }
         if (userchoice.equals("2")) {
