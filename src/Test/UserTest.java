@@ -1,15 +1,8 @@
 package Test;
 
-import Main.Calculations.*;
-import Main.Female;
-import Main.Main.*;
-import Main.User;
-import Util.Menu.*;
-import Util.Reader.*;
-import Util.Writer.*;
+import Util.Reader;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -17,36 +10,35 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
+//    @Test
+//    void Reader_test1() throws IOException {
+//
+//        //Expected Result
+//        String expResult = ""
+//                + "[User Name: Fabiha\n"
+//                + "Gender: F\n"
+//                + "Age: 19.0\n"
+//                + "Weight in Kgs: 30.0\n"
+//                + "Height in centimeters: 156.0\n"
+//                + "]\n";
+//
+//        String actResult = ;
+//
+//        assertEquals(expResult,actResult);
+//    }
+
     @Test
-    void Reader_test1() throws IOException {
-        String fileName = "InputInfo.txt";
-        File file = new File(fileName);
-        User user = null;
+    void outReader_test() throws IOException {
+        ArrayList<String> outInfo = new ArrayList<>();
+        outInfo.add("100");
+        outInfo.add("10");
+        outInfo.add("10");
 
-        //Expected Result
-        String expResult = ""
-                + "[User Name: Fabiha\n"
-                + "Gender: F\n"
-                + "Age: 19.0\n"
-                + "Weight in Kgs: 30.0\n"
-                + "Height in centimeters: 156.0\n"
-                + "]\n"
-                + "[User Name: Amasil\n"
-                + "Gender: M\n"
-                + "Age: 21.0\n"
-                + "Weight in Kgs: 40.0\n"
-                + "Height in centimeters: 165.0\n"
-                + "]\n"
-                + "[User Name: Harry\n"
-                + "Gender: N\n"
-                + "Age: 100.0\n"
-                + "Weight in Kgs: 100.0\n"
-                + "Height in centimeters: 100.0\n"
-                + "]\n";
+        ArrayList<String> expResult = outInfo;
+        ArrayList<String> actResult = Reader.outReader();
 
-        String actResult = user.toString();
+        assertEquals(expResult, actResult);
 
-        assertEquals(expResult,actResult);
     }
 
     @Test

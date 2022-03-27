@@ -36,8 +36,6 @@ public final class Menu {
             System.out.println("Which user did you give information for? ('1' for User 1, '2' for User 2, '3' for User 3): ");
             userinput = scanner.nextInt();
             scanner.nextLine();
-        } else {
-            System.err.println("You didn't choose any option");
         }
 
         System.out.println("Please Enter your name:");
@@ -67,7 +65,7 @@ public final class Menu {
 
                 user = new NGender(name, gender, age, weight, height);
                 Main.nUserList.set(0, user);
-            } else if (userinput == 0) {
+            } else {
                 System.err.println("You didn't choose any option");
 
             }
@@ -129,12 +127,10 @@ public final class Menu {
                     //A flag is used to determine which information the user wants to edit
                     int flag = 0;
                     getUserInput(flag);
-                    getUserChoice(0);
                 } else if (inputFlag == 1) {
                     //A flag is used to determine which information the user wants to edit
                     int flag = 1;
                     getUserInput(flag);
-                    getUserChoice(1);
                 }
             }
             //If the user wants to know their BMI

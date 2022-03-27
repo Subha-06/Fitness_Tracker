@@ -45,7 +45,7 @@ public class Main {
         String userchoice = scanner.nextLine();
         if (userchoice.equals("1")) {
             int flag = 0;
-
+            getUserInput(flag);
             getUserChoice(flag);
         }
         if (userchoice.equals("2")) {
@@ -58,8 +58,6 @@ public class Main {
             } else {
                 System.err.println("File Not Found!");
             }
-        } else {
-            System.err.println("You choose to exit the program.");
         }
     }
 
