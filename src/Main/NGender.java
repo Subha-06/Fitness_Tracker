@@ -8,12 +8,33 @@
  */
 package Main;
 
+/**
+ * A user entity created by user provided information
+ */
+
 public class NGender extends User {
+    /**
+     * A person has a name, gender, age, height , weight
+     *
+     * @param name   The name of the user
+     * @param gender The gender of the user
+     * @param age    The age of the user
+     * @param weight The weight of the user
+     * @param height The height of the user
+     */
 
     public NGender(String name, String gender, double age, double weight, double height) {
+        //super is used to get constructor from User.class
         super(name, gender, age, weight, height);
 
     }
+
+    /**
+     * Properly formats the user information.
+     *
+     * @return returns a string of the desired output
+     */
+
 
     public String toString() {
         return String.format("""
