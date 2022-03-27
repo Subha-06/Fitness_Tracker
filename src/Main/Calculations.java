@@ -23,7 +23,7 @@ public class Calculations {
 
     public static String bmi(double weight, double height) {
         double calculatedBMI = weight * CONVERSION / (height * height);
-        return String.format("%.02f", calculatedBMI);
+        return String.format("%.2f",calculatedBMI);
 
     }
 

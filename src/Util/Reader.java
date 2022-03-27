@@ -25,7 +25,7 @@ public class Reader {
      * @param fileInput The input file containing the user information to be read
      * @return User the user class containing the identity of different users
      */
-    public static User reader(File fileInput) throws IOException {
+    public static void reader(File fileInput) throws IOException {
         //Creating a file reader and a buffered reader
         FileReader file_reader = new FileReader(fileInput);
         BufferedReader b_reader = new BufferedReader(file_reader);
@@ -91,7 +91,7 @@ public class Reader {
             }
             line = b_reader.readLine();
         }
-        return user;
+        //return user;
     }
 
     /**
