@@ -53,8 +53,6 @@ public final class Menu {
         //A flag is used to check if the user is entering the information manually or from a file
         //If user enters information from a file then the information will be stored in object type arraylist for individual user subclass
         if (flag != 0) {
-//            System.out.println("Which user did you give information for? ('1' for User 1, '2' for User 2, '3' for User 3): ");
-//            userinput = scanner.nextInt();
             if (userinput == 1) {
 
                 user = new Female(name, gender, age, weight, height);
