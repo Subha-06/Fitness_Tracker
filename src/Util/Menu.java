@@ -119,8 +119,6 @@ public final class Menu {
                         System.out.println(femaleList.toString().replace("[", "").replace("]", ""));
                         System.out.println(maleList.toString().replace("[", "").replace("]", ""));
                         System.out.println(nUserList.toString().replace("[", "").replace("]", ""));
-                        System.out.println(nUserList.toString());
-
                     } catch (NullPointerException e) {
                         System.err.println("No information is found!");
                     }
