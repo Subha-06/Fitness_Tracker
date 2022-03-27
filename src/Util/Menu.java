@@ -44,7 +44,7 @@ public final class Menu {
         System.out.println("Please Enter your name:");
         String name;
         name = scanner.nextLine();
-        scanner.nextLine();
+//        scanner.nextLine();
         //Get users gender, age,height,weight and make sure they are valid inputs
         String gender = getInputGender();
         double age = getInputAge();
@@ -87,11 +87,10 @@ public final class Menu {
     }
 
     /**
-     * @param user      user is class object that stores users info
      * @param inputFlag This Flag determines which information to access (0 for manual, 1 for file read)
      */
 
-    public static void getUserChoice(User user, int inputFlag) throws IOException {
+    public static void getUserChoice(int inputFlag) throws IOException {
         int userinput;
 
         //A do-while loop to keep printing the menu until the user exits the program.
@@ -134,11 +133,13 @@ public final class Menu {
                 if (inputFlag == 0) {
                     //A flag is used to determine which information the user wants to edit
                     int flag = 0;
-                    getUserChoice(getUserInput(flag), 0);
+                    getUserInput(flag);
+                    getUserChoice(0);
                 } else if (inputFlag == 1) {
                     //A flag is used to determine which information the user wants to edit
                     int flag = 1;
-                    getUserChoice(getUserInput(flag), 1);
+                    getUserInput(flag);
+                    getUserChoice(1);
                 }
             }
             //If the user wants to know their BMI
@@ -155,8 +156,9 @@ public final class Menu {
                     System.out.println("Which user you want to calculate for?('1' for User 1, '2' for User 2, '3' for User 3)");
                     choice = input.nextInt();
 
-                    if (user == null) {
+                    if (femaleList.isEmpty() && maleList.isEmpty() && nUserList.isEmpty()) {
                         System.err.println("No User found");
+
                     } else {
                         if (choice == 1) {
                             double weight = femaleList.get(0).getUserWeight();
@@ -195,8 +197,9 @@ public final class Menu {
                     System.out.println("Which user you want to compare for?('1' for User 1, '2' for User 2, '3' for User 3)");
                     choice = input.nextInt();
 
-                    if (user == null) {
+                    if (femaleList.isEmpty() && maleList.isEmpty() && nUserList.isEmpty()) {
                         System.err.println("No User found");
+
                     } else {
                         if (choice == 1) {
                             double weight = femaleList.get(0).getUserWeight();
@@ -240,8 +243,9 @@ public final class Menu {
                     System.out.println("Which user you want to compare for?('1' for User 1, '2' for User 2, '3' for User 3)");
                     choice = input.nextInt();
 
-                    if (user == null) {
+                    if (femaleList.isEmpty() && maleList.isEmpty() && nUserList.isEmpty()) {
                         System.err.println("No User found");
+
                     } else {
                         if (choice == 1) {
                             double weight = femaleList.get(0).getUserWeight();
