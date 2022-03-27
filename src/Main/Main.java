@@ -45,13 +45,15 @@ public class Main {
         String userchoice = scanner.nextLine();
         if (userchoice.equals("1")) {
             int flag = 0;
-            getUserChoice(getUserInput(flag),0);
+
+            getUserChoice(flag);
         }
         if (userchoice.equals("2")) {
             if (args.length != 0) {
                 File fileInput = new File(args[0]);
                 if (fileInput.exists() && fileInput.canRead()) {
-                    getUserChoice(Reader.reader(fileInput),1);
+                    Reader.reader(fileInput);
+                    getUserChoice(1);
                 }
             } else {
                 System.err.println("File Not Found!");
