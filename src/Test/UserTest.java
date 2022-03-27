@@ -10,22 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
-//    @Test
-//    void Reader_test1() throws IOException {
-//
-//        //Expected Result
-//        String expResult = ""
-//                + "[User Name: Fabiha\n"
-//                + "Gender: F\n"
-//                + "Age: 19.0\n"
-//                + "Weight in Kgs: 30.0\n"
-//                + "Height in centimeters: 156.0\n"
-//                + "]\n";
-//
-//        String actResult = ;
-//
-//        assertEquals(expResult,actResult);
-//    }
 
     @Test
     void outReader_test() throws IOException {
@@ -34,10 +18,9 @@ class UserTest {
         outInfo.add("10");
         outInfo.add("10");
 
-        ArrayList<String> expResult = outInfo;
         ArrayList<String> actResult = Reader.outReader();
 
-        assertEquals(expResult, actResult);
+        assertEquals(outInfo, actResult);
 
     }
 

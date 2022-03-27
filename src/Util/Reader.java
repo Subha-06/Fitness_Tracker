@@ -22,6 +22,8 @@ public class Reader {
     static final int USER_HEIGHT = 4;
 
     /**
+     * Reads information from a file
+     *
      * @param fileInput The input file containing the user information to be read
      */
     public static void reader(File fileInput) throws IOException {
@@ -88,32 +90,39 @@ public class Reader {
                     Main.nUserList.add(user);
                 }
             }
+            //Read the next line
             line = b_reader.readLine();
         }
     }
 
     /**
+     * Creates an array list with calories burnt info
+     *
      * @return An array list containing the user input data about calories burnt
      */
     public static ArrayList<String> outReader() throws IOException {
+        //The file that stores the information of calories burnt.
         File outFile = new File("User.txt");
+        //Initializing an empty arraylist.
         ArrayList<String> outInfo = null;
         if (outFile.exists()) {
-
+            //Creating a file reader and a buffered reader
             FileReader f_reader = new FileReader(outFile);
             BufferedReader b_reader = new BufferedReader(f_reader);
-
+            //Reading lines until the file is empty.
             String line = b_reader.readLine();
             outInfo = new ArrayList<>();
             while (line != null) {
-
+                //Adding the information to the arraylist.
                 outInfo.add(line);
-
                 line = b_reader.readLine();
             }
-        } else {
+        }
+        //If file does not exist
+        else {
             System.err.println("Cannot find a file to read!");
         }
+        //Returns the arraylist with calorie information.
         return outInfo;
     }
 }

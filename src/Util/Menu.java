@@ -303,7 +303,7 @@ public final class Menu {
      */
 
 
-    public static String getInputGender() {
+    private static String getInputGender() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("""
                 Please Enter your Gender:
@@ -332,7 +332,7 @@ public final class Menu {
      * @return returns the age of the user
      */
 
-    public static double getInputAge() {
+    private static double getInputAge() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter your age:");
         double age = scanner.nextDouble();
@@ -351,7 +351,7 @@ public final class Menu {
      * @return returns the weight of the user
      */
 
-    public static double getInputWeight() {
+    private static double getInputWeight() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter your weight in Kilograms:");
         double weight = scanner.nextDouble();
@@ -370,7 +370,7 @@ public final class Menu {
      */
 
 
-    public static double getInputHeight() {
+    private static double getInputHeight() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter your height in centimeters:");
         double height = scanner.nextDouble();
