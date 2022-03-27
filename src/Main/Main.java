@@ -18,12 +18,13 @@ import java.util.Scanner;
 import static Util.Menu.*;
 
 public class Main {
-
     //Setting the static ArrayLists and HashMaps for storing the user info
-    public static ArrayList<User> nUserList = new ArrayList<>();
-    public static ArrayList<User> femaleList = new ArrayList<>();
     public static ArrayList<User> maleList = new ArrayList<>();
+    public static ArrayList<User> femaleList = new ArrayList<>();
+    public static ArrayList<User> nUserList = new ArrayList<>();
+    //Hashmap 1 stores users name and gender
     public static HashMap<String, String> userInfo1 = new HashMap<>();
+    //Hashmap 2 stores users age, height, weight
     public static HashMap<String, Double> userInfo2 = new HashMap<>();
 
     /**
@@ -32,10 +33,11 @@ public class Main {
      * @param args No arguments expected
      */
     public static void main(String[] args) throws IOException {
-        //Getting file names
+        //Getting choice from user
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Hello, This is a fitness tracking program");
         System.out.println("""
+                Hello, This is a fitness tracking program
+                                
                 If you want to enter your information press '1'
                 If you want to enter your information from a file press '2'
                 To exit the program press anything else
@@ -43,15 +45,13 @@ public class Main {
         String userchoice = scanner.nextLine();
         if (userchoice.equals("1")) {
             int flag = 0;
-            getUserInput(flag);
-            getUserChoice();
+            getUserChoice(getUserInput(flag),0);
         }
         if (userchoice.equals("2")) {
             if (args.length != 0) {
                 File fileInput = new File(args[0]);
                 if (fileInput.exists() && fileInput.canRead()) {
-                    Reader.reader(fileInput);
-                    getUserChoice();
+                    getUserChoice(Reader.reader(fileInput),1);
                 }
             } else {
                 System.err.println("File Not Found!");
@@ -73,10 +73,11 @@ public class Main {
         } else {
             //The second element of this hashmap will always be the keyword of the gender.
             String genderWord = (String) userInfo1.values().toArray()[1];
+            //Changing that keyword to The full version.
             switch (genderWord) {
                 case "M" -> gender = "Male";
-                case "N" -> gender = "You choose not to say";
                 case "F" -> gender = "Female";
+                case "N" -> gender = "You choose not to say";
             }
             //The 0 element is the name and "Name:"
             //The 1 element is the gender of the user

@@ -10,10 +10,10 @@ public class Female extends User {
     public String toString() {
         return String.format("""
                 User Name: %s\s
-                   Gender: %s\s
-                   Age: %s\s
-                   Weight in Kgs: %s\s
-                   Height in centimeters: %s\s
+                Gender: %s\s
+                Age: %s\s
+                Weight in Kgs: %s\s
+                Height in centimeters: %s\s
                 """, userName, userGender, userAge, userWeight, userHeight);
     }
 
