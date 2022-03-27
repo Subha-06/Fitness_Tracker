@@ -181,12 +181,14 @@ public class Calculations {
     }
 
     /**
+     * Gets the maximum number of calories burnt in a day
      *
      * @param calInfo The arraylist containing the data read from the saved file
      */
     public static void getMaxCalories(ArrayList<String> calInfo){
 
         ArrayList<Integer> calories = new ArrayList<>();
+        //Loop through the arrayList and add information
         for (String s : calInfo) {
             try {
                 calories.add(Integer.parseInt(s));
@@ -195,6 +197,7 @@ public class Calculations {
                 System.err.println("Cannot convert string to integer type");
             }
         }
+        //Sorting to get calories in a order.
         Collections.sort(calories);
         System.out.println("The highest number of calories burnt in a day: " + calories.get(calories.size()-1));
     }
