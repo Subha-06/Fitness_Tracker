@@ -26,10 +26,9 @@ public final class Menu {
      * Getting the users information and storing it.
      *
      * @param flag a flag to keep track of input
-     * @return user
      */
 
-    public static User getUserInput(int flag) {
+    public static void getUserInput(int flag) {
         int userinput = 0;
 
         Scanner scanner = new Scanner(System.in);
@@ -44,13 +43,12 @@ public final class Menu {
         System.out.println("Please Enter your name:");
         String name;
         name = scanner.nextLine();
-//        scanner.nextLine();
         //Get users gender, age,height,weight and make sure they are valid inputs
         String gender = getInputGender();
         double age = getInputAge();
         double weight = getInputWeight();
         double height = getInputHeight();
-        User user = null;
+        User user;
 
         //A flag is used to check if the user is entering the information manually or from a file
         //If user enters information from a file then the information will be stored in object type arraylist for individual user subclass
@@ -83,7 +81,6 @@ public final class Menu {
             Main.userInfo2.put("Weight: ", weight);
             Main.userInfo2.put("Height: ", height);
         }
-        return user;
     }
 
     /**
