@@ -1,3 +1,0 @@
-Fabiha,Female,19,30,156
-Amasil,Male,21,40,165
-Harry,Preferred not to say,100,100,100
