@@ -6,7 +6,7 @@
  * * Date: 1 March 2022
  * * Demo 2 Tutorial 05
  */
-package Main;
+package mvh.user;
 
 public class User {
 
