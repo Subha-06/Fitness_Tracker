@@ -3,6 +3,7 @@ package mvh.app;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class MainController {
@@ -24,6 +25,10 @@ public class MainController {
     private ChoiceBox<String> choiceOfCycleSpeed;
     @FXML
     private ChoiceBox<String> choiceOfWalkSpeed;
+    @FXML
+    private Label leftStatus;
+    @FXML
+    private Label rightStatus;
 
     @FXML
     private void createUser() {
