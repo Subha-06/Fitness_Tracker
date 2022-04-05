@@ -49,7 +49,13 @@ public class MainController {
 
     @FXML
     public void initialize() {
+        userNumber.getItems().clear();
+        userNumber.setValue(1);
         userNumber.getItems().addAll(1,2,3,4,5);
+
+        userGender.getItems().clear();
+        userGender.setValue("Male");
+        userGender.getItems().addAll("Male","Female", "Not preferred to say");
 
     }
 
@@ -57,10 +63,10 @@ public class MainController {
     private void createUser(ActionEvent event) {
 
         try{
-            int num = Integer.parseInt(String.valueOf(userNumber.getValue()));
+            int num = (userNumber.getValue());
             String name = userName.getText();
             int age = Integer.parseInt(userAge.getText());
-            String gender = String.valueOf(userGender.getValue());
+            String gender = String.valueOf(userGender.getValue().charAt(0));
             double weight = Double.parseDouble(userWeight.getText());
             double height = Double.parseDouble(userHeight.getText());
 
@@ -70,6 +76,7 @@ public class MainController {
 
             leftStatus.setText("User Added!");
             rightStatus.setText("Choose from menu");
+            System.out.println(userInfo.get(num).toString());
 
         } catch (NumberFormatException e){
             leftStatus.setText("Invalid Input!");

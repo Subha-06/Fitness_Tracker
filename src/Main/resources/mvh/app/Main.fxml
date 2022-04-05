@@ -18,7 +18,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvh.app.MainController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvh.app.MainController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -84,7 +84,7 @@
                         <Button layoutX="15.0" layoutY="239.0" mnemonicParsing="false" onAction="#createUser" prefWidth="70.0" text="Add User" />
                         <ChoiceBox fx:id="userGender" layoutX="65.0" layoutY="140.0" prefHeight="25.0" prefWidth="130.0" />
                   <Button layoutX="88.0" layoutY="239.0" mnemonicParsing="false" text="Change Information" />
-                  <ChoiceBox layoutX="65.0" layoutY="51.0" prefWidth="130.0" />
+                  <ChoiceBox fx:id="userNumber" layoutX="65.0" layoutY="51.0" prefWidth="130.0" />
                     </children>
                 </AnchorPane>
                 <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
