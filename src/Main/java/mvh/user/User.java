@@ -68,4 +68,14 @@ public class User {
         this.userHeight = userHeight;
     }
 
+    public String toString() {
+        return String.format("""
+                Name: %s\s
+                Gender: %s\s
+                Age: %s\s
+                Weight in Kgs: %s\s
+                Height in centimeters: %s\s
+                """, userName, userGender, userAge, userWeight, userHeight);
+    }
+
 }
