@@ -74,7 +74,6 @@
                         <Label layoutX="10.0" layoutY="55.0" text="User No." />
                         <Label layoutX="10.0" layoutY="85.0" text="Name" />
                         <Label layoutX="10.0" layoutY="115.0" text="Age" />
-                        <TextField fx:id="userNumber" layoutX="65.0" layoutY="50.0" prefHeight="25.0" prefWidth="46.0" />
                         <TextField fx:id="userName" layoutX="65.0" layoutY="80.0" prefHeight="25.0" prefWidth="130.0" />
                         <TextField fx:id="userAge" layoutX="65.0" layoutY="110.0" prefHeight="25.0" prefWidth="130.0" />
                         <Label layoutX="10.0" layoutY="145.0" text="Gender" />
@@ -82,8 +81,10 @@
                         <TextField fx:id="userWeight" layoutX="65.0" layoutY="170.0" prefHeight="25.0" prefWidth="130.0" />
                         <TextField fx:id="userHeight" layoutX="65.0" layoutY="200.0" prefHeight="25.0" prefWidth="130.0" />
                         <Label layoutX="10.0" layoutY="205.0" text="Height" />
-                        <Button layoutX="90.0" layoutY="230.0" mnemonicParsing="false" onAction="#createUser" text="Add User" />
+                        <Button layoutX="15.0" layoutY="239.0" mnemonicParsing="false" onAction="#createUser" prefWidth="70.0" text="Add User" />
                         <ChoiceBox fx:id="userGender" layoutX="65.0" layoutY="140.0" prefHeight="25.0" prefWidth="130.0" />
+                  <Button layoutX="88.0" layoutY="239.0" mnemonicParsing="false" text="Change Information" />
+                  <ChoiceBox layoutX="65.0" layoutY="51.0" prefWidth="130.0" />
                     </children>
                 </AnchorPane>
                 <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
@@ -91,6 +92,12 @@
                         <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
                             <children>
                                 <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                        <ChoiceBox layoutX="82.0" layoutY="52.0" prefWidth="150.0" />
+                        <Label layoutX="20.0" layoutY="56.0" text="User No." />
+                        <Button layoutX="17.0" layoutY="97.0" mnemonicParsing="false" text="View BMI" />
+                        <Button layoutX="17.0" layoutY="138.0" mnemonicParsing="false" text="VIew Information" />
+                        <Button layoutX="72.0" layoutY="196.0" mnemonicParsing="false" text="View BMI Status" />
+                        <Button layoutX="55.0" layoutY="248.0" mnemonicParsing="false" text="Button" />
                             </children>
                         </AnchorPane>
                     </content>
