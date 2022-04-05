@@ -6,13 +6,13 @@
  * * Date: 1 March 2022
  * * Demo 2 Tutorial 05
  */
-
 package mvh.app;
 
-
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -43,7 +43,8 @@ public class MainController {
     private Label rightStatus;
 
     @FXML
-    private void createUser() {
+    private void createUser(ActionEvent event) {
+
 
     }
 
@@ -51,7 +52,7 @@ public class MainController {
      * Shows the information of the creator of the program.
      */
     @FXML
-    void viewAbout() {
+    void viewAbout(ActionEvent event) {
         //Creating the alert box
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
@@ -70,12 +71,17 @@ public class MainController {
      */
 
     @FXML
-    void closeButton() {
+    void closeButton(ActionEvent event) {
         Platform.exit();
     }
 
     @FXML
     public void initialize() {
+
+    }
+
+    @FXML
+    void printInto(ActionEvent event){
 
     }
 
