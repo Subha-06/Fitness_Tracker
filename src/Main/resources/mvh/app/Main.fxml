@@ -18,7 +18,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvh.app.MainController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvh.app.MainController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -71,19 +71,19 @@
                                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
                             </textFill>
                         </Label>
-                  <Label layoutX="12.0" layoutY="52.0" text="User No." />
-                  <Label layoutX="24.0" layoutY="83.0" text="Name" />
-                  <Label layoutX="29.0" layoutY="108.0" text="Age" />
-                  <TextField fx:id="userNumber" layoutX="65.0" layoutY="48.0" prefHeight="25.0" prefWidth="46.0" />
-                  <TextField fx:id="userName" layoutX="65.0" layoutY="79.0" prefHeight="25.0" prefWidth="119.0" />
-                  <TextField fx:id="userAge" layoutX="65.0" layoutY="104.0" prefHeight="25.0" prefWidth="119.0" />
-                  <Label layoutX="20.0" layoutY="136.0" text="Gender" />
-                  <Label layoutX="21.0" layoutY="164.0" text="Weight" />
-                  <TextField fx:id="userWeight" layoutX="65.0" layoutY="160.0" prefHeight="25.0" prefWidth="119.0" />
-                  <TextField fx:id="userHeight" layoutX="65.0" layoutY="185.0" prefHeight="25.0" prefWidth="119.0" />
-                  <Label layoutX="22.0" layoutY="189.0" text="Height" />
-                  <Button layoutX="92.0" layoutY="219.0" mnemonicParsing="false" onAction="#createUser" text="Add User" />
-                  <ChoiceBox fx:id="userGender" layoutX="65.0" layoutY="132.0" prefHeight="25.0" prefWidth="119.0" />
+                        <Label layoutX="10.0" layoutY="55.0" text="User No." />
+                        <Label layoutX="10.0" layoutY="85.0" text="Name" />
+                        <Label layoutX="10.0" layoutY="115.0" text="Age" />
+                        <TextField fx:id="userNumber" layoutX="65.0" layoutY="50.0" prefHeight="25.0" prefWidth="46.0" />
+                        <TextField fx:id="userName" layoutX="65.0" layoutY="80.0" prefHeight="25.0" prefWidth="130.0" />
+                        <TextField fx:id="userAge" layoutX="65.0" layoutY="110.0" prefHeight="25.0" prefWidth="130.0" />
+                        <Label layoutX="10.0" layoutY="145.0" text="Gender" />
+                        <Label layoutX="10.0" layoutY="175.0" text="Weight" />
+                        <TextField fx:id="userWeight" layoutX="65.0" layoutY="170.0" prefHeight="25.0" prefWidth="130.0" />
+                        <TextField fx:id="userHeight" layoutX="65.0" layoutY="200.0" prefHeight="25.0" prefWidth="130.0" />
+                        <Label layoutX="10.0" layoutY="205.0" text="Height" />
+                        <Button layoutX="90.0" layoutY="230.0" mnemonicParsing="false" onAction="#createUser" text="Add User" />
+                        <ChoiceBox fx:id="userGender" layoutX="65.0" layoutY="140.0" prefHeight="25.0" prefWidth="130.0" />
                     </children>
                 </AnchorPane>
                 <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
@@ -104,9 +104,9 @@
         </SplitPane>
         <HBox id="HBox" alignment="CENTER_LEFT" prefHeight="17.0" prefWidth="900.0" spacing="5.0" VBox.vgrow="NEVER">
             <children>
-            <Label fx:id="leftStatus" text="Left Status" />
+                <Label fx:id="leftStatus" />
                 <Pane HBox.hgrow="ALWAYS" />
-            <Label fx:id="rightStatus" text="Right Status" />
+                <Label fx:id="rightStatus" />
             </children>
             <padding>
                 <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
