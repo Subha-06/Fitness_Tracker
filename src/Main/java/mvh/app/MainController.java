@@ -20,6 +20,8 @@ public class MainController {
 
 
     @FXML
+    private TextField userNumber;
+    @FXML
     private TextField userName;
     @FXML
     private TextField userAge;
@@ -39,14 +41,6 @@ public class MainController {
     private Label leftStatus;
     @FXML
     private Label rightStatus;
-    @FXML
-    private TextField newWorldColumn;
-    @FXML
-    private TextField heroColumn;
-    @FXML
-    private TextField heroRow;
-    @FXML
-    private TextField monsterSymbol;
 
     @FXML
     private void createUser() {
@@ -56,8 +50,6 @@ public class MainController {
     /**
      * Shows the information of the creator of the program.
      */
-
-
     @FXML
     void viewAbout() {
         //Creating the alert box
