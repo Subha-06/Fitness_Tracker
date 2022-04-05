@@ -11,10 +11,7 @@ package mvh.app;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import mvh.user.User;
 
 import java.util.HashMap;
@@ -26,6 +23,8 @@ public class MainController {
 
     @FXML
     private ChoiceBox<Integer> userNumber;
+    @FXML
+    private ChoiceBox<Integer> viewUserNumber;
     @FXML
     private TextField userName;
     @FXML
@@ -39,13 +38,13 @@ public class MainController {
     @FXML
     private ChoiceBox<String> choiceOfExercise;
     @FXML
-    private ChoiceBox<String> choiceOfCycleSpeed;
-    @FXML
-    private ChoiceBox<String> choiceOfWalkSpeed;
+    private ChoiceBox<String> choiceOfSpeed;
     @FXML
     private Label leftStatus;
     @FXML
     private Label rightStatus;
+    @FXML
+    private TextArea viewDetails;
 
     @FXML
     public void initialize() {
@@ -56,6 +55,10 @@ public class MainController {
         userGender.getItems().clear();
         userGender.setValue("Male");
         userGender.getItems().addAll("Male","Female", "Not preferred to say");
+
+        viewUserNumber.getItems().clear();
+        viewUserNumber.setValue(1);
+        viewUserNumber.getItems().addAll(1,2,3,4,5);
 
     }
 
@@ -112,8 +115,20 @@ public class MainController {
     }
 
     @FXML
-    void printInto(ActionEvent event){
+    void viewInfo(ActionEvent event){
+        try{
+            int num = (viewUserNumber.getValue());
 
+            viewDetails.setText(userInfo.get(num).toString());
+            leftStatus.setText("User Info Printed!");
+            rightStatus.setText("View above");
+
+        } catch(Exception e){
+
+            leftStatus.setText("No user found");
+            rightStatus.setText("Nothing printed");
+
+        }
     }
 
 
