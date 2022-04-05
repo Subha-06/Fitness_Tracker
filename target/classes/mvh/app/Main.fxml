@@ -82,7 +82,7 @@
                   <TextField fx:id="userWeight" layoutX="65.0" layoutY="160.0" prefHeight="25.0" prefWidth="119.0" />
                   <TextField fx:id="userHeight" layoutX="65.0" layoutY="185.0" prefHeight="25.0" prefWidth="119.0" />
                   <Label layoutX="22.0" layoutY="189.0" text="Height" />
-                  <Button layoutX="92.0" layoutY="219.0" mnemonicParsing="false" text="Add User" />
+                  <Button layoutX="92.0" layoutY="219.0" mnemonicParsing="false" onAction="#createUser" text="Add User" />
                   <ChoiceBox fx:id="userGender" layoutX="65.0" layoutY="132.0" prefHeight="25.0" prefWidth="119.0" />
                     </children>
                 </AnchorPane>
