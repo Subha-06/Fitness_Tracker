@@ -26,6 +26,16 @@ public class MainController {
     @FXML
     private ChoiceBox<Integer> viewUserNumber;
     @FXML
+    private ChoiceBox<String> viewInfoType;
+    @FXML
+    private ChoiceBox<String> exerciseChoice;
+    @FXML
+    private ChoiceBox<String> choiceOfSpeed;
+    @FXML
+    private ChoiceBox<Integer> calorieUser;
+    @FXML
+    private ChoiceBox<String> calorieViewType;
+    @FXML
     private TextField userName;
     @FXML
     private TextField userAge;
@@ -34,11 +44,10 @@ public class MainController {
     @FXML
     private TextField userHeight;
     @FXML
+    private TextField calorieAmount;
+    @FXML
     private ChoiceBox<String> userGender;
-    @FXML
-    private ChoiceBox<String> choiceOfExercise;
-    @FXML
-    private ChoiceBox<String> choiceOfSpeed;
+
     @FXML
     private Label leftStatus;
     @FXML
@@ -48,24 +57,52 @@ public class MainController {
 
     @FXML
     public void initialize() {
+
+        calorieViewType.getItems().clear();
+        calorieViewType.setValue("Total Calorie Lost");
+        calorieViewType.getItems().addAll("Total Calorie Lost", "Most amount burnt");
+
+        exerciseChoice.getItems().clear();
+        exerciseChoice.setValue("Walking");
+        exerciseChoice.getItems().addAll("Walking", "Cycling");
+
+
+        calorieUser.getItems().clear();
+        calorieUser.setValue(1);
+        calorieUser.getItems().addAll(1, 2, 3, 4, 5);
+
         userNumber.getItems().clear();
         userNumber.setValue(1);
-        userNumber.getItems().addAll(1,2,3,4,5);
+        userNumber.getItems().addAll(1, 2, 3, 4, 5);
 
         userGender.getItems().clear();
         userGender.setValue("Male");
-        userGender.getItems().addAll("Male","Female", "Not preferred to say");
+        userGender.getItems().addAll("Male", "Female", "Preferred not to say");
 
         viewUserNumber.getItems().clear();
         viewUserNumber.setValue(1);
-        viewUserNumber.getItems().addAll(1,2,3,4,5);
+        viewUserNumber.getItems().addAll(1, 2, 3, 4, 5);
+
+        viewInfoType.getItems().clear();
+        viewInfoType.setValue("View BMI");
+        viewInfoType.getItems().addAll("View BMI", "View Weight Status");
+        choiceOfSpeed.setValue("6-7 km/h");
+    }
+
+    @FXML
+    void addCalorieBurnt() {
 
     }
 
     @FXML
-    private void createUser(ActionEvent event) {
+    void viewCalorieInfo() {
 
-        try{
+    }
+
+    @FXML
+    private void createUser() {
+
+        try {
             int num = (userNumber.getValue());
             String name = userName.getText();
             int age = Integer.parseInt(userAge.getText());
@@ -81,9 +118,22 @@ public class MainController {
             rightStatus.setText("Choose from menu");
             System.out.println(userInfo.get(num).toString());
 
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             leftStatus.setText("Invalid Input!");
             rightStatus.setText("Enter again");
+        }
+    }
+
+    @FXML
+    void exerciseSpeed() {
+        if (exerciseChoice.getValue().equals("Walking")) {
+            choiceOfSpeed.getItems().clear();
+            choiceOfSpeed.setValue("6-7 km/h");
+            choiceOfSpeed.getItems().addAll("6-7 km/h", "7-8 km/h", "9-11 km/h");
+        } else {
+            choiceOfSpeed.getItems().clear();
+            choiceOfSpeed.setValue("16-19 km/h");
+            choiceOfSpeed.getItems().addAll("16-19 km/h", "19-22 km/h", "22-25 km/h");
         }
     }
 
@@ -91,7 +141,7 @@ public class MainController {
      * Shows the information of the creator of the program.
      */
     @FXML
-    void viewAbout(ActionEvent event) {
+    void viewAbout() {
         //Creating the alert box
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
@@ -110,25 +160,30 @@ public class MainController {
      */
 
     @FXML
-    void closeButton(ActionEvent event) {
+    void closeButton() {
         Platform.exit();
     }
 
     @FXML
-    void viewInfo(ActionEvent event){
-        try{
+    void viewInfo() {
+        try {
             int num = (viewUserNumber.getValue());
 
             viewDetails.setText(userInfo.get(num).toString());
             leftStatus.setText("User Info Printed!");
             rightStatus.setText("View above");
 
-        } catch(Exception e){
+        } catch (Exception e) {
 
             leftStatus.setText("No user found");
             rightStatus.setText("Nothing printed");
 
         }
+    }
+
+    @FXML
+    void viewExercise() {
+
     }
 
 
