@@ -9,9 +9,9 @@
 package mvh.app;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import mvh.user.User;
 
 import java.util.HashMap;
@@ -20,7 +20,6 @@ public class MainController {
 
     private User user;
     public static HashMap<Integer, Object> userInfo = new HashMap<>();
-
     @FXML
     private ChoiceBox<Integer> userNumber;
     @FXML
@@ -99,25 +98,69 @@ public class MainController {
 
     @FXML
     private void createUser() {
-
         try {
-            int num = (userNumber.getValue());
-            String name = userName.getText();
-            int age = Integer.parseInt(userAge.getText());
-            String gender = String.valueOf(userGender.getValue());
-            double weight = Double.parseDouble(userWeight.getText());
-            double height = Double.parseDouble(userHeight.getText());
-
-            user = new User(name, gender, age, weight, height);
-
-            userInfo.put(num, user);
-
-            leftStatus.setText("User Added!");
-            rightStatus.setText("Choose from menu");
-
-        } catch (NumberFormatException e) {
-            leftStatus.setText("Invalid Input!");
-            rightStatus.setText("Enter again");
+            if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
+                leftStatus.setText("Please Enter All Information");
+                leftStatus.setTextFill(Color.RED);
+                rightStatus.setText("");
+            } else {
+                int num = (userNumber.getValue());
+                String name = userName.getText();
+                String gender = String.valueOf(userGender.getValue());
+                try {
+                    int age = Integer.parseInt(userAge.getText());
+                    if (age <= 0) {
+                        leftStatus.setText("Please Enter A Positive Number For age");
+                        leftStatus.setTextFill(Color.RED);
+                        rightStatus.setText("");
+                    } else {
+                        try {
+                            double weight = Double.parseDouble(userWeight.getText());
+                            if (weight <= 0) {
+                                leftStatus.setText("Please Enter A Positive Number For Weight");
+                                leftStatus.setTextFill(Color.RED);
+                                rightStatus.setText("");
+                            } else {
+                                try {
+                                    double height = Double.parseDouble(userHeight.getText());
+                                    if (height <= 0) {
+                                        leftStatus.setText("Please Enter A Positive Number For Height");
+                                        leftStatus.setTextFill(Color.RED);
+                                        rightStatus.setText("");
+                                    } else {
+                                        try {
+                                            user = new User(name, gender, age, weight, height);
+                                            userInfo.put(num, user);
+                                            leftStatus.setText("");
+                                            rightStatus.setText("User Added! Choose from menu");
+                                            rightStatus.setTextFill(Color.GREEN);
+                                        } catch (Exception e) {
+                                            leftStatus.setText("Couldn't add user");
+                                            leftStatus.setTextFill(Color.RED);
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    leftStatus.setText("Enter A Integer or Double for height");
+                                    leftStatus.setTextFill(Color.RED);
+                                    rightStatus.setText("");
+                                }
+                            }
+                        } catch (Exception e) {
+                            leftStatus.setText("Enter A Integer or Double for weight");
+                            leftStatus.setTextFill(Color.RED);
+                            rightStatus.setText("");
+                        }
+                    }
+                } catch (Exception e) {
+                    leftStatus.setText("Enter A Integer or Double for age");
+                    leftStatus.setTextFill(Color.RED);
+                    rightStatus.setText("");
+                }
+            }
+        } catch (Exception e) {
+            leftStatus.setText("Please Enter All Information");
+            leftStatus.setTextFill(Color.RED);
+            rightStatus.setText("");
         }
     }
 
@@ -145,7 +188,7 @@ public class MainController {
         alert.setHeaderText("About Author");
         alert.setContentText("""
                 Author: Amasil Rahim Zihad & Fabiha Fairuzz Subha
-                Version: At this point no one knows
+                Version: 3.7
                 This is fitness tracking program.""");
         //Showing the alert
         alert.showAndWait();
@@ -184,7 +227,7 @@ public class MainController {
     }
 
     @FXML
-    void viewBMI(){
+    void viewBMI() {
         int num = viewUserNumber.getValue();
         boolean keyCheck = userInfo.containsKey(num);
         try {
@@ -224,7 +267,7 @@ public class MainController {
                     rightStatus.setText("Enter valid user number");
                 }
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             leftStatus.setText("No user found!");
             rightStatus.setText("Input user info");
         }
