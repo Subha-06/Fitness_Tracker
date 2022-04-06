@@ -47,7 +47,6 @@ public class MainController {
     private TextField calorieAmount;
     @FXML
     private ChoiceBox<String> userGender;
-
     @FXML
     private Label leftStatus;
     @FXML
@@ -65,7 +64,6 @@ public class MainController {
         exerciseChoice.getItems().clear();
         exerciseChoice.setValue("Walking");
         exerciseChoice.getItems().addAll("Walking", "Cycling");
-
 
         calorieUser.getItems().clear();
         calorieUser.setValue(1);
@@ -106,7 +104,7 @@ public class MainController {
             int num = (userNumber.getValue());
             String name = userName.getText();
             int age = Integer.parseInt(userAge.getText());
-            String gender = String.valueOf(userGender.getValue().charAt(0));
+            String gender = String.valueOf(userGender.getValue());
             double weight = Double.parseDouble(userWeight.getText());
             double height = Double.parseDouble(userHeight.getText());
 
@@ -116,7 +114,6 @@ public class MainController {
 
             leftStatus.setText("User Added!");
             rightStatus.setText("Choose from menu");
-            System.out.println(userInfo.get(num).toString());
 
         } catch (NumberFormatException e) {
             leftStatus.setText("Invalid Input!");
