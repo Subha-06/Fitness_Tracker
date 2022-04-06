@@ -56,8 +56,6 @@ public class MainController {
     private Label rightStatus;
     @FXML
     private TextArea viewDetails;
-    private double weight;
-    private double height;
 
     @FXML
     public void initialize() {
@@ -138,6 +136,7 @@ public class MainController {
                         //Weight Can't be Negative or 0
                         try {
                             //If the option chosen is kilograms
+                            double weight;
                             if (weightChoice.getValue().equals("KG")) {
                                 weight = Double.parseDouble(userWeight.getText());
                             }
@@ -153,6 +152,7 @@ public class MainController {
                             } else {
                                 try {
                                     //If height is cm
+                                    double height;
                                     if (heightChoice.getValue().equals("C.M.")) {
                                         height = Double.parseDouble(userHeight.getText());
                                     } else {
@@ -168,6 +168,7 @@ public class MainController {
                                             //Creating the user
                                             user = new User(name, gender, age, weight, height);
                                             userInfo.put(num, user);
+
                                             leftStatus.setText("");
                                             rightStatus.setText("User Added! Choose from menu");
                                             rightStatus.setTextFill(Color.GREEN);
