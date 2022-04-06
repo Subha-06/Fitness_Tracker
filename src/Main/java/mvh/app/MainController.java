@@ -202,6 +202,7 @@ public class MainController {
             rightStatus.setText("");
         }
     }
+
     @FXML
     void exerciseSpeed() {
         if (exerciseChoice.getValue().equals("Walking")) {
