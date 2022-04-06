@@ -162,9 +162,9 @@ public class MainController {
     }
 
     @FXML
-    void viewInfo() {
+    void viewInfo(ActionEvent event) {
         try {
-            int num = (viewUserNumber.getValue());
+            int num = viewUserNumber.getValue();
 
             viewDetails.setText(userInfo.get(num).toString());
             leftStatus.setText("User Info Printed!");
@@ -179,9 +179,60 @@ public class MainController {
     }
 
     @FXML
-    void viewExercise() {
+    void viewExercise(ActionEvent event) {
 
     }
+
+    @FXML
+    void viewBMI(ActionEvent event){
+        int num = viewUserNumber.getValue();
+        boolean keyCheck = userInfo.containsKey(num);
+        try {
+            if (viewInfoType.getValue().equals("View BMI")) {
+
+                if (keyCheck) {
+
+                    user = (User) userInfo.get(num);
+                    double weight = user.getUserWeight();
+                    double height = user.getUserHeight();
+
+                    viewDetails.setText("Your BMI is " + mvh.util.Calculations.bmi(weight, height));
+
+                    leftStatus.setText("Requested info shown!");
+                    rightStatus.setText("Check the view box");
+
+                } else {
+                    leftStatus.setText("No user found!");
+                    rightStatus.setText("Enter valid user number");
+                }
+
+            } else {
+
+                if (keyCheck) {
+
+                    user = (User) userInfo.get(num);
+                    double weight = user.getUserWeight();
+                    double height = user.getUserHeight();
+
+                    viewDetails.setText(mvh.util.Calculations.bmiCompare(weight, height));
+
+                    leftStatus.setText("Requested info shown!");
+                    rightStatus.setText("Check the view box");
+                } else {
+                    leftStatus.setText("No user found!");
+                    rightStatus.setText("Enter valid user number");
+                }
+            }
+        } catch (NullPointerException e){
+            leftStatus.setText("No user found!");
+            rightStatus.setText("Input user info");
+
+        }
+    }
+
+
+
+
 
 
 }
