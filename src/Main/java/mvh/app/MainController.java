@@ -179,19 +179,19 @@ public class MainController {
                                         }
                                     }
                                 } catch (Exception e) {
-                                    leftStatus.setText("Enter A Integer or Double for height");
+                                    leftStatus.setText("Enter A Positive Number for height");
                                     leftStatus.setTextFill(Color.RED);
                                     rightStatus.setText("");
                                 }
                             }
                         } catch (Exception e) {
-                            leftStatus.setText("Enter A Integer or Double for weight");
+                            leftStatus.setText("Enter A Positive Number for weight");
                             leftStatus.setTextFill(Color.RED);
                             rightStatus.setText("");
                         }
                     }
                 } catch (Exception e) {
-                    leftStatus.setText("Enter A Integer or Double for age");
+                    leftStatus.setText("Enter A Positive Number for age");
                     leftStatus.setTextFill(Color.RED);
                     rightStatus.setText("");
                 }
@@ -202,7 +202,6 @@ public class MainController {
             rightStatus.setText("");
         }
     }
-
     @FXML
     void exerciseSpeed() {
         if (exerciseChoice.getValue().equals("Walking")) {
