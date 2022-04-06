@@ -210,6 +210,7 @@ public class MainController {
 
                 if (keyCheck) {
 
+
                     user = (User) userInfo.get(num);
                     double weight = user.getUserWeight();
                     double height = user.getUserHeight();
