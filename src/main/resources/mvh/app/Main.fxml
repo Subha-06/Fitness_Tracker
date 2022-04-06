@@ -61,15 +61,15 @@
                   <Button layoutX="88.0" layoutY="239.0" mnemonicParsing="false" text="Change Information" />
                   <ChoiceBox fx:id="userNumber" layoutX="65.0" layoutY="50.0" prefHeight="25.0" prefWidth="150.0" />
                   <Button layoutX="41.0" layoutY="274.0" mnemonicParsing="false" text="Add Information To File" />
-                  <Label layoutX="10.0" layoutY="380.0" text="Calorie" textFill="#9f9f9f">
+                  <Label layoutX="10.0" layoutY="410.0" text="Calorie" textFill="#9f9f9f">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="10.0" layoutY="425.0" text="User No." />
-                  <Button layoutX="65.0" layoutY="480.0" mnemonicParsing="false" onAction="#addCalorieBurnt" prefWidth="150.0" text="Add Daily Calorie Burnt" />
+                  <Label layoutX="10.0" layoutY="485.0" text="User No." />
+                  <Button layoutX="65.0" layoutY="510.0" mnemonicParsing="false" onAction="#addCalorieBurnt" prefWidth="150.0" text="Add Daily Calorie Burnt" />
                   <Label layoutX="10.0" layoutY="455.0" text="Amount" />
-                  <ChoiceBox fx:id="calorieUser" layoutX="65.0" layoutY="420.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="calorieUser" layoutX="65.0" layoutY="480.0" prefWidth="150.0" />
                   <TextField fx:id="calorieAmount" layoutX="65.0" layoutY="450.0" prefWidth="150.0" />
                   <ChoiceBox fx:id="weightChoice" layoutX="145.0" layoutY="170.0" prefWidth="70.0" />
                   <ChoiceBox fx:id="heightChoice" layoutX="145.0" layoutY="200.0" prefWidth="70.0" />
@@ -87,11 +87,11 @@
                   <Button layoutX="110.0" layoutY="190.0" mnemonicParsing="false" onAction="#viewBMI" text="View" />
                   <ChoiceBox fx:id="viewInfoType" layoutX="110.0" layoutY="160.0" prefWidth="150.0" />
                   <Label layoutX="10.0" layoutY="164.0" text="Type" />
-                  <Label layoutX="10.0" layoutY="275.0" text="Exercise Choice" />
-                  <Label layoutX="10.0" layoutY="305.0" text="Speed" />
-                  <ChoiceBox fx:id="exerciseChoice" layoutX="110.0" layoutY="270.0" prefWidth="150.0" />
-                  <ChoiceBox fx:id="choiceOfSpeed" layoutX="110.0" layoutY="300.0" onMouseClicked="#exerciseSpeed" prefWidth="150.0" />
-                  <Button layoutX="110.0" layoutY="330.0" mnemonicParsing="false" onAction="#viewExercise" text="View" />
+                  <Label layoutX="10.0" layoutY="305.0" text="Exercise Choice" />
+                  <Label layoutX="10.0" layoutY="335.0" text="Speed" />
+                  <ChoiceBox fx:id="exerciseChoice" layoutX="110.0" layoutY="300.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="choiceOfSpeed" layoutX="110.0" layoutY="330.0" onMouseClicked="#exerciseSpeed" prefWidth="150.0" />
+                  <Button layoutX="110.0" layoutY="360.0" mnemonicParsing="false" onAction="#viewExercise" text="View" />
                   <Label layoutX="10.0" layoutY="125.0" text="BMI" textFill="#9f9f9f">
                      <font>
                         <Font size="18.0" />
@@ -102,15 +102,18 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="10.0" layoutY="380.0" text="Calorie" textFill="#9f9f9f">
+                  <Label layoutX="10.0" layoutY="410.0" text="Calorie" textFill="#9f9f9f">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="10.0" layoutY="425.0" text="Type" />
-                  <ChoiceBox fx:id="calorieViewType" layoutX="110.0" layoutY="420.0" prefWidth="150.0" />
-                  <Button layoutX="110.0" layoutY="450.0" mnemonicParsing="false" onAction="#viewCalorieInfo" text="View" />
+                  <Label layoutX="10.0" layoutY="455.0" text="Type" />
+                  <ChoiceBox fx:id="calorieViewType" layoutX="110.0" layoutY="450.0" prefWidth="150.0" />
+                  <Button layoutX="110.0" layoutY="480.0" mnemonicParsing="false" onAction="#viewCalorieInfo" text="View" />
                   <Button layoutX="110.0" layoutY="80.0" mnemonicParsing="false" onAction="#viewInfo" text="View Info" />
+                  <Label layoutX="10.0" layoutY="275.0" text="Weight To be Lost" />
+                  <TextField fx:id="weightExercise" layoutX="110.0" layoutY="270.0" prefWidth="70.0" />
+                  <ChoiceBox fx:id="exerciseKGLB" layoutX="190.0" layoutY="270.0" prefWidth="70.0" />
                </children>
             </AnchorPane>
                 <AnchorPane maxWidth="-Infinity" prefWidth="350.0">

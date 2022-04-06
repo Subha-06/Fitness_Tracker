@@ -51,14 +51,21 @@ public class MainController {
     @FXML
     private ChoiceBox<String> userGender;
     @FXML
+    private ChoiceBox<String> exerciseKGLB;
+    @FXML
     private Label leftStatus;
     @FXML
     private Label rightStatus;
     @FXML
     private TextArea viewDetails;
+    @FXML
+    private TextField weightExercise;
 
     @FXML
     public void initialize() {
+        exerciseKGLB.getItems().clear();
+        exerciseKGLB.setValue("KG");
+        exerciseKGLB.getItems().addAll("KG", "LB");
 
         weightChoice.getItems().clear();
         weightChoice.setValue("KG");
