@@ -8,9 +8,9 @@
  */
 package mvh.util;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
 public class Calculations {
     //Constants
@@ -70,53 +70,35 @@ public class Calculations {
      * @param weight         The weight of the user
      */
 
-    public static void estimateExercise(int total_calories, double weight, int kg_input) {
-        Scanner input = new Scanner(System.in);
-        //Giving the user to choose the type of exercise they want to do
-        System.out.println("""
-                Which type of exercise do you want to do?
-                A. Cycling
-                B. Running
-                """);
-        String userinput;
-        userinput = input.nextLine();
-        if (userinput.equals("A")) {
+    public static String estimateExercise(String choiceOfSpeed, String exerciseChoice, int total_calories, double weight, int kg_input) {
 
+        String output = "";
+        if (exerciseChoice.equals("Cycling")) {
             //MET constant value for cycling
             //Met are constant values, so we just assign them to an array.
             //Formula from omni calculator https://www.omnicalculator.com/sports/calories-burned-biking
             //https://www.bing.com/images/search?view=detailV2&ccid=yadDUQDJ&id=87120523BFFA7EC2BB481F4F72EA93EEF131C32A&thid=OIP.yadDUQDJzCrTGscl7VKGxwHaER&mediaurl=https%3a%2f%2fwww.researchgate.net%2fprofile%2fPongpisit_Wuttidittachotti%2fpublication%2f269927658%2ffigure%2fdownload%2ftbl2%2fAS%3a668512750161926%401536397268552%2fExamples-of-MET-values-for-cycling-jogging-and-walking.png&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.c9a7435100c9cc2ad31ac725ed5286c7%3frik%3dKsMx8e6T6nJPHw%26pid%3dImgRaw%26r%3d0&exph=491&expw=850&q=cycling+met+chart&simid=608045430922565507&FORM=IRPRST&ck=9961DBCB589AF095617EC992BB417D2E&selectedIndex=0&idpp=overlayview&ajaxhist=0&ajaxserp=0
             int[] array = {6, 8, 10}; //Order respective to the options below
 
-            System.out.println("You have chosen to do cycling");
-            //Number of hours of exercise will depend on the speed of the exercise due to MET value
-            System.out.println("""
-                    Select the speed of cycling:
-                    1. 16-19 km/h
-                    2. 19-22 km/h
-                    3. 22-25 km/h
-                    """);
-            int checkoption;
-            checkoption = input.nextInt();
-            if (checkoption == 1) {
+            if (choiceOfSpeed.equals("16-19 km/h")) {
 
                 double ex_burnt = (total_calories * 200) / (array[0] * weight * 3.5 * 60);
-                System.out.printf("You need to cycle %.1f hours at 16-19 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
+                output = "You need to cycle" + String.format("%.1f",ex_burnt) + "hours at 16-19 km/h to burn" +  total_calories + "calories and lose" + kg_input + "kgs";
 
 
-            } else if (checkoption == 2) {
+            } else if (choiceOfSpeed.equals("19-22 km/h")) {
 
                 double ex_burnt = (total_calories * 200) / (array[1] * weight * 3.5 * 60);
-                System.out.printf("You need to cycle %.1f hours at 19-22 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
+                output = "You need to cycle" + String.format("%.1f",ex_burnt) + "hours at 19-22 km/h to burn" +  total_calories + "calories and lose" + kg_input + "kgs";
 
-            } else if (checkoption == 3) {
+            } else if (choiceOfSpeed.equals("22-25 km/h")) {
 
                 double ex_burnt = (total_calories * 200) / (array[2] * weight * 3.5 * 60);
-                System.out.printf("You need to cycle %.1f hours at 22-25 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
+                output = "You need to cycle" + String.format("%.1f",ex_burnt) + "hours at 22-25 km/h to burn" +  total_calories + "calories and lose" + kg_input + "kgs";
 
             }
 
-        } else if (userinput.equals("B")) {
+        } else if (exerciseChoice.equals("Running")) {
 
             //MET constant value for running
             //Met are constant values, so we just assign them to an array.
@@ -124,37 +106,24 @@ public class Calculations {
             //https://www.bing.com/images/search?view=detailV2&ccid=yadDUQDJ&id=87120523BFFA7EC2BB481F4F72EA93EEF131C32A&thid=OIP.yadDUQDJzCrTGscl7VKGxwHaER&mediaurl=https%3a%2f%2fwww.researchgate.net%2fprofile%2fPongpisit_Wuttidittachotti%2fpublication%2f269927658%2ffigure%2fdownload%2ftbl2%2fAS%3a668512750161926%401536397268552%2fExamples-of-MET-values-for-cycling-jogging-and-walking.png&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.c9a7435100c9cc2ad31ac725ed5286c7%3frik%3dKsMx8e6T6nJPHw%26pid%3dImgRaw%26r%3d0&exph=491&expw=850&q=cycling+met+chart&simid=608045430922565507&FORM=IRPRST&ck=9961DBCB589AF095617EC992BB417D2E&selectedIndex=0&idpp=overlayview&ajaxhist=0&ajaxserp=0
 
             int[] array2 = {5, 8, 11}; //Order respective to the options below
-            System.out.println("You have chosen running");
-            //Number of hours of exercise will depend on the speed of the exercise due to MET value
-            System.out.println("""
-                    Select the speed of running:
-                    1. 6-7 km/h
-                    2. 7-8 km/h
-                    3. 9-11 km/h
-                    """);
-            int checkoption;
-            checkoption = input.nextInt();
-            if (checkoption == 1) {
+
+            if (choiceOfSpeed.equals("6-7 km/h")) {
 
                 double ex_burnt = (total_calories * 200) / (array2[0] * weight * 3.5 * 60);
-                System.out.printf("You need to run %.1f hours at 6-7 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
+                output = "You need to run" + String.format("%.1f",ex_burnt) + "hours at 6-7 km/h to burn" +  total_calories + "calories and lose" + kg_input + "kgs";
 
-            } else if (checkoption == 2) {
+            } else if (choiceOfSpeed.equals("7-8 km/h")) {
 
                 double ex_burnt = (total_calories * 200) / (array2[1] * weight * 3.5 * 60);
-                System.out.printf("You need to run %.1f hours at 7-8 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
+                output = "You need to run" + String.format("%.1f",ex_burnt) + "hours at 7-8 km/h to burn" +  total_calories + "calories and lose" + kg_input + "kgs";
 
-            } else if (checkoption == 3) {
+            } else if (choiceOfSpeed.equals("9-11 km/h")) {
 
                 double ex_burnt = (total_calories * 200) / (array2[2] * weight * 3.5 * 60);
-                System.out.printf("You need to run %.1f hours at 9-11 km/h to burn %d calories and lose %d kgs", ex_burnt, total_calories, kg_input);
+                output = "You need to run" + String.format("%.1f",ex_burnt) + "hours at 9-11 km/h to burn" +  total_calories + "calories and lose" + kg_input + "kgs";
             }
         }
-        //If anything other than the inputs defined in menu is pressed, program will exit
-        else {
-            System.out.println("You choose to exit the program.");
-            System.exit(0);
-        }
+        return output;
     }
 
     /**

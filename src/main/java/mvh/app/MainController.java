@@ -80,8 +80,8 @@ public class MainController {
         calorieViewType.getItems().addAll("Total Calorie Lost", "Most amount burnt");
 
         exerciseChoice.getItems().clear();
-        exerciseChoice.setValue("Walking");
-        exerciseChoice.getItems().addAll("Walking", "Cycling");
+        exerciseChoice.setValue("Running");
+        exerciseChoice.getItems().addAll("Running", "Cycling");
 
         calorieUser.getItems().clear();
         calorieUser.setValue(1);
@@ -212,7 +212,7 @@ public class MainController {
 
     @FXML
     void exerciseSpeed() {
-        if (exerciseChoice.getValue().equals("Walking")) {
+        if (exerciseChoice.getValue().equals("Running")) {
             choiceOfSpeed.getItems().clear();
             choiceOfSpeed.setValue("6-7 km/h");
             choiceOfSpeed.getItems().addAll("6-7 km/h", "7-8 km/h", "9-11 km/h");
@@ -257,12 +257,16 @@ public class MainController {
 
             viewDetails.setText(userInfo.get(num).toString());
             leftStatus.setText("User Info Printed!");
+            leftStatus.setTextFill(Color.GREEN);
             rightStatus.setText("View above");
+            rightStatus.setTextFill(Color.GREEN);
 
         } catch (Exception e) {
 
             leftStatus.setText("No user found");
+            leftStatus.setTextFill(Color.RED);
             rightStatus.setText("Nothing printed");
+            rightStatus.setTextFill(Color.RED);
 
         }
     }
@@ -270,6 +274,49 @@ public class MainController {
     @FXML
     void viewExercise() {
 
+        String choice = exerciseChoice.getValue();
+        String speed = choiceOfSpeed.getValue();
+
+        int num = viewUserNumber.getValue();
+        boolean keyCheck = userInfo.containsKey(num);
+
+        try {
+            if (keyCheck) {
+                user = (User) userInfo.get(num);
+                double weight = user.getUserWeight();
+                
+                if (weightExercise.getText().isBlank()) {
+                    leftStatus.setText("Invalid Input");
+                    leftStatus.setTextFill(Color.RED);
+                    rightStatus.setText("Enter valid weight input");
+                    rightStatus.setTextFill(Color.RED);
+
+                } else {
+                    int weight_loss = Integer.parseInt(weightExercise.getText());
+
+
+                    int calories = mvh.util.Calculations.estimateCalories(weight_loss);
+
+                    String exercise = mvh.util.Calculations.estimateExercise(speed, choice, calories, weight, weight_loss);
+                    viewDetails.setText(exercise);
+
+                    leftStatus.setText("Requested info shown!");
+                    leftStatus.setTextFill(Color.GREEN);
+                    rightStatus.setText("Check the view box");
+                    rightStatus.setTextFill(Color.GREEN);
+                }
+            } else {
+                leftStatus.setText("No user found!");
+                leftStatus.setTextFill(Color.RED);
+                rightStatus.setText("Enter valid user number");
+                rightStatus.setTextFill(Color.RED);
+            }
+        } catch (NullPointerException e){
+            leftStatus.setText("No user found!");
+            leftStatus.setTextFill(Color.RED);
+            rightStatus.setText("Input user info");
+            rightStatus.setTextFill(Color.RED);
+        }
     }
 
     @FXML
@@ -288,17 +335,18 @@ public class MainController {
                     viewDetails.setText("Your BMI is " + mvh.util.Calculations.bmi(weight, height));
 
                     leftStatus.setText("Requested info shown!");
+                    leftStatus.setTextFill(Color.GREEN);
                     rightStatus.setText("Check the view box");
-
+                    rightStatus.setTextFill(Color.GREEN);
                 } else {
                     leftStatus.setText("No user found!");
+                    leftStatus.setTextFill(Color.RED);
                     rightStatus.setText("Enter valid user number");
+                    rightStatus.setTextFill(Color.RED);
                 }
 
             } else {
-
                 if (keyCheck) {
-
 
                     user = (User) userInfo.get(num);
                     double weight = user.getUserWeight();
@@ -307,15 +355,21 @@ public class MainController {
                     viewDetails.setText(mvh.util.Calculations.bmiCompare(weight, height));
 
                     leftStatus.setText("Requested info shown!");
+                    leftStatus.setTextFill(Color.GREEN);
                     rightStatus.setText("Check the view box");
+                    rightStatus.setTextFill(Color.GREEN);
                 } else {
                     leftStatus.setText("No user found!");
+                    leftStatus.setTextFill(Color.RED);
                     rightStatus.setText("Enter valid user number");
+                    rightStatus.setTextFill(Color.RED);
                 }
             }
         } catch (NullPointerException e) {
             leftStatus.setText("No user found!");
+            leftStatus.setTextFill(Color.RED);
             rightStatus.setText("Input user info");
+            rightStatus.setTextFill(Color.RED);
         }
     }
 }
