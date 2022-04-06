@@ -33,6 +33,10 @@ public class MainController {
     @FXML
     private ChoiceBox<Integer> calorieUser;
     @FXML
+    private ChoiceBox<String> weightChoice;
+    @FXML
+    private ChoiceBox<String> heightChoice;
+    @FXML
     private ChoiceBox<String> calorieViewType;
     @FXML
     private TextField userName;
@@ -52,9 +56,19 @@ public class MainController {
     private Label rightStatus;
     @FXML
     private TextArea viewDetails;
+    private double weight;
+    private double height;
 
     @FXML
     public void initialize() {
+
+        weightChoice.getItems().clear();
+        weightChoice.setValue("KG");
+        weightChoice.getItems().addAll("KG", "LB");
+
+        heightChoice.getItems().clear();
+        heightChoice.setValue("C.M.");
+        heightChoice.getItems().addAll("C.M.", "Meter");
 
         calorieViewType.getItems().clear();
         calorieViewType.setValue("Total Calorie Lost");
@@ -96,9 +110,14 @@ public class MainController {
 
     }
 
+    /**
+     * Adding an User
+     */
+
     @FXML
     private void createUser() {
         try {
+            //IF any of the field is empty the program will show an Error.
             if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
                 leftStatus.setText("Please Enter All Information");
                 leftStatus.setTextFill(Color.RED);
@@ -107,33 +126,52 @@ public class MainController {
                 int num = (userNumber.getValue());
                 String name = userName.getText();
                 String gender = String.valueOf(userGender.getValue());
+                //Trying To get valid input from the user
                 try {
                     int age = Integer.parseInt(userAge.getText());
+                    //Age Can't be Negative or 0
                     if (age <= 0) {
                         leftStatus.setText("Please Enter A Positive Number For age");
                         leftStatus.setTextFill(Color.RED);
                         rightStatus.setText("");
                     } else {
+                        //Weight Can't be Negative or 0
                         try {
-                            double weight = Double.parseDouble(userWeight.getText());
+                            //If the option chosen is kilograms
+                            if (weightChoice.getValue().equals("KG")) {
+                                weight = Double.parseDouble(userWeight.getText());
+                            }
+                            //If the option chosen is anything else
+                            else {
+                                //Converting the lbs to kg
+                                weight = 2.2 * Double.parseDouble(userWeight.getText());
+                            }
                             if (weight <= 0) {
                                 leftStatus.setText("Please Enter A Positive Number For Weight");
                                 leftStatus.setTextFill(Color.RED);
                                 rightStatus.setText("");
                             } else {
                                 try {
-                                    double height = Double.parseDouble(userHeight.getText());
+                                    //If height is cm
+                                    if (heightChoice.getValue().equals("C.M.")) {
+                                        height = Double.parseDouble(userHeight.getText());
+                                    } else {
+                                        //Converting meter to cm
+                                        height = 100 * Double.parseDouble(userHeight.getText());
+                                    }
                                     if (height <= 0) {
                                         leftStatus.setText("Please Enter A Positive Number For Height");
                                         leftStatus.setTextFill(Color.RED);
                                         rightStatus.setText("");
                                     } else {
                                         try {
+                                            //Creating the user
                                             user = new User(name, gender, age, weight, height);
                                             userInfo.put(num, user);
                                             leftStatus.setText("");
                                             rightStatus.setText("User Added! Choose from menu");
                                             rightStatus.setTextFill(Color.GREEN);
+                                            viewDetails.setText("");
                                         } catch (Exception e) {
                                             leftStatus.setText("Couldn't add user");
                                             leftStatus.setTextFill(Color.RED);
