@@ -6,7 +6,7 @@
  * * Date: 1 March 2022
  * * Demo 2 Tutorial 05
  */
-package Util;
+package mvh.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
