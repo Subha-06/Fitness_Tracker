@@ -162,7 +162,7 @@ public class MainController {
     }
 
     @FXML
-    void viewInfo(ActionEvent event) {
+    void viewInfo() {
         try {
             int num = viewUserNumber.getValue();
 
@@ -179,12 +179,12 @@ public class MainController {
     }
 
     @FXML
-    void viewExercise(ActionEvent event) {
+    void viewExercise() {
 
     }
 
     @FXML
-    void viewBMI(ActionEvent event){
+    void viewBMI(){
         int num = viewUserNumber.getValue();
         boolean keyCheck = userInfo.containsKey(num);
         try {
@@ -226,13 +226,6 @@ public class MainController {
         } catch (NullPointerException e){
             leftStatus.setText("No user found!");
             rightStatus.setText("Input user info");
-
         }
     }
-
-
-
-
-
-
 }
