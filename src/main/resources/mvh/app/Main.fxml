@@ -53,8 +53,8 @@
                         <TextField fx:id="userAge" layoutX="65.0" layoutY="110.0" prefHeight="25.0" prefWidth="150.0" />
                         <Label layoutX="10.0" layoutY="145.0" text="Gender" />
                         <Label layoutX="10.0" layoutY="175.0" text="Weight" />
-                        <TextField fx:id="userWeight" layoutX="65.0" layoutY="170.0" prefHeight="25.0" prefWidth="150.0" />
-                        <TextField fx:id="userHeight" layoutX="65.0" layoutY="200.0" prefHeight="25.0" prefWidth="150.0" />
+                        <TextField fx:id="userWeight" layoutX="65.0" layoutY="170.0" prefHeight="25.0" prefWidth="70.0" />
+                        <TextField fx:id="userHeight" layoutX="65.0" layoutY="200.0" prefHeight="25.0" prefWidth="70.0" />
                         <Label layoutX="10.0" layoutY="205.0" text="Height" />
                         <Button layoutX="15.0" layoutY="239.0" mnemonicParsing="false" onAction="#createUser" prefWidth="70.0" text="Add User" />
                         <ChoiceBox fx:id="userGender" layoutX="65.0" layoutY="140.0" prefHeight="25.0" prefWidth="150.0" />
@@ -71,6 +71,8 @@
                   <Label layoutX="10.0" layoutY="455.0" text="Amount" />
                   <ChoiceBox fx:id="calorieUser" layoutX="65.0" layoutY="420.0" prefWidth="150.0" />
                   <TextField fx:id="calorieAmount" layoutX="65.0" layoutY="450.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="weightChoice" layoutX="145.0" layoutY="170.0" prefWidth="70.0" />
+                  <ChoiceBox fx:id="heightChoice" layoutX="145.0" layoutY="200.0" prefWidth="70.0" />
                     </children>
                 </AnchorPane>
             <AnchorPane maxWidth="-Infinity" prefWidth="300.0">
