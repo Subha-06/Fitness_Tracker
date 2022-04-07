@@ -153,7 +153,7 @@ public class Calculations {
      *
      * @param calInfo The arraylist containing the data read from the saved file
      */
-    public static void getMaxCalories(ArrayList<String> calInfo) {
+    public static int getMaxCalories(ArrayList<String> calInfo) {
 
         ArrayList<Integer> calories = new ArrayList<>();
         //Loop through the arrayList and add information
@@ -167,6 +167,6 @@ public class Calculations {
         }
         //Sorting to get calories in a order.
         Collections.sort(calories);
-        System.out.println("The highest number of calories burnt in a day: " + calories.get(calories.size() - 1));
+        return calories.get(calories.size() - 1);
     }
 }

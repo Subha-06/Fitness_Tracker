@@ -93,9 +93,10 @@ public class Reader {
             //Reading lines until the file is empty.
             String line = b_reader.readLine();
             outInfo = new ArrayList<>();
+            String[] readInfo = line.split(",");
             while (line != null) {
                 //Adding the information to the arraylist.
-                outInfo.add(line);
+                outInfo.add(readInfo[1]);
                 line = b_reader.readLine();
             }
         }

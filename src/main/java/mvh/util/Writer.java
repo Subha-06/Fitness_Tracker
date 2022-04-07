@@ -20,8 +20,7 @@ public class Writer {
      *
      * @param out_info The information that the user wants to save in a file
      */
-    public static void writer(int out_info) throws IOException {
-
+    public static void writer(int userNumber, int out_info) throws IOException {
 
         File newFile = new File("User.txt");
         //If file does not exist create new file
@@ -34,7 +33,7 @@ public class Writer {
                 FileWriter f_writer = new FileWriter(newFile, true);
                 BufferedWriter b_writer = new BufferedWriter(f_writer);
 
-                b_writer.write(out_info + "\n");
+                b_writer.write(userNumber + "," + out_info + "\n");
 
                 b_writer.flush();
             } catch (IOException e) {

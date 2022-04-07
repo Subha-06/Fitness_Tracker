@@ -15,16 +15,17 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import mvh.user.User;
 import mvh.util.Reader;
+import mvh.util.Writer;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainController {
 
     private User user;
     public static HashMap<Integer, Object> userInfo = new HashMap<>();
-    public static HashMap<Integer, Object> readerInfo = new HashMap<>();
     @FXML
     private ChoiceBox<Integer> userNumber;
     @FXML
@@ -138,16 +139,6 @@ public class MainController {
         viewInfoType.setValue("View BMI");
         viewInfoType.getItems().addAll("View BMI", "View Weight Status");
         choiceOfSpeed.setValue("6-7 km/h");
-    }
-
-    @FXML
-    void addCalorieBurnt() {
-
-    }
-
-    @FXML
-    void viewCalorieInfo() {
-
     }
 
     /**
@@ -574,6 +565,76 @@ public class MainController {
             leftStatus.setText("No user found!");
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("Input user info");
+            rightStatus.setTextFill(Color.RED);
+        }
+    }
+
+    @FXML
+    void addCalorieBurnt() {
+
+        try {
+            int calorie = Integer.parseInt(calorieAmount.getText());
+            int userNumber = calorieUser.getValue();
+
+            Writer.writer(userNumber, calorie);
+            leftStatus.setText("Calorie added to file!");
+            leftStatus.setTextFill(Color.GREEN);
+
+        } catch (IOException e) {
+            leftStatus.setText("Cannot be added to file!");
+            leftStatus.setTextFill(Color.RED);
+            rightStatus.setText("");
+        }
+    }
+
+    @FXML
+    void viewCalorieInfo() {
+        userNumberInt = viewUserNumber.getValue();
+        keyCheck = userInfo.containsKey(userNumberInt);
+
+        try {
+            if (calorieViewType.getValue().equals("Total Calorie Lost")) {
+                if (keyCheck) {
+
+                    ArrayList<String> calorieInfo = Reader.outReader();
+
+                    int totalCalories = mvh.util.Calculations.getTotalCalories(calorieInfo);
+
+                    viewDetails.setText("Total calories lost " + totalCalories);
+                    leftStatus.setText("Requested info shown!");
+                    leftStatus.setTextFill(Color.GREEN);
+                    rightStatus.setText("Check the view box");
+                    rightStatus.setTextFill(Color.GREEN);
+
+                } else {
+                    leftStatus.setText("No user found!");
+                    leftStatus.setTextFill(Color.RED);
+                    rightStatus.setText("Enter valid user number");
+                    rightStatus.setTextFill(Color.RED);
+                }
+            } else {
+                if (keyCheck) {
+
+                    ArrayList<String> calorieInfo = Reader.outReader();
+
+                    int maxCalories = mvh.util.Calculations.getMaxCalories(calorieInfo);
+                    viewDetails.setText("Max calories lost in a day " + maxCalories);
+                    leftStatus.setText("Requested info shown!");
+                    leftStatus.setTextFill(Color.GREEN);
+                    rightStatus.setText("Check the view box");
+                    rightStatus.setTextFill(Color.GREEN);
+
+                } else {
+                    leftStatus.setText("No user found!");
+                    leftStatus.setTextFill(Color.RED);
+                    rightStatus.setText("Enter valid user number");
+                    rightStatus.setTextFill(Color.RED);
+                }
+            }
+        } catch (IOException e) {
+            leftStatus.setText("No user found!");
+            leftStatus.setTextFill(Color.RED);
+            rightStatus.setText("Enter correct user number");
             rightStatus.setTextFill(Color.RED);
         }
     }
