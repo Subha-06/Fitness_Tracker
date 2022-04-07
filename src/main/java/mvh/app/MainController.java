@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import mvh.user.User;
 import mvh.util.Reader;
 import mvh.util.Writer;
@@ -433,6 +434,44 @@ public class MainController {
     }
 
     @FXML
+    void addToFile() {
+
+        userNumberInt = userNumber.getValue();
+        keyCheck = userInfo.containsKey(userNumberInt);
+        if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
+            leftStatus.setText("Please Enter All Information To Change Data");
+            leftStatus.setTextFill(Color.RED);
+            rightStatus.setText("");
+            viewDetails.setText("");
+        } else {
+            try {
+                String name = userName.getText();
+                String age = userAge.getText();
+                String gender = String.valueOf(userGender.getValue().charAt(0));
+                String weight = userWeight.getText();
+                String height = userHeight.getText();
+
+                try {
+                    Writer.fileWriter(keyCheck, userNumberInt, name, age, gender, weight, height);
+                    leftStatus.setText("User Info added to file!");
+                    leftStatus.setTextFill(Color.GREEN);
+                    rightStatus.setText("");
+
+                } catch (IOException e) {
+                    leftStatus.setText("File cannot be found!");
+                    leftStatus.setTextFill(Color.RED);
+                    rightStatus.setText("");
+
+                }
+            } catch (NullPointerException e) {
+                leftStatus.setText("Please Enter All Information");
+                leftStatus.setTextFill(Color.RED);
+                rightStatus.setText("");
+            }
+        }
+    }
+
+    @FXML
     void exerciseSpeed() {
         if (exerciseChoice.getValue().equals("Running")) {
             choiceOfSpeed.getItems().clear();
@@ -657,6 +696,32 @@ public class MainController {
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("Choose a new file");
             rightStatus.setTextFill(Color.RED);
+        }
+    }
+
+    @FXML
+    void saveButton() {
+        //File chooser setup
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("."));
+        fileChooser.setInitialFileName("UserInfo.txt");
+        File fileSave = fileChooser.showSaveDialog(new Stage());
+        System.out.println(fileSave);
+
+        //Surrounding with a try/catch to handle exceptions
+        //Calling the writer to write the world information in it
+        try {
+            leftStatus.setText("User file saved successfully!");
+            leftStatus.setTextFill(Color.GREEN);
+            rightStatus.setText("User info saved");
+            rightStatus.setTextFill(Color.GREEN);
+
+            //Catching exception
+        } catch(Exception e) {
+            leftStatus.setText("File couldn't be created");
+            leftStatus.setTextFill(Color.RED);
+            rightStatus.setText("File not saved!");
+            leftStatus.setTextFill(Color.RED);
         }
     }
 

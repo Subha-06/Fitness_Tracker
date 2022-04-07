@@ -8,6 +8,9 @@
  */
 package mvh.util;
 
+import mvh.app.MainController;
+import mvh.user.User;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -43,4 +46,42 @@ public class Writer {
             System.err.println("Cannot access the file to write it!");
         }
     }
+
+    public static void fileWriter(Boolean keyCheck, int userNumber, String userName, String userAge, String userGender, String userWeight, String userHeight) throws IOException {
+
+        File newFile = new File("UserInfo.txt");
+        newFile.createNewFile();
+
+        //Checking if the file exist and can write on it
+        if (newFile.exists() && newFile.canWrite()) {
+            try {
+                FileWriter f_writer = new FileWriter(newFile, true);
+                BufferedWriter b_writer = new BufferedWriter(f_writer);
+
+                if (keyCheck) {
+                    User user = (User) MainController.userInfo.get(userNumber);
+
+                    String name = user.getUserName();
+                    String age = String.valueOf(user.getUserAge());
+                    String gender = String.valueOf(user.getUserGender().charAt(0));
+                    String weight = String.valueOf(user.getUserWeight());
+                    String height = String.valueOf(user.getUserHeight());
+
+
+                    b_writer.write(userNumber + "," + name + "," + age + "," + gender + "," + weight + "," + height);
+                    b_writer.newLine();
+                    b_writer.flush();
+
+                } else if (!keyCheck){
+
+                    b_writer.write(userNumber + "," + userName + "," + userAge + "," + userGender + "," + userWeight + "," + userHeight);
+                    b_writer.newLine();
+                    b_writer.flush();
+                }
+            } catch (IOException e) {
+                System.err.println("File not found");
+            }
+        }
+    }
+
 }
