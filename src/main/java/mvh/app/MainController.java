@@ -74,7 +74,9 @@ public class MainController {
         //User Input User Number
         userNumber.getItems().clear();
         userNumber.setValue(1);
-        userNumber.getItems().addAll(1, 2, 3, 4, 5);
+        for (int i = 1; i <= 50; i++) {
+            userNumber.getItems().add(i);
+        }
         //User Gender
         userGender.getItems().clear();
         userGender.setValue("Male");
@@ -91,7 +93,10 @@ public class MainController {
         //User number to add calorie burnt for
         calorieUser.getItems().clear();
         calorieUser.setValue(1);
-        calorieUser.getItems().addAll(1, 2, 3, 4, 5);
+        //Loop to add choices up to 50
+        for (int i = 1; i <= 50; i++) {
+            calorieUser.getItems().add(i);
+        }
         //Weight to be lost
         weightChoice.getItems().clear();
         weightChoice.setValue("KG");
@@ -107,7 +112,10 @@ public class MainController {
         //View Info user number
         viewUserNumber.getItems().clear();
         viewUserNumber.setValue(1);
-        viewUserNumber.getItems().addAll(1, 2, 3, 4, 5);
+        //Loop to add choices up to 50
+        for (int i = 1; i <= 50; i++) {
+            viewUserNumber.getItems().add(i);
+        }
         //BMI View
         viewInfoType.getItems().clear();
         viewInfoType.setValue("View BMI");
