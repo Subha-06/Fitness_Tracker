@@ -12,14 +12,19 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import mvh.user.User;
+import mvh.util.Reader;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class MainController {
 
     private User user;
     public static HashMap<Integer, Object> userInfo = new HashMap<>();
+    public static HashMap<Integer, Object> readerInfo = new HashMap<>();
     @FXML
     private ChoiceBox<Integer> userNumber;
     @FXML
@@ -573,6 +578,26 @@ public class MainController {
         }
     }
 
+    @FXML
+    void loadButton(){
+        //File chooser setup
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open File");
+        File file = fileChooser.showOpenDialog(null);
+
+        try {
+            Reader.reader(file);
+            leftStatus.setText("User info read from file");
+            leftStatus.setTextFill(Color.GREEN);
+            rightStatus.setText("");
+
+        } catch (IOException e) {
+            leftStatus.setText("File cannot be read!");
+            leftStatus.setTextFill(Color.RED);
+            rightStatus.setText("Choose a new file");
+            rightStatus.setTextFill(Color.RED);
+        }
+    }
 
     /**
      * Shows the information of the creator of the program.

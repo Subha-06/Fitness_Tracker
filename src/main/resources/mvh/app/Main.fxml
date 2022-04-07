@@ -17,14 +17,15 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvh.app.MainController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvh.app.MainController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                  <MenuItem mnemonicParsing="false" text="Load" />
-                        <MenuItem mnemonicParsing="false" onAction="#closeButton" text="Quit" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadButton" text="Load" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeButton" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeButton" text="Quit" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" onAction="#viewAbout" text="Help">
