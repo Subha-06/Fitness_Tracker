@@ -60,6 +60,8 @@ public class MainController {
     private TextArea viewDetails;
     @FXML
     private TextField weightExercise;
+    @FXML
+    private int userNumberInt;
 
     @FXML
     public void initialize() {
@@ -121,14 +123,22 @@ public class MainController {
 
     @FXML
     private void createUser() {
+        userNumberInt = viewUserNumber.getValue();
         try {
             //IF any of the field is empty the program will show an Error.
-            if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
+            if (userName.getText().isBlank() || userAge.getText().isBlank() || userWeight.getText().isBlank() || userHeight.getText().isBlank()) {
                 leftStatus.setText("Please Enter All Information");
                 leftStatus.setTextFill(Color.RED);
                 rightStatus.setText("");
+                viewDetails.setText("");
+            }
+            //If the user Already Exists.
+            if (userInfo.get(userNumberInt) != null) {
+                leftStatus.setText("User Already Exists. Please Press Change Info");
+                rightStatus.setText("");
+                leftStatus.setTextFill(Color.RED);
+                viewDetails.setText("");
             } else {
-                int num = (userNumber.getValue());
                 String name = userName.getText();
                 String gender = String.valueOf(userGender.getValue());
                 //Trying To get valid input from the user
@@ -139,6 +149,7 @@ public class MainController {
                         leftStatus.setText("Please Enter A Positive Number For age");
                         leftStatus.setTextFill(Color.RED);
                         rightStatus.setText("");
+                        viewDetails.setText("");
                     } else {
                         //Weight Can't be Negative or 0
                         try {
@@ -156,6 +167,7 @@ public class MainController {
                                 leftStatus.setText("Please Enter A Positive Number For Weight");
                                 leftStatus.setTextFill(Color.RED);
                                 rightStatus.setText("");
+                                viewDetails.setText("");
                             } else {
                                 try {
                                     //If height is cm
@@ -170,11 +182,12 @@ public class MainController {
                                         leftStatus.setText("Please Enter A Positive Number For Height");
                                         leftStatus.setTextFill(Color.RED);
                                         rightStatus.setText("");
+                                        viewDetails.setText("");
                                     } else {
                                         try {
                                             //Creating the user
                                             user = new User(name, gender, age, weight, height);
-                                            userInfo.put(num, user);
+                                            userInfo.put(userNumberInt, user);
 
                                             leftStatus.setText("");
                                             rightStatus.setText("User Added! Choose from menu");
@@ -223,39 +236,13 @@ public class MainController {
         }
     }
 
-    /**
-     * Shows the information of the creator of the program.
-     */
-    @FXML
-    void viewAbout() {
-        //Creating the alert box
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("About");
-        alert.setHeaderText("About Author");
-        alert.setContentText("""
-                Author: Amasil Rahim Zihad & Fabiha Fairuzz Subha
-                Version: 3.7
-                This is fitness tracking program.""");
-        //Showing the alert
-        alert.showAndWait();
-
-    }
-
-    /**
-     * Allows the user to quit the program.
-     */
-
-    @FXML
-    void closeButton() {
-        Platform.exit();
-    }
 
     @FXML
     void viewInfo() {
         try {
-            int num = viewUserNumber.getValue();
+            userNumberInt = viewUserNumber.getValue();
 
-            viewDetails.setText(userInfo.get(num).toString());
+            viewDetails.setText(userInfo.get(userNumberInt).toString());
             leftStatus.setText("User Info Printed!");
             leftStatus.setTextFill(Color.GREEN);
             rightStatus.setText("View above");
@@ -277,14 +264,14 @@ public class MainController {
         String choice = exerciseChoice.getValue();
         String speed = choiceOfSpeed.getValue();
 
-        int num = viewUserNumber.getValue();
-        boolean keyCheck = userInfo.containsKey(num);
+        userNumberInt = viewUserNumber.getValue();
+        boolean keyCheck = userInfo.containsKey(userNumberInt);
 
         try {
             if (keyCheck) {
-                user = (User) userInfo.get(num);
+                user = (User) userInfo.get(userNumberInt);
                 double weight = user.getUserWeight();
-                
+
                 if (weightExercise.getText().isBlank()) {
                     leftStatus.setText("Invalid Input");
                     leftStatus.setTextFill(Color.RED);
@@ -311,7 +298,7 @@ public class MainController {
                 rightStatus.setText("Enter valid user number");
                 rightStatus.setTextFill(Color.RED);
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             leftStatus.setText("No user found!");
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("Input user info");
@@ -321,14 +308,14 @@ public class MainController {
 
     @FXML
     void viewBMI() {
-        int num = viewUserNumber.getValue();
-        boolean keyCheck = userInfo.containsKey(num);
+        userNumberInt = viewUserNumber.getValue();
+        boolean keyCheck = userInfo.containsKey(userNumberInt);
         try {
             if (viewInfoType.getValue().equals("View BMI")) {
 
                 if (keyCheck) {
 
-                    user = (User) userInfo.get(num);
+                    user = (User) userInfo.get(userNumberInt);
                     double weight = user.getUserWeight();
                     double height = user.getUserHeight();
 
@@ -348,7 +335,7 @@ public class MainController {
             } else {
                 if (keyCheck) {
 
-                    user = (User) userInfo.get(num);
+                    user = (User) userInfo.get(userNumberInt);
                     double weight = user.getUserWeight();
                     double height = user.getUserHeight();
 
@@ -371,5 +358,33 @@ public class MainController {
             rightStatus.setText("Input user info");
             rightStatus.setTextFill(Color.RED);
         }
+    }
+
+
+    /**
+     * Shows the information of the creator of the program.
+     */
+    @FXML
+    void viewAbout() {
+        //Creating the alert box
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About");
+        alert.setHeaderText("About Author");
+        alert.setContentText("""
+                Author: Amasil Rahim Zihad & Fabiha Fairuzz Subha
+                Version: 3.7
+                This is fitness tracking program.""");
+        //Showing the alert
+        alert.showAndWait();
+
+    }
+
+    /**
+     * Allows the user to quit the program.
+     */
+
+    @FXML
+    void closeButton() {
+        Platform.exit();
     }
 }
