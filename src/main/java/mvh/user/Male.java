@@ -43,6 +43,6 @@ public class Male extends User {
                 Age: %s\s
                 Weight in Kgs: %s\s
                 Height in centimeters: %s\s
-                """, userName, userGender, userAge, userWeight, userHeight);
+                """, userName, userGender, (int) userAge, (int) userWeight, (int) userHeight);
     }
 }
