@@ -62,6 +62,8 @@ public class MainController {
     private TextField weightExercise;
     @FXML
     private int userNumberInt;
+    @FXML
+    private boolean keyCheck;
 
     /**
      * Starts the program and puts the choices in the choiceBox.
@@ -149,9 +151,8 @@ public class MainController {
 
     @FXML
     private void createUser() {
-        userNumberInt = userNumber.getValue();
-
         try {
+            userNumberInt = userNumber.getValue();
             //IF any of the field is empty the program will show an Error.
             if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
                 leftStatus.setText("Please Enter All Information to Add User");
@@ -253,9 +254,9 @@ public class MainController {
 
     @FXML
     private void changeUser() {
-        userNumberInt = userNumber.getValue();
-        boolean keyCheck = userInfo.containsKey(userNumberInt);
         try {
+            userNumberInt = userNumber.getValue();
+            keyCheck = userInfo.containsKey(userNumberInt);
             //IF any of the field is empty the program will show an Error.
             if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
                 leftStatus.setText("Please Enter All Information To Change Data");
@@ -477,7 +478,7 @@ public class MainController {
         String speed = choiceOfSpeed.getValue();
 
         userNumberInt = viewUserNumber.getValue();
-        boolean keyCheck = userInfo.containsKey(userNumberInt);
+        keyCheck = userInfo.containsKey(userNumberInt);
 
         try {
             if (keyCheck) {
@@ -521,7 +522,7 @@ public class MainController {
     @FXML
     void viewBMI() {
         userNumberInt = viewUserNumber.getValue();
-        boolean keyCheck = userInfo.containsKey(userNumberInt);
+        keyCheck = userInfo.containsKey(userNumberInt);
         try {
             if (viewInfoType.getValue().equals("View BMI")) {
 
