@@ -71,24 +71,29 @@ public class MainController {
         //Setting Up the choice boxes with the required options
         //Clear will make sure the options aren't repeated
         //Set to get a default value
+
         //User Input User Number
         userNumber.getItems().clear();
         userNumber.setValue(1);
         for (int i = 1; i <= 50; i++) {
             userNumber.getItems().add(i);
         }
+
         //User Gender
         userGender.getItems().clear();
         userGender.setValue("Male");
         userGender.getItems().addAll("Male", "Female", "Preferred not to say");
+
         //User weight input kg or lb
         exerciseKGLB.getItems().clear();
         exerciseKGLB.setValue("KG");
         exerciseKGLB.getItems().addAll("KG", "LB");
+
         //User input height, cm or meter.
         heightChoice.getItems().clear();
         heightChoice.setValue("C.M.");
         heightChoice.getItems().addAll("C.M.", "Meter");
+
         //Special option
         //User number to add calorie burnt for
         calorieUser.getItems().clear();
@@ -97,18 +102,22 @@ public class MainController {
         for (int i = 1; i <= 50; i++) {
             calorieUser.getItems().add(i);
         }
+
         //Weight to be lost
         weightChoice.getItems().clear();
         weightChoice.setValue("KG");
         weightChoice.getItems().addAll("KG", "LB");
+
         //Calorie view option
         calorieViewType.getItems().clear();
         calorieViewType.setValue("Total Calorie Lost");
         calorieViewType.getItems().addAll("Total Calorie Lost", "Most amount burnt");
+
         //Exercise selection option
         exerciseChoice.getItems().clear();
         exerciseChoice.setValue("Running");
         exerciseChoice.getItems().addAll("Running", "Cycling");
+
         //View Info user number
         viewUserNumber.getItems().clear();
         viewUserNumber.setValue(1);
@@ -116,6 +125,7 @@ public class MainController {
         for (int i = 1; i <= 50; i++) {
             viewUserNumber.getItems().add(i);
         }
+
         //BMI View
         viewInfoType.getItems().clear();
         viewInfoType.setValue("View BMI");
