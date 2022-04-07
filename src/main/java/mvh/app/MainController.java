@@ -63,44 +63,52 @@ public class MainController {
     @FXML
     private int userNumberInt;
 
+    /**
+     * Starts the program and puts the choices in the choiceBox.
+     */
     @FXML
     public void initialize() {
-        exerciseKGLB.getItems().clear();
-        exerciseKGLB.setValue("KG");
-        exerciseKGLB.getItems().addAll("KG", "LB");
-
-        weightChoice.getItems().clear();
-        weightChoice.setValue("KG");
-        weightChoice.getItems().addAll("KG", "LB");
-
-        heightChoice.getItems().clear();
-        heightChoice.setValue("C.M.");
-        heightChoice.getItems().addAll("C.M.", "Meter");
-
-        calorieViewType.getItems().clear();
-        calorieViewType.setValue("Total Calorie Lost");
-        calorieViewType.getItems().addAll("Total Calorie Lost", "Most amount burnt");
-
-        exerciseChoice.getItems().clear();
-        exerciseChoice.setValue("Running");
-        exerciseChoice.getItems().addAll("Running", "Cycling");
-
-        calorieUser.getItems().clear();
-        calorieUser.setValue(1);
-        calorieUser.getItems().addAll(1, 2, 3, 4, 5);
-
+        //Setting Up the choice boxes with the required options
+        //Clear will make sure the options aren't repeated
+        //Set to get a default value
+        //User Input User Number
         userNumber.getItems().clear();
         userNumber.setValue(1);
         userNumber.getItems().addAll(1, 2, 3, 4, 5);
-
+        //User Gender
         userGender.getItems().clear();
         userGender.setValue("Male");
         userGender.getItems().addAll("Male", "Female", "Preferred not to say");
-
+        //User weight input kg or lb
+        exerciseKGLB.getItems().clear();
+        exerciseKGLB.setValue("KG");
+        exerciseKGLB.getItems().addAll("KG", "LB");
+        //User input height, cm or meter.
+        heightChoice.getItems().clear();
+        heightChoice.setValue("C.M.");
+        heightChoice.getItems().addAll("C.M.", "Meter");
+        //Special option
+        //User number to add calorie burnt for
+        calorieUser.getItems().clear();
+        calorieUser.setValue(1);
+        calorieUser.getItems().addAll(1, 2, 3, 4, 5);
+        //Weight to be lost
+        weightChoice.getItems().clear();
+        weightChoice.setValue("KG");
+        weightChoice.getItems().addAll("KG", "LB");
+        //Calorie view option
+        calorieViewType.getItems().clear();
+        calorieViewType.setValue("Total Calorie Lost");
+        calorieViewType.getItems().addAll("Total Calorie Lost", "Most amount burnt");
+        //Exercise selection option
+        exerciseChoice.getItems().clear();
+        exerciseChoice.setValue("Running");
+        exerciseChoice.getItems().addAll("Running", "Cycling");
+        //View Info user number
         viewUserNumber.getItems().clear();
         viewUserNumber.setValue(1);
         viewUserNumber.getItems().addAll(1, 2, 3, 4, 5);
-
+        //BMI View
         viewInfoType.getItems().clear();
         viewInfoType.setValue("View BMI");
         viewInfoType.getItems().addAll("View BMI", "View Weight Status");
