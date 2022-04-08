@@ -74,8 +74,6 @@ public class MainController {
     private double weight;
     @FXML
     private double height;
-    @FXML
-    private int weightGoal;
 
     /**
      * Starts the program and puts the choices in the choiceBox.
@@ -306,7 +304,7 @@ public class MainController {
     void changeUser() {
         try {
             //Getting the user number
-            userNumberInt = viewUserNumber.getValue();
+            userNumberInt = userNumber.getValue();
             //Checking if that user exists or not
             keyCheck = userInfo.containsKey(userNumberInt);
             //If any of the field is empty the program will show an Error.
@@ -689,7 +687,7 @@ public class MainController {
     void viewExercise() {
         try {
             //Getting the user number
-            userNumberInt = userNumber.getValue();
+            userNumberInt = viewUserNumber.getValue();
             keyCheck = userInfo.containsKey(userNumberInt);
             try {
                 if (weightExercise.getText().equals("")) {
@@ -699,7 +697,7 @@ public class MainController {
                     viewDetails.setText("");
                 } else {
                     try {
-                        weightGoal = Integer.parseInt(weightExercise.getText());
+                        int weightGoal = Integer.parseInt(weightExercise.getText());
                         if (weightGoal <= 0) {
                             leftStatus.setText("Please Enter A Positive Weight Goal");
                             leftStatus.setTextFill(Color.RED);
@@ -710,8 +708,6 @@ public class MainController {
                             String choice = exerciseChoice.getValue();
                             //Getting the speed of exercise
                             String speed = choiceOfSpeed.getValue();
-                            //Getting the user number
-                            userNumberInt = viewUserNumber.getValue();
                             //Checking if that user exists or not
                             if (keyCheck) {
                                 //Getting the user info associated with the user number
@@ -740,10 +736,7 @@ public class MainController {
 
                                     rightStatus.setText("Requested info shown!");
                                     rightStatus.setTextFill(Color.GREEN);
-
                                 }
-
-
                             } else {
                                 leftStatus.setText("No user Information found! Add user or Load From File");
                                 leftStatus.setTextFill(Color.RED);
@@ -766,8 +759,7 @@ public class MainController {
                 rightStatus.setText("");
                 viewDetails.setText("");
             }
-        } catch (
-                Exception e) {
+        } catch (Exception e) {
             leftStatus.setText("No user Information found! Add user or Load From File");
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("");
@@ -797,10 +789,9 @@ public class MainController {
 
                     viewDetails.setText("Your BMI is " + Calculations.bmi(weight, height));
 
-                    leftStatus.setText("Requested info shown!");
-                    leftStatus.setTextFill(Color.GREEN);
-                    rightStatus.setText("Check the view box");
+                    rightStatus.setText("Requested info shown!");
                     rightStatus.setTextFill(Color.GREEN);
+                    leftStatus.setText("");
                 } else {
                     leftStatus.setText("No user Information found! Add user or Load From File");
                     leftStatus.setTextFill(Color.RED);
@@ -819,10 +810,9 @@ public class MainController {
 
                     viewDetails.setText(Calculations.bmiCompare(weight, height));
 
-                    leftStatus.setText("Requested info shown!");
-                    leftStatus.setTextFill(Color.GREEN);
-                    rightStatus.setText("Check the view box");
+                    rightStatus.setText("Requested info shown!");
                     rightStatus.setTextFill(Color.GREEN);
+                    leftStatus.setText("");
                 } else {
                     leftStatus.setText("No user Information found! Add user or Load From FileNo user Information found");
                     leftStatus.setTextFill(Color.RED);
