@@ -3,8 +3,8 @@
  * *Members:
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
- * * Date: 1 March 2022
- * * Demo 2 Tutorial 05
+ * * Date: 8th April 2022
+ * * Demo 3 Tutorial 05
  */
 package mvh.app;
 
@@ -23,6 +23,7 @@ import java.util.*;
 
 public class MainController {
 
+    //Store the data of user
     private User user;
     public static HashMap<Integer, Object> userInfo = new HashMap<>();
     @FXML
@@ -86,7 +87,7 @@ public class MainController {
         //User Input User Number
         userNumber.getItems().clear();
         userNumber.setValue(1);
-        for (int i = 1; i <= 50; i++) {
+        for (int i = 1; i <= 10; i++) {
             userNumber.getItems().add(i);
         }
 
@@ -110,7 +111,7 @@ public class MainController {
         calorieUser.getItems().clear();
         calorieUser.setValue(1);
         //Loop to add choices up to 50
-        for (int i = 1; i <= 50; i++) {
+        for (int i = 1; i <= 10; i++) {
             calorieUser.getItems().add(i);
         }
 
@@ -133,7 +134,7 @@ public class MainController {
         viewUserNumber.getItems().clear();
         viewUserNumber.setValue(1);
         //Loop to add choices up to 50
-        for (int i = 1; i <= 50; i++) {
+        for (int i = 1; i <= 10; i++) {
             viewUserNumber.getItems().add(i);
         }
 
@@ -166,7 +167,6 @@ public class MainController {
     /**
      * Adding an User
      */
-
     @FXML
     void createUser() {
         try {
@@ -263,6 +263,7 @@ public class MainController {
                                                 rightStatus.setText("");
                                             }
                                         }
+                                    //Exception handled
                                     } catch (Exception e) {
                                         leftStatus.setText("Enter A Positive Number for height");
                                         leftStatus.setTextFill(Color.RED);
@@ -270,6 +271,7 @@ public class MainController {
                                         viewDetails.setText("");
                                     }
                                 }
+                            //Exception handled
                             } catch (Exception e) {
                                 leftStatus.setText("Enter A Positive Number for weight");
                                 leftStatus.setTextFill(Color.RED);
@@ -277,6 +279,7 @@ public class MainController {
                                 viewDetails.setText("");
                             }
                         }
+                    //Exception handled
                     } catch (Exception e) {
                         leftStatus.setText("Enter A Positive Number for age");
                         leftStatus.setTextFill(Color.RED);
@@ -285,6 +288,7 @@ public class MainController {
                     }
                 }
             }
+        //Exception handled
         } catch (Exception e) {
             leftStatus.setText("Please Enter All Information");
             leftStatus.setTextFill(Color.RED);
@@ -296,7 +300,6 @@ public class MainController {
     /**
      * Change the information of a user
      */
-
     @FXML
     void changeUser() {
         try {
@@ -304,7 +307,7 @@ public class MainController {
             userNumberInt = viewUserNumber.getValue();
             //Checking if that user exists or not
             keyCheck = userInfo.containsKey(userNumberInt);
-            //IF any of the field is empty the program will show an Error.
+            //If any of the field is empty the program will show an Error.
             if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
                 leftStatus.setText("Please Enter All Information To Change Data");
                 leftStatus.setTextFill(Color.RED);
@@ -389,6 +392,7 @@ public class MainController {
                                                     viewDetails.setText("");
                                                 }
                                             }
+                                        //Exception handled
                                         } catch (Exception e) {
                                             leftStatus.setText("Enter A Positive Number for height");
                                             leftStatus.setTextFill(Color.RED);
@@ -396,6 +400,7 @@ public class MainController {
                                             viewDetails.setText("");
                                         }
                                     }
+                                //Exception handled
                                 } catch (Exception e) {
                                     leftStatus.setText("Enter A Positive Number for weight");
                                     leftStatus.setTextFill(Color.RED);
@@ -403,13 +408,14 @@ public class MainController {
                                     viewDetails.setText("");
                                 }
                             }
+                        //Exception handled
                         } catch (Exception e) {
                             leftStatus.setText("Enter A Positive Number for age");
                             leftStatus.setTextFill(Color.RED);
                             rightStatus.setText("");
                             viewDetails.setText("");
                         }
-
+                    //Exception handled
                     } catch (Exception e) {
                         leftStatus.setText("Please Enter All Information");
                         leftStatus.setTextFill(Color.RED);
@@ -497,6 +503,7 @@ public class MainController {
                                                 rightStatus.setText("");
                                             }
                                         }
+                                    //Exception handled
                                     } catch (Exception e) {
                                         leftStatus.setText("Enter A Positive Number for height");
                                         leftStatus.setTextFill(Color.RED);
@@ -504,6 +511,7 @@ public class MainController {
                                         viewDetails.setText("");
                                     }
                                 }
+                            //Exception handled
                             } catch (Exception e) {
                                 leftStatus.setText("Enter A Positive Number for weight");
                                 leftStatus.setTextFill(Color.RED);
@@ -511,6 +519,7 @@ public class MainController {
                                 viewDetails.setText("");
                             }
                         }
+                    //Exception handled
                     } catch (Exception e) {
                         leftStatus.setText("Enter A Positive Number for age");
                         leftStatus.setTextFill(Color.RED);
@@ -519,6 +528,7 @@ public class MainController {
                     }
                 }
             }
+        //Exception handled
         } catch (Exception e) {
             leftStatus.setText("Please Enter All Information");
             leftStatus.setTextFill(Color.RED);
@@ -527,6 +537,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Add the user information to a file
+     */
     @FXML
     void addToFile() {
         //Getting the user number
@@ -534,6 +547,7 @@ public class MainController {
         //Checking if that user exists or not
         keyCheck = userInfo.containsKey(userNumberInt);
 
+        //Checking if the user gave proper inputs
         if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
             leftStatus.setText("Please Enter All Information To Change Data");
             leftStatus.setTextFill(Color.RED);
@@ -541,6 +555,7 @@ public class MainController {
             viewDetails.setText("");
         } else {
             try {
+                //Getting the user information
                 String name = userName.getText();
                 String age = userAge.getText();
                 String gender = String.valueOf(userGender.getValue().charAt(0));
@@ -548,17 +563,20 @@ public class MainController {
                 String height = userHeight.getText();
 
                 try {
+                    //Writing the user info to a file
                     Writer.fileWriter(keyCheck, userNumberInt, name, age, gender, weight, height);
                     leftStatus.setText("User Info added to file!");
                     leftStatus.setTextFill(Color.GREEN);
                     rightStatus.setText("");
 
+                //Exception handled
                 } catch (IOException e) {
                     leftStatus.setText("File cannot be found!");
                     leftStatus.setTextFill(Color.RED);
                     rightStatus.setText("");
 
                 }
+            //Exception handled
             } catch (NullPointerException e) {
                 leftStatus.setText("Please Enter All Information");
                 leftStatus.setTextFill(Color.RED);
@@ -570,8 +588,6 @@ public class MainController {
     /**
      * Allows the user to view Information of a user
      */
-
-
     @FXML
     void viewInfo() {
         try {
@@ -582,6 +598,8 @@ public class MainController {
             rightStatus.setText("User Info Printed! View above");
             rightStatus.setTextFill(Color.GREEN);
             leftStatus.setText("");
+
+        //Exception handled
         } catch (Exception e) {
             leftStatus.setText("No user Information found");
             leftStatus.setTextFill(Color.RED);
@@ -590,6 +608,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Allows the user to choose their choice of exercise and get feedbacks
+     */
     @FXML
     void viewExercise() {
         try {
@@ -602,9 +623,11 @@ public class MainController {
             //Checking if that user exists or not
             keyCheck = userInfo.containsKey(userNumberInt);
             if (keyCheck) {
+                //Getting the user info associated with the user number
                 user = (User) userInfo.get(userNumberInt);
                 weight = user.getUserWeight();
 
+                //Checking if the user gave the weight input
                 if (weightExercise.getText().isBlank()) {
                     leftStatus.setText("Invalid Input");
                     leftStatus.setTextFill(Color.RED);
@@ -614,9 +637,10 @@ public class MainController {
                 } else {
                     int weight_loss = Integer.parseInt(weightExercise.getText());
 
-
+                    //Calling the estimate calories option method
                     int calories = mvh.util.Calculations.estimateCalories(weight_loss);
 
+                    //Calling the exercise option method
                     String exercise = mvh.util.Calculations.estimateExercise(speed, choice, calories, weight, weight_loss);
                     viewDetails.setText(exercise);
 
@@ -632,6 +656,7 @@ public class MainController {
                 viewDetails.setText("");
 
             }
+        //Exception handled
         } catch (NullPointerException e) {
             leftStatus.setText("No user Information found");
             leftStatus.setTextFill(Color.RED);
@@ -640,6 +665,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Allows the user to check their BMI
+     */
     @FXML
     void viewBMI() {
         try {
@@ -668,7 +696,6 @@ public class MainController {
                     rightStatus.setText("");
                     viewDetails.setText("");
                 }
-
             }
             //If the option chosen is weight status
             else {
@@ -692,6 +719,7 @@ public class MainController {
                     viewDetails.setText("");
                 }
             }
+        //Exception handled
         } catch (Exception e) {
             leftStatus.setText("No user Information found");
             leftStatus.setTextFill(Color.RED);
@@ -703,7 +731,6 @@ public class MainController {
     /**
      * Allows the user to add calories burnt to a file.
      */
-
     @FXML
     void addCalorieBurnt() {
         try {
@@ -732,12 +759,14 @@ public class MainController {
                         rightStatus.setTextFill(Color.GREEN);
                         leftStatus.setText("");
                     }
+                //Exception handled
                 } catch (Exception e) {
                     leftStatus.setText("Please Enter 0 or a positive number for calorie Amount");
                     leftStatus.setTextFill(Color.RED);
                     rightStatus.setText("");
                 }
             }
+        //Exception handled
         } catch (Exception e) {
             leftStatus.setText("Cannot be added to file!");
             leftStatus.setTextFill(Color.RED);
@@ -745,17 +774,23 @@ public class MainController {
         }
     }
 
+    /**
+     * Allows the user to check the calorie info of the user
+     */
     @FXML
     void viewCalorieInfo() {
         userNumberInt = viewUserNumber.getValue();
         keyCheck = userInfo.containsKey(userNumberInt);
 
         try {
+            //Getting the user choice
             if (calorieViewType.getValue().equals("Total Calorie Lost")) {
                 if (keyCheck) {
 
+                    //Creating a hashmap to store the calories of the user read from a file
                     HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
 
+                    //Calling the total calories method to get the output
                     int totalCalories = mvh.util.Calculations.getTotalCalories(userNumberInt, calorieInfo);
 
                     viewDetails.setText("Total calories lost " + totalCalories);
@@ -772,9 +807,10 @@ public class MainController {
                 }
             } else {
                 if (keyCheck) {
-
+                    //Creating a hashmap to store the calories of the user read from a file
                     HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
 
+                    //Calling the max calories method to get the output
                     int maxCalories = mvh.util.Calculations.getMaxCalories(userNumberInt, calorieInfo);
                     viewDetails.setText("Max calories lost in a day " + maxCalories);
                     leftStatus.setText("Requested info shown!");
@@ -789,6 +825,7 @@ public class MainController {
                     viewDetails.setText("");
                 }
             }
+        //Exception handled
         } catch (IOException e) {
             leftStatus.setText("No user Information found");
             leftStatus.setTextFill(Color.RED);
@@ -797,6 +834,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Allows the user to load a file and get user information from that file
+     */
     @FXML
     void loadButton() {
         //File chooser setup
@@ -805,11 +845,13 @@ public class MainController {
         File file = fileChooser.showOpenDialog(null);
 
         try {
+            //Calling the reader method to read the file the user has loaded
             Reader.reader(file);
             leftStatus.setText("User info read from file");
             leftStatus.setTextFill(Color.GREEN);
             rightStatus.setText("");
 
+        //Exception handled
         } catch (IOException e) {
             leftStatus.setText("File cannot be read!");
             leftStatus.setTextFill(Color.RED);
@@ -818,6 +860,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Allows the user to save the information of the user to a file
+     */
     @FXML
     void saveButton() {
         //File chooser setup
@@ -835,7 +880,7 @@ public class MainController {
             rightStatus.setText("User info saved");
             rightStatus.setTextFill(Color.GREEN);
 
-            //Catching exception
+        //Catching exception
         } catch (Exception e) {
             leftStatus.setText("File couldn't be created");
             leftStatus.setTextFill(Color.RED);
@@ -859,15 +904,14 @@ public class MainController {
                 This is fitness tracking program.""");
         //Showing the alert
         alert.showAndWait();
-
     }
 
     /**
      * Allows the user to quit the program.
      */
-
     @FXML
     void closeButton() {
+        //Exiting the application
         Platform.exit();
     }
 }
