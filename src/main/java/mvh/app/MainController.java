@@ -884,60 +884,63 @@ public class MainController {
     @FXML
     void viewCalorieInfo() {
         userNumberInt = viewUserNumber.getValue();
-        System.out.println(userNumberInt);
+        keyCheck = userInfo.containsKey(userNumberInt);
         try {
             //Creating a hashmap to store the calories of the user read from a file
             //Checking if the file has that key
-//            keyCheck = calorieInfo.containsKey(userNumberInt);
             //Getting the user choice
             if (calorieViewType.getValue().equals("Total Calorie Lost")) {
-//                if (keyCheck) {
-                try {
-                    HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
-                    //Calling the total calories' method to get the output
-                    int totalCalories = Calculations.getTotalCalories(userNumberInt, calorieInfo);
-                    viewDetails.setText("Total calories lost " + totalCalories);
-                    rightStatus.setText("Requested info shown!");
-                    rightStatus.setTextFill(Color.GREEN);
-                    leftStatus.setText("");
-                } catch (Exception e) {
-                    leftStatus.setText("Couldn't Read File");
+                if (keyCheck) {
+                    try {
+                        HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
+                        //keyCheck = calorieInfo.containsKey(userNumberInt);
+                        //Calling the total calories' method to get the output
+                        int totalCalories = Calculations.getTotalCalories(userNumberInt, calorieInfo);
+                        viewDetails.setText("Total calories lost " + totalCalories);
+                        rightStatus.setText("Requested info shown!");
+                        rightStatus.setTextFill(Color.GREEN);
+                        leftStatus.setText("");
+                    } catch (Exception e) {
+                        leftStatus.setText("Couldn't Read File");
+                        leftStatus.setTextFill(Color.RED);
+                        rightStatus.setText("");
+                    }
+                } else {
+                    leftStatus.setText("No user Information found! Add user or Load From File");
                     leftStatus.setTextFill(Color.RED);
                     rightStatus.setText("");
+                    viewDetails.setText("");
+                }
+
+            } else {
+                if (keyCheck) {
+                    try {
+                        //Calling the max calories method to get the output
+                        HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
+                        int maxCalories = Calculations.getMaxCalories(userNumberInt, calorieInfo);
+                        viewDetails.setText("Maximum calories lost in a day " + maxCalories);
+                        rightStatus.setText("Requested info shown!");
+                        rightStatus.setTextFill(Color.GREEN);
+                    } catch (NullPointerException nfe){
+                        leftStatus.setText("No user Information found! Add user or Load From File");
+                        leftStatus.setTextFill(Color.RED);
+                        rightStatus.setText("");
+                        viewDetails.setText("");
+                    }
+                } else {
+                    leftStatus.setText("No user Information found! Add user or Load From File");
+                    leftStatus.setTextFill(Color.RED);
+                    rightStatus.setText("");
+                    viewDetails.setText("");
+                    //Exception handled
                 }
             }
-//            else {
-//                    leftStatus.setText("No user Information found! Add user or Load From File");
-//                    leftStatus.setTextFill(Color.RED);
-//                    rightStatus.setText("");
-//                    viewDetails.setText("");
-//                }
-//            }
-            else {
-//                if (keyCheck)
-//                {
-                //Calling the max calories method to get the output
-                HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
-                int maxCalories = Calculations.getMaxCalories(userNumberInt, calorieInfo);
-                viewDetails.setText("Maximum calories lost in a day " + maxCalories);
-                rightStatus.setText("Requested info shown!");
-                rightStatus.setTextFill(Color.GREEN);
-            }
-
-
-//                } else {
-//                    leftStatus.setText("No user Information found! Add user or Load From File");
-//                    leftStatus.setTextFill(Color.RED);
-//                    rightStatus.setText("");
-//                    viewDetails.setText("");
-//                }
-        } catch (IOException ex) {
+        } catch(Exception e){
             leftStatus.setText("No user Information found! Add user or Load From File");
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("");
             viewDetails.setText("");
         }
-        //Exception handled
     }
 
     /**
@@ -950,9 +953,11 @@ public class MainController {
             fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text File", "*.txt"));
             fileChooser.setTitle("Open File");
             File file = fileChooser.showOpenDialog(null);
+
+
             //Calling the reader method to read the file the user has loaded
             Reader.reader(file);
-            leftStatus.setText("User info read from file");
+            leftStatus.setText("File opened, check terminal for details");
             leftStatus.setTextFill(Color.GREEN);
             rightStatus.setText("");
 

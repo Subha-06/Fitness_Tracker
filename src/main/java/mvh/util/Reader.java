@@ -52,24 +52,31 @@ public class Reader {
                 //Looping through the file to read all lines of information from the file
                 String line = b_reader.readLine();
 
-                while (line != null) {
-                    //The file is csv so separating them and storing them in a string
-                    String[] userInfo = line.split(",");
+                if (line == null) {
+                    System.err.println("File is empty!");
 
-                    //Checking the gender of the user to assign the information accordingly
-                    //Assigning the information of the file to variables
-                    userNumber = Integer.parseInt(userInfo[USER_NUMBER]);
-                    userName = userInfo[USER_NAME];
-                    userGender = userInfo[USER_GEN];
-                    userAge = Double.parseDouble(userInfo[USER_AGE]);
-                    userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
-                    userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+                } else if ( line != null) {
 
-                    //Creating a user using all the user information
-                    user = new User(userName, userGender, userAge, userWeight, userHeight);
-                    MainController.userInfo.put(userNumber, user);
+                    while (line != null) {
+                        //The file is csv so separating them and storing them in a string
+                        String[] userInfo = line.split(",");
 
-                    line = b_reader.readLine();
+                        //Checking the gender of the user to assign the information accordingly
+                        //Assigning the information of the file to variables
+                        userNumber = Integer.parseInt(userInfo[USER_NUMBER]);
+                        userName = userInfo[USER_NAME];
+                        userGender = userInfo[USER_GEN];
+                        userAge = Double.parseDouble(userInfo[USER_AGE]);
+                        userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                        userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+
+                        //Creating a user using all the user information
+                        user = new User(userName, userGender, userAge, userWeight, userHeight);
+                        MainController.userInfo.put(userNumber, user);
+
+                        line = b_reader.readLine();
+                    }
+                    System.out.println("File read!");
                 }
                 //Exception handled
             } catch (Exception e) {
@@ -102,8 +109,8 @@ public class Reader {
                 if (readInfo[0].equals(String.valueOf(userNumber))) {
                     //Adding the calorie information to the arraylist.
                     list.add(Integer.parseInt(readInfo[1]));
-                    line = b_reader.readLine();
                 }
+                line = b_reader.readLine();
                 //Adding the calorie information to the hashmap
                 outInfo.put(userNumber, list);
             }
@@ -113,6 +120,7 @@ public class Reader {
             System.err.println("Cannot find a file to read!");
         }
         //Returns the HashMap with calorie information.
+        System.out.println(outInfo);
         return outInfo;
 
     }

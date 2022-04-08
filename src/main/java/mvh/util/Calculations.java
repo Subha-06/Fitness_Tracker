@@ -169,20 +169,22 @@ public class Calculations {
      */
     public static int getMaxCalories(int keyNumber, HashMap<Integer, ArrayList<Integer>> calInfo) {
 
-        int maxCalories;
-        ArrayList<Integer> calories = new ArrayList<>();
+        ArrayList<Integer> calories = null;
+        boolean keyCheck = calInfo.containsKey(keyNumber);
         //Loop through the arrayList and add information
-        try {
-            //Getting the information of the user using the key of the hashmap
-            calories = calInfo.get(keyNumber);
+        if (keyCheck) {
+            try {
+                //Getting the information of the user using the key of the hashmap
+                calories = calInfo.get(keyNumber);
 
-            //Exception handled
-        } catch (NumberFormatException nfe) {
-            System.err.println("Cannot convert string to integer type");
+                //Exception handled
+            } catch (NumberFormatException nfe) {
+                System.err.println("Cannot convert string to integer type");
+            }
         }
         //Sorting to get calories in order.
         Collections.sort(calories);
-        maxCalories = calories.get(calories.size() - 1);
+         int maxCalories = calories.get(calories.size() - 1);
         return maxCalories;
     }
 }
