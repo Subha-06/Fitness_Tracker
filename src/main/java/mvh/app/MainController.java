@@ -17,7 +17,9 @@ import javafx.stage.Stage;
 import mvh.user.User;
 import mvh.util.*;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
@@ -978,10 +980,10 @@ public class MainController {
 
             //Exception handled
         } catch (Exception e) {
-            leftStatus.setText("File cannot be read!");
+            leftStatus.setText("File cannot be read! Choose Another File");
             leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("Choose a new file");
-            rightStatus.setTextFill(Color.RED);
+            rightStatus.setText("");
+            viewDetails.setText("");
         }
     }
 
@@ -996,20 +998,55 @@ public class MainController {
         try {//File chooser setup
             fileChooser.setInitialDirectory(new File("."));
             fileChooser.setInitialFileName("UserInfo.txt");
+            fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text File", "*.txt"));
             File fileSave = fileChooser.showSaveDialog(new Stage());
-            System.out.println(fileSave);
+            if (!fileSave.exists()) {
+                try {
+                    fileSave.createNewFile();
+                } catch (Exception e) {
+                    //The Error message
+                    leftStatus.setText("Error: Could not create file");
+                    //Setting the labels color to red
+                    leftStatus.setTextFill(Color.RED);
+                    rightStatus.setText("");
+                }
+            }
+            //Then if the file exists and be written on
+            if (fileSave.exists() && fileSave.canWrite()) {
+                try {
+                    //Creating a file writer and buffered writer
+                    FileWriter fileWriter = new FileWriter(fileSave);
+                    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+
+                    ///Will Add Stuff here Later.
+
+
+                    bufferedWriter.flush();
+                    //Closing the bufferWriter and file writer
+                    bufferedWriter.close();
+                    fileWriter.close();
+                    rightStatus.setText("File Saved");
+                    rightStatus.setTextFill(Color.GREEN);
+                    rightStatus.setText("");
+                } catch (Exception e) {
+                    //The Error message
+                    leftStatus.setText("Error: Could not write to file");
+                    //Setting the labels color to red
+                    leftStatus.setTextFill(Color.RED);
+                    leftStatus.setText("");
+                }
+            }
 
             leftStatus.setText("User file saved successfully!");
             leftStatus.setTextFill(Color.GREEN);
-            rightStatus.setText("User info saved");
-            rightStatus.setTextFill(Color.GREEN);
-
+            rightStatus.setText("");
             //Catching exception
         } catch (Exception e) {
             leftStatus.setText("File couldn't be created");
             leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("File not saved!");
-            leftStatus.setTextFill(Color.RED);
+            rightStatus.setText("");
+            viewDetails.setText("");
         }
     }
 
@@ -1025,7 +1062,7 @@ public class MainController {
         alert.setContentText("""
                 This is fitness tracking program.
                 Version: 4.7
-                
+                                
                 Authors:
                 Fabiha Fairuzz Subha (UCID: 30148674)
                 Email: FabihaFairuzz.Subha@ucalgary.ca
