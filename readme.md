@@ -34,10 +34,10 @@
 
 ## Features
 
-- Can Add multiple users and view their information.
-- Can read information of a user from a file.
-- Can write to a file with user information.
-- Can add the calorie burnt of a user and display the highest amount burnt in a day or total calorie lost for that user.
+- Add multiple users and view their information.
+- Read information of a user from a file.
+- Write the user information to a file.
+- Add the amount of calorie burnt in day of a user and display the highest amount burnt in a day or total calorie lost for that user.
 - Display the bmi or the weight status of the users.
 - Allows the user to enter a certain weight goal and provide information on how much exercise is needed to reach that
   goal.
