@@ -11,6 +11,7 @@ package mvh.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class Calculations {
     //Constants
@@ -130,20 +131,17 @@ public class Calculations {
      * @param calInfo The arraylist containing the data read from the saved file
      * @return Number of total calories burnt
      */
-    public static int getTotalCalories(ArrayList<String> calInfo) {
+    public static int getTotalCalories(int keyNumber, HashMap<Integer,ArrayList<Integer>> calInfo) {
 
         int sum = 0;
-        ArrayList<Integer> calories = new ArrayList<>();
-        for (String s : calInfo) {
-            try {
-                calories.add(Integer.parseInt(s));
+        try {
+            ArrayList<Integer> calories = calInfo.get(keyNumber);
 
-            } catch (NumberFormatException nfe) {
-                System.err.println("Cannot convert string to integer type");
+            for (int i: calories) {
+                sum = sum + i;
             }
-        }
-        for (int i : calories) {
-            sum = sum + i;
+        } catch (NumberFormatException nfe) {
+            System.err.println("Cannot convert string to integer type");
         }
         return sum;
     }
@@ -153,20 +151,20 @@ public class Calculations {
      *
      * @param calInfo The arraylist containing the data read from the saved file
      */
-    public static int getMaxCalories(ArrayList<String> calInfo) {
+    public static int getMaxCalories(int keyNumber, HashMap<Integer,ArrayList<Integer>> calInfo) {
 
+        int maxCalories;
         ArrayList<Integer> calories = new ArrayList<>();
         //Loop through the arrayList and add information
-        for (String s : calInfo) {
-            try {
-                calories.add(Integer.parseInt(s));
+        try {
+            calories = calInfo.get(keyNumber);
 
-            } catch (NumberFormatException nfe) {
-                System.err.println("Cannot convert string to integer type");
-            }
+        } catch (NumberFormatException nfe) {
+            System.err.println("Cannot convert string to integer type");
         }
-        //Sorting to get calories in a order.
+        //Sorting to get calories in order.
         Collections.sort(calories);
-        return calories.get(calories.size() - 1);
+        maxCalories = calories.get(calories.size()-1);
+        return maxCalories;
     }
 }
