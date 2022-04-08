@@ -27,6 +27,8 @@ public class MainController {
     private User user;
     public static HashMap<Integer, Object> userInfo = new HashMap<>();
     @FXML
+    private FileChooser fileChooser;
+    @FXML
     private ChoiceBox<Integer> userNumber;
     @FXML
     private ChoiceBox<Integer> viewUserNumber;
@@ -890,13 +892,19 @@ public class MainController {
             //Getting the user choice
             if (calorieViewType.getValue().equals("Total Calorie Lost")) {
 //                if (keyCheck) {
-                HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
-                //Calling the total calories' method to get the output
-                int totalCalories = Calculations.getTotalCalories(userNumberInt, calorieInfo);
-                viewDetails.setText("Total calories lost " + totalCalories);
-                rightStatus.setText("Requested info shown!");
-                rightStatus.setTextFill(Color.GREEN);
-                leftStatus.setText("");
+                try {
+                    HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
+                    //Calling the total calories' method to get the output
+                    int totalCalories = Calculations.getTotalCalories(userNumberInt, calorieInfo);
+                    viewDetails.setText("Total calories lost " + totalCalories);
+                    rightStatus.setText("Requested info shown!");
+                    rightStatus.setTextFill(Color.GREEN);
+                    leftStatus.setText("");
+                } catch (Exception e) {
+                    leftStatus.setText("Couldn't Read File");
+                    leftStatus.setTextFill(Color.RED);
+                    rightStatus.setText("");
+                }
             }
 //            else {
 //                    leftStatus.setText("No user Information found! Add user or Load From File");
@@ -914,6 +922,8 @@ public class MainController {
                 viewDetails.setText("Maximum calories lost in a day " + maxCalories);
                 rightStatus.setText("Requested info shown!");
                 rightStatus.setTextFill(Color.GREEN);
+            }
+
 
 //                } else {
 //                    leftStatus.setText("No user Information found! Add user or Load From File");
@@ -921,14 +931,13 @@ public class MainController {
 //                    rightStatus.setText("");
 //                    viewDetails.setText("");
 //                }
-            }
-            //Exception handled
-        } catch (IOException e) {
+        } catch (IOException ex) {
             leftStatus.setText("No user Information found! Add user or Load From File");
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("");
             viewDetails.setText("");
         }
+        //Exception handled
     }
 
     /**
@@ -936,12 +945,10 @@ public class MainController {
      */
     @FXML
     void loadButton() {
-        //File chooser setup
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open File");
-        File file = fileChooser.showOpenDialog(null);
-
         try {
+            //File chooser setup
+            fileChooser.setTitle("Open File");
+            File file = fileChooser.showOpenDialog(null);
             //Calling the reader method to read the file the user has loaded
             Reader.reader(file);
             leftStatus.setText("User info read from file");
@@ -949,7 +956,7 @@ public class MainController {
             rightStatus.setText("");
 
             //Exception handled
-        } catch (IOException e) {
+        } catch (Exception e) {
             leftStatus.setText("File cannot be read!");
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("Choose a new file");
@@ -962,16 +969,15 @@ public class MainController {
      */
     @FXML
     void saveButton() {
-        //File chooser setup
-        final FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("."));
-        fileChooser.setInitialFileName("UserInfo.txt");
-        File fileSave = fileChooser.showSaveDialog(new Stage());
-        System.out.println(fileSave);
+
 
         //Surrounding with a try/catch to handle exceptions
         //Calling the writer to write the world information in it
-        try {
+        try {//File chooser setup
+            fileChooser.setInitialDirectory(new File("."));
+            fileChooser.setInitialFileName("UserInfo.txt");
+            File fileSave = fileChooser.showSaveDialog(new Stage());
+            System.out.println(fileSave);
             leftStatus.setText("User file saved successfully!");
             leftStatus.setTextFill(Color.GREEN);
             rightStatus.setText("User info saved");
