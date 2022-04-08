@@ -615,7 +615,7 @@ public class MainController {
                                     } else {
                                         try {
                                             //Writing the user info to a file
-                                            Writer.fileWriter(keyCheck, userNumberInt, name, String.valueOf(age), gender, String.valueOf(weight), String.valueOf(height));
+                                            Writer.fileWriter(false, userNumberInt, name, String.valueOf(age), gender, String.valueOf(weight), String.valueOf(height));
                                             leftStatus.setText("User Info added to file!");
                                             leftStatus.setTextFill(Color.GREEN);
                                             rightStatus.setText("");
