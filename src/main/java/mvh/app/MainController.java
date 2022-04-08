@@ -76,8 +76,6 @@ public class MainController {
     private double height;
     @FXML
     private ChoiceBox<String> exerciseKGLB;
-    @FXML
-    private double exerciseWeight;
 
     /**
      * Starts the program and puts the choices in the choiceBox.
@@ -708,6 +706,7 @@ public class MainController {
                     try {
 
                         //If the option chosen is kilograms
+                        double exerciseWeight;
                         if (exerciseKGLB.getValue().equals("KG")) {
                             exerciseWeight = Double.parseDouble(weightExercise.getText());
                         }
