@@ -58,7 +58,7 @@ public class Calculations {
      * @return Returns the estimated calories needed
      */
 
-    public static int estimateCalories(int kg_input) {
+    public static double estimateCalories(double kg_input) {
         return (kg_input * CALORIES);
     }
 
@@ -69,7 +69,7 @@ public class Calculations {
      * @param total_calories Total number of calories needed to burn to lose the user inputted weight
      * @param weight         The weight of the user
      */
-    public static String estimateExercise(String choiceOfSpeed, String exerciseChoice, int total_calories, double weight, int kg_input, int weightGoal) {
+    public static String estimateExercise(String choiceOfSpeed, String exerciseChoice, double total_calories, double weight, double kg_input, double weightGoal) {
 
         String output = "";
         if (exerciseChoice.equals("Cycling")) {

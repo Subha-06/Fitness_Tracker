@@ -74,6 +74,10 @@ public class MainController {
     private double weight;
     @FXML
     private double height;
+    @FXML
+    private ChoiceBox<String> exerciseKGLB;
+    @FXML
+    private double exerciseWeight;
 
     /**
      * Starts the program and puts the choices in the choiceBox.
@@ -96,10 +100,10 @@ public class MainController {
         userGender.setValue("Male");
         userGender.getItems().addAll("Male", "Female", "Preferred not to say");
 
-//        //User weight input kg or lb
-//        exerciseKGLB.getItems().clear();
-//        exerciseKGLB.setValue("KG");
-//        exerciseKGLB.getItems().addAll("KG", "LB");
+        //User weight input kg or lb
+        exerciseKGLB.getItems().clear();
+        exerciseKGLB.setValue("KG");
+        exerciseKGLB.getItems().addAll("KG", "LB");
 
         //User input height, cm or meter.
         heightChoice.getItems().clear();
@@ -702,8 +706,17 @@ public class MainController {
                     viewDetails.setText("");
                 } else {
                     try {
-                        int weightGoal = Integer.parseInt(weightExercise.getText());
-                        if (weightGoal <= 0) {
+
+                        //If the option chosen is kilograms
+                        if (exerciseKGLB.getValue().equals("KG")) {
+                            exerciseWeight = Double.parseDouble(weightExercise.getText());
+                        }
+                        //If the option chosen is anything else
+                        else {
+                            //Converting the lbs to kg
+                            exerciseWeight = 2.2 * Double.parseDouble(weightExercise.getText());
+                        }
+                        if (exerciseWeight <= 0) {
                             leftStatus.setText("Please Enter A Positive Weight Goal");
                             leftStatus.setTextFill(Color.RED);
                             rightStatus.setText("");
@@ -719,7 +732,7 @@ public class MainController {
                                 user = (User) userInfo.get(userNumberInt);
                                 weight = user.getUserWeight();
                                 //Getting the weight difference.
-                                int weightDifference = (int) weight - Integer.parseInt(weightExercise.getText());
+                                double weightDifference = weight - exerciseWeight;
                                 //If the weight difference is 0
                                 if (weightDifference < 0) {
                                     leftStatus.setText("");
@@ -734,10 +747,10 @@ public class MainController {
                                 } else {
 
                                     //Calling the estimate calories option method
-                                    int calories = Calculations.estimateCalories(weightDifference);
+                                    double calories = Calculations.estimateCalories(weightDifference);
 
                                     //Calling the exercise option method
-                                    String exercise = mvh.util.Calculations.estimateExercise(speed, choice, calories, weight, weightDifference, Integer.parseInt(weightExercise.getText()));
+                                    String exercise = mvh.util.Calculations.estimateExercise(speed, choice, calories, weight, weightDifference, exerciseWeight);
                                     viewDetails.setText(exercise);
 
                                     rightStatus.setText("Requested info shown!");
