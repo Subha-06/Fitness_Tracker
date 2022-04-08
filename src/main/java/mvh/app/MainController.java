@@ -882,6 +882,7 @@ public class MainController {
     @FXML
     void viewCalorieInfo() {
         userNumberInt = viewUserNumber.getValue();
+        System.out.println(userNumberInt);
         try {
             //Creating a hashmap to store the calories of the user read from a file
             //Checking if the file has that key
