@@ -134,13 +134,14 @@ public class Calculations {
     public static int getTotalCalories(int keyNumber, HashMap<Integer,ArrayList<Integer>> calInfo) {
 
         int sum = 0;
+        ArrayList<Integer> calories;
         try {
-            ArrayList<Integer> calories = calInfo.get(keyNumber);
+            calories = calInfo.get(keyNumber);
 
             for (int i: calories) {
                 sum = sum + i;
             }
-        } catch (NumberFormatException nfe) {
+        } catch (NumberFormatException e) {
             System.err.println("Cannot convert string to integer type");
         }
         return sum;
