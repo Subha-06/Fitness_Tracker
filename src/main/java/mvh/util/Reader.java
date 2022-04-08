@@ -87,6 +87,7 @@ public class Reader {
         File outFile = new File("User.txt");
         //Initializing an empty arraylist.
         HashMap<Integer,ArrayList<Integer>> outInfo = null;
+        ArrayList<Integer> list = new ArrayList<>();
         if (outFile.exists()) {
             //Creating a file reader and a buffered reader
             FileReader f_reader = new FileReader(outFile);
@@ -94,7 +95,6 @@ public class Reader {
             //Reading lines until the file is empty.
             String line = b_reader.readLine();
             outInfo = new HashMap<>();
-            ArrayList<Integer> list = new ArrayList<>();
             while (line != null) {
                 String[] readInfo = line.split(",");
                 //Adding the information to the HashMap.
