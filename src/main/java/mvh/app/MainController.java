@@ -15,13 +15,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import mvh.user.User;
-import mvh.util.Reader;
-import mvh.util.Writer;
+import mvh.util.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class MainController {
 
@@ -71,6 +69,10 @@ public class MainController {
     private int userNumberInt;
     @FXML
     private boolean keyCheck;
+    @FXML
+    private double weight;
+    @FXML
+    private double height;
 
     /**
      * Starts the program and puts the choices in the choiceBox.
@@ -143,11 +145,27 @@ public class MainController {
     }
 
     /**
+     * Initialize the choice box to select the speed of exercise
+     */
+    @FXML
+    void exerciseSpeed() {
+        if (exerciseChoice.getValue().equals("Running")) {
+            choiceOfSpeed.getItems().clear();
+            choiceOfSpeed.setValue("6-7 km/h");
+            choiceOfSpeed.getItems().addAll("6-7 km/h", "7-8 km/h", "9-11 km/h");
+        } else {
+            choiceOfSpeed.getItems().clear();
+            choiceOfSpeed.setValue("16-19 km/h");
+            choiceOfSpeed.getItems().addAll("16-19 km/h", "19-22 km/h", "22-25 km/h");
+        }
+    }
+
+    /**
      * Adding an User
      */
 
     @FXML
-    private void createUser() {
+    void createUser() {
         try {
             userNumberInt = userNumber.getValue();
             //IF any of the field is empty the program will show an Error.
@@ -164,6 +182,7 @@ public class MainController {
                     leftStatus.setTextFill(Color.RED);
                     viewDetails.setText("");
                 } else {
+                    //Getting the name and gender of the user
                     String name = userName.getText();
                     String gender = String.valueOf(userGender.getValue());
                     //Trying To get valid input from the user
@@ -179,7 +198,6 @@ public class MainController {
                             //Weight Can't be Negative or 0
                             try {
                                 //If the option chosen is kilograms
-                                double weight;
                                 if (weightChoice.getValue().equals("KG")) {
                                     weight = Double.parseDouble(userWeight.getText());
                                 }
@@ -196,7 +214,6 @@ public class MainController {
                                 } else {
                                     try {
                                         //If height is cm
-                                        double height;
                                         if (heightChoice.getValue().equals("C.M.")) {
                                             height = Double.parseDouble(userHeight.getText());
                                         } else {
@@ -250,7 +267,7 @@ public class MainController {
     }
 
     @FXML
-    private void changeUser() {
+    void changeUser() {
         try {
             userNumberInt = userNumber.getValue();
             keyCheck = userInfo.containsKey(userNumberInt);
@@ -279,7 +296,6 @@ public class MainController {
                                     //Weight Can't be Negative or 0
                                     try {
                                         //If the option chosen is kilograms
-                                        double weight;
                                         if (weightChoice.getValue().equals("KG")) {
                                             weight = Double.parseDouble(userWeight.getText());
                                         }
@@ -296,7 +312,6 @@ public class MainController {
                                         } else {
                                             try {
                                                 //If height is cm
-                                                double height;
                                                 if (heightChoice.getValue().equals("C.M.")) {
                                                     height = Double.parseDouble(userHeight.getText());
                                                 } else {
@@ -364,7 +379,6 @@ public class MainController {
                             //Weight Can't be Negative or 0
                             try {
                                 //If the option chosen is kilograms
-                                double weight;
                                 if (weightChoice.getValue().equals("KG")) {
                                     weight = Double.parseDouble(userWeight.getText());
                                 }
@@ -381,7 +395,6 @@ public class MainController {
                                 } else {
                                     try {
                                         //If height is cm
-                                        double height;
                                         if (heightChoice.getValue().equals("C.M.")) {
                                             height = Double.parseDouble(userHeight.getText());
                                         } else {
@@ -471,19 +484,6 @@ public class MainController {
         }
     }
 
-    @FXML
-    void exerciseSpeed() {
-        if (exerciseChoice.getValue().equals("Running")) {
-            choiceOfSpeed.getItems().clear();
-            choiceOfSpeed.setValue("6-7 km/h");
-            choiceOfSpeed.getItems().addAll("6-7 km/h", "7-8 km/h", "9-11 km/h");
-        } else {
-            choiceOfSpeed.getItems().clear();
-            choiceOfSpeed.setValue("16-19 km/h");
-            choiceOfSpeed.getItems().addAll("16-19 km/h", "19-22 km/h", "22-25 km/h");
-        }
-    }
-
 
     @FXML
     void viewInfo() {
@@ -518,7 +518,7 @@ public class MainController {
         try {
             if (keyCheck) {
                 user = (User) userInfo.get(userNumberInt);
-                double weight = user.getUserWeight();
+                weight = user.getUserWeight();
 
                 if (weightExercise.getText().isBlank()) {
                     leftStatus.setText("Invalid Input");
@@ -564,8 +564,8 @@ public class MainController {
                 if (keyCheck) {
 
                     user = (User) userInfo.get(userNumberInt);
-                    double weight = user.getUserWeight();
-                    double height = user.getUserHeight();
+                    weight = user.getUserWeight();
+                    height = user.getUserHeight();
 
                     viewDetails.setText("Your BMI is " + mvh.util.Calculations.bmi(weight, height));
 
@@ -584,8 +584,8 @@ public class MainController {
                 if (keyCheck) {
 
                     user = (User) userInfo.get(userNumberInt);
-                    double weight = user.getUserWeight();
-                    double height = user.getUserHeight();
+                    weight = user.getUserWeight();
+                    height = user.getUserHeight();
 
                     viewDetails.setText(mvh.util.Calculations.bmiCompare(weight, height));
 
@@ -615,7 +615,7 @@ public class MainController {
             String calorie = calorieAmount.getText();
             int userNumber = calorieUser.getValue();
 
-            HashMap<Integer,String> calorieInfo = new HashMap<>();
+            HashMap<Integer, String> calorieInfo = new HashMap<>();
             calorieInfo.put(userNumber, calorie);
 
             Writer.writer(userNumber, calorieInfo);
@@ -638,7 +638,7 @@ public class MainController {
             if (calorieViewType.getValue().equals("Total Calorie Lost")) {
                 if (keyCheck) {
 
-                    HashMap<Integer,ArrayList<Integer>> calorieInfo = Reader.outReader();
+                    HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader();
 
                     int totalCalories = mvh.util.Calculations.getTotalCalories(userNumberInt, calorieInfo);
 
@@ -657,7 +657,7 @@ public class MainController {
             } else {
                 if (keyCheck) {
 
-                    HashMap<Integer,ArrayList<Integer>> calorieInfo = Reader.outReader();
+                    HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader();
 
                     int maxCalories = mvh.util.Calculations.getMaxCalories(userNumberInt, calorieInfo);
                     viewDetails.setText("Max calories lost in a day " + maxCalories);
@@ -682,7 +682,7 @@ public class MainController {
     }
 
     @FXML
-    void loadButton(){
+    void loadButton() {
         //File chooser setup
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open File");
@@ -720,7 +720,7 @@ public class MainController {
             rightStatus.setTextFill(Color.GREEN);
 
             //Catching exception
-        } catch(Exception e) {
+        } catch (Exception e) {
             leftStatus.setText("File couldn't be created");
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("File not saved!");
