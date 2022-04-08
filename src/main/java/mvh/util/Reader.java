@@ -3,13 +3,11 @@
  * *Members:
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
- * * Date: 1 March 2022
- * * Demo 2 Tutorial 05
+ * * Date: 8th April 2022
+ * * Demo 3 Tutorial 05
  */
 package mvh.util;
 
-import javafx.scene.paint.Color;
-import mvh.app.Main;
 import mvh.app.MainController;
 import mvh.user.*;
 
@@ -67,11 +65,13 @@ public class Reader {
                     userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
                     userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
 
+                    //Creating a user using all the user information
                     user = new User(userName, userGender, userAge, userWeight, userHeight);
                     MainController.userInfo.put(userNumber, user);
 
                     line = b_reader.readLine();
                 }
+            //Exception handled
             } catch (Exception e) {
                 System.err.println("File is empty!");
             }
@@ -86,7 +86,7 @@ public class Reader {
     public static HashMap<Integer,ArrayList<Integer>> outReader(int userNumber) throws IOException {
         //The file that stores the information of calories burnt.
         File outFile = new File("User.txt");
-        //Initializing an empty arraylist.
+        //Initializing an empty Hashmap and a new Arraylist for storing the data.
         HashMap<Integer,ArrayList<Integer>> outInfo = null;
         ArrayList<Integer> list = new ArrayList<>();
         if (outFile.exists()) {
@@ -100,10 +100,11 @@ public class Reader {
                 String[] readInfo = line.split(",");
 
                 if (readInfo[0].equals(String.valueOf(userNumber))) {
-                    //Adding the information to the HashMap.
+                    //Adding the calorie information to the arraylist.
                     list.add(Integer.parseInt(readInfo[1]));
                     line = b_reader.readLine();
                 }
+                //Adding the calorie information to the hashmap
                 outInfo.put(userNumber, list);
             }
         }

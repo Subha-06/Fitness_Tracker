@@ -3,8 +3,8 @@
  * *Members:
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
- * * Date: 1 March 2022
- * * Demo 2 Tutorial 05
+ * * Date: 8th April 2022
+ * * Demo 3 Tutorial 05
  */
 package mvh.user;
 
@@ -68,6 +68,7 @@ public class User {
         this.userHeight = userHeight;
     }
 
+    //ToString method created
     public String toString() {
         return String.format("""
                 Name: %s\s

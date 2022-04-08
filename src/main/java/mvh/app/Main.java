@@ -3,8 +3,8 @@
  * *Members:
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
- * * Date: 1 March 2022
- * * Demo 2 Tutorial 05
+ * * Date: 8th April 2022
+ * * Demo 3 Tutorial 05
  */
 package mvh.app;
 
@@ -29,11 +29,13 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        //Checking if any argument is passed or not
         if (args.length != 0) {
             File fileInput = new File(args[0]);
             if (fileInput.exists() && fileInput.canRead()) {
                 try {
                     Reader.reader(fileInput);
+                //Exception handled
                 } catch (IOException e) {
                     System.err.println("Not a valid Input file");
                 }
@@ -43,5 +45,4 @@ public class Main extends Application {
         }
         launch(args);
     }
-
 }
