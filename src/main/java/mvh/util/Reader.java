@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Reader {
     //We know that the information will always be in this order.
@@ -81,22 +82,24 @@ public class Reader {
      *
      * @return An array list containing the user input data about calories burnt
      */
-    public static ArrayList<String> outReader() throws IOException {
+    public static HashMap<Integer,ArrayList<Integer>> outReader() throws IOException {
         //The file that stores the information of calories burnt.
         File outFile = new File("User.txt");
         //Initializing an empty arraylist.
-        ArrayList<String> outInfo = null;
+        HashMap<Integer,ArrayList<Integer>> outInfo = null;
         if (outFile.exists()) {
             //Creating a file reader and a buffered reader
             FileReader f_reader = new FileReader(outFile);
             BufferedReader b_reader = new BufferedReader(f_reader);
             //Reading lines until the file is empty.
             String line = b_reader.readLine();
-            outInfo = new ArrayList<>();
-            String[] readInfo = line.split(",");
+            outInfo = new HashMap<>();
+            ArrayList<Integer> list = new ArrayList<>();
             while (line != null) {
-                //Adding the information to the arraylist.
-                outInfo.add(readInfo[1]);
+                String[] readInfo = line.split(",");
+                //Adding the information to the HashMap.
+                list.add(Integer.parseInt(readInfo[1]));
+                outInfo.put(Integer.parseInt(readInfo[0]), list);
                 line = b_reader.readLine();
             }
         }

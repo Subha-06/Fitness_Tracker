@@ -15,15 +15,17 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Writer {
 
     /**
      * Writes the information in a file
      *
-     * @param out_info The information that the user wants to save in a file
+     * @param outInfo The information that the user wants to save in a file
      */
-    public static void writer(int userNumber, int out_info) throws IOException {
+    public static void writer(int userNumber, HashMap<Integer,String> outInfo) throws IOException {
 
         File newFile = new File("User.txt");
         //If file does not exist create new file
@@ -36,7 +38,10 @@ public class Writer {
                 FileWriter f_writer = new FileWriter(newFile, true);
                 BufferedWriter b_writer = new BufferedWriter(f_writer);
 
-                b_writer.write(userNumber + "," + out_info + "\n");
+                for (Integer i : outInfo.keySet()){
+                    b_writer.write(i + "," + outInfo.get(i));
+                    b_writer.newLine();
+                }
 
                 b_writer.flush();
             } catch (IOException e) {

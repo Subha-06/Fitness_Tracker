@@ -612,10 +612,13 @@ public class MainController {
     void addCalorieBurnt() {
 
         try {
-            int calorie = Integer.parseInt(calorieAmount.getText());
+            String calorie = calorieAmount.getText();
             int userNumber = calorieUser.getValue();
 
-            Writer.writer(userNumber, calorie);
+            HashMap<Integer,String> calorieInfo = new HashMap<>();
+            calorieInfo.put(userNumber, calorie);
+
+            Writer.writer(userNumber, calorieInfo);
             leftStatus.setText("Calorie added to file!");
             leftStatus.setTextFill(Color.GREEN);
 
@@ -635,9 +638,9 @@ public class MainController {
             if (calorieViewType.getValue().equals("Total Calorie Lost")) {
                 if (keyCheck) {
 
-                    ArrayList<String> calorieInfo = Reader.outReader();
+                    HashMap<Integer,ArrayList<Integer>> calorieInfo = Reader.outReader();
 
-                    int totalCalories = mvh.util.Calculations.getTotalCalories(calorieInfo);
+                    int totalCalories = mvh.util.Calculations.getTotalCalories(userNumberInt, calorieInfo);
 
                     viewDetails.setText("Total calories lost " + totalCalories);
                     leftStatus.setText("Requested info shown!");
@@ -654,9 +657,9 @@ public class MainController {
             } else {
                 if (keyCheck) {
 
-                    ArrayList<String> calorieInfo = Reader.outReader();
+                    HashMap<Integer,ArrayList<Integer>> calorieInfo = Reader.outReader();
 
-                    int maxCalories = mvh.util.Calculations.getMaxCalories(calorieInfo);
+                    int maxCalories = mvh.util.Calculations.getMaxCalories(userNumberInt, calorieInfo);
                     viewDetails.setText("Max calories lost in a day " + maxCalories);
                     leftStatus.setText("Requested info shown!");
                     leftStatus.setTextFill(Color.GREEN);
