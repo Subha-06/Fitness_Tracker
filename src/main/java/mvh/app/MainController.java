@@ -27,7 +27,7 @@ public class MainController {
     private User user;
     public static HashMap<Integer, Object> userInfo = new HashMap<>();
     @FXML
-    private FileChooser fileChooser;
+    FileChooser fileChooser = new FileChooser();
     @FXML
     private ChoiceBox<Integer> userNumber;
     @FXML
@@ -947,6 +947,7 @@ public class MainController {
     void loadButton() {
         try {
             //File chooser setup
+            fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text File", "*.txt"));
             fileChooser.setTitle("Open File");
             File file = fileChooser.showOpenDialog(null);
             //Calling the reader method to read the file the user has loaded
@@ -970,9 +971,8 @@ public class MainController {
     @FXML
     void saveButton() {
 
-
         //Surrounding with a try/catch to handle exceptions
-        //Calling the writer to write the world information in it
+        //Calling the writer to write information in it
         try {//File chooser setup
             fileChooser.setInitialDirectory(new File("."));
             fileChooser.setInitialFileName("UserInfo.txt");
