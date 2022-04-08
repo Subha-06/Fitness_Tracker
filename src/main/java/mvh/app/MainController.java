@@ -1026,7 +1026,7 @@ public class MainController {
                 This is fitness tracking program.
                 Version: 4.7
                 
-                Authors:    
+                Authors:
                 Fabiha Fairuzz Subha (UCID: 30148674)
                 Email: FabihaFairuzz.Subha@ucalgary.ca
                                 
