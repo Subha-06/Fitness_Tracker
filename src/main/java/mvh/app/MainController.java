@@ -713,6 +713,7 @@ public class MainController {
                                 //Getting the user info associated with the user number
                                 user = (User) userInfo.get(userNumberInt);
                                 weight = user.getUserWeight();
+                                //Getting the weight difference.
                                 int weightDifference = (int) weight - Integer.parseInt(weightExercise.getText());
                                 //If the weight difference is 0
                                 if (weightDifference < 0) {
