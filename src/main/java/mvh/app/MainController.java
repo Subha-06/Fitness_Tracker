@@ -149,11 +149,14 @@ public class MainController {
      */
     @FXML
     void exerciseSpeed() {
+        //If the option chosen is Running
         if (exerciseChoice.getValue().equals("Running")) {
             choiceOfSpeed.getItems().clear();
             choiceOfSpeed.setValue("6-7 km/h");
             choiceOfSpeed.getItems().addAll("6-7 km/h", "7-8 km/h", "9-11 km/h");
-        } else {
+        }
+        //If the option chosen is walking
+        else {
             choiceOfSpeed.getItems().clear();
             choiceOfSpeed.setValue("16-19 km/h");
             choiceOfSpeed.getItems().addAll("16-19 km/h", "19-22 km/h", "22-25 km/h");
@@ -167,6 +170,7 @@ public class MainController {
     @FXML
     void createUser() {
         try {
+            //Getting the user number
             userNumberInt = userNumber.getValue();
             //IF any of the field is empty the program will show an Error.
             if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
@@ -181,7 +185,9 @@ public class MainController {
                     rightStatus.setText("");
                     leftStatus.setTextFill(Color.RED);
                     viewDetails.setText("");
-                } else {
+                }
+                //IF the user doesn't exist we add the information
+                else {
                     //Getting the name and gender of the user
                     String name = userName.getText();
                     String gender = String.valueOf(userGender.getValue());
@@ -195,7 +201,6 @@ public class MainController {
                             rightStatus.setText("");
                             viewDetails.setText("");
                         } else {
-                            //Weight Can't be Negative or 0
                             try {
                                 //If the option chosen is kilograms
                                 if (weightChoice.getValue().equals("KG")) {
@@ -206,6 +211,7 @@ public class MainController {
                                     //Converting the lbs to kg
                                     weight = 2.2 * Double.parseDouble(userWeight.getText());
                                 }
+                                //Weight Can't be Negative or 0
                                 if (weight <= 0) {
                                     leftStatus.setText("Please Enter A Positive Number For Weight");
                                     leftStatus.setTextFill(Color.RED);
@@ -220,6 +226,7 @@ public class MainController {
                                             //Converting meter to cm
                                             height = 100 * Double.parseDouble(userHeight.getText());
                                         }
+                                        //Height Can't be 0 or negative
                                         if (height <= 0) {
                                             leftStatus.setText("Please Enter A Positive Number For Height");
                                             leftStatus.setTextFill(Color.RED);
@@ -266,10 +273,16 @@ public class MainController {
         }
     }
 
+    /**
+     * Change the information of a user
+     */
+
     @FXML
     void changeUser() {
         try {
-            userNumberInt = userNumber.getValue();
+            //Getting the user number
+            userNumberInt = viewUserNumber.getValue();
+            //Checking if that user exists or not
             keyCheck = userInfo.containsKey(userNumberInt);
             //IF any of the field is empty the program will show an Error.
             if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
@@ -278,92 +291,95 @@ public class MainController {
                 rightStatus.setText("");
                 viewDetails.setText("");
             } else {
+                //If the user doesn't exist we will add that user
                 if (!keyCheck) {
-                    {
+                    try {
+                        //Getting the name and the gender of the user
+                        String name = userName.getText();
+                        String gender = String.valueOf(userGender.getValue());
+                        //Trying To get valid input from the user
                         try {
-                            String name = userName.getText();
-                            String gender = String.valueOf(userGender.getValue());
-                            //Trying To get valid input from the user
-                            try {
-                                int age = Integer.parseInt(userAge.getText());
-                                //Age Can't be Negative or 0
-                                if (age <= 0) {
-                                    leftStatus.setText("Please Enter A Positive Number For age");
-                                    leftStatus.setTextFill(Color.RED);
-                                    rightStatus.setText("");
-                                    viewDetails.setText("");
-                                } else {
-                                    //Weight Can't be Negative or 0
-                                    try {
-                                        //If the option chosen is kilograms
-                                        if (weightChoice.getValue().equals("KG")) {
-                                            weight = Double.parseDouble(userWeight.getText());
-                                        }
-                                        //If the option chosen is anything else
-                                        else {
-                                            //Converting the lbs to kg
-                                            weight = 2.2 * Double.parseDouble(userWeight.getText());
-                                        }
-                                        if (weight <= 0) {
-                                            leftStatus.setText("Please Enter A Positive Number For Weight");
-                                            leftStatus.setTextFill(Color.RED);
-                                            rightStatus.setText("");
-                                            viewDetails.setText("");
-                                        } else {
-                                            try {
-                                                //If height is cm
-                                                if (heightChoice.getValue().equals("C.M.")) {
-                                                    height = Double.parseDouble(userHeight.getText());
-                                                } else {
-                                                    //Converting meter to cm
-                                                    height = 100 * Double.parseDouble(userHeight.getText());
-                                                }
-                                                if (height <= 0) {
-                                                    leftStatus.setText("Please Enter A Positive Number For Height");
-                                                    leftStatus.setTextFill(Color.RED);
-                                                    rightStatus.setText("");
-                                                    viewDetails.setText("");
-                                                } else {
-                                                    try {
-                                                        //Creating the user
-                                                        user = new User(name, gender, age, weight, height);
-                                                        userInfo.put(userNumberInt, user);
-
-                                                        leftStatus.setText("");
-                                                        rightStatus.setText("User Didn't Exist so Added User! Choose from menu");
-                                                        rightStatus.setTextFill(Color.GREEN);
-                                                        viewDetails.setText("");
-                                                    } catch (Exception e) {
-                                                        leftStatus.setText("Couldn't add user");
-                                                        leftStatus.setTextFill(Color.RED);
-                                                    }
-                                                }
-                                            } catch (Exception e) {
-                                                leftStatus.setText("Enter A Positive Number for height");
-                                                leftStatus.setTextFill(Color.RED);
-                                                rightStatus.setText("");
-                                            }
-                                        }
-                                    } catch (Exception e) {
-                                        leftStatus.setText("Enter A Positive Number for weight");
-                                        leftStatus.setTextFill(Color.RED);
-                                        rightStatus.setText("");
-                                    }
-                                }
-                            } catch (Exception e) {
-                                leftStatus.setText("Enter A Positive Number for age");
+                            int age = Integer.parseInt(userAge.getText());
+                            //Age Can't be Negative or 0
+                            if (age <= 0) {
+                                leftStatus.setText("Please Enter A Positive Number For age");
                                 leftStatus.setTextFill(Color.RED);
                                 rightStatus.setText("");
-                            }
+                                viewDetails.setText("");
+                            } else {
+                                try {
+                                    //If the option chosen is kilograms
+                                    if (weightChoice.getValue().equals("KG")) {
+                                        weight = Double.parseDouble(userWeight.getText());
+                                    }
+                                    //If the option chosen is pounds
+                                    else {
+                                        //Converting the lbs to kg
+                                        weight = 2.2 * Double.parseDouble(userWeight.getText());
+                                    }
+                                    //Weight Can't be Negative or 0
+                                    if (weight <= 0) {
+                                        leftStatus.setText("Please Enter A Positive Number For Weight");
+                                        leftStatus.setTextFill(Color.RED);
+                                        rightStatus.setText("");
+                                        viewDetails.setText("");
+                                    } else {
+                                        try {
+                                            //If height is cm
+                                            if (heightChoice.getValue().equals("C.M.")) {
+                                                height = Double.parseDouble(userHeight.getText());
+                                            } else {
+                                                //Converting meter to cm
+                                                height = 100 * Double.parseDouble(userHeight.getText());
+                                            }
+                                            //Height Can't be negative or 0
+                                            if (height <= 0) {
+                                                leftStatus.setText("Please Enter A Positive Number For Height");
+                                                leftStatus.setTextFill(Color.RED);
+                                                rightStatus.setText("");
+                                                viewDetails.setText("");
+                                            } else {
+                                                try {
+                                                    //Creating the user
+                                                    user = new User(name, gender, age, weight, height);
+                                                    userInfo.put(userNumberInt, user);
 
+                                                    leftStatus.setText("");
+                                                    rightStatus.setText("User Didn't Exist so Added User! Choose from menu");
+                                                    rightStatus.setTextFill(Color.GREEN);
+                                                    viewDetails.setText("");
+                                                } catch (Exception e) {
+                                                    leftStatus.setText("Couldn't add user");
+                                                    leftStatus.setTextFill(Color.RED);
+                                                }
+                                            }
+                                        } catch (Exception e) {
+                                            leftStatus.setText("Enter A Positive Number for height");
+                                            leftStatus.setTextFill(Color.RED);
+                                            rightStatus.setText("");
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    leftStatus.setText("Enter A Positive Number for weight");
+                                    leftStatus.setTextFill(Color.RED);
+                                    rightStatus.setText("");
+                                }
+                            }
                         } catch (Exception e) {
-                            leftStatus.setText("Please Enter All Information");
+                            leftStatus.setText("Enter A Positive Number for age");
                             leftStatus.setTextFill(Color.RED);
                             rightStatus.setText("");
                         }
+
+                    } catch (Exception e) {
+                        leftStatus.setText("Please Enter All Information");
+                        leftStatus.setTextFill(Color.RED);
+                        rightStatus.setText("");
                     }
                 }
+                //If the user exists we replace the user
                 if (keyCheck) {
+                    //Getting the name and the gender of the user
                     String name = userName.getText();
                     String gender = String.valueOf(userGender.getValue());
                     //Trying To get valid input from the user
@@ -376,7 +392,6 @@ public class MainController {
                             rightStatus.setText("");
                             viewDetails.setText("");
                         } else {
-                            //Weight Can't be Negative or 0
                             try {
                                 //If the option chosen is kilograms
                                 if (weightChoice.getValue().equals("KG")) {
@@ -387,6 +402,7 @@ public class MainController {
                                     //Converting the lbs to kg
                                     weight = 2.2 * Double.parseDouble(userWeight.getText());
                                 }
+                                //Weight Can't be Negative or 0
                                 if (weight <= 0) {
                                     leftStatus.setText("Please Enter A Positive Number For Weight");
                                     leftStatus.setTextFill(Color.RED);
@@ -401,6 +417,7 @@ public class MainController {
                                             //Converting meter to cm
                                             height = 100 * Double.parseDouble(userHeight.getText());
                                         }
+                                        //Height can't be negative or 0
                                         if (height <= 0) {
                                             leftStatus.setText("Please Enter A Positive Number For Height");
                                             leftStatus.setTextFill(Color.RED);
@@ -448,9 +465,11 @@ public class MainController {
 
     @FXML
     void addToFile() {
-
-        userNumberInt = userNumber.getValue();
+        //Getting the user number
+        userNumberInt = viewUserNumber.getValue();
+        //Checking if that user exists or not
         keyCheck = userInfo.containsKey(userNumberInt);
+
         if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
             leftStatus.setText("Please Enter All Information To Change Data");
             leftStatus.setTextFill(Color.RED);
@@ -484,38 +503,40 @@ public class MainController {
         }
     }
 
+    /**
+     * Allows the user to view Information of a user
+     */
+
 
     @FXML
     void viewInfo() {
         try {
+            //Getting the user number
             userNumberInt = viewUserNumber.getValue();
 
             viewDetails.setText(userInfo.get(userNumberInt).toString());
-            leftStatus.setText("User Info Printed!");
-            leftStatus.setTextFill(Color.GREEN);
-            rightStatus.setText("View above");
+            rightStatus.setText("User Info Printed! View above");
             rightStatus.setTextFill(Color.GREEN);
-
+            leftStatus.setText("");
         } catch (Exception e) {
-
-            leftStatus.setText("No user found");
+            leftStatus.setText("No user Information found");
             leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("Nothing printed");
-            rightStatus.setTextFill(Color.RED);
-
+            rightStatus.setText("");
+            viewDetails.setText("");
         }
     }
 
     @FXML
     void viewExercise() {
-
-        String choice = exerciseChoice.getValue();
-        String speed = choiceOfSpeed.getValue();
-
-        userNumberInt = viewUserNumber.getValue();
-        keyCheck = userInfo.containsKey(userNumberInt);
-
         try {
+            //Getting the user choice
+            String choice = exerciseChoice.getValue();
+            //Getting the speed of exercise
+            String speed = choiceOfSpeed.getValue();
+            //Getting the user number
+            userNumberInt = viewUserNumber.getValue();
+            //Checking if that user exists or not
+            keyCheck = userInfo.containsKey(userNumberInt);
             if (keyCheck) {
                 user = (User) userInfo.get(userNumberInt);
                 weight = user.getUserWeight();
@@ -541,88 +562,115 @@ public class MainController {
                     rightStatus.setTextFill(Color.GREEN);
                 }
             } else {
-                leftStatus.setText("No user found!");
+                leftStatus.setText("No user Information found");
                 leftStatus.setTextFill(Color.RED);
-                rightStatus.setText("Enter valid user number");
-                rightStatus.setTextFill(Color.RED);
+                rightStatus.setText("");
+                viewDetails.setText("");
+
             }
         } catch (NullPointerException e) {
-            leftStatus.setText("No user found!");
+            leftStatus.setText("No user Information found");
             leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("Input user info");
-            rightStatus.setTextFill(Color.RED);
+            rightStatus.setText("");
+            viewDetails.setText("");
         }
     }
 
     @FXML
     void viewBMI() {
-        userNumberInt = viewUserNumber.getValue();
-        keyCheck = userInfo.containsKey(userNumberInt);
         try {
+            //Getting the user number
+            userNumberInt = viewUserNumber.getValue();
+            //Checking if that user exists or not
+            keyCheck = userInfo.containsKey(userNumberInt);
+            //If the option chosen is view Bmi
             if (viewInfoType.getValue().equals("View BMI")) {
-
+                //If the user exists
                 if (keyCheck) {
-
+                    //Gets the user information to view information
                     user = (User) userInfo.get(userNumberInt);
                     weight = user.getUserWeight();
                     height = user.getUserHeight();
 
-                    viewDetails.setText("Your BMI is " + mvh.util.Calculations.bmi(weight, height));
+                    viewDetails.setText("Your BMI is " + Calculations.bmi(weight, height));
 
                     leftStatus.setText("Requested info shown!");
                     leftStatus.setTextFill(Color.GREEN);
                     rightStatus.setText("Check the view box");
                     rightStatus.setTextFill(Color.GREEN);
                 } else {
-                    leftStatus.setText("No user found!");
+                    leftStatus.setText("No user Information found");
                     leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("Enter valid user number");
-                    rightStatus.setTextFill(Color.RED);
+                    rightStatus.setText("");
+                    viewDetails.setText("");
                 }
 
-            } else {
+            }
+            //If the option chosen is weight status
+            else {
+                //If the user exists
                 if (keyCheck) {
-
+                    //Gets the user information to view information
                     user = (User) userInfo.get(userNumberInt);
                     weight = user.getUserWeight();
                     height = user.getUserHeight();
 
-                    viewDetails.setText(mvh.util.Calculations.bmiCompare(weight, height));
+                    viewDetails.setText(Calculations.bmiCompare(weight, height));
 
                     leftStatus.setText("Requested info shown!");
                     leftStatus.setTextFill(Color.GREEN);
                     rightStatus.setText("Check the view box");
                     rightStatus.setTextFill(Color.GREEN);
                 } else {
-                    leftStatus.setText("No user found!");
+                    leftStatus.setText("No user Information found");
                     leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("Enter valid user number");
-                    rightStatus.setTextFill(Color.RED);
+                    rightStatus.setText("");
+                    viewDetails.setText("");
                 }
             }
-        } catch (NullPointerException e) {
-            leftStatus.setText("No user found!");
+        } catch (Exception e) {
+            leftStatus.setText("No user Information found");
             leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("Input user info");
-            rightStatus.setTextFill(Color.RED);
+            rightStatus.setText("");
+            viewDetails.setText("");
         }
     }
 
+    /**
+     * Allows the user to add calories burnt to a file.
+     */
+
     @FXML
     void addCalorieBurnt() {
-
         try {
-            String calorie = calorieAmount.getText();
+            //Getting the burnt calorie amount from the user
             int userNumber = calorieUser.getValue();
-
-            HashMap<Integer, String> calorieInfo = new HashMap<>();
-            calorieInfo.put(userNumber, calorie);
-
-            Writer.writer(userNumber, calorieInfo);
-            leftStatus.setText("Calorie added to file!");
-            leftStatus.setTextFill(Color.GREEN);
-
-        } catch (IOException e) {
+            //If the user didn't input anything it will ask them to input
+            if (calorieAmount == null) {
+                leftStatus.setText("Please Enter Calorie Amount");
+                leftStatus.setTextFill(Color.RED);
+                rightStatus.setText("");
+            } else {
+                try {
+                    int calorie = Integer.parseInt(calorieAmount.getText());
+                    if (calorie < 0) {
+                        leftStatus.setText("Please Enter 0 or a positive number for calorie Amount");
+                        leftStatus.setTextFill(Color.RED);
+                        rightStatus.setText("");
+                    } else {
+                        HashMap<Integer, String> calorieInfo = new HashMap<>();
+                        calorieInfo.put(userNumber, String.valueOf(calorie));
+                        Writer.writer(userNumber, calorieInfo);
+                        leftStatus.setText("Calorie added to file!");
+                        leftStatus.setTextFill(Color.GREEN);
+                    }
+                } catch (Exception e) {
+                    leftStatus.setText("Please Enter 0 or a positive number for calorie Amount");
+                    leftStatus.setTextFill(Color.RED);
+                    rightStatus.setText("");
+                }
+            }
+        } catch (Exception e) {
             leftStatus.setText("Cannot be added to file!");
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("");
@@ -649,10 +697,10 @@ public class MainController {
                     rightStatus.setTextFill(Color.GREEN);
 
                 } else {
-                    leftStatus.setText("No user found!");
+                    leftStatus.setText("No user Information found");
                     leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("Enter valid user number");
-                    rightStatus.setTextFill(Color.RED);
+                    rightStatus.setText("");
+                    viewDetails.setText("");
                 }
             } else {
                 if (keyCheck) {
@@ -667,17 +715,17 @@ public class MainController {
                     rightStatus.setTextFill(Color.GREEN);
 
                 } else {
-                    leftStatus.setText("No user found!");
+                    leftStatus.setText("No user Information found");
                     leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("Enter valid user number");
-                    rightStatus.setTextFill(Color.RED);
+                    rightStatus.setText("");
+                    viewDetails.setText("");
                 }
             }
         } catch (IOException e) {
-            leftStatus.setText("No user found!");
+            leftStatus.setText("No user Information found");
             leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("Enter correct user number");
-            rightStatus.setTextFill(Color.RED);
+            rightStatus.setText("");
+            viewDetails.setText("");
         }
     }
 
