@@ -69,7 +69,7 @@ public class Calculations {
      * @param total_calories Total number of calories needed to burn to lose the user inputted weight
      * @param weight         The weight of the user
      */
-    public static String estimateExercise(String choiceOfSpeed, String exerciseChoice, int total_calories, double weight, int kg_input) {
+    public static String estimateExercise(String choiceOfSpeed, String exerciseChoice, int total_calories, double weight, int kg_input, int weightGoal) {
 
         String output = "";
         if (exerciseChoice.equals("Cycling")) {
@@ -79,23 +79,27 @@ public class Calculations {
             //https://www.bing.com/images/search?view=detailV2&ccid=yadDUQDJ&id=87120523BFFA7EC2BB481F4F72EA93EEF131C32A&thid=OIP.yadDUQDJzCrTGscl7VKGxwHaER&mediaurl=https%3a%2f%2fwww.researchgate.net%2fprofile%2fPongpisit_Wuttidittachotti%2fpublication%2f269927658%2ffigure%2fdownload%2ftbl2%2fAS%3a668512750161926%401536397268552%2fExamples-of-MET-values-for-cycling-jogging-and-walking.png&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.c9a7435100c9cc2ad31ac725ed5286c7%3frik%3dKsMx8e6T6nJPHw%26pid%3dImgRaw%26r%3d0&exph=491&expw=850&q=cycling+met+chart&simid=608045430922565507&FORM=IRPRST&ck=9961DBCB589AF095617EC992BB417D2E&selectedIndex=0&idpp=overlayview&ajaxhist=0&ajaxserp=0
             int[] array = {6, 8, 10}; //Order respective to the options below
 
-            if (choiceOfSpeed.equals("16-19 km/h")) {
+            switch (choiceOfSpeed) {
+                case "16-19 km/h" -> {
 
-                double ex_burnt = (total_calories * 200) / (array[0] * weight * 3.5 * 60);
-                //Assigning the string to variable
-                output = "You need to cycle " + String.format("%.1f",ex_burnt) + " hours" + "\n" + "at 16-19 km/h to burn " +  total_calories + " calories and lose " + kg_input + " kgs";
+                    double ex_burnt = (total_calories * 200) / (array[0] * weight * 3.5 * 60);
+                    //Assigning the string to variable
+                    output = "You need to cycle " + String.format("%.1f", ex_burnt) + " hours" + "\n" + "at 16-19 km/h to burn " + total_calories + " calories and lose " + kg_input + " kgs " + "\n" + "to reach the weight goal of " + weightGoal + "kgs";
 
-            } else if (choiceOfSpeed.equals("19-22 km/h")) {
+                }
+                case "19-22 km/h" -> {
 
-                double ex_burnt = (total_calories * 200) / (array[1] * weight * 3.5 * 60);
-                //Assigning the string to variable
-                output = "You need to cycle " + String.format("%.1f",ex_burnt) + " hours" + "\n" + "at 19-22 km/h to burn " +  total_calories + " calories and lose " + kg_input + " kgs";
+                    double ex_burnt = (total_calories * 200) / (array[1] * weight * 3.5 * 60);
+                    //Assigning the string to variable
+                    output = "You need to cycle " + String.format("%.1f", ex_burnt) + " hours" + "\n" + "at 19-22 km/h to burn " + total_calories + " calories and lose " + kg_input + " kgs " + "\n" + "to reach the weight goal of " + weightGoal + "kgs";
 
-            } else if (choiceOfSpeed.equals("22-25 km/h")) {
+                }
+                case "22-25 km/h" -> {
 
-                double ex_burnt = (total_calories * 200) / (array[2] * weight * 3.5 * 60);
-                //Assigning the string to variable
-                output = "You need to cycle " + String.format("%.1f",ex_burnt) + " hours" + "\n" + "at 22-25 km/h to burn " +  total_calories + " calories and lose " + kg_input + " kgs";
+                    double ex_burnt = (total_calories * 200) / (array[2] * weight * 3.5 * 60);
+                    //Assigning the string to variable
+                    output = "You need to cycle " + String.format("%.1f", ex_burnt) + " hours" + "\n" + "at 22-25 km/h to burn " + total_calories + " calories and lose " + kg_input + " kgs " + "\n" + "to reach the weight goal of " + weightGoal + "kgs";
+                }
             }
 
         } else if (exerciseChoice.equals("Running")) {
@@ -107,23 +111,27 @@ public class Calculations {
 
             int[] array2 = {5, 8, 11}; //Order respective to the options below
 
-            if (choiceOfSpeed.equals("6-7 km/h")) {
+            switch (choiceOfSpeed) {
+                case "6-7 km/h" -> {
 
-                double ex_burnt = (total_calories * 200) / (array2[0] * weight * 3.5 * 60);
-                //Assigning the string to variable
-                output = "You need to run " + String.format("%.1f",ex_burnt) + " hours" + "\n" + "at 6-7 km/h to burn " +  total_calories + " calories and lose " + kg_input + " kgs";
+                    double ex_burnt = (total_calories * 200) / (array2[0] * weight * 3.5 * 60);
+                    //Assigning the string to variable
+                    output = "You need to run " + String.format("%.1f", ex_burnt) + " hours" + "\n" + "at 6-7 km/h to burn " + total_calories + " calories and lose " + kg_input + " kgs " + "\n" + "to reach the weight goal of " + weightGoal + "kgs";
 
-            } else if (choiceOfSpeed.equals("7-8 km/h")) {
+                }
+                case "7-8 km/h" -> {
 
-                double ex_burnt = (total_calories * 200) / (array2[1] * weight * 3.5 * 60);
-                //Assigning the string to variable
-                output = "You need to run " + String.format("%.1f",ex_burnt) + " hours" + "\n" + "at 7-8 km/h to burn " +  total_calories + " calories and lose " + kg_input + " kgs";
+                    double ex_burnt = (total_calories * 200) / (array2[1] * weight * 3.5 * 60);
+                    //Assigning the string to variable
+                    output = "You need to run " + String.format("%.1f", ex_burnt) + " hours" + "\n" + "at 7-8 km/h to burn " + total_calories + " calories and lose " + kg_input + " kgs " + "\n" + "to reach the weight goal of " + weightGoal + "kgs";
 
-            } else if (choiceOfSpeed.equals("9-11 km/h")) {
+                }
+                case "9-11 km/h" -> {
 
-                double ex_burnt = (total_calories * 200) / (array2[2] * weight * 3.5 * 60);
-                //Assigning the string to variable
-                output = "You need to run " + String.format("%.1f",ex_burnt) + " hours" + "\n" + "at 9-11 km/h to burn " +  total_calories + " calories and lose " + kg_input + " kgs";
+                    double ex_burnt = (total_calories * 200) / (array2[2] * weight * 3.5 * 60);
+                    //Assigning the string to variable
+                    output = "You need to run " + String.format("%.1f", ex_burnt) + " hours" + "\n" + "at 9-11 km/h to burn " + total_calories + " calories and lose " + kg_input + " kgs " + "\n" + "to reach the weight goal of " + weightGoal + "kgs";
+                }
             }
         }
         return output;
@@ -133,7 +141,7 @@ public class Calculations {
      * @param calInfo The arraylist containing the data read from the saved file
      * @return Number of total calories burnt
      */
-    public static int getTotalCalories(int keyNumber, HashMap<Integer,ArrayList<Integer>> calInfo) {
+    public static int getTotalCalories(int keyNumber, HashMap<Integer, ArrayList<Integer>> calInfo) {
 
         int sum = 0;
         //Initialising an arraylist
@@ -143,11 +151,11 @@ public class Calculations {
             calories = calInfo.get(keyNumber);
 
             //Looping through the arraylist assigned to the user key of the hashmap
-            for (int i: calories) {
+            for (int i : calories) {
                 //Adding the calories
                 sum = sum + i;
             }
-        //Exception handled
+            //Exception handled
         } catch (NumberFormatException e) {
             System.err.println("Cannot convert string to integer type");
         }
@@ -159,7 +167,7 @@ public class Calculations {
      *
      * @param calInfo The arraylist containing the data read from the saved file
      */
-    public static int getMaxCalories(int keyNumber, HashMap<Integer,ArrayList<Integer>> calInfo) {
+    public static int getMaxCalories(int keyNumber, HashMap<Integer, ArrayList<Integer>> calInfo) {
 
         int maxCalories;
         ArrayList<Integer> calories = new ArrayList<>();
@@ -168,13 +176,13 @@ public class Calculations {
             //Getting the information of the user using the key of the hashmap
             calories = calInfo.get(keyNumber);
 
-        //Exception handled
+            //Exception handled
         } catch (NumberFormatException nfe) {
             System.err.println("Cannot convert string to integer type");
         }
         //Sorting to get calories in order.
         Collections.sort(calories);
-        maxCalories = calories.get(calories.size()-1);
+        maxCalories = calories.get(calories.size() - 1);
         return maxCalories;
     }
 }

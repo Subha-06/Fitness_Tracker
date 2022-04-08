@@ -15,7 +15,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Writer {
@@ -64,7 +63,6 @@ public class Writer {
      * @param userGender The gender of the user that is manually entered if the user doesn't exist
      * @param userWeight The weight of the user that is manually entered if the user doesn't exist
      * @param userHeight The height of the user that is manually entered if the user doesn't exist
-     * @throws IOException
      */
     public static void fileWriter(Boolean keyCheck, int userNumber, String userName, String userAge, String userGender, String userWeight, String userHeight) throws IOException {
 

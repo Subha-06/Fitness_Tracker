@@ -71,7 +71,7 @@ public class Reader {
 
                     line = b_reader.readLine();
                 }
-            //Exception handled
+                //Exception handled
             } catch (Exception e) {
                 System.err.println("File is empty!");
             }
@@ -83,11 +83,11 @@ public class Reader {
      *
      * @return An array list containing the user input data about calories burnt
      */
-    public static HashMap<Integer,ArrayList<Integer>> outReader(int userNumber) throws IOException {
+    public static HashMap<Integer, ArrayList<Integer>> outReader(int userNumber) throws IOException {
         //The file that stores the information of calories burnt.
         File outFile = new File("User.txt");
         //Initializing an empty Hashmap and a new Arraylist for storing the data.
-        HashMap<Integer,ArrayList<Integer>> outInfo = null;
+        HashMap<Integer, ArrayList<Integer>> outInfo = null;
         ArrayList<Integer> list = new ArrayList<>();
         if (outFile.exists()) {
             //Creating a file reader and a buffered reader
@@ -114,5 +114,6 @@ public class Reader {
         }
         //Returns the HashMap with calorie information.
         return outInfo;
+
     }
 }
