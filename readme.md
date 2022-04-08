@@ -32,7 +32,7 @@
 
 - > java --module-path "/Library/Java/JavaVirtualMachines/javafx-sdk-18/lib" --add-modules javafx.controls,javafx.fxml -jar CPSC233W22A3.jar
 
-##Features:
+##Features
 - Can Add multiple users and view their information.
 - Can read information of a user from a file.
 - Can write to a file with user information.
