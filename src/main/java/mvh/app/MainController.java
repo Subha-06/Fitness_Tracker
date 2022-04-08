@@ -542,7 +542,7 @@ public class MainController {
     @FXML
     void addToFile() {
         //Getting the user number
-        userNumberInt = viewUserNumber.getValue();
+        userNumberInt = userNumber.getValue();
         //Checking if that user exists or not
         keyCheck = userInfo.containsKey(userNumberInt);
         try {
@@ -716,17 +716,18 @@ public class MainController {
                                 user = (User) userInfo.get(userNumberInt);
                                 weight = user.getUserWeight();
                                 int weightDifference = (int) weight - Integer.parseInt(weightExercise.getText());
-
+                                //If the weight difference is 0
                                 if (weightDifference < 0) {
                                     leftStatus.setText("");
                                     rightStatus.setText("");
                                     viewDetails.setText("Just Eat More.");
-                                } else if (weightDifference == 0) {
+                                }
+                                //If the weight difference is negative.
+                                else if (weightDifference == 0) {
                                     leftStatus.setText("");
                                     rightStatus.setText("");
                                     viewDetails.setText("You are already at this weight");
                                 } else {
-                                    int weight_loss = Integer.parseInt(weightExercise.getText());
 
                                     //Calling the estimate calories option method
                                     int calories = Calculations.estimateCalories(weightDifference);
@@ -1003,7 +1004,7 @@ public class MainController {
         alert.setHeaderText("About Author");
         alert.setContentText("""
                 Author: Amasil Rahim Zihad & Fabiha Fairuzz Subha
-                Version: 3.7
+                Version: 4.7
                 This is fitness tracking program.""");
         //Showing the alert
         alert.showAndWait();
