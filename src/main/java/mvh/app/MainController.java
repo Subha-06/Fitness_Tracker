@@ -1021,11 +1021,18 @@ public class MainController {
         //Creating the alert box
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
-        alert.setHeaderText("About Author");
+        alert.setHeaderText("About Authors");
         alert.setContentText("""
-                Author: Amasil Rahim Zihad & Fabiha Fairuzz Subha
+                This is fitness tracking program.
                 Version: 4.7
-                This is fitness tracking program.""");
+                
+                Authors:    
+                Fabiha Fairuzz Subha (UCID: 30148674)
+                Email: FabihaFairuzz.Subha@ucalgary.ca
+                                
+                Amasil Rahim Zihad (UCID: 30164830)
+                Email: amasilrahim.zihad@ucalgary.ca
+                """);
         //Showing the alert
         alert.showAndWait();
     }
