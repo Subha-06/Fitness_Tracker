@@ -42,7 +42,6 @@ public class Writer {
                     b_writer.write(i + "," + outInfo.get(i));
                     b_writer.newLine();
                 }
-
                 b_writer.flush();
                 b_writer.close();
             //Exception handled

@@ -688,6 +688,8 @@ public class MainController {
     @FXML
     void viewExercise() {
         try {
+            //Getting the user number
+            userNumberInt = userNumber.getValue();
             keyCheck = userInfo.containsKey(userNumberInt);
             try {
                 if (weightExercise.getText().equals("")) {
@@ -736,10 +738,9 @@ public class MainController {
                                     String exercise = mvh.util.Calculations.estimateExercise(speed, choice, calories, weight, weightDifference, Integer.parseInt(weightExercise.getText()));
                                     viewDetails.setText(exercise);
 
-                                    leftStatus.setText("Requested info shown!");
-                                    leftStatus.setTextFill(Color.GREEN);
-                                    rightStatus.setText("Check the view box");
+                                    rightStatus.setText("Requested info shown!");
                                     rightStatus.setTextFill(Color.GREEN);
+
                                 }
 
 
