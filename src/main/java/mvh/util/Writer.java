@@ -25,7 +25,7 @@ public class Writer {
      *
      * @param outInfo The information that the user wants to save in a file
      */
-    public static void writer(int userNumber, HashMap<Integer,String> outInfo) throws IOException {
+    public static void writer(HashMap<Integer,String> outInfo) throws IOException {
 
         File newFile = new File("User.txt");
         //If file does not exist create new file
@@ -44,6 +44,7 @@ public class Writer {
                 }
 
                 b_writer.flush();
+                b_writer.close();
             } catch (IOException e) {
                 System.err.println("Cannot access the file to write it!");
             }

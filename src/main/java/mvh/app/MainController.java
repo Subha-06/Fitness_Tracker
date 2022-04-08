@@ -727,7 +727,7 @@ public class MainController {
                         HashMap<Integer, String> calorieInfo = new HashMap<>();
                         calorieInfo.put(userNumber, String.valueOf(calorie));
                         //Writing the information to a file
-                        Writer.writer(userNumber, calorieInfo);
+                        Writer.writer(calorieInfo);
                         rightStatus.setText("Calorie added to file!");
                         rightStatus.setTextFill(Color.GREEN);
                         leftStatus.setText("");
@@ -754,7 +754,7 @@ public class MainController {
             if (calorieViewType.getValue().equals("Total Calorie Lost")) {
                 if (keyCheck) {
 
-                    HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader();
+                    HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
 
                     int totalCalories = mvh.util.Calculations.getTotalCalories(userNumberInt, calorieInfo);
 
@@ -773,7 +773,7 @@ public class MainController {
             } else {
                 if (keyCheck) {
 
-                    HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader();
+                    HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
 
                     int maxCalories = mvh.util.Calculations.getMaxCalories(userNumberInt, calorieInfo);
                     viewDetails.setText("Max calories lost in a day " + maxCalories);

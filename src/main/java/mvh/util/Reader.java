@@ -8,6 +8,7 @@
  */
 package mvh.util;
 
+import javafx.scene.paint.Color;
 import mvh.app.Main;
 import mvh.app.MainController;
 import mvh.user.*;
@@ -82,7 +83,7 @@ public class Reader {
      *
      * @return An array list containing the user input data about calories burnt
      */
-    public static HashMap<Integer,ArrayList<Integer>> outReader() throws IOException {
+    public static HashMap<Integer,ArrayList<Integer>> outReader(int userNumber) throws IOException {
         //The file that stores the information of calories burnt.
         File outFile = new File("User.txt");
         //Initializing an empty arraylist.
@@ -97,17 +98,20 @@ public class Reader {
             outInfo = new HashMap<>();
             while (line != null) {
                 String[] readInfo = line.split(",");
-                //Adding the information to the HashMap.
-                list.add(Integer.parseInt(readInfo[1]));
-                outInfo.put(Integer.parseInt(readInfo[0]), list);
-                line = b_reader.readLine();
+
+                if (readInfo[0].equals(String.valueOf(userNumber))) {
+                    //Adding the information to the HashMap.
+                    list.add(Integer.parseInt(readInfo[1]));
+                    line = b_reader.readLine();
+                }
+                outInfo.put(userNumber, list);
             }
         }
         //If file does not exist
         else {
             System.err.println("Cannot find a file to read!");
         }
-        //Returns the arraylist with calorie information.
+        //Returns the HashMap with calorie information.
         return outInfo;
     }
 }
