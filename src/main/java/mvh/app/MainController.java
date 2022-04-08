@@ -195,8 +195,13 @@ public class MainController {
                     try {
                         int age = Integer.parseInt(userAge.getText());
                         //Age Can't be Negative or 0
-                        if (age <= 0) {
-                            leftStatus.setText("Please Enter A Positive Number For age");
+                        if (age < 0) {
+                            leftStatus.setText("Age can't be a negative number");
+                            leftStatus.setTextFill(Color.RED);
+                            rightStatus.setText("");
+                            viewDetails.setText("");
+                        } else if (age == 0) {
+                            leftStatus.setText("Age can't be 0");
                             leftStatus.setTextFill(Color.RED);
                             rightStatus.setText("");
                             viewDetails.setText("");
@@ -212,8 +217,13 @@ public class MainController {
                                     weight = 2.2 * Double.parseDouble(userWeight.getText());
                                 }
                                 //Weight Can't be Negative or 0
-                                if (weight <= 0) {
-                                    leftStatus.setText("Please Enter A Positive Number For Weight");
+                                if (weight < 0) {
+                                    leftStatus.setText("Weight Can't be a negative number");
+                                    leftStatus.setTextFill(Color.RED);
+                                    rightStatus.setText("");
+                                    viewDetails.setText("");
+                                } else if (weight == 0) {
+                                    leftStatus.setText("Weight Can't Be 0");
                                     leftStatus.setTextFill(Color.RED);
                                     rightStatus.setText("");
                                     viewDetails.setText("");
@@ -227,8 +237,13 @@ public class MainController {
                                             height = 100 * Double.parseDouble(userHeight.getText());
                                         }
                                         //Height Can't be 0 or negative
-                                        if (height <= 0) {
-                                            leftStatus.setText("Please Enter A Positive Number For Height");
+                                        if (height < 0) {
+                                            leftStatus.setText("Height Can't be a negative number");
+                                            leftStatus.setTextFill(Color.RED);
+                                            rightStatus.setText("");
+                                            viewDetails.setText("");
+                                        } else if (height == 0) {
+                                            leftStatus.setText("Height Can't be 0");
                                             leftStatus.setTextFill(Color.RED);
                                             rightStatus.setText("");
                                             viewDetails.setText("");
@@ -245,24 +260,28 @@ public class MainController {
                                             } catch (Exception e) {
                                                 leftStatus.setText("Couldn't add user");
                                                 leftStatus.setTextFill(Color.RED);
+                                                rightStatus.setText("");
                                             }
                                         }
                                     } catch (Exception e) {
                                         leftStatus.setText("Enter A Positive Number for height");
                                         leftStatus.setTextFill(Color.RED);
                                         rightStatus.setText("");
+                                        viewDetails.setText("");
                                     }
                                 }
                             } catch (Exception e) {
                                 leftStatus.setText("Enter A Positive Number for weight");
                                 leftStatus.setTextFill(Color.RED);
                                 rightStatus.setText("");
+                                viewDetails.setText("");
                             }
                         }
                     } catch (Exception e) {
                         leftStatus.setText("Enter A Positive Number for age");
                         leftStatus.setTextFill(Color.RED);
                         rightStatus.setText("");
+                        viewDetails.setText("");
                     }
                 }
             }
@@ -270,6 +289,7 @@ public class MainController {
             leftStatus.setText("Please Enter All Information");
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("");
+            viewDetails.setText("");
         }
     }
 
@@ -301,8 +321,13 @@ public class MainController {
                         try {
                             int age = Integer.parseInt(userAge.getText());
                             //Age Can't be Negative or 0
-                            if (age <= 0) {
-                                leftStatus.setText("Please Enter A Positive Number For age");
+                            if (age < 0) {
+                                leftStatus.setText("Age can't be a negative number");
+                                leftStatus.setTextFill(Color.RED);
+                                rightStatus.setText("");
+                                viewDetails.setText("");
+                            } else if (age == 0) {
+                                leftStatus.setText("Age can't be 0");
                                 leftStatus.setTextFill(Color.RED);
                                 rightStatus.setText("");
                                 viewDetails.setText("");
@@ -318,8 +343,13 @@ public class MainController {
                                         weight = 2.2 * Double.parseDouble(userWeight.getText());
                                     }
                                     //Weight Can't be Negative or 0
-                                    if (weight <= 0) {
-                                        leftStatus.setText("Please Enter A Positive Number For Weight");
+                                    if (weight < 0) {
+                                        leftStatus.setText("Weight can't be a negative number");
+                                        leftStatus.setTextFill(Color.RED);
+                                        rightStatus.setText("");
+                                        viewDetails.setText("");
+                                    } else if (weight == 0) {
+                                        leftStatus.setText("Weight Can't Be 0");
                                         leftStatus.setTextFill(Color.RED);
                                         rightStatus.setText("");
                                         viewDetails.setText("");
@@ -333,8 +363,13 @@ public class MainController {
                                                 height = 100 * Double.parseDouble(userHeight.getText());
                                             }
                                             //Height Can't be negative or 0
-                                            if (height <= 0) {
-                                                leftStatus.setText("Please Enter A Positive Number For Height");
+                                            if (height < 0) {
+                                                leftStatus.setText("Height cannot be a negative number");
+                                                leftStatus.setTextFill(Color.RED);
+                                                rightStatus.setText("");
+                                                viewDetails.setText("");
+                                            } else if (height == 0) {
+                                                leftStatus.setText("Height can't be 0");
                                                 leftStatus.setTextFill(Color.RED);
                                                 rightStatus.setText("");
                                                 viewDetails.setText("");
@@ -343,7 +378,6 @@ public class MainController {
                                                     //Creating the user
                                                     user = new User(name, gender, age, weight, height);
                                                     userInfo.put(userNumberInt, user);
-
                                                     leftStatus.setText("");
                                                     rightStatus.setText("User Didn't Exist so Added User! Choose from menu");
                                                     rightStatus.setTextFill(Color.GREEN);
@@ -351,30 +385,36 @@ public class MainController {
                                                 } catch (Exception e) {
                                                     leftStatus.setText("Couldn't add user");
                                                     leftStatus.setTextFill(Color.RED);
+                                                    rightStatus.setText("");
+                                                    viewDetails.setText("");
                                                 }
                                             }
                                         } catch (Exception e) {
                                             leftStatus.setText("Enter A Positive Number for height");
                                             leftStatus.setTextFill(Color.RED);
                                             rightStatus.setText("");
+                                            viewDetails.setText("");
                                         }
                                     }
                                 } catch (Exception e) {
                                     leftStatus.setText("Enter A Positive Number for weight");
                                     leftStatus.setTextFill(Color.RED);
                                     rightStatus.setText("");
+                                    viewDetails.setText("");
                                 }
                             }
                         } catch (Exception e) {
                             leftStatus.setText("Enter A Positive Number for age");
                             leftStatus.setTextFill(Color.RED);
                             rightStatus.setText("");
+                            viewDetails.setText("");
                         }
 
                     } catch (Exception e) {
                         leftStatus.setText("Please Enter All Information");
                         leftStatus.setTextFill(Color.RED);
                         rightStatus.setText("");
+                        viewDetails.setText("");
                     }
                 }
                 //If the user exists we replace the user
@@ -386,8 +426,14 @@ public class MainController {
                     try {
                         int age = Integer.parseInt(userAge.getText());
                         //Age Can't be Negative or 0
-                        if (age <= 0) {
-                            leftStatus.setText("Please Enter A Positive Number For age");
+                        if (age < 0) {
+                            leftStatus.setText("Age can't be a negative number");
+                            leftStatus.setTextFill(Color.RED);
+                            rightStatus.setText("");
+                            viewDetails.setText("");
+                        }
+                        else if (age == 0) {
+                            leftStatus.setText("Age can't be 0");
                             leftStatus.setTextFill(Color.RED);
                             rightStatus.setText("");
                             viewDetails.setText("");
@@ -403,8 +449,14 @@ public class MainController {
                                     weight = 2.2 * Double.parseDouble(userWeight.getText());
                                 }
                                 //Weight Can't be Negative or 0
-                                if (weight <= 0) {
-                                    leftStatus.setText("Please Enter A Positive Number For Weight");
+                                if (weight < 0) {
+                                    leftStatus.setText("Weight Can't be Negative Number");
+                                    leftStatus.setTextFill(Color.RED);
+                                    rightStatus.setText("");
+                                    viewDetails.setText("");
+                                }
+                                else if (weight == 0) {
+                                    leftStatus.setText("Weight Can't Be 0");
                                     leftStatus.setTextFill(Color.RED);
                                     rightStatus.setText("");
                                     viewDetails.setText("");
@@ -418,8 +470,14 @@ public class MainController {
                                             height = 100 * Double.parseDouble(userHeight.getText());
                                         }
                                         //Height can't be negative or 0
-                                        if (height <= 0) {
-                                            leftStatus.setText("Please Enter A Positive Number For Height");
+                                        if (height < 0) {
+                                            leftStatus.setText("Height can't be a negative number");
+                                            leftStatus.setTextFill(Color.RED);
+                                            rightStatus.setText("");
+                                            viewDetails.setText("");
+                                        }
+                                        else if (height == 0) {
+                                            leftStatus.setText("Height can't be 0");
                                             leftStatus.setTextFill(Color.RED);
                                             rightStatus.setText("");
                                             viewDetails.setText("");
@@ -435,24 +493,29 @@ public class MainController {
                                             } catch (Exception e) {
                                                 leftStatus.setText("Couldn't change user Information");
                                                 leftStatus.setTextFill(Color.RED);
+                                                viewDetails.setText("");
+                                                rightStatus.setText("");
                                             }
                                         }
                                     } catch (Exception e) {
                                         leftStatus.setText("Enter A Positive Number for height");
                                         leftStatus.setTextFill(Color.RED);
                                         rightStatus.setText("");
+                                        viewDetails.setText("");
                                     }
                                 }
                             } catch (Exception e) {
                                 leftStatus.setText("Enter A Positive Number for weight");
                                 leftStatus.setTextFill(Color.RED);
                                 rightStatus.setText("");
+                                viewDetails.setText("");
                             }
                         }
                     } catch (Exception e) {
                         leftStatus.setText("Enter A Positive Number for age");
                         leftStatus.setTextFill(Color.RED);
                         rightStatus.setText("");
+                        viewDetails.setText("");
                     }
                 }
             }
@@ -460,6 +523,7 @@ public class MainController {
             leftStatus.setText("Please Enter All Information");
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("");
+            viewDetails.setText("");
         }
     }
 
@@ -653,16 +717,20 @@ public class MainController {
             } else {
                 try {
                     int calorie = Integer.parseInt(calorieAmount.getText());
+                    //Calorie Amount shouldn't be a negative number
                     if (calorie < 0) {
                         leftStatus.setText("Please Enter 0 or a positive number for calorie Amount");
                         leftStatus.setTextFill(Color.RED);
                         rightStatus.setText("");
                     } else {
+                        //Creating a hashmap with the users' calorie information
                         HashMap<Integer, String> calorieInfo = new HashMap<>();
                         calorieInfo.put(userNumber, String.valueOf(calorie));
+                        //Writing the information to a file
                         Writer.writer(userNumber, calorieInfo);
-                        leftStatus.setText("Calorie added to file!");
-                        leftStatus.setTextFill(Color.GREEN);
+                        rightStatus.setText("Calorie added to file!");
+                        rightStatus.setTextFill(Color.GREEN);
+                        leftStatus.setText("");
                     }
                 } catch (Exception e) {
                     leftStatus.setText("Please Enter 0 or a positive number for calorie Amount");
