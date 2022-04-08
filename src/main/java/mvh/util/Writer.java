@@ -89,7 +89,6 @@ public class Writer {
 
                     //Writing the information in the file
                     b_writer.write(userNumber + "," + name + "," + age + "," + gender + "," + weight + "," + height);
-                    b_writer.newLine();
                     b_writer.flush();
 
                 //If the user doesn't exist
@@ -101,6 +100,7 @@ public class Writer {
                     b_writer.newLine();
                     b_writer.flush();
                 }
+                b_writer.newLine();
             //Exception handled
             } catch (IOException e) {
                 System.err.println("File not found");

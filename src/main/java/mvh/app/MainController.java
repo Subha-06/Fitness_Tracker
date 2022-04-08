@@ -983,6 +983,7 @@ public class MainController {
             fileChooser.setInitialFileName("UserInfo.txt");
             File fileSave = fileChooser.showSaveDialog(new Stage());
             System.out.println(fileSave);
+
             leftStatus.setText("User file saved successfully!");
             leftStatus.setTextFill(Color.GREEN);
             rightStatus.setText("User info saved");
