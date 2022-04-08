@@ -141,7 +141,7 @@ public class Calculations {
             for (int i: calories) {
                 sum = sum + i;
             }
-        } catch (NumberFormatException nfe) {
+        } catch (NumberFormatException e) {
             System.err.println("Cannot convert string to integer type");
         }
         return sum;
