@@ -12,7 +12,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import mvh.util.Reader;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -26,6 +28,20 @@ public class Main extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {launch(args);}
+    public static void main(String[] args) {
+        if (args.length != 0) {
+            File fileInput = new File(args[0]);
+            if (fileInput.exists() && fileInput.canRead()) {
+                try {
+                    Reader.reader(fileInput);
+                } catch (IOException e) {
+                    System.err.println("Not a valid Input file");
+                }
+            }
+        } else {
+            System.err.println("No argument found!");
+        }
+        launch(args);
+    }
 
 }
