@@ -59,8 +59,6 @@ public class MainController {
     @FXML
     private ChoiceBox<String> userGender;
     @FXML
-    private ChoiceBox<String> exerciseKGLB;
-    @FXML
     private Label leftStatus;
     @FXML
     private Label rightStatus;
@@ -98,10 +96,10 @@ public class MainController {
         userGender.setValue("Male");
         userGender.getItems().addAll("Male", "Female", "Preferred not to say");
 
-        //User weight input kg or lb
-        exerciseKGLB.getItems().clear();
-        exerciseKGLB.setValue("KG");
-        exerciseKGLB.getItems().addAll("KG", "LB");
+//        //User weight input kg or lb
+//        exerciseKGLB.getItems().clear();
+//        exerciseKGLB.setValue("KG");
+//        exerciseKGLB.getItems().addAll("KG", "LB");
 
         //User input height, cm or meter.
         heightChoice.getItems().clear();
