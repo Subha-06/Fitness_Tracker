@@ -56,7 +56,7 @@ public class Reader {
                 if (line == null) {
                     System.err.println("File is empty!");
 
-                } else if ( line != null) {
+                } else {
 
                     while (line != null) {
                         //The file is csv so separating them and storing them in a string

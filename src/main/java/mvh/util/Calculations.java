@@ -185,7 +185,6 @@ public class Calculations {
         }
         //Sorting to get calories in order.
         Collections.sort(calories);
-         int maxCalories = calories.get(calories.size() - 1);
-        return maxCalories;
+        return calories.get(calories.size() - 1);
     }
 }
