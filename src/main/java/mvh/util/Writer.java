@@ -24,7 +24,7 @@ public class Writer {
      *
      * @param outInfo The information that the user wants to save in a file
      */
-    public static void writer(HashMap<Integer,String> outInfo) throws IOException {
+    public static void writer(HashMap<Integer, String> outInfo) throws IOException {
 
         File newFile = new File("User.txt");
         //If file does not exist create new file
@@ -38,13 +38,13 @@ public class Writer {
                 BufferedWriter b_writer = new BufferedWriter(f_writer);
 
                 //Writing the information to the file
-                for (Integer i : outInfo.keySet()){
+                for (Integer i : outInfo.keySet()) {
                     b_writer.write(i + "," + outInfo.get(i));
                     b_writer.newLine();
                 }
                 b_writer.flush();
                 b_writer.close();
-            //Exception handled
+                //Exception handled
             } catch (IOException e) {
                 System.err.println("Cannot access the file to write it!");
             }
@@ -54,11 +54,10 @@ public class Writer {
     }
 
     /**
-     *
-     * @param keyCheck Boolean variable to check if the user already exists in the data storage
+     * @param keyCheck   Boolean variable to check if the user already exists in the data storage
      * @param userNumber The key to the information of the user in the hashmap
-     * @param userName The name of the user that is manually entered if the user doesn't exist
-     * @param userAge The age of the user that is manually entered if the user doesn't exist
+     * @param userName   The name of the user that is manually entered if the user doesn't exist
+     * @param userAge    The age of the user that is manually entered if the user doesn't exist
      * @param userGender The gender of the user that is manually entered if the user doesn't exist
      * @param userWeight The weight of the user that is manually entered if the user doesn't exist
      * @param userHeight The height of the user that is manually entered if the user doesn't exist
@@ -88,11 +87,11 @@ public class Writer {
                     String height = String.valueOf(user.getUserHeight());
 
                     //Writing the information in the file
-                    b_writer.write(userNumber + "," + name + "," + age + "," + gender + "," + weight + "," + height);
+                    b_writer.write(userNumber + "," + name + "," + age + "," + gender + "," + weight + "," + height + "\n");
                     b_writer.flush();
 
-                //If the user doesn't exist
-                } else if (!keyCheck){
+                    //If the user doesn't exist
+                } else {
 
                     //User manually enters the info which is passed in the parameters of the method from the text fields
                     //Writing the information in the file
@@ -101,7 +100,7 @@ public class Writer {
                     b_writer.flush();
                 }
                 b_writer.newLine();
-            //Exception handled
+                //Exception handled
             } catch (IOException e) {
                 System.err.println("File not found");
             }

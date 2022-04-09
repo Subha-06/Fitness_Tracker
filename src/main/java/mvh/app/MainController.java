@@ -1018,9 +1018,10 @@ public class MainController {
                     FileWriter fileWriter = new FileWriter(fileSave);
                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-
-                    ///Will Add Stuff here Later.
-
+                    for (Integer i : userInfo.keySet()) {
+                        user = (User) userInfo.get(i);
+                        Writer.fileWriter(true, i, "", "", "", "", "");
+                    }
 
                     bufferedWriter.flush();
                     //Closing the bufferWriter and file writer
