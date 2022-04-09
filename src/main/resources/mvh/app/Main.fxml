@@ -61,17 +61,17 @@
                         <ChoiceBox fx:id="userGender" layoutX="65.0" layoutY="140.0" prefHeight="25.0" prefWidth="150.0" />
                   <Button layoutX="88.0" layoutY="239.0" mnemonicParsing="false" onMouseClicked="#changeUser" text="Change Information" />
                   <ChoiceBox fx:id="userNumber" layoutX="65.0" layoutY="50.0" prefHeight="25.0" prefWidth="150.0" />
-                  <Button layoutX="41.0" layoutY="274.0" mnemonicParsing="false" onAction="#addToFile" text="Add Information To File" />
+                  <Button layoutX="41.0" layoutY="274.0" mnemonicParsing="false" onAction="#addToFile" text="Add This User To File" />
                   <Label layoutX="10.0" layoutY="410.0" text="Calorie" textFill="#9f9f9f">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="10.0" layoutY="485.0" text="User No." />
+                  <Label layoutX="10.0" layoutY="455.0" text="User No." />
                   <Button layoutX="65.0" layoutY="510.0" mnemonicParsing="false" onAction="#addCalorieBurnt" prefWidth="150.0" text="Add Daily Calorie Burnt" />
-                  <Label layoutX="10.0" layoutY="455.0" text="Amount" />
-                  <ChoiceBox fx:id="calorieUser" layoutX="65.0" layoutY="480.0" prefWidth="150.0" />
-                  <TextField fx:id="calorieAmount" layoutX="65.0" layoutY="450.0" prefWidth="150.0" />
+                  <Label layoutX="11.0" layoutY="485.0" text="Amount" />
+                  <ChoiceBox fx:id="calorieUser" layoutX="65.0" layoutY="450.0" prefWidth="150.0" />
+                  <TextField fx:id="calorieAmount" layoutX="65.0" layoutY="480.0" prefWidth="150.0" />
                   <ChoiceBox fx:id="weightChoice" layoutX="145.0" layoutY="170.0" prefWidth="70.0" />
                   <ChoiceBox fx:id="heightChoice" layoutX="145.0" layoutY="200.0" prefWidth="70.0" />
                     </children>

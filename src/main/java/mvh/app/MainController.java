@@ -1,10 +1,9 @@
 /**
- * A fitness tracking program that allows the user to input their information and get back various results from that
+ * A fitness tracking program that allows the user to input their information and get back various results form that
  * *Members:
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
- * * Date: 8th April 2022
- * * Demo 3 Tutorial 05
+ * * Date: March 2nd, 2022- April 23, 2022
  */
 package mvh.app;
 
@@ -17,9 +16,7 @@ import javafx.stage.Stage;
 import mvh.user.User;
 import mvh.util.*;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
@@ -27,6 +24,7 @@ public class MainController {
 
     //Store the data of user
     private User user;
+    //A hashmap to organize the data
     public static HashMap<Integer, Object> userInfo = new HashMap<>();
     @FXML
     FileChooser fileChooser = new FileChooser();
@@ -1014,19 +1012,13 @@ public class MainController {
             //Then if the file exists and be written on
             if (fileSave.exists() && fileSave.canWrite()) {
                 try {
-                    //Creating a file writer and buffered writer
-                    FileWriter fileWriter = new FileWriter(fileSave);
-                    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
 
                     for (Integer i : userInfo.keySet()) {
                         user = (User) userInfo.get(i);
                         Writer.fileWriter(true, i, "", "", "", "", "");
                     }
 
-                    bufferedWriter.flush();
-                    //Closing the bufferWriter and file writer
-                    bufferedWriter.close();
-                    fileWriter.close();
                     rightStatus.setText("File Saved");
                     rightStatus.setTextFill(Color.GREEN);
                     rightStatus.setText("");

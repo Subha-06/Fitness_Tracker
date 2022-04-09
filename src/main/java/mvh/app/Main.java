@@ -3,8 +3,7 @@
  * *Members:
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
- * * Date: 8th April 2022
- * * Demo 3 Tutorial 05
+ * * Date: March 2nd, 2022- April 23, 2022
  */
 package mvh.app;
 
@@ -21,6 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        //Sets up the gui window and launches it
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
         stage.setTitle("This Is A Fitness Tracking Program");

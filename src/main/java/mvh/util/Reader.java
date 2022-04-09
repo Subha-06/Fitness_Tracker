@@ -3,8 +3,7 @@
  * *Members:
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
- * * Date: 8th April 2022
- * * Demo 3 Tutorial 05
+ * * Date: March 2nd, 2022- April 23, 2022
  */
 package mvh.util;
 
