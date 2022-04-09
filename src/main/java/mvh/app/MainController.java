@@ -17,7 +17,6 @@ import mvh.user.User;
 import mvh.util.*;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 public class MainController {
@@ -26,6 +25,7 @@ public class MainController {
     private User user;
     //A hashmap to organize the data
     public static HashMap<Integer, Object> userInfo = new HashMap<>();
+    final double lbToKg = 0.4536;
     @FXML
     FileChooser fileChooser = new FileChooser();
     @FXML
@@ -216,7 +216,7 @@ public class MainController {
                                 //If the option chosen is anything else
                                 else {
                                     //Converting the lbs to kg
-                                    weight = 2.2 * Double.parseDouble(userWeight.getText());
+                                    weight = lbToKg * Double.parseDouble(userWeight.getText());
                                 }
                                 //Weight Can't be Negative or 0
                                 if (weight < 0) {
@@ -352,7 +352,7 @@ public class MainController {
                                 //If the option chosen is anything else
                                 else {
                                     //Converting the lbs to kg
-                                    weight = 2.2 * Double.parseDouble(userWeight.getText());
+                                    weight = lbToKg * Double.parseDouble(userWeight.getText());
                                 }
                                 //Weight Can't be Negative or 0
                                 if (weight < 0) {
@@ -435,128 +435,6 @@ public class MainController {
         }
     }
 
-    /**
-     * Add one user information to a file
-     */
-    @FXML
-    void addToFile() {
-        //Getting the user number
-        userNumberInt = userNumber.getValue();
-        //Checking if that user exists or not
-        keyCheck = userInfo.containsKey(userNumberInt);
-        try {
-            //Checking if the user gave proper inputs
-            if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
-                leftStatus.setText("Please Enter All Information To Add to File");
-                leftStatus.setTextFill(Color.RED);
-                rightStatus.setText("");
-                viewDetails.setText("");
-            } else {
-                //Getting the name and the gender of the user
-                String name = userName.getText();
-                String gender = String.valueOf(userGender.getValue());
-                //Trying To get valid input from the user
-                try {
-                    int age = Integer.parseInt(userAge.getText());
-                    //Age Can't be Negative or 0
-                    if (age < 0) {
-                        leftStatus.setText("Age can't be a negative number");
-                        leftStatus.setTextFill(Color.RED);
-                        rightStatus.setText("");
-                        viewDetails.setText("");
-                    } else if (age == 0) {
-                        leftStatus.setText("Age can't be 0");
-                        leftStatus.setTextFill(Color.RED);
-                        rightStatus.setText("");
-                        viewDetails.setText("");
-                    } else {
-                        try {
-                            //If the option chosen is kilograms
-                            if (weightChoice.getValue().equals("KG")) {
-                                weight = Double.parseDouble(userWeight.getText());
-                            }
-                            //If the option chosen is anything else
-                            else {
-                                //Converting the lbs to kg
-                                weight = 2.2 * Double.parseDouble(userWeight.getText());
-                            }
-                            //Weight Can't be Negative or 0
-                            if (weight < 0) {
-                                leftStatus.setText("Weight Can't be Negative Number");
-                                leftStatus.setTextFill(Color.RED);
-                                rightStatus.setText("");
-                                viewDetails.setText("");
-                            } else if (weight == 0) {
-                                leftStatus.setText("Weight Can't Be 0");
-                                leftStatus.setTextFill(Color.RED);
-                                rightStatus.setText("");
-                                viewDetails.setText("");
-                            } else {
-                                try {
-                                    //If height is cm
-                                    if (heightChoice.getValue().equals("C.M.")) {
-                                        height = Double.parseDouble(userHeight.getText());
-                                    } else {
-                                        //Converting meter to cm
-                                        height = 100 * Double.parseDouble(userHeight.getText());
-                                    }
-                                    //Height can't be negative or 0
-                                    if (height < 0) {
-                                        leftStatus.setText("Height can't be a negative number");
-                                        leftStatus.setTextFill(Color.RED);
-                                        rightStatus.setText("");
-                                        viewDetails.setText("");
-                                    } else if (height == 0) {
-                                        leftStatus.setText("Height can't be 0");
-                                        leftStatus.setTextFill(Color.RED);
-                                        rightStatus.setText("");
-                                        viewDetails.setText("");
-                                    } else {
-                                        try {
-                                            //Writing the user info to a file
-                                            Writer.fileWriter(userNumberInt, name, String.valueOf(age), gender, String.valueOf(weight), String.valueOf(height));
-                                            leftStatus.setText("User Info added to file!");
-                                            leftStatus.setTextFill(Color.GREEN);
-                                            rightStatus.setText("");
-                                            //Exception handled
-                                        } catch (IOException e) {
-                                            leftStatus.setText("File cannot be found!");
-                                            leftStatus.setTextFill(Color.RED);
-                                            rightStatus.setText("");
-                                        }
-                                    }
-                                    //Exception handled
-                                } catch (Exception e) {
-                                    leftStatus.setText("Enter A Positive Number for height");
-                                    leftStatus.setTextFill(Color.RED);
-                                    rightStatus.setText("");
-                                    viewDetails.setText("");
-                                }
-                            }
-                            //Exception handled
-                        } catch (Exception e) {
-                            leftStatus.setText("Enter A Positive Number for weight");
-                            leftStatus.setTextFill(Color.RED);
-                            rightStatus.setText("");
-                            viewDetails.setText("");
-                        }
-                    }
-                    //Exception handled
-                } catch (Exception e) {
-                    leftStatus.setText("Enter A Positive Number for age");
-                    leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("");
-                    viewDetails.setText("");
-                }
-            }
-            //Exception handled
-        } catch (Exception e) {
-            leftStatus.setText("Please Enter All Information");
-            leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("");
-        }
-
-    }
 
     /**
      * Allows the user to view Information of a user
@@ -607,7 +485,7 @@ public class MainController {
                         //If the option chosen is anything else
                         else {
                             //Converting the lbs to kg
-                            exerciseWeight = 2.2 * Double.parseDouble(weightExercise.getText());
+                            exerciseWeight = lbToKg * Double.parseDouble(weightExercise.getText());
                         }
                         if (exerciseWeight <= 0) {
                             leftStatus.setText("Please Enter A Positive Weight Goal");
@@ -906,22 +784,27 @@ public class MainController {
             //Then if the file exists and be written on
             if (fileSave.exists() && fileSave.canWrite()) {
                 try {
-
-
-                    for (Integer i : userInfo.keySet()) {
-                        user = (User) userInfo.get(i);
-                        //Assigning the info to the variables
-                        String name = user.getUserName();
-                        String age = String.valueOf(user.getUserAge());
-                        String gender = String.valueOf(user.getUserGender().charAt(0));
-                        String weight = String.valueOf(user.getUserWeight());
-                        String height = String.valueOf(user.getUserHeight());
-                        Writer.fileWriter(i, name, age, gender, weight, height);
+                    if (userInfo.isEmpty()) {
+                        leftStatus.setText("Please Add users First");
+                        leftStatus.setTextFill(Color.RED);
+                        rightStatus.setText("");
+                    } else {
+                        for (Integer i : userInfo.keySet()) {
+                            user = (User) userInfo.get(i);
+                            //Assigning the info to the variables
+                            String name = user.getUserName();
+                            String age = String.valueOf(user.getUserAge());
+                            String gender = String.valueOf(user.getUserGender().charAt(0));
+                            String weight = String.valueOf(user.getUserWeight());
+                            String height = String.valueOf(user.getUserHeight());
+                            Writer.fileWriter(i, name, age, gender, weight, height);
+                        }
+                        rightStatus.setText("File Saved");
+                        rightStatus.setTextFill(Color.GREEN);
+                        rightStatus.setText("");
+                        rightStatus.setText("");
                     }
 
-                    rightStatus.setText("File Saved");
-                    rightStatus.setTextFill(Color.GREEN);
-                    rightStatus.setText("");
                 } catch (Exception e) {
                     //The Error message
                     leftStatus.setText("Error: Could not write to file");
@@ -930,10 +813,6 @@ public class MainController {
                     leftStatus.setText("");
                 }
             }
-
-            leftStatus.setText("User file saved successfully!");
-            leftStatus.setTextFill(Color.GREEN);
-            rightStatus.setText("");
             //Catching exception
         } catch (Exception e) {
             leftStatus.setText("File couldn't be created");

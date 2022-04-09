@@ -77,7 +77,7 @@ public class User {
                 Age: %s\s
                 Weight in Kgs: %s\s
                 Height in centimeters: %s\s
-                """, userName, userGender, (int)userAge, (int)userWeight, (int)userHeight);
+                """, userName, userGender, (int)userAge, userWeight, userHeight);
     }
 
 }
