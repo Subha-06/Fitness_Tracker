@@ -3,7 +3,9 @@
  * *Members:
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
- * * Date: March 2nd, 2022- April 23, 2022
+ * Date: March 2nd, 2022- April 23, 2022.
+ * Tutorial 05 and Tutorial 10.
+ * Project Final Submission
  */
 package mvh.util;
 
@@ -53,7 +55,6 @@ public class Writer {
     }
 
     /**
-     * @param keyCheck   Boolean variable to check if the user already exists in the data storage
      * @param userNumber The key to the information of the user in the hashmap
      * @param userName   The name of the user that is manually entered if the user doesn't exist
      * @param userAge    The age of the user that is manually entered if the user doesn't exist
@@ -61,7 +62,7 @@ public class Writer {
      * @param userWeight The weight of the user that is manually entered if the user doesn't exist
      * @param userHeight The height of the user that is manually entered if the user doesn't exist
      */
-    public static void fileWriter(Boolean keyCheck, int userNumber, String userName, String userAge, String userGender, String userWeight, String userHeight) throws IOException {
+    public static void fileWriter(int userNumber, String userName, String userAge, String userGender, String userWeight, String userHeight) throws IOException {
 
         File newFile = new File("UserInfo.txt");
         newFile.createNewFile();
@@ -73,36 +74,17 @@ public class Writer {
                 FileWriter f_writer = new FileWriter(newFile, true);
                 BufferedWriter b_writer = new BufferedWriter(f_writer);
 
-                //Checking if the user already exists
-                if (keyCheck) {
-                    //Getting the user info from the hashmap
-                    User user = (User) MainController.userInfo.get(userNumber);
-
-                    //Assigning the info to the variables
-                    String name = user.getUserName();
-                    String age = String.valueOf(user.getUserAge());
-                    String gender = String.valueOf(user.getUserGender().charAt(0));
-                    String weight = String.valueOf(user.getUserWeight());
-                    String height = String.valueOf(user.getUserHeight());
-
-                    //Writing the information in the file
-                    b_writer.write(userNumber + "," + name + "," + age + "," + gender + "," + weight + "," + height + "\n");
-                    b_writer.flush();
-
-                    //If the user doesn't exist
-                } else {
-
-                    //User manually enters the info which is passed in the parameters of the method from the text fields
-                    //Writing the information in the file
-                    b_writer.write(userNumber + "," + userName + "," + userAge + "," + userGender + "," + userWeight + "," + userHeight);
-                    b_writer.newLine();
-                    b_writer.flush();
-                }
-                b_writer.newLine();
+                //Getting the user info from the hashmap
+                User user = (User) MainController.userInfo.get(userNumber);
+                b_writer.write(userNumber + "," + userName + "," + userAge + "," + userGender + "," + userWeight + "," + userHeight + "\n");
+                b_writer.flush();
+                b_writer.close();
                 //Exception handled
             } catch (IOException e) {
                 System.err.println("File not found");
             }
+        } else {
+            System.err.println("Can't Write to file");
         }
     }
 }
