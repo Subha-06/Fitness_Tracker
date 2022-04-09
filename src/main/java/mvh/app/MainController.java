@@ -762,33 +762,37 @@ public class MainController {
      */
     @FXML
     void saveButton() {
-
         //Surrounding with a try/catch to handle exceptions
         //Calling the writer to write information in it
-        try {//File chooser setup
-            fileChooser.setInitialDirectory(new File("."));
-            fileChooser.setInitialFileName("UserInfo.txt");
-            fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text File", "*.txt"));
-            File fileSave = fileChooser.showSaveDialog(new Stage());
-            if (!fileSave.exists()) {
-                try {
-                    fileSave.createNewFile();
-                } catch (Exception e) {
-                    //The Error message
-                    leftStatus.setText("Error: Could not create file");
-                    //Setting the labels color to red
-                    leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("");
-                }
-            }
-            //Then if the file exists and be written on
-            if (fileSave.exists() && fileSave.canWrite()) {
-                try {
-                    if (userInfo.isEmpty()) {
-                        leftStatus.setText("Please Add users First");
+        try {
+            //Checking if there is any user or not
+            if (userInfo.isEmpty()) {
+                leftStatus.setText("Please Add users First");
+                leftStatus.setTextFill(Color.RED);
+                rightStatus.setText("");
+                viewDetails.setText("");
+            } else {
+                //File chooser setup
+                fileChooser.setInitialDirectory(new File("."));
+                fileChooser.setInitialFileName("UserInfo.txt");
+                fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text File", "*.txt"));
+                File fileSave = fileChooser.showSaveDialog(new Stage());
+                //If file doesn't exist we create the file
+                if (!fileSave.exists()) {
+                    try {
+                        fileSave.createNewFile();
+                    } catch (Exception e) {
+                        //The Error message
+                        leftStatus.setText("Error: Could not create file");
+                        //Setting the labels color to red
                         leftStatus.setTextFill(Color.RED);
                         rightStatus.setText("");
-                    } else {
+                    }
+                }
+                //Then if the file exists and be written on
+                if (fileSave.exists() && fileSave.canWrite()) {
+                    try {
+                        //Looping through the hashmap to get the information of all the user and then writing them to the file
                         for (Integer i : userInfo.keySet()) {
                             user = (User) userInfo.get(i);
                             //Assigning the info to the variables
@@ -803,23 +807,23 @@ public class MainController {
                         rightStatus.setTextFill(Color.GREEN);
                         rightStatus.setText("");
                         rightStatus.setText("");
+                    } catch (Exception e) {
+                        //The Error message
+                        leftStatus.setText("Error: Could not write to file");
+                        //Setting the labels color to red
+                        leftStatus.setTextFill(Color.RED);
+                        leftStatus.setText("");
                     }
-
-                } catch (Exception e) {
-                    //The Error message
-                    leftStatus.setText("Error: Could not write to file");
-                    //Setting the labels color to red
-                    leftStatus.setTextFill(Color.RED);
-                    leftStatus.setText("");
                 }
             }
             //Catching exception
         } catch (Exception e) {
-            leftStatus.setText("File couldn't be created");
+            leftStatus.setText("Add Users First");
             leftStatus.setTextFill(Color.RED);
             rightStatus.setText("");
             viewDetails.setText("");
         }
+
     }
 
     /**
