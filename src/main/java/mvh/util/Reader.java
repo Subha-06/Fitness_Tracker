@@ -121,7 +121,6 @@ public class Reader {
             System.err.println("Cannot find a file to read!");
         }
         //Returns the HashMap with calorie information.
-        System.out.println(outInfo);
         return outInfo;
 
     }
