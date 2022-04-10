@@ -41,3 +41,4 @@
 - Display the bmi or the weight status of the users.
 - Allows the user to enter a certain weight goal and provide information on how much exercise is needed to reach that
   goal.
+  ![alt text]([URL=https://imgbox.com/rrcIv0da][IMG]https://images2.imgbox.com/0e/40/rrcIv0da_o.png[/IMG][/URL])
