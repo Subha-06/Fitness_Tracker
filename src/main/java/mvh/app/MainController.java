@@ -25,6 +25,7 @@ public class MainController {
     private User user;
     //A hashmap to organize the data
     public static HashMap<Integer, Object> userInfo = new HashMap<>();
+    //Constant to Convert Pound to kg.
     final double lbToKg = 0.4536;
     @FXML
     FileChooser fileChooser = new FileChooser();
@@ -33,19 +34,23 @@ public class MainController {
     @FXML
     private ChoiceBox<Integer> viewUserNumber;
     @FXML
+    private ChoiceBox<Integer> calorieUser;
+    @FXML
     private ChoiceBox<String> viewInfoType;
     @FXML
     private ChoiceBox<String> exerciseChoice;
     @FXML
     private ChoiceBox<String> choiceOfSpeed;
     @FXML
-    private ChoiceBox<Integer> calorieUser;
+    private ChoiceBox<String> userGender;
     @FXML
     private ChoiceBox<String> weightChoice;
     @FXML
     private ChoiceBox<String> heightChoice;
     @FXML
     private ChoiceBox<String> calorieViewType;
+    @FXML
+    private ChoiceBox<String> exerciseKGLB;
     @FXML
     private TextField userName;
     @FXML
@@ -57,15 +62,13 @@ public class MainController {
     @FXML
     private TextField calorieAmount;
     @FXML
-    private ChoiceBox<String> userGender;
+    private TextField weightExercise;
     @FXML
     private Label leftStatus;
     @FXML
     private Label rightStatus;
     @FXML
     private TextArea viewDetails;
-    @FXML
-    private TextField weightExercise;
     @FXML
     private int userNumberInt;
     @FXML
@@ -74,8 +77,7 @@ public class MainController {
     private double weight;
     @FXML
     private double height;
-    @FXML
-    private ChoiceBox<String> exerciseKGLB;
+
 
     /**
      * Starts the program and puts the choices in the choiceBox.
@@ -318,11 +320,112 @@ public class MainController {
             } else {
                 //If the user doesn't exist we will add that user
                 if (!keyCheck) {
-                    createUser();
-                    rightStatus.setText("User Didn't Exist So Added user");
-                    rightStatus.setTextFill(Color.GREEN);
-                    leftStatus.setText("");
-                    viewDetails.setText("");
+                    try {
+                        //Getting the name and the gender of the user
+                        String name = userName.getText();
+                        String gender = String.valueOf(userGender.getValue());
+                        //Trying To get valid input from the user
+                        try {
+                            int age = Integer.parseInt(userAge.getText());
+                            //Age Can't be Negative or 0
+                            if (age < 0) {
+                                leftStatus.setText("Age can't be a negative number");
+                                leftStatus.setTextFill(Color.RED);
+                                rightStatus.setText("");
+                                viewDetails.setText("");
+                            } else if (age == 0) {
+                                leftStatus.setText("Age can't be 0");
+                                leftStatus.setTextFill(Color.RED);
+                                rightStatus.setText("");
+                                viewDetails.setText("");
+                            } else {
+                                try {
+                                    //If the option chosen is kilograms
+                                    if (weightChoice.getValue().equals("KG")) {
+                                        weight = Double.parseDouble(userWeight.getText());
+                                    }
+                                    //If the option chosen is pounds
+                                    else {
+                                        //Converting the lbs to kg
+                                        weight = 2.2 * Double.parseDouble(userWeight.getText());
+                                    }
+                                    //Weight Can't be Negative or 0
+                                    if (weight < 0) {
+                                        leftStatus.setText("Weight can't be a negative number");
+                                        leftStatus.setTextFill(Color.RED);
+                                        rightStatus.setText("");
+                                        viewDetails.setText("");
+                                    } else if (weight == 0) {
+                                        leftStatus.setText("Weight Can't Be 0");
+                                        leftStatus.setTextFill(Color.RED);
+                                        rightStatus.setText("");
+                                        viewDetails.setText("");
+                                    } else {
+                                        try {
+                                            //If height is cm
+                                            if (heightChoice.getValue().equals("C.M.")) {
+                                                height = Double.parseDouble(userHeight.getText());
+                                            } else {
+                                                //Converting meter to cm
+                                                height = 100 * Double.parseDouble(userHeight.getText());
+                                            }
+                                            //Height Can't be negative or 0
+                                            if (height < 0) {
+                                                leftStatus.setText("Height cannot be a negative number");
+                                                leftStatus.setTextFill(Color.RED);
+                                                rightStatus.setText("");
+                                                viewDetails.setText("");
+                                            } else if (height == 0) {
+                                                leftStatus.setText("Height can't be 0");
+                                                leftStatus.setTextFill(Color.RED);
+                                                rightStatus.setText("");
+                                                viewDetails.setText("");
+                                            } else {
+                                                try {
+                                                    //Creating the user
+                                                    user = new User(name, gender, age, weight, height);
+                                                    userInfo.put(userNumberInt, user);
+                                                    leftStatus.setText("");
+                                                    rightStatus.setText("User Didn't Exist so Added User! Choose from menu");
+                                                    rightStatus.setTextFill(Color.GREEN);
+                                                    viewDetails.setText("");
+                                                } catch (Exception e) {
+                                                    leftStatus.setText("Couldn't add user");
+                                                    leftStatus.setTextFill(Color.RED);
+                                                    rightStatus.setText("");
+                                                    viewDetails.setText("");
+                                                }
+                                            }
+                                            //Exception handled
+                                        } catch (Exception e) {
+                                            leftStatus.setText("Enter A Positive Number for height");
+                                            leftStatus.setTextFill(Color.RED);
+                                            rightStatus.setText("");
+                                            viewDetails.setText("");
+                                        }
+                                    }
+                                    //Exception handled
+                                } catch (Exception e) {
+                                    leftStatus.setText("Enter A Positive Number for weight");
+                                    leftStatus.setTextFill(Color.RED);
+                                    rightStatus.setText("");
+                                    viewDetails.setText("");
+                                }
+                            }
+                            //Exception handled
+                        } catch (Exception e) {
+                            leftStatus.setText("Enter A Positive Number for age");
+                            leftStatus.setTextFill(Color.RED);
+                            rightStatus.setText("");
+                            viewDetails.setText("");
+                        }
+                        //Exception handled
+                    } catch (Exception e) {
+                        leftStatus.setText("Please Enter All Information");
+                        leftStatus.setTextFill(Color.RED);
+                        rightStatus.setText("");
+                        viewDetails.setText("");
+                    }
                 }
                 //If the user exists we replace the user
                 if (keyCheck) {
@@ -521,7 +624,7 @@ public class MainController {
                                     double calories = Calculations.estimateCalories(weightDifference);
 
                                     //Calling the exercise option method
-                                    String exercise = mvh.util.Calculations.estimateExercise(speed, choice, calories, weight, weightDifference, exerciseWeight);
+                                    String exercise = Calculations.estimateExercise(speed, choice, calories, weight, weightDifference, exerciseWeight);
                                     viewDetails.setText(exercise);
 
                                     rightStatus.setText("Requested info shown!");
@@ -708,7 +811,7 @@ public class MainController {
                         viewDetails.setText("Maximum calories lost in a day " + maxCalories);
                         rightStatus.setText("Requested info shown!");
                         rightStatus.setTextFill(Color.GREEN);
-                    } catch (NullPointerException nfe) {
+                    } catch (Exception e) {
                         leftStatus.setText("No user Information found! Add user or Load From File");
                         leftStatus.setTextFill(Color.RED);
                         rightStatus.setText("");
@@ -739,8 +842,7 @@ public class MainController {
             //File chooser setup
             fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text File", "*.txt"));
             fileChooser.setTitle("Open File");
-            File file = fileChooser.showOpenDialog(null);
-
+            File file = fileChooser.showOpenDialog(new Stage());
 
             //Calling the reader method to read the file the user has loaded
             Reader.reader(file);
