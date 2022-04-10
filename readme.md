@@ -1,5 +1,4 @@
-[URL=https://imgbox.com/rrcIv0da][IMG]https://images2.imgbox.com/0e/40/rrcIv0da_o.png[/IMG][/URL]
-
+<a href="https://imgbox.com/rrcIv0da" target="_blank"><img src="https://images2.imgbox.com/0e/40/rrcIv0da_o.png" alt="image host"/></a>
 
 
 
