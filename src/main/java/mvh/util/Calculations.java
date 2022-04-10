@@ -45,10 +45,10 @@ public class Calculations {
      */
     public static String bmiCompare(double weight, double height) {
         double bmi = weight * CONVERSION / (height * height);
-        if (bmi < 18.5) return "You are underweight";
-        else if (bmi < 25) return "You are normal";
-        else if (bmi < 30) return "You are overweight";
-        else return "You are obese";
+        if (bmi < 18.5) return "Underweight";
+        else if (bmi < 25) return "Normal";
+        else if (bmi < 30) return "Overweight";
+        else return "Obese";
 
     }
 

@@ -677,15 +677,17 @@ public class MainController {
                 if (keyCheck) {
                     //Gets the user information to view information
                     user = (User) userInfo.get(userNumberInt);
+                    String name = user.getUserName();
                     weight = user.getUserWeight();
                     height = user.getUserHeight();
 
-                    viewDetails.setText("Your BMI is " + Calculations.bmi(weight, height));
+                    viewDetails.setText(name + "’s " + "BMI is " + Calculations.bmi(weight, height)+".");
 
                     rightStatus.setText("Requested info shown!");
                     rightStatus.setTextFill(Color.GREEN);
                     leftStatus.setText("");
                 } else {
+                    System.out.println("here");
                     leftStatus.setText("No user Information found! Add user or Load From File");
                     leftStatus.setTextFill(Color.RED);
                     rightStatus.setText("");
@@ -698,16 +700,17 @@ public class MainController {
                 if (keyCheck) {
                     //Gets the user information to view information
                     user = (User) userInfo.get(userNumberInt);
+                    String name = user.getUserName();
                     weight = user.getUserWeight();
                     height = user.getUserHeight();
 
-                    viewDetails.setText(Calculations.bmiCompare(weight, height));
+                    viewDetails.setText(name + " is " + Calculations.bmiCompare(weight, height)+".");
 
                     rightStatus.setText("Requested info shown!");
                     rightStatus.setTextFill(Color.GREEN);
                     leftStatus.setText("");
                 } else {
-                    leftStatus.setText("No user Information found! Add user or Load From FileNo user Information found");
+                    leftStatus.setText("No user Information found! Add user or Load From File");
                     leftStatus.setTextFill(Color.RED);
                     rightStatus.setText("");
                     viewDetails.setText("");
@@ -846,10 +849,17 @@ public class MainController {
 
             //Calling the reader method to read the file the user has loaded
             Reader.reader(file);
-            leftStatus.setText("File opened, check terminal for details");
-            leftStatus.setTextFill(Color.GREEN);
-            rightStatus.setText("");
-
+            if (userInfo.isEmpty()) {
+                leftStatus.setText("There was a problem reading the file");
+                leftStatus.setTextFill(Color.RED);
+                rightStatus.setText("");
+                viewDetails.setText("");
+            } else {
+                rightStatus.setText("File opened");
+                rightStatus.setTextFill(Color.GREEN);
+                leftStatus.setText("");
+                viewDetails.setText("");
+            }
             //Exception handled
         } catch (Exception e) {
             leftStatus.setText("File cannot be read! Choose Another File");
@@ -903,6 +913,7 @@ public class MainController {
                             String gender = String.valueOf(user.getUserGender().charAt(0));
                             String weight = String.valueOf(user.getUserWeight());
                             String height = String.valueOf(user.getUserHeight());
+                            //Writing them to the file.
                             Writer.fileWriter(i, name, age, gender, weight, height);
                         }
                         rightStatus.setText("File Saved");
@@ -925,7 +936,6 @@ public class MainController {
             rightStatus.setText("");
             viewDetails.setText("");
         }
-
     }
 
     /**
@@ -939,7 +949,7 @@ public class MainController {
         alert.setHeaderText("About Authors");
         alert.setContentText("""
                 This is fitness tracking program.
-                Version: 4.7
+                Version: 5.7
                                 
                 Authors:
                 Fabiha Fairuzz Subha (UCID: 30148674)
