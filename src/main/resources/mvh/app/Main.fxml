@@ -119,7 +119,10 @@
                 <AnchorPane maxWidth="-Infinity" prefWidth="350.0">
                     <children>
                         <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="15.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <TextArea fx:id="viewDetails" layoutX="14.0" layoutY="42.0" prefHeight="320.0" prefWidth="320.0" />
+                  <TextArea fx:id="viewDetails" layoutX="14.0" layoutY="42.0" prefHeight="320.0" prefWidth="320.0">
+                     <font>
+                        <Font name="Roboto Regular" size="18.0" />
+                     </font></TextArea>
                     </children>
                 </AnchorPane>
             </items>

@@ -37,6 +37,7 @@ public class Main extends Application {
             if (fileInput.exists() && fileInput.canRead()) {
                 try {
                     Reader.reader(fileInput);
+                    System.out.println("Program Started With File Loaded");
                 //Exception handled
                 } catch (IOException e) {
                     System.err.println("Not a valid Input file");

@@ -579,7 +579,6 @@ public class MainController {
                     viewDetails.setText("");
                 } else {
                     try {
-
                         //If the option chosen is kilograms
                         double exerciseWeight;
                         if (exerciseKGLB.getValue().equals("KG")) {
