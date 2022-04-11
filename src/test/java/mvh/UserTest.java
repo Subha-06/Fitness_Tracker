@@ -283,56 +283,79 @@ class UserTest {
         assertEquals(expResult, actResult);
     }
 
-//    /**
-//     * Calculate the number of calories one person has burnt
-//     */
-//
-//    @Test
-//    void getTotalCalories_test1() {
-//        //Creating a new arraylist to pass in to the function
-//        ArrayList<String> calories = new ArrayList<>();
-//        calories.add("10");
-//        calories.add("100");
-//        calories.add("2000");
-//        //Expected total calories burnt
-//        int expResult = 2110;
-//        //Calling the function with the values passed in and getting the result
-//        int actResult = Calculations.getTotalCalories(calories);
-//        //Comparing the result
-//        assertEquals(expResult, actResult);
-//
-//    }
-//
-//    @Test
-//    void getTotalCalories_test2() {
-//        //Creating a new arraylist to pass in to the function
-//        ArrayList<String> calories = new ArrayList<>();
-//        calories.add("7000");
-//        calories.add("100");
-//        calories.add("1900");
-//        //Expected total calories burnt
-//        int expResult = 9000;
-//        //Calling the function with the values passed in and getting the result
-//        int actResult = Calculations.getTotalCalories(calories);
-//        //Comparing the result
-//        assertEquals(expResult, actResult);
-//
-//    }
-//
-//    @Test
-//    void getTotalCalories_test3() {
-//        //Creating a new arraylist to pass in to the function
-//        ArrayList<String> calories = new ArrayList<>();
-//        calories.add("780");
-//        calories.add("310");
-//        calories.add("420");
-//        //Expected total calories burnt
-//        int expResult = 1510;
-//        //Calling the function with the values passed in and getting the result
-//        int actResult = Calculations.getTotalCalories(calories);
-//        //Comparing the result
-//        assertEquals(expResult, actResult);
-//    }
+    /**
+     * Calculate the number of calories one person has burnt
+     */
+
+    @Test
+    void getTotalCalories_test1() {
+        //Creating a new arraylist to pass in to the function
+        int keyNumber = 1;
+        HashMap<Integer,ArrayList<Integer>> calories = new HashMap<>();
+        ArrayList<Integer> cal = new ArrayList<>();
+        cal.add(100); cal.add(160); cal.add(40);
+
+        calories.put(keyNumber,cal);
+        //Expected total calories burnt
+        int expResult = 300;
+        //Calling the function with the values passed in and getting the result
+        int actResult = Calculations.getTotalCalories(keyNumber,calories);
+        //Comparing the result
+        assertEquals(expResult, actResult);
+
+    }
+
+    @Test
+    void getTotalCalories_test2() {
+        //Creating a new arraylist to pass in to the function
+        int keyNumber = 5;
+        HashMap<Integer,ArrayList<Integer>> calories = new HashMap<>();
+        ArrayList<Integer> cal = new ArrayList<>();
+        cal.add(7000); cal.add(100); cal.add(1900);
+
+        calories.put(keyNumber,cal);
+        //Expected total calories burnt
+        int expResult = 9000;
+        //Calling the function with the values passed in and getting the result
+        int actResult = Calculations.getTotalCalories(keyNumber,calories);
+        //Comparing the result
+        assertEquals(expResult, actResult);
+
+    }
+
+    @Test
+    void getMaxCalories_test1(){
+        int keyNumber = 5;
+        HashMap<Integer,ArrayList<Integer>> calories = new HashMap<>();
+        ArrayList<Integer> cal = new ArrayList<>();
+
+        cal.add(7000); cal.add(100); cal.add(1900);
+
+        calories.put(keyNumber,cal);
+        //Expected total calories burnt
+        int expResult = 7000;
+        //Calling the function with the values passed in and getting the result
+        int actResult = Calculations.getMaxCalories(keyNumber,calories);
+        //Comparing the result
+        assertEquals(expResult, actResult);
+    }
+
+    @Test
+    void getMaxCalories_test2(){
+        int keyNumber = 5;
+        HashMap<Integer,ArrayList<Integer>> calories = new HashMap<>();
+        ArrayList<Integer> cal = new ArrayList<>();
+
+        cal.add(100); cal.add(160); cal.add(40);
+
+        calories.put(keyNumber,cal);
+        //Expected total calories burnt
+        int expResult = 160;
+        //Calling the function with the values passed in and getting the result
+        int actResult = Calculations.getMaxCalories(keyNumber,calories);
+        //Comparing the result
+        assertEquals(expResult, actResult);
+    }
 
 
 }
