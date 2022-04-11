@@ -62,22 +62,31 @@ public class Reader {
                         //Assigning the information of the file to variables
                         userNumber = Integer.parseInt(userInfo[USER_NUMBER]);
                         userName = userInfo[USER_NAME];
-                        userGender = switch (userInfo[USER_GEN]) {
-                            case "M" -> "Male";
-                            case "F" -> "Female";
-                            case "N" -> "Preferred not to say";
-                            default -> {
-                                System.out.println("There is a problem with the gender of " + userName);
-                                throw new Exception();
-                            }
-                        };
-                        userAge = Double.parseDouble(userInfo[USER_AGE]);
-                        userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
-                        userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+                        try {
+                            userGender = userInfo[USER_GEN];
+                            if (!userGender.equals("M") && !userGender.equals("N") && !userGender.equals("F")) {
+                                System.err.println("There is a problem with " + userName + "’s gender.");
+                            } else {
+                                if (userInfo[USER_GEN].equals("M")) {
+                                    userGender = "Male";
+                                }
+                                if (userInfo[USER_GEN].equals("F")) {
+                                    userGender = "Female";
+                                }
+                                if (userInfo[USER_GEN].equals("N")) {
+                                    userGender = "Preferred not to say";
+                                }
+                                userAge = Double.parseDouble(userInfo[USER_AGE]);
+                                userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                                userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
 
-                        //Creating a user using all the user information
-                        user = new User(userName, userGender, userAge, userWeight, userHeight);
-                        MainController.userInfo.put(userNumber, user);
+                                //Creating a user using all the user information
+                                user = new User(userName, userGender, userAge, userWeight, userHeight);
+                                MainController.userInfo.put(userNumber, user);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("There Is a problem with the gender of " + userName);
+                        }
                         line = b_reader.readLine();
                     }
                 }
