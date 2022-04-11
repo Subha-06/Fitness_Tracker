@@ -914,7 +914,6 @@ public class MainController {
                             String name = user.getUserName();
                             String age = String.valueOf(user.getUserAge());
                             String gender = String.valueOf(user.getUserGender().charAt(0));
-                            System.out.println(gender);
                             String weight = String.valueOf(user.getUserWeight());
                             String height = String.valueOf(user.getUserHeight());
                             //Writing them to the file.
