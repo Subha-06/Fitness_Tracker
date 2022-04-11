@@ -57,4 +57,4 @@
 - There is also an option to save the calorie burnt information of the user to a file
 - At the very bottom there is a status bar which shows if any changes were made or any error occurred. The program can also save the information of the people that the user changed/created in a .txt file that can be later loaded to get the same information. This can be done with the *Save* as option in *File* in the menu bar.
 
-To exit the program, the user can simply press the close button on the window or use the Quit option in the File option in menu
+To exit the program, the user can simply press the close button on the window or use the *Quit* option in the *File* option in menu
