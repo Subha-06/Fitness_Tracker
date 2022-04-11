@@ -9,9 +9,6 @@
  */
 package mvh.util;
 
-import mvh.app.MainController;
-import mvh.user.User;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -21,7 +18,7 @@ import java.util.HashMap;
 public class Writer {
 
     /**
-     * Writes the information in a file
+     * Writes the calorie information in a file
      *
      * @param outInfo The information that the user wants to save in a file
      */
@@ -55,6 +52,9 @@ public class Writer {
     }
 
     /**
+     * Writes the user information to a file
+     *
+     * @param fileSave   The name of the file to write to
      * @param userNumber The key to the information of the user in the hashmap
      * @param userName   The name of the user that is manually entered if the user doesn't exist
      * @param userAge    The age of the user that is manually entered if the user doesn't exist
@@ -62,20 +62,18 @@ public class Writer {
      * @param userWeight The weight of the user that is manually entered if the user doesn't exist
      * @param userHeight The height of the user that is manually entered if the user doesn't exist
      */
-    public static void fileWriter(int userNumber, String userName, String userAge, String userGender, String userWeight, String userHeight) throws IOException {
+    public static void fileWriter(File fileSave, int userNumber, String userName, String userAge, String userGender, String userWeight, String userHeight) throws IOException {
 
-        File newFile = new File("UserInfo.txt");
-        newFile.createNewFile();
+        fileSave.createNewFile();
 
         //Checking if the file exist and can write on it
-        if (newFile.exists() && newFile.canWrite()) {
+        if (fileSave.exists() && fileSave.canWrite()) {
             try {
                 //Setting up the writer
-                FileWriter f_writer = new FileWriter(newFile, true);
+                FileWriter f_writer = new FileWriter(fileSave, true);
                 BufferedWriter b_writer = new BufferedWriter(f_writer);
 
                 //Getting the user info from the hashmap
-                User user = (User) MainController.userInfo.get(userNumber);
                 b_writer.write(userNumber + "," + userName + "," + userAge + "," + userGender + "," + userWeight + "," + userHeight + "\n");
                 b_writer.flush();
                 b_writer.close();

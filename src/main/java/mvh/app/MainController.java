@@ -916,7 +916,10 @@ public class MainController {
                             String weight = String.valueOf(user.getUserWeight());
                             String height = String.valueOf(user.getUserHeight());
                             //Writing them to the file.
-                            Writer.fileWriter(i, name, age, gender, weight, height);
+                            Writer.fileWriter(fileSave, i, name, age, gender, weight, height);
+                            rightStatus.setText("Written to File");
+                            rightStatus.setTextFill(Color.GREEN);
+                            leftStatus.setText("");
                         }
                         rightStatus.setText("File Saved");
                         rightStatus.setTextFill(Color.GREEN);
