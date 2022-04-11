@@ -795,7 +795,8 @@ public class MainController {
             if (calorieViewType.getValue().equals("Total Calorie Lost")) {
                 if (keyCheck) {
                     try {
-                        HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
+                        File outFile = new File("User.txt");
+                        HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt,outFile);
                         //keyCheck = calorieInfo.containsKey(userNumberInt);
                         //Calling the total calories' method to get the output
                         int totalCalories = Calculations.getTotalCalories(userNumberInt, calorieInfo);
@@ -819,7 +820,8 @@ public class MainController {
                 if (keyCheck) {
                     try {
                         //Calling the max calories method to get the output
-                        HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt);
+                        File outFile = new File("User.txt");
+                        HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt, outFile);
                         int maxCalories = Calculations.getMaxCalories(userNumberInt, calorieInfo);
                         viewDetails.setText("Maximum calories lost in a day " + maxCalories);
                         rightStatus.setText("Requested info shown!");

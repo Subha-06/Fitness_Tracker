@@ -62,7 +62,7 @@ public class Reader {
                         try {
                             userNumber = Integer.parseInt(userInfo[USER_NUMBER]);
                             try {
-                                //Since the program works for 10 user the usernumber will need to be between 1 and 10
+                                //Since the program works for 10 user the userNumber will need to be between 1 and 10
                                 if (userNumber < 1 || userNumber > 10) {
                                     System.err.println("The User Number is less than 1 or greater than 10");
                                 } else {
@@ -155,9 +155,8 @@ public class Reader {
      *
      * @return An array list containing the user input data about calories burnt
      */
-    public static HashMap<Integer, ArrayList<Integer>> outReader(int userNumber) throws IOException {
+    public static HashMap<Integer, ArrayList<Integer>> outReader(int userNumber, File outFile) throws IOException {
         //The file that stores the information of calories burnt.
-        File outFile = new File("User.txt");
         //Initializing an empty Hashmap and a new Arraylist for storing the data.
         HashMap<Integer, ArrayList<Integer>> outInfo = null;
         ArrayList<Integer> list = new ArrayList<>();

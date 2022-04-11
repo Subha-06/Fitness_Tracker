@@ -1,9 +1,13 @@
-package mvh.util;
+package mvh;
 
+import mvh.util.Reader;
+import mvh.util.Calculations;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,22 +22,129 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
-//    /***
-//     * Testing the out reader function which returns an arraylist with calorie burnt.
-//     */
-//    @Test
-//    void outReader_test() throws IOException {
-//        //Creating the test arraylist to match to
-//        ArrayList<String> outInfo = new ArrayList<>();
-//        outInfo.add("100");
-//        outInfo.add("10");
-//        outInfo.add("10");
-//        //Calling the reader function to read the file and getting the result
-//        ArrayList<String> actResult = Reader.outReader();
-//        //Compare the two arraylist
-//        assertEquals(outInfo, actResult);
-//
-//    }
+    /***
+     * Testing the out reader function which returns an arraylist with calorie burnt.
+     */
+    @Test
+    void outReader_test() throws IOException {
+        //Creating the test arraylist to match to
+        File outFile = new File("ReaderTest.txt");
+        HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        ArrayList<Integer> outInfo = new ArrayList<>();
+        outInfo.add(1);
+        outInfo.add(12);
+        expResult.put(1, outInfo);
+        //Calling the reader function to read the file and getting the result
+        actResult = Reader.outReader(1, outFile);
+        //Compare the two arraylist
+        assertEquals(actResult, expResult);
+
+    }
+
+    /***
+     * Testing the out reader function which returns an arraylist with calorie burnt.
+     */
+    @Test
+    void outReader_test1() throws IOException {
+        //Creating the test arraylist to match to
+        File outFile = new File("ReaderTest.txt");
+        HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        ArrayList<Integer> outInfo = new ArrayList<>();
+        outInfo.add(1);
+        outInfo.add(12);
+        expResult.put(2, outInfo);
+        //Calling the reader function to read the file and getting the result
+        actResult = Reader.outReader(2, outFile);
+        //Compare the two arraylist
+        assertEquals(actResult, expResult);
+    }
+
+    /***
+     * Testing the out reader function which returns an arraylist with calorie burnt.
+     */
+    @Test
+    void outReader_test2() throws IOException {
+        //Creating the test arraylist to match to
+        File outFile = new File("ReaderTest.txt");
+        HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        ArrayList<Integer> outInfo = new ArrayList<>();
+        outInfo.add(15);
+        outInfo.add(16);
+        outInfo.add(17);
+        outInfo.add(18);
+        expResult.put(3, outInfo);
+        //Calling the reader function to read the file and getting the result
+        actResult = Reader.outReader(3, outFile);
+        //Compare the two arraylist
+        assertEquals(actResult, expResult);
+    }
+
+    /***
+     * Testing the out reader function which returns an arraylist with calorie burnt.
+     */
+    @Test
+    void outReader_test3() throws IOException {
+        //Creating the test arraylist to match to
+        File outFile = new File("ReaderTest.txt");
+        HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        ArrayList<Integer> outInfo = new ArrayList<>();
+        outInfo.add(500);
+        outInfo.add(100);
+        outInfo.add(1000);
+        outInfo.add(2000);
+        expResult.put(4, outInfo);
+        //Calling the reader function to read the file and getting the result
+        actResult = Reader.outReader(4, outFile);
+        //Compare the two arraylist
+        assertEquals(actResult, expResult);
+    }
+
+    /***
+     * Testing the out reader function which returns an arraylist with calorie burnt.
+     */
+    @Test
+    void outReader_test4() throws IOException {
+        //Creating the test arraylist to match to
+        File outFile = new File("ReaderTest.txt");
+        HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        ArrayList<Integer> outInfo = new ArrayList<>();
+        outInfo.add(150);
+        outInfo.add(200);
+        outInfo.add(250);
+        outInfo.add(300);
+        expResult.put(7, outInfo);
+        //Calling the reader function to read the file and getting the result
+        actResult = Reader.outReader(7, outFile);
+        //Compare the two arraylist
+        assertEquals(actResult, expResult);
+    }
+
+    /***
+     * Testing the out reader function which returns an arraylist with calorie burnt.
+     */
+    @Test
+    void outReader_test5() throws IOException {
+        //Creating the test arraylist to match to
+        File outFile = new File("ReaderTest.txt");
+        HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        ArrayList<Integer> outInfo = new ArrayList<>();
+        outInfo.add(2500);
+        outInfo.add(3000);
+        outInfo.add(3500);
+        outInfo.add(4000);
+        outInfo.add(4500);
+        expResult.put(9, outInfo);
+        //Calling the reader function to read the file and getting the result
+        actResult = Reader.outReader(9, outFile);
+        //Compare the two arraylist
+        assertEquals(actResult, expResult);
+    }
 
     /**
      * Tests the bmi calculator function. The values passed will be the users weight and height
