@@ -62,15 +62,18 @@ public class Reader {
                         try {
                             userNumber = Integer.parseInt(userInfo[USER_NUMBER]);
                             try {
+                                //Since the program works for 10 user the usernumber will need to be between 1 and 10
                                 if (userNumber < 1 || userNumber > 10) {
                                     System.err.println("The User Number is less than 1 or greater than 10");
                                 } else {
                                     userName = userInfo[USER_NAME];
                                     try {
                                         userGender = userInfo[USER_GEN];
+                                        //User Gender can only be M or N or F
                                         if (!userGender.equals("M") && !userGender.equals("N") && !userGender.equals("F")) {
                                             System.err.println("There is a problem with assigning " + userName + "’s gender.");
                                         } else {
+                                            //Abbreviating the M, N and F.
                                             if (userInfo[USER_GEN].equals("M")) {
                                                 userGender = "Male";
                                             }
@@ -82,15 +85,18 @@ public class Reader {
                                             }
                                             try {
                                                 userAge = Double.parseDouble(userInfo[USER_AGE]);
+                                                //Age has to be a positive number
                                                 if (userAge <= 0) {
                                                     System.err.println(userName + "’s age is 0 or a negative number");
                                                 } else {
                                                     try {
+                                                        //Weight has to be a positive number
                                                         userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
                                                         if (userWeight <= 0) {
                                                             System.err.println(userName + "’s weight is 0 or a negative number");
                                                         } else {
                                                             try {
+                                                                //Height has to be a positive number
                                                                 userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
                                                                 if (userHeight <= 0) {
                                                                     System.err.println(userName + "’s height is 0 or a negative number");
@@ -99,28 +105,41 @@ public class Reader {
                                                                     user = new User(userName, userGender, userAge, userWeight, userHeight);
                                                                     MainController.userInfo.put(userNumber, user);
                                                                 }
-                                                            } catch (Exception e) {
+                                                            }
+                                                            //Exception handled
+                                                            catch (Exception e) {
                                                                 System.err.println("There was a problem parsing the Height of " + userName);
                                                             }
                                                         }
-                                                    } catch (Exception e) {
+                                                    }
+                                                    //Exception handled
+                                                    catch (Exception e) {
                                                         System.err.println("There was a problem parsing the weight of " + userName);
                                                     }
                                                 }
-                                            } catch (Exception e) {
+                                            }
+                                            //Exception handled
+                                            catch (Exception e) {
                                                 System.err.println("There was a problem parsing the age of " + userName);
                                             }
                                         }
-                                    } catch (Exception e) {
+                                    }
+                                    //Exception handled
+                                    catch (Exception e) {
                                         System.err.println("There was a problem assigning the gender of " + userName);
                                     }
                                 }
-                            } catch (Exception e) {
+                            }
+                            //Exception handled
+                            catch (Exception e) {
                                 System.err.println("There is an Issue with the user number");
                             }
-                        } catch (Exception e) {
+                        }
+                        //Exception handled
+                        catch (Exception e) {
                             System.err.println("There is a problem with the user number.");
                         }
+                        //Read the next line
                         line = b_reader.readLine();
                     }
                 }

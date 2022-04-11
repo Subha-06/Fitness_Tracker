@@ -50,7 +50,8 @@
 - The user can either manually enter their data or can load a file with already entered information of the user.
 - In this program, the user can enter details for up to 10 people and track their data too.
 - The menu portion of the program is in the middle which the user can use to interact and get their desired feedbacks or calculations shown in the *view box* on the right side.
-  <a href="https://imgbox.com/KuIqeCEL" target="_blank"><img src="https://images2.imgbox.com/08/14/KuIqeCEL_o.png" alt="image host"/></a>
+
+<a href="https://imgbox.com/KuIqeCEL" target="_blank"><img src="https://images2.imgbox.com/08/14/KuIqeCEL_o.png" align="Center" height="550" width="300"/></a>
 - There is also an option to save the calorie burnt information of the user to a file
 - At the very bottom there is a status bar which shows if any changes were made or any error occurred. The program can also save the information of the people that the user changed/created in a .txt file that can be later loaded to get the same information. This can be done with the *Save* as option in *File* in the menu bar.
 

@@ -690,7 +690,6 @@ public class MainController {
                     rightStatus.setTextFill(Color.GREEN);
                     leftStatus.setText("");
                 } else {
-                    System.out.println("here");
                     leftStatus.setText("No user Information found! Add user or Load From File");
                     leftStatus.setTextFill(Color.RED);
                     rightStatus.setText("");
