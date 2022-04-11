@@ -7,7 +7,6 @@
 /dataSources/
 /dataSources.local.xml
 /target/classes/mvh/app/Main.fxml
-
 ### Java ###
 # Compiled class file
 *.class

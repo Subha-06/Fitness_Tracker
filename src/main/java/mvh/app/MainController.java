@@ -182,17 +182,11 @@ public class MainController {
             userNumberInt = userNumber.getValue();
             //IF any of the field is empty the program will show an Error.
             if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
-                leftStatus.setText("Please Enter All Information to Add User");
-                leftStatus.setTextFill(Color.RED);
-                rightStatus.setText("");
-                viewDetails.setText("");
+                extracted("Please Enter All Information to Add User");
             } else {
                 //If the user Already Exists.
                 if (userInfo.get(userNumberInt) != null) {
-                    leftStatus.setText("User Already Exists. Please Press Change Info");
-                    rightStatus.setText("");
-                    leftStatus.setTextFill(Color.RED);
-                    viewDetails.setText("");
+                    extracted("User Already Exists. Please Press Change Info");
                 }
                 //IF the user doesn't exist we add the information
                 else {
@@ -204,15 +198,9 @@ public class MainController {
                         int age = Integer.parseInt(userAge.getText());
                         //Age Can't be Negative or 0
                         if (age < 0) {
-                            leftStatus.setText("Age can't be a negative number");
-                            leftStatus.setTextFill(Color.RED);
-                            rightStatus.setText("");
-                            viewDetails.setText("");
+                            extracted("Age can't be a negative number");
                         } else if (age == 0) {
-                            leftStatus.setText("Age can't be 0");
-                            leftStatus.setTextFill(Color.RED);
-                            rightStatus.setText("");
-                            viewDetails.setText("");
+                            extracted("Age can't be 0");
                         } else {
                             try {
                                 //If the option chosen is kilograms
@@ -226,85 +214,69 @@ public class MainController {
                                 }
                                 //Weight Can't be Negative or 0
                                 if (weight < 0) {
-                                    leftStatus.setText("Weight Can't be a negative number");
-                                    leftStatus.setTextFill(Color.RED);
-                                    rightStatus.setText("");
-                                    viewDetails.setText("");
+                                    extracted("Weight Can't be a negative number");
+                                    return;
                                 } else if (weight == 0) {
-                                    leftStatus.setText("Weight Can't Be 0");
-                                    leftStatus.setTextFill(Color.RED);
-                                    rightStatus.setText("");
-                                    viewDetails.setText("");
-                                } else {
-                                    try {
-                                        //If height is cm
-                                        if (heightChoice.getValue().equals("C.M.")) {
-                                            height = Double.parseDouble(userHeight.getText());
-                                        } else {
-                                            //Converting meter to cm
-                                            height = 100 * Double.parseDouble(userHeight.getText());
-                                        }
-                                        //Height Can't be 0 or negative
-                                        if (height < 0) {
-                                            leftStatus.setText("Height Can't be a negative number");
-                                            leftStatus.setTextFill(Color.RED);
-                                            rightStatus.setText("");
-                                            viewDetails.setText("");
-                                        } else if (height == 0) {
-                                            leftStatus.setText("Height Can't be 0");
-                                            leftStatus.setTextFill(Color.RED);
-                                            rightStatus.setText("");
-                                            viewDetails.setText("");
-                                        } else {
-                                            try {
-                                                //Creating the user
-                                                user = new User(name, gender, age, weight, height);
-                                                userInfo.put(userNumberInt, user);
-
-                                                leftStatus.setText("");
-                                                rightStatus.setText("User Added! Choose from menu");
-                                                rightStatus.setTextFill(Color.GREEN);
-                                                viewDetails.setText("");
-
-                                                //Exception handled
-                                            } catch (Exception e) {
-                                                leftStatus.setText("Couldn't add user");
-                                                leftStatus.setTextFill(Color.RED);
-                                                rightStatus.setText("");
-                                            }
-                                        }
-                                        //Exception handled
-                                    } catch (Exception e) {
-                                        leftStatus.setText("Enter A Positive Number for height");
-                                        leftStatus.setTextFill(Color.RED);
-                                        rightStatus.setText("");
-                                        viewDetails.setText("");
-                                    }
+                                    extracted("Weight Can't Be 0");
+                                    return;
                                 }
-                                //Exception handled
                             } catch (Exception e) {
-                                leftStatus.setText("Enter A Positive Number for weight");
-                                leftStatus.setTextFill(Color.RED);
-                                rightStatus.setText("");
+                                extracted("Enter A Positive Number for weight");
+                                return;
+                            }
+                            try {
+                                //If height is cm
+                                if (heightChoice.getValue().equals("C.M.")) {
+                                    height = Double.parseDouble(userHeight.getText());
+                                } else {
+                                    //Converting meter to cm
+                                    height = 100 * Double.parseDouble(userHeight.getText());
+                                }
+                                //Height Can't be 0 or negative
+                                if (height < 0) {
+                                    extracted("Height Can't be a negative number");
+                                    return;
+                                } else if (height == 0) {
+                                    extracted("Height Can't be 0");
+                                    return;
+                                }
+
+                            } catch (Exception e) {
+                                extracted("Enter A Positive Number for height");
+                                return;
+                            }
+
+                            try {
+                                //Creating the user
+                                user = new User(name, gender, age, weight, height);
+                                userInfo.put(userNumberInt, user);
+
+                                leftStatus.setText("");
+                                rightStatus.setText("User Added! Choose from menu");
+                                rightStatus.setTextFill(Color.GREEN);
                                 viewDetails.setText("");
+                            } catch (Exception e) {
+                                extracted("Couldn't add user");
+                                return;
                             }
                         }
                         //Exception handled
                     } catch (Exception e) {
-                        leftStatus.setText("Enter A Positive Number for age");
-                        leftStatus.setTextFill(Color.RED);
-                        rightStatus.setText("");
-                        viewDetails.setText("");
+                        extracted("Enter A Positive Number for age");
                     }
                 }
             }
             //Exception handled
         } catch (Exception e) {
-            leftStatus.setText("Please Enter All Information");
-            leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("");
-            viewDetails.setText("");
+            extracted("Please Enter All Information to Add User");
         }
+    }
+
+    private void extracted(String message) {
+        leftStatus.setText(message);
+        leftStatus.setTextFill(Color.RED);
+        rightStatus.setText("");
+        viewDetails.setText("");
     }
 
     /**
@@ -319,10 +291,7 @@ public class MainController {
             keyCheck = userInfo.containsKey(userNumberInt);
             //If any of the field is empty the program will show an Error.
             if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
-                leftStatus.setText("Please Enter All Information To Change Data");
-                leftStatus.setTextFill(Color.RED);
-                rightStatus.setText("");
-                viewDetails.setText("");
+                extracted("Please Enter All Information to Change User");
             } else {
                 //If the user doesn't exist we will add that user
                 if (!keyCheck) {
@@ -335,15 +304,9 @@ public class MainController {
                             int age = Integer.parseInt(userAge.getText());
                             //Age Can't be Negative or 0
                             if (age < 0) {
-                                leftStatus.setText("Age can't be a negative number");
-                                leftStatus.setTextFill(Color.RED);
-                                rightStatus.setText("");
-                                viewDetails.setText("");
+                                extracted("Age can't be a negative number");
                             } else if (age == 0) {
-                                leftStatus.setText("Age can't be 0");
-                                leftStatus.setTextFill(Color.RED);
-                                rightStatus.setText("");
-                                viewDetails.setText("");
+                                extracted("Age can't be 0");
                             } else {
                                 try {
                                     //If the option chosen is kilograms
@@ -357,15 +320,9 @@ public class MainController {
                                     }
                                     //Weight Can't be Negative or 0
                                     if (weight < 0) {
-                                        leftStatus.setText("Weight can't be a negative number");
-                                        leftStatus.setTextFill(Color.RED);
-                                        rightStatus.setText("");
-                                        viewDetails.setText("");
+                                        extracted("Weight can't be a negative number");
                                     } else if (weight == 0) {
-                                        leftStatus.setText("Weight Can't Be 0");
-                                        leftStatus.setTextFill(Color.RED);
-                                        rightStatus.setText("");
-                                        viewDetails.setText("");
+                                        extracted("Weight can't Be 0");
                                     } else {
                                         try {
                                             //If height is cm
@@ -377,15 +334,9 @@ public class MainController {
                                             }
                                             //Height Can't be negative or 0
                                             if (height < 0) {
-                                                leftStatus.setText("Height cannot be a negative number");
-                                                leftStatus.setTextFill(Color.RED);
-                                                rightStatus.setText("");
-                                                viewDetails.setText("");
+                                                extracted("Height can't be a negative number");
                                             } else if (height == 0) {
-                                                leftStatus.setText("Height can't be 0");
-                                                leftStatus.setTextFill(Color.RED);
-                                                rightStatus.setText("");
-                                                viewDetails.setText("");
+                                                extracted("Height can't be 0");
                                             } else {
                                                 try {
                                                     //Creating the user
@@ -398,41 +349,26 @@ public class MainController {
 
                                                     //Exception handled
                                                 } catch (Exception e) {
-                                                    leftStatus.setText("Couldn't add user");
-                                                    leftStatus.setTextFill(Color.RED);
-                                                    rightStatus.setText("");
-                                                    viewDetails.setText("");
+                                                    extracted("Couldn't add user");
                                                 }
                                             }
                                             //Exception handled
                                         } catch (Exception e) {
-                                            leftStatus.setText("Enter A Positive Number for height");
-                                            leftStatus.setTextFill(Color.RED);
-                                            rightStatus.setText("");
-                                            viewDetails.setText("");
+                                            extracted("Enter A Positive Number for height");
                                         }
                                     }
                                     //Exception handled
                                 } catch (Exception e) {
-                                    leftStatus.setText("Enter A Positive Number for weight");
-                                    leftStatus.setTextFill(Color.RED);
-                                    rightStatus.setText("");
-                                    viewDetails.setText("");
+                                    extracted("Enter A Positive Number for weight");
                                 }
                             }
                             //Exception handled
                         } catch (Exception e) {
-                            leftStatus.setText("Enter A Positive Number for age");
-                            leftStatus.setTextFill(Color.RED);
-                            rightStatus.setText("");
-                            viewDetails.setText("");
+                            extracted("Enter A Positive Number for age");
                         }
                         //Exception handled
                     } catch (Exception e) {
-                        leftStatus.setText("Please Enter All Information");
-                        leftStatus.setTextFill(Color.RED);
-                        rightStatus.setText("");
-                        viewDetails.setText("");
+                        extracted("Please Enter All Information");
                     }
                 }
                 //If the user exists we replace the user
@@ -445,15 +381,9 @@ public class MainController {
                         int age = Integer.parseInt(userAge.getText());
                         //Age Can't be Negative or 0
                         if (age < 0) {
-                            leftStatus.setText("Age can't be a negative number");
-                            leftStatus.setTextFill(Color.RED);
-                            rightStatus.setText("");
-                            viewDetails.setText("");
+                            extracted("Age can't be a negative number");
                         } else if (age == 0) {
-                            leftStatus.setText("Age can't be 0");
-                            leftStatus.setTextFill(Color.RED);
-                            rightStatus.setText("");
-                            viewDetails.setText("");
+                            extracted("Age can't be 0");
                         } else {
                             try {
                                 //If the option chosen is kilograms
@@ -467,15 +397,9 @@ public class MainController {
                                 }
                                 //Weight Can't be Negative or 0
                                 if (weight < 0) {
-                                    leftStatus.setText("Weight Can't be Negative Number");
-                                    leftStatus.setTextFill(Color.RED);
-                                    rightStatus.setText("");
-                                    viewDetails.setText("");
+                                    extracted("Weight can't be a negative number");
                                 } else if (weight == 0) {
-                                    leftStatus.setText("Weight Can't Be 0");
-                                    leftStatus.setTextFill(Color.RED);
-                                    rightStatus.setText("");
-                                    viewDetails.setText("");
+                                    extracted("Weight can't Be 0");
                                 } else {
                                     try {
                                         //If height is cm
@@ -487,15 +411,9 @@ public class MainController {
                                         }
                                         //Height can't be negative or 0
                                         if (height < 0) {
-                                            leftStatus.setText("Height can't be a negative number");
-                                            leftStatus.setTextFill(Color.RED);
-                                            rightStatus.setText("");
-                                            viewDetails.setText("");
+                                            extracted("Height can't' be a negative number");
                                         } else if (height == 0) {
-                                            leftStatus.setText("Height can't be 0");
-                                            leftStatus.setTextFill(Color.RED);
-                                            rightStatus.setText("");
-                                            viewDetails.setText("");
+                                            extracted("Height can't be 0");
                                         } else {
                                             try {
                                                 //Creating the user
@@ -508,43 +426,28 @@ public class MainController {
 
                                                 //Exception handled
                                             } catch (Exception e) {
-                                                leftStatus.setText("Couldn't change user Information");
-                                                leftStatus.setTextFill(Color.RED);
-                                                viewDetails.setText("");
-                                                rightStatus.setText("");
+                                                extracted("Couldn't change user Information");
                                             }
                                         }
                                         //Exception handled
                                     } catch (Exception e) {
-                                        leftStatus.setText("Enter A Positive Number for height");
-                                        leftStatus.setTextFill(Color.RED);
-                                        rightStatus.setText("");
-                                        viewDetails.setText("");
+                                        extracted("Enter A Positive Number for height");
                                     }
                                 }
                                 //Exception handled
                             } catch (Exception e) {
-                                leftStatus.setText("Enter A Positive Number for weight");
-                                leftStatus.setTextFill(Color.RED);
-                                rightStatus.setText("");
-                                viewDetails.setText("");
+                                extracted("Enter A Positive Number for weight");
                             }
                         }
                         //Exception handled
                     } catch (Exception e) {
-                        leftStatus.setText("Enter A Positive Number for age");
-                        leftStatus.setTextFill(Color.RED);
-                        rightStatus.setText("");
-                        viewDetails.setText("");
+                        extracted("Enter A Positive Number for age");
                     }
                 }
             }
             //Exception handled
         } catch (Exception e) {
-            leftStatus.setText("Please Enter All Information");
-            leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("");
-            viewDetails.setText("");
+            extracted("Please Enter All Information");
         }
     }
 
@@ -565,10 +468,7 @@ public class MainController {
 
             //Exception handled
         } catch (Exception e) {
-            leftStatus.setText("No user Information found! Add user or Load From File");
-            leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("");
-            viewDetails.setText("");
+            extracted("No user Information found! Add user or Load From File");
         }
     }
 
@@ -600,10 +500,7 @@ public class MainController {
                             exerciseWeight = lbToKg * Double.parseDouble(weightExercise.getText());
                         }
                         if (exerciseWeight <= 0) {
-                            leftStatus.setText("Please Enter A Positive Weight Goal");
-                            leftStatus.setTextFill(Color.RED);
-                            rightStatus.setText("");
-                            viewDetails.setText("");
+                            extracted("Please Enter A Positive Weight Goal");
                         } else {
                             //Getting the user choice
                             String choice = exerciseChoice.getValue();
@@ -640,34 +537,22 @@ public class MainController {
                                     rightStatus.setTextFill(Color.GREEN);
                                 }
                             } else {
-                                leftStatus.setText("No user Information found! Add user or Load From File");
-                                leftStatus.setTextFill(Color.RED);
-                                rightStatus.setText("");
-                                viewDetails.setText("");
+                                extracted("No user Information found! Add user or Load From File");
                             }
                         }
                         //Exception handled
                     } catch (Exception e) {
-                        leftStatus.setText("Enter A positive number for weight goal");
-                        leftStatus.setTextFill(Color.RED);
-                        rightStatus.setText("");
-                        viewDetails.setText("");
+                        extracted("Enter A positive number for weight goal");
                     }
 
                 }
                 //Exception handled
             } catch (Exception e) {
-                leftStatus.setText("Enter A positive number for weight goal");
-                leftStatus.setTextFill(Color.RED);
-                rightStatus.setText("");
-                viewDetails.setText("");
+                extracted("Enter A positive number for weight goal");
             }
             //Exception handled
         } catch (Exception e) {
-            leftStatus.setText("No user Information found! Add user or Load From File");
-            leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("");
-            viewDetails.setText("");
+            extracted("No user Information found! Add user or Load From File");
         }
 
     }
@@ -698,10 +583,7 @@ public class MainController {
                     rightStatus.setTextFill(Color.GREEN);
                     leftStatus.setText("");
                 } else {
-                    leftStatus.setText("No user Information found! Add user or Load From File");
-                    leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("");
-                    viewDetails.setText("");
+                    extracted("No user Information found! Add user or Load From File");
                 }
             }
             //If the option chosen is weight status
@@ -720,18 +602,12 @@ public class MainController {
                     rightStatus.setTextFill(Color.GREEN);
                     leftStatus.setText("");
                 } else {
-                    leftStatus.setText("No user Information found! Add user or Load From File");
-                    leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("");
-                    viewDetails.setText("");
+                    extracted("No user Information found! Add user or Load From File");
                 }
             }
             //Exception handled
         } catch (Exception e) {
-            leftStatus.setText("No user Information found! Add user or Load From File");
-            leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("");
-            viewDetails.setText("");
+            extracted("No user Information found! Add user or Load From File");
         }
     }
 
@@ -745,17 +621,13 @@ public class MainController {
             int userNumber = calorieUser.getValue();
             //If the user didn't input anything it will ask them to input
             if (calorieAmount == null) {
-                leftStatus.setText("Please Enter Calorie Amount");
-                leftStatus.setTextFill(Color.RED);
-                rightStatus.setText("");
+                extracted("Please Enter Calorie Amount");
             } else {
                 try {
                     int calorie = Integer.parseInt(calorieAmount.getText());
                     //Calorie Amount shouldn't be a negative number
                     if (calorie < 0) {
-                        leftStatus.setText("Please Enter 0 or a positive number for calorie Amount");
-                        leftStatus.setTextFill(Color.RED);
-                        rightStatus.setText("");
+                        extracted("Please Enter 0 or a positive number for calorie Amount");
                     } else {
                         //Creating a hashmap with the users' calorie information
                         HashMap<Integer, String> calorieInfo = new HashMap<>();
@@ -768,16 +640,12 @@ public class MainController {
                     }
                     //Exception handled
                 } catch (Exception e) {
-                    leftStatus.setText("Please Enter 0 or a positive number for calorie Amount");
-                    leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("");
+                    extracted("Please Enter 0 or a positive number for calorie Amount");
                 }
             }
             //Exception handled
         } catch (Exception e) {
-            leftStatus.setText("Cannot be added to file!");
-            leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("");
+            extracted("Cannot be added to file!");
         }
     }
 
@@ -796,7 +664,7 @@ public class MainController {
                 if (keyCheck) {
                     try {
                         File outFile = new File("User.txt");
-                        HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt,outFile);
+                        HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt, outFile);
                         //keyCheck = calorieInfo.containsKey(userNumberInt);
                         //Calling the total calories' method to get the output
                         int totalCalories = Calculations.getTotalCalories(userNumberInt, calorieInfo);
@@ -805,15 +673,10 @@ public class MainController {
                         rightStatus.setTextFill(Color.GREEN);
                         leftStatus.setText("");
                     } catch (Exception e) {
-                        leftStatus.setText("Couldn't Read File");
-                        leftStatus.setTextFill(Color.RED);
-                        rightStatus.setText("");
+                        extracted("Couldn't Read File");
                     }
                 } else {
-                    leftStatus.setText("No user Information found! Add user or Load From File");
-                    leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("");
-                    viewDetails.setText("");
+                    extracted("No user Information found! Add user or Load From File");
                 }
 
             } else {
@@ -827,24 +690,14 @@ public class MainController {
                         rightStatus.setText("Requested info shown!");
                         rightStatus.setTextFill(Color.GREEN);
                     } catch (Exception e) {
-                        leftStatus.setText("No user Information found! Add user or Load From File");
-                        leftStatus.setTextFill(Color.RED);
-                        rightStatus.setText("");
-                        viewDetails.setText("");
+                        extracted("No user Information found! Add user or Load From File");
                     }
                 } else {
-                    leftStatus.setText("No user Information found! Add user or Load From File");
-                    leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("");
-                    viewDetails.setText("");
-                    //Exception handled
+                    extracted("No user Information found! Add user or Load From File");
                 }
             }
         } catch (Exception e) {
-            leftStatus.setText("No user Information found! Add user or Load From File");
-            leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("");
-            viewDetails.setText("");
+            extracted("No user Information found! Add user or Load From File");
         }
     }
 
@@ -862,10 +715,7 @@ public class MainController {
             //Calling the reader method to read the file the user has loaded
             Reader.reader(file);
             if (userInfo.isEmpty()) {
-                leftStatus.setText("There was a problem reading the file");
-                leftStatus.setTextFill(Color.RED);
-                rightStatus.setText("");
-                viewDetails.setText("");
+                extracted("There was a problem reading the file");
             } else {
                 rightStatus.setText("File opened");
                 rightStatus.setTextFill(Color.GREEN);
@@ -874,10 +724,7 @@ public class MainController {
             }
             //Exception handled
         } catch (Exception e) {
-            leftStatus.setText("File cannot be read! Choose Another File");
-            leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("");
-            viewDetails.setText("");
+            extracted("File cannot be read! Choose Another File");
         }
     }
 
@@ -891,10 +738,7 @@ public class MainController {
         try {
             //Checking if there is any user or not
             if (userInfo.isEmpty()) {
-                leftStatus.setText("Please Add users First");
-                leftStatus.setTextFill(Color.RED);
-                rightStatus.setText("");
-                viewDetails.setText("");
+                extracted("Please Add users First");
             } else {
                 //File chooser setup
                 fileChooser.setInitialDirectory(new File("."));
@@ -907,10 +751,7 @@ public class MainController {
                         fileSave.createNewFile();
                     } catch (Exception e) {
                         //The Error message
-                        leftStatus.setText("Error: Could not create file");
-                        //Setting the labels color to red
-                        leftStatus.setTextFill(Color.RED);
-                        rightStatus.setText("");
+                        extracted("Error: Could not create file");
                     }
                 }
                 //Then if the file exists and be written on
@@ -943,22 +784,15 @@ public class MainController {
                         rightStatus.setText("File Saved");
                         rightStatus.setTextFill(Color.GREEN);
                         rightStatus.setText("");
-                        rightStatus.setText("");
                     } catch (Exception e) {
                         //The Error message
-                        leftStatus.setText("Error: Could not write to file");
-                        //Setting the labels color to red
-                        leftStatus.setTextFill(Color.RED);
-                        leftStatus.setText("");
+                        extracted("Error: Could not write to file");
                     }
                 }
             }
             //Catching exception
         } catch (Exception e) {
-            leftStatus.setText("Add Users First");
-            leftStatus.setTextFill(Color.RED);
-            rightStatus.setText("");
-            viewDetails.setText("");
+            extracted("Add Users First");
         }
     }
 
