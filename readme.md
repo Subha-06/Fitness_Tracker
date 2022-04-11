@@ -2,11 +2,11 @@
 
 
 
-# CPSC233W22A3
+# CPSC233W22Project
 
 # Author: Amasil Rahim Zihad & Fabiha Fairuzz Subha
 
-# UCID: 30164830
+# UCID: 30164830 & 30148674
 
 ## Version: 5.7
 
@@ -30,18 +30,31 @@
 
 - So if javafx-sdk is in "C:\Program Files\Java\" the cmd command code would be:
 
-- > java --module-path "C:\Program Files\Java\javafx-sdk-17.0.2\lib" --add-modules javafx.controls,javafx.fxml -jar CPSC233W22A3.jar
+- > java --module-path "C:\Program Files\Java\javafx-sdk-17.0.2\lib" --add-modules javafx.controls,javafx.fxml -jar CPSC233W22Project.jar
 
 - Or on macOS if javafx-sdk is in "/Library/Java/JavaVirtualMachines/" the terminal command would be:
 
-- > java --module-path "/Library/Java/JavaVirtualMachines/javafx-sdk-18/lib" --add-modules javafx.controls,javafx.fxml -jar CPSC233W22A3.jar
+- > java --module-path "/Library/Java/JavaVirtualMachines/javafx-sdk-18/lib" --add-modules javafx.controls,javafx.fxml -jar CPSC233W22Project.jar
 
 ## Features
 
 - Add multiple users and view their information.
 - Read information of a user from a file.
 - Write the user information to a file.
-- Add the amount of calorie burnt in day of a user and display the highest amount burnt in a day or total calorie lost for that user.
 - Display the bmi or the weight status of the users.
+- Add the amount of calorie burnt in day of a user and display the highest amount burnt in a day or total calorie lost for that user.
 - Allows the user to enter a certain weight goal and provide information on how much exercise is needed to reach that
   goal.
+
+## Running the GUI
+
+- Running the .jar file like that should run the program and a GUI window titled **This Is A Fitness Tracking Program** should appear
+- This is a tracking program that will allow the user to track their weight and calories
+- For further details of the program and its authors, the user can go to the *Help* option in menu bar and look at the *About*
+- The user can either manually enter their data or can load a file with already entered information of the user.
+- In this program, the user can enter details for up to 10 people and track their data too.
+- The menu portion of the program is in the middle which the user can use to interact and get their desired feedbacks or calculations shown in the *view box* on the right side.
+- There is also an option to save the calorie burnt information of the user to a file
+- At the very bottom there is a status bar which shows if any changes were made or any error occurred. The program can also save the information of the people that the user changed/created in a .txt file that can be later loaded to get the same information. This can be done with the *Save* as option in *File* in the menu bar.
+
+To exit the program, the user can simply press the close button on the window or use the Quit option in the File option in menu
