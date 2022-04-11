@@ -38,21 +38,26 @@
 - Read information of a user from a file.
 - Write the user information to a file.
 - Display the bmi or the weight status of the users.
-- Add the amount of calorie burnt in day of a user and display the highest amount burnt in a day or total calorie lost for that user.
+- Add the amount of calorie burnt in day of a user and display the highest amount burnt in a day or total calorie lost
+  for that user.
 - Allows the user to enter a certain weight goal and provide information on how much exercise is needed to reach that
   goal.
 
 ## Running the GUI
 
-- Running the .jar file like that should run the program and a GUI window titled **This Is A Fitness Tracking Program** should appear
+- Running the .jar file like that should run the program and a GUI window titled **This Is A Fitness Tracking Program**
+  should appear
 - This is a tracking program that will allow the user to track their weight and calories
-- For further details of the program and its authors, the user can go to the *Help* option in menu bar and look at the *About*
+- For further details of the program and its authors, the user can go to the *Help* option in menu bar and look at the *
+  About*
 - The user can either manually enter their data or can load a file with already entered information of the user.
 - In this program, the user can enter details for up to 10 people and track their data too.
-- The menu portion of the program is in the middle which the user can use to interact and get their desired feedbacks or calculations shown in the *view box* on the right side.
+- The menu portion of the program is in the middle which the user can use to interact and get their desired feedbacks or
+  calculations shown in the *view box* on the right side.
 
-<a href="https://imgbox.com/KuIqeCEL" target="_blank"><img src="https://images2.imgbox.com/08/14/KuIqeCEL_o.png" align="Center" height="550" width="300"/></a>
+<p style="text-align:center;"><a href="https://imgbox.com/KuIqeCEL" target="_blank"><img src="https://images2.imgbox.com/08/14/KuIqeCEL_o.png" height="550" width="300" alt="View Options Photo"/></a></p>>
 - There is also an option to save the calorie burnt information of the user to a file
 - At the very bottom there is a status bar which shows if any changes were made or any error occurred. The program can also save the information of the people that the user changed/created in a .txt file that can be later loaded to get the same information. This can be done with the *Save* as option in *File* in the menu bar.
 
-To exit the program, the user can simply press the close button on the window or use the *Quit* option in the *File* option in menu
+To exit the program, the user can simply press the close button on the window or use the *Quit* option in the *File*
+option in menu
