@@ -57,34 +57,69 @@ public class Reader {
                     while (line != null) {
                         //The file is csv so separating them and storing them in a string
                         String[] userInfo = line.split(",");
-
                         //Checking the gender of the user to assign the information accordingly
                         //Assigning the information of the file to variables
-                        userNumber = Integer.parseInt(userInfo[USER_NUMBER]);
-                        userName = userInfo[USER_NAME];
                         try {
-                            userGender = userInfo[USER_GEN];
-                            if (!userGender.equals("M") && !userGender.equals("N") && !userGender.equals("F")) {
-                                System.err.println("There is a problem with " + userName + "’s gender.");
-                            } else {
-                                if (userInfo[USER_GEN].equals("M")) {
-                                    userGender = "Male";
+                            userNumber = Integer.parseInt(userInfo[USER_NUMBER]);
+                            try {
+                                if (userNumber < 1 || userNumber > 10) {
+                                    System.err.println("The User Number is less than 1 or greater than 10");
+                                } else {
+                                    userName = userInfo[USER_NAME];
+                                    try {
+                                        userGender = userInfo[USER_GEN];
+                                        if (!userGender.equals("M") && !userGender.equals("N") && !userGender.equals("F")) {
+                                            System.err.println("There is a problem with assigning " + userName + "’s gender.");
+                                        } else {
+                                            if (userInfo[USER_GEN].equals("M")) {
+                                                userGender = "Male";
+                                            }
+                                            if (userInfo[USER_GEN].equals("F")) {
+                                                userGender = "Female";
+                                            }
+                                            if (userInfo[USER_GEN].equals("N")) {
+                                                userGender = "Preferred not to say";
+                                            }
+                                            try {
+                                                userAge = Double.parseDouble(userInfo[USER_AGE]);
+                                                if (userAge <= 0) {
+                                                    System.err.println(userName + "’s age is 0 or a negative number");
+                                                } else {
+                                                    try {
+                                                        userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
+                                                        if (userWeight <= 0) {
+                                                            System.err.println(userName + "’s weight is 0 or a negative number");
+                                                        } else {
+                                                            try {
+                                                                userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
+                                                                if (userHeight <= 0) {
+                                                                    System.err.println(userName + "’s height is 0 or a negative number");
+                                                                } else {
+                                                                    //Creating a user using all the user information
+                                                                    user = new User(userName, userGender, userAge, userWeight, userHeight);
+                                                                    MainController.userInfo.put(userNumber, user);
+                                                                }
+                                                            } catch (Exception e) {
+                                                                System.err.println("There was a problem parsing the Height of " + userName);
+                                                            }
+                                                        }
+                                                    } catch (Exception e) {
+                                                        System.err.println("There was a problem parsing the weight of " + userName);
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                System.err.println("There was a problem parsing the age of " + userName);
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        System.err.println("There was a problem assigning the gender of " + userName);
+                                    }
                                 }
-                                if (userInfo[USER_GEN].equals("F")) {
-                                    userGender = "Female";
-                                }
-                                if (userInfo[USER_GEN].equals("N")) {
-                                    userGender = "Preferred not to say";
-                                }
-                                userAge = Double.parseDouble(userInfo[USER_AGE]);
-                                userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
-                                userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
-                                //Creating a user using all the user information
-                                user = new User(userName, userGender, userAge, userWeight, userHeight);
-                                MainController.userInfo.put(userNumber, user);
+                            } catch (Exception e) {
+                                System.err.println("There is an Issue with the user number");
                             }
                         } catch (Exception e) {
-                            System.out.println("There Is a problem with the gender of " + userName);
+                            System.err.println("There is a problem with the user number.");
                         }
                         line = b_reader.readLine();
                     }
