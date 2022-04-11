@@ -26,8 +26,8 @@
 
 - So if javafx-sdk is in "C:\Program Files\Java\" the cmd command code would be:
 
-- > java --module-path "C:\Program Files\Java\javafx-sdk-17.0.2\lib" --add-modules javafx.controls,javafx.fxml -jar CPSC233W22Project.jar
-
+- > java --module-path "C:\Program Files\Java\javafx-sdk-18\lib" --add-modules javafx.controls,javafx.fxml -jar CPSC233W22Project.jar
+  
 - Or on macOS if javafx-sdk is in "/Library/Java/JavaVirtualMachines/" the terminal command would be:
 
 - > java --module-path "/Library/Java/JavaVirtualMachines/javafx-sdk-18/lib" --add-modules javafx.controls,javafx.fxml -jar CPSC233W22Project.jar
