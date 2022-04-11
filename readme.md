@@ -1,7 +1,3 @@
-<a href="https://imgbox.com/rrcIv0da" target="_blank"><img src="https://images2.imgbox.com/0e/40/rrcIv0da_o.png" alt="image host"/></a>
-
-
-
 # CPSC233W22Project
 
 # Author: Amasil Rahim Zihad & Fabiha Fairuzz Subha
@@ -26,7 +22,7 @@
 
 - To run the program navigate to its folder and then open a terminal or cmd windows there and write the following:
 
-- > java --module-path "javafx-sdk path here\lib" --add-modules javafx.controls,javafx.fxml -jar CPSC233W22A3.jar
+- > java --module-path "javafx-sdk path here\lib" --add-modules javafx.controls,javafx.fxml -jar CPSC233W22Project.jar
 
 - So if javafx-sdk is in "C:\Program Files\Java\" the cmd command code would be:
 
@@ -54,6 +50,7 @@
 - The user can either manually enter their data or can load a file with already entered information of the user.
 - In this program, the user can enter details for up to 10 people and track their data too.
 - The menu portion of the program is in the middle which the user can use to interact and get their desired feedbacks or calculations shown in the *view box* on the right side.
+  <a href="https://imgbox.com/KuIqeCEL" target="_blank"><img src="https://images2.imgbox.com/08/14/KuIqeCEL_o.png" alt="image host"/></a>
 - There is also an option to save the calorie burnt information of the user to a file
 - At the very bottom there is a status bar which shows if any changes were made or any error occurred. The program can also save the information of the people that the user changed/created in a .txt file that can be later loaded to get the same information. This can be done with the *Save* as option in *File* in the menu bar.
 
