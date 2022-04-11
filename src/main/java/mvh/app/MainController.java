@@ -265,6 +265,8 @@ public class MainController {
                                                 rightStatus.setText("User Added! Choose from menu");
                                                 rightStatus.setTextFill(Color.GREEN);
                                                 viewDetails.setText("");
+
+                                                //Exception handled
                                             } catch (Exception e) {
                                                 leftStatus.setText("Couldn't add user");
                                                 leftStatus.setTextFill(Color.RED);
@@ -393,6 +395,8 @@ public class MainController {
                                                     rightStatus.setText("User Didn't Exist so Added User! Choose from menu");
                                                     rightStatus.setTextFill(Color.GREEN);
                                                     viewDetails.setText("");
+
+                                                    //Exception handled
                                                 } catch (Exception e) {
                                                     leftStatus.setText("Couldn't add user");
                                                     leftStatus.setTextFill(Color.RED);
@@ -501,6 +505,8 @@ public class MainController {
                                                 rightStatus.setText("Changed Information! Choose from menu");
                                                 rightStatus.setTextFill(Color.GREEN);
                                                 viewDetails.setText("");
+
+                                                //Exception handled
                                             } catch (Exception e) {
                                                 leftStatus.setText("Couldn't change user Information");
                                                 leftStatus.setTextFill(Color.RED);
@@ -640,6 +646,7 @@ public class MainController {
                                 viewDetails.setText("");
                             }
                         }
+                        //Exception handled
                     } catch (Exception e) {
                         leftStatus.setText("Enter A positive number for weight goal");
                         leftStatus.setTextFill(Color.RED);
@@ -655,6 +662,7 @@ public class MainController {
                 rightStatus.setText("");
                 viewDetails.setText("");
             }
+            //Exception handled
         } catch (Exception e) {
             leftStatus.setText("No user Information found! Add user or Load From File");
             leftStatus.setTextFill(Color.RED);
