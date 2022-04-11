@@ -910,9 +910,17 @@ public class MainController {
                         for (Integer i : userInfo.keySet()) {
                             user = (User) userInfo.get(i);
                             //Assigning the info to the variables
-                            String name = user.getUserName();
+                            name = user.getUserName();
                             String age = String.valueOf(user.getUserAge());
-                            String gender = String.valueOf(user.getUserGender().charAt(0));
+                            if (user.getUserGender().equals("Male")) {
+                                gender = "M";
+                            }
+                            if (user.getUserGender().equals("Female")) {
+                                gender = "F";
+                            }
+                            if (user.getUserGender().equals("Preferred not to say")) {
+                                gender = "N";
+                            }
                             String weight = String.valueOf(user.getUserWeight());
                             String height = String.valueOf(user.getUserHeight());
                             //Writing them to the file.
