@@ -56,6 +56,7 @@
   calculations shown in the *view box* on the right side.
 
 <p style="text-align:center"><a href="https://imgbox.com/KuIqeCEL" target="_blank"><img src="https://images2.imgbox.com/08/14/KuIqeCEL_o.png" height="550" width="300" alt="View Options Photo"/></a></p>
+
 - There is also an option to save the calorie burnt information of the user to a file
 - At the very bottom there is a status bar which shows if any changes were made or any error occurred. The program can also save the information of the people that the user changed/created in a .txt file that can be later loaded to get the same information. This can be done with the *Save* as option in *File* in the menu bar.
 
