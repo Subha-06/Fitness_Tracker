@@ -72,6 +72,10 @@ public class MainController {
     @FXML
     private int userNumberInt;
     @FXML
+    private String name;
+    @FXML
+    private String gender;
+    @FXML
     private boolean keyCheck;
     @FXML
     private double weight;
@@ -193,8 +197,8 @@ public class MainController {
                 //IF the user doesn't exist we add the information
                 else {
                     //Getting the name and gender of the user
-                    String name = userName.getText();
-                    String gender = String.valueOf(userGender.getValue());
+                    name = userName.getText();
+                    gender = String.valueOf(userGender.getValue());
                     //Trying To get valid input from the user
                     try {
                         int age = Integer.parseInt(userAge.getText());
@@ -322,8 +326,8 @@ public class MainController {
                 if (!keyCheck) {
                     try {
                         //Getting the name and the gender of the user
-                        String name = userName.getText();
-                        String gender = String.valueOf(userGender.getValue());
+                        name = userName.getText();
+                        gender = String.valueOf(userGender.getValue());
                         //Trying To get valid input from the user
                         try {
                             int age = Integer.parseInt(userAge.getText());
@@ -430,8 +434,8 @@ public class MainController {
                 //If the user exists we replace the user
                 if (keyCheck) {
                     //Getting the name and the gender of the user
-                    String name = userName.getText();
-                    String gender = String.valueOf(userGender.getValue());
+                    name = userName.getText();
+                    gender = String.valueOf(userGender.getValue());
                     //Trying To get valid input from the user
                     try {
                         int age = Integer.parseInt(userAge.getText());
@@ -676,11 +680,11 @@ public class MainController {
                 if (keyCheck) {
                     //Gets the user information to view information
                     user = (User) userInfo.get(userNumberInt);
-                    String name = user.getUserName();
+                    name = user.getUserName();
                     weight = user.getUserWeight();
                     height = user.getUserHeight();
 
-                    viewDetails.setText(name + "’s " + "BMI is " + Calculations.bmi(weight, height)+".");
+                    viewDetails.setText(name + "’s " + "BMI is " + Calculations.bmi(weight, height) + ".");
 
                     rightStatus.setText("Requested info shown!");
                     rightStatus.setTextFill(Color.GREEN);
@@ -699,11 +703,11 @@ public class MainController {
                 if (keyCheck) {
                     //Gets the user information to view information
                     user = (User) userInfo.get(userNumberInt);
-                    String name = user.getUserName();
+                    name = user.getUserName();
                     weight = user.getUserWeight();
                     height = user.getUserHeight();
 
-                    viewDetails.setText(name + " is " + Calculations.bmiCompare(weight, height)+".");
+                    viewDetails.setText(name + " is " + Calculations.bmiCompare(weight, height) + ".");
 
                     rightStatus.setText("Requested info shown!");
                     rightStatus.setTextFill(Color.GREEN);
@@ -910,6 +914,7 @@ public class MainController {
                             String name = user.getUserName();
                             String age = String.valueOf(user.getUserAge());
                             String gender = String.valueOf(user.getUserGender().charAt(0));
+                            System.out.println(gender);
                             String weight = String.valueOf(user.getUserWeight());
                             String height = String.valueOf(user.getUserHeight());
                             //Writing them to the file.
