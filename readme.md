@@ -55,7 +55,7 @@
 - The menu portion of the program is in the middle which the user can use to interact and get their desired feedbacks or
   calculations shown in the *view box* on the right side.
 
-<div style="text-align: right;"><a href="https://imgbox.com/KuIqeCEL" target="_blank"><img src="https://images2.imgbox.com/08/14/KuIqeCEL_o.png" height="550" width="300" alt="View Options Photo"/></a></div>
+<div align="center"><a href="https://imgbox.com/KuIqeCEL" target="_blank"><img src="https://images2.imgbox.com/08/14/KuIqeCEL_o.png" height="550" width="300" alt="View Options Photo"/></a></div>
 
 - There is also an option to save the calorie burnt information of the user to a file
 - At the very bottom there is a status bar which shows if any changes were made or any error occurred. The program can
