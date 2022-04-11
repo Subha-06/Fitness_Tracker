@@ -79,7 +79,6 @@ public class Reader {
                                 userAge = Double.parseDouble(userInfo[USER_AGE]);
                                 userWeight = Double.parseDouble(userInfo[USER_WEIGHT]);
                                 userHeight = Double.parseDouble(userInfo[USER_HEIGHT]);
-
                                 //Creating a user using all the user information
                                 user = new User(userName, userGender, userAge, userWeight, userHeight);
                                 MainController.userInfo.put(userNumber, user);
