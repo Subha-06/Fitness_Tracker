@@ -1,5 +1,6 @@
 package mvh;
 
+import mvh.user.User;
 import mvh.util.Reader;
 import mvh.util.Calculations;
 import org.junit.jupiter.api.Test;
@@ -162,6 +163,9 @@ class UserTest {
         assertEquals(expResult, actResult);
     }
 
+    /**
+     * * Tests the bmi calculator function. The values passed will be the users weight and height
+     */
     @Test
     void bmi_test2() {
         //The values to pass in to the function
@@ -175,6 +179,9 @@ class UserTest {
         assertEquals(expResult, actResult);
     }
 
+    /**
+     * * Tests the bmi calculator function. The values passed will be the users weight and height
+     */
     @Test
     void bmi_test3() {
         //The values to pass in to the function
@@ -188,6 +195,9 @@ class UserTest {
         assertEquals(expResult, actResult);
     }
 
+    /**
+     * * Tests the bmi calculator function. The values passed will be the users weight and height
+     */
     @Test
     void bmi_test4() {
         //The values to pass in to the function
@@ -217,6 +227,9 @@ class UserTest {
         assertEquals(expResult, actResult);
     }
 
+    /**
+     * Test for bmi comparison
+     */
     @Test
     void bmiCompare_test2() {
         //The values to pass in to the function
@@ -230,6 +243,9 @@ class UserTest {
         assertEquals(expResult, actResult);
     }
 
+    /**
+     * Test for bmi comparison
+     */
     @Test
     void bmiCompare_test3() {
         //The values to pass in to the function
@@ -243,6 +259,9 @@ class UserTest {
         assertEquals(expResult, actResult);
     }
 
+    /**
+     * Test for bmi comparison
+     */
     @Test
     void bmiCompare_test4() {
         //The values to pass in to the function
@@ -271,6 +290,9 @@ class UserTest {
         assertEquals(expResult, actResult);
     }
 
+    /**
+     * Test to see the estimate calorie burnt to reach the weight goal
+     */
     @Test
     void estimateCalories_test2() {
         //The weight goal
@@ -284,9 +306,8 @@ class UserTest {
     }
 
     /**
-     * Calculate the number of calories one person has burnt
+     * Test to see the estimate calorie burnt to reach the weight goal
      */
-
     @Test
     void getTotalCalories_test1() {
         //Creating a new arraylist to pass in to the function
@@ -305,6 +326,9 @@ class UserTest {
 
     }
 
+    /**
+     * Test to see the estimate calorie burnt to reach the weight goal
+     */
     @Test
     void getTotalCalories_test2() {
         //Creating a new arraylist to pass in to the function
@@ -323,6 +347,9 @@ class UserTest {
 
     }
 
+    /**
+     * Test to see the maximum calories a user has burnt
+     */
     @Test
     void getMaxCalories_test1(){
         int keyNumber = 5;
@@ -340,6 +367,9 @@ class UserTest {
         assertEquals(expResult, actResult);
     }
 
+    /**
+     * Test to see the maximum calories a user has burnt
+     */
     @Test
     void getMaxCalories_test2(){
         int keyNumber = 5;
@@ -357,5 +387,51 @@ class UserTest {
         assertEquals(expResult, actResult);
     }
 
+    /**
+     * Test to if the string is getting printed correctly
+     */
+    @Test
+    void toString_test1(){
+        String name = "Subha";
+        String gender = "Female";
+        double age = 19;
+        double weight = 45;
+        double height = 156;
 
+        User user = new User(name,gender,age,weight,height);
+        String actResult = user.toString();
+
+        String expResult = """
+                Name: Subha\s
+                Gender: Female\s  
+                Age: 19\s
+                Weight in Kgs: 45.0\s
+                Height in centimeters: 156.0\s
+                """;
+        assertEquals(expResult, actResult);
+    }
+
+    /**
+     * Test to if the string is getting printed correctly
+     */
+    @Test
+    void toString_test2(){
+        String name = "Amasil";
+        String gender = "Male";
+        double age = 21;
+        double weight = 50;
+        double height = 170;
+
+        User user = new User(name,gender,age,weight,height);
+        String actResult = user.toString();
+
+        String expResult = """
+                Name: Amasil\s
+                Gender: Male\s  
+                Age: 21\s
+                Weight in Kgs: 50.0\s
+                Height in centimeters: 170.0\s
+                """;
+        assertEquals(expResult, actResult);
+    }
 }

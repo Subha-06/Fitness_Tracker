@@ -43,30 +43,8 @@ public class User {
         return userWeight;
     }
 
-
     public double getUserHeight() {
         return userHeight;
-    }
-
-    //Setter
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setUserGender(String userGender) {
-        this.userGender = userGender;
-    }
-
-    public void setUserAge(double userAge) {
-        this.userAge = userAge;
-    }
-
-    public void setUserWeight(double userWeight) {
-        this.userWeight = userWeight;
-    }
-
-    public void setUserHeight(double userHeight) {
-        this.userHeight = userHeight;
     }
 
     //ToString method created
