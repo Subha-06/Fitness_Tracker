@@ -67,3 +67,7 @@ To exit the program, the user can simply press the close button on the window or
 <p align="center">
 <a href="https://imgbox.com/KuIqeCEL" target="_blank"><img src="https://images2.imgbox.com/08/14/KuIqeCEL_o.png" height="550" width="300" alt="View Options Photo"/></a>
 </p>
+
+<p align="center">
+  <img src="https://github.com/waldyr/Sublime-Installer/blob/master/sublime_text.png?raw=true" alt="Sublime's custom image"/>
+</p>
