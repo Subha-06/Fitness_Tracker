@@ -4,7 +4,7 @@
 
 # UCID: 30164830 & 30148674
 
-## Version: 5.7
+## Version: 2.2
 
 ### This is fitness tracking program that allows the user to input their information and get back various results from that
 

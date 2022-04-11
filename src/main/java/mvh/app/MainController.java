@@ -951,7 +951,7 @@ public class MainController {
         alert.setHeaderText("About Authors");
         alert.setContentText("""
                 This is fitness tracking program.
-                Version: 5.7
+                Version: 2.2
                                 
                 Authors:
                 Fabiha Fairuzz Subha (UCID: 30148674)
