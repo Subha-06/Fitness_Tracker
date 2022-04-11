@@ -45,6 +45,8 @@
 
 ## Running the GUI
 
+<div align="center"><a href="https://imgbox.com/jkcUQsRx" target="_blank"><img src="https://images2.imgbox.com/44/55/jkcUQsRx_o.png" alt="The GUI" height="610" width="850"/></a></div>
+
 - Running the .jar file like that should run the program and a GUI window titled **This Is A Fitness Tracking Program**
   should appear
 - This is a tracking program that will allow the user to track their weight and calories
@@ -62,5 +64,6 @@
   also save the information of the people that the user changed/created in a .txt file that can be later loaded to get
   the same information. This can be done with the *Save* as option in *File* in the menu bar.
 
-To exit the program, the user can simply press the close button on the window or use the *Quit* option in the *File* option in menu
+To exit the program, the user can simply press the close button on the window or use the *Quit* option in the *File*
+option in menu
 
