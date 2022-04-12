@@ -81,6 +81,8 @@ public class MainController {
     private double weight;
     @FXML
     private double height;
+    @FXML
+    private int age;
 
 
     /**
@@ -154,6 +156,7 @@ public class MainController {
 
     /**
      * A method made for setting the error message
+     *
      * @param message Message that gets printed on status
      */
     private void extracted(String message) {
@@ -194,18 +197,13 @@ public class MainController {
             if (userName.getText().equals("") || userAge.getText().equals("") || userWeight.getText().equals("") || userHeight.getText().equals("")) {
                 extracted("Please Enter All Information to Add User");
             } else {
-                //If the user Already Exists.
-                if (userInfo.get(userNumberInt) != null) {
-                    extracted("User Already Exists. Please Press Change Info");
-                }
-                //IF the user doesn't exist we add the information
-                else {
-                    //Getting the name and gender of the user
+                try {
+                    //Getting the name and the gender of the user
                     name = userName.getText();
                     gender = String.valueOf(userGender.getValue());
                     //Trying To get valid input from the user
                     try {
-                        int age = Integer.parseInt(userAge.getText());
+                        age = Integer.parseInt(userAge.getText());
                         //Age Can't be Negative or 0
                         if (age < 0) {
                             extracted("Age can't be a negative number");
@@ -217,68 +215,61 @@ public class MainController {
                                 if (weightChoice.getValue().equals("KG")) {
                                     weight = Double.parseDouble(userWeight.getText());
                                 }
-                                //If the option chosen is anything else
+                                //If the option chosen is pounds
                                 else {
                                     //Converting the lbs to kg
                                     weight = lbToKg * Double.parseDouble(userWeight.getText());
                                 }
                                 //Weight Can't be Negative or 0
                                 if (weight < 0) {
-                                    extracted("Weight Can't be a negative number");
-                                    return;
+                                    extracted("Weight can't be a negative number");
                                 } else if (weight == 0) {
-                                    extracted("Weight Can't Be 0");
-                                    return;
-                                }
-                            } catch (Exception e) {
-                                extracted("Enter A Positive Number for weight");
-                                return;
-                            }
-                            try {
-                                //If height is cm
-                                if (heightChoice.getValue().equals("C.M.")) {
-                                    height = Double.parseDouble(userHeight.getText());
+                                    extracted("Weight can't Be 0");
                                 } else {
-                                    //Converting meter to cm
-                                    height = 100 * Double.parseDouble(userHeight.getText());
+                                    weight = Double.parseDouble(String.format("%.1f", weight));
+                                    try {
+                                        //If height is cm
+                                        if (heightChoice.getValue().equals("C.M.")) {
+                                            height = Double.parseDouble(userHeight.getText());
+                                        } else {
+                                            //Converting meter to cm
+                                            height = 100 * Double.parseDouble(userHeight.getText());
+                                        }
+                                        //Height Can't be negative or 0
+                                        if (height < 0) {
+                                            extracted("Height can't be a negative number");
+                                        } else if (height == 0) {
+                                            extracted("Height can't be 0");
+                                        } else {
+                                            try {
+                                                //Creating the user
+                                                user = new User(name, gender, age, weight, height);
+                                                userInfo.put(userNumberInt, user);
+                                                leftStatus.setText("");
+                                                rightStatus.setText("User Added! Choose from menu");
+                                                rightStatus.setTextFill(Color.GREEN);
+                                                viewDetails.setText("");
+                                            } catch (Exception e) {
+                                                extracted("Couldn't add user");
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        extracted("Enter A Positive Number For Height");
+                                    }
                                 }
-                                //Height Can't be 0 or negative
-                                if (height < 0) {
-                                    extracted("Height Can't be a negative number");
-                                    return;
-                                } else if (height == 0) {
-                                    extracted("Height Can't be 0");
-                                    return;
-                                }
-
                             } catch (Exception e) {
-                                extracted("Enter A Positive Number for height");
-                                return;
-                            }
-
-                            try {
-                                //Creating the user
-                                user = new User(name, gender, age, weight, height);
-                                userInfo.put(userNumberInt, user);
-
-                                leftStatus.setText("");
-                                rightStatus.setText("User Added! Choose from menu");
-                                rightStatus.setTextFill(Color.GREEN);
-                                viewDetails.setText("");
-                            } catch (Exception e) {
-                                extracted("Couldn't add user");
-                                return;
+                                extracted("Enter A Positive Number For Weight");
                             }
                         }
-                        //Exception handled
                     } catch (Exception e) {
-                        extracted("Enter A Positive Number for age");
+                        extracted("Enter A Positive Number For Age");
                     }
+                } catch (Exception e) {
+                    extracted("Please Enter All Information");
                 }
             }
-            //Exception handled
         } catch (Exception e) {
-            extracted("Please Enter All Information to Add User");
+            extracted("Please Enter All Information");
         }
     }
 
@@ -304,7 +295,7 @@ public class MainController {
                         gender = String.valueOf(userGender.getValue());
                         //Trying To get valid input from the user
                         try {
-                            int age = Integer.parseInt(userAge.getText());
+                            age = Integer.parseInt(userAge.getText());
                             //Age Can't be Negative or 0
                             if (age < 0) {
                                 extracted("Age can't be a negative number");
@@ -319,7 +310,7 @@ public class MainController {
                                     //If the option chosen is pounds
                                     else {
                                         //Converting the lbs to kg
-                                        weight = 2.2 * Double.parseDouble(userWeight.getText());
+                                        weight = lbToKg * Double.parseDouble(userWeight.getText());
                                     }
                                     //Weight Can't be Negative or 0
                                     if (weight < 0) {
@@ -327,6 +318,7 @@ public class MainController {
                                     } else if (weight == 0) {
                                         extracted("Weight can't Be 0");
                                     } else {
+                                        weight = Double.parseDouble(String.format("%.1f", weight));
                                         try {
                                             //If height is cm
                                             if (heightChoice.getValue().equals("C.M.")) {
@@ -357,17 +349,17 @@ public class MainController {
                                             }
                                             //Exception handled
                                         } catch (Exception e) {
-                                            extracted("Enter A Positive Number for height");
+                                            extracted("Enter A Positive Number For Height");
                                         }
                                     }
                                     //Exception handled
                                 } catch (Exception e) {
-                                    extracted("Enter A Positive Number for weight");
+                                    extracted("Enter A Positive Number For Weight");
                                 }
                             }
                             //Exception handled
                         } catch (Exception e) {
-                            extracted("Enter A Positive Number for age");
+                            extracted("Enter A Positive Number For Age");
                         }
                         //Exception handled
                     } catch (Exception e) {
@@ -381,7 +373,7 @@ public class MainController {
                     gender = String.valueOf(userGender.getValue());
                     //Trying To get valid input from the user
                     try {
-                        int age = Integer.parseInt(userAge.getText());
+                        age = Integer.parseInt(userAge.getText());
                         //Age Can't be Negative or 0
                         if (age < 0) {
                             extracted("Age can't be a negative number");
@@ -404,6 +396,7 @@ public class MainController {
                                 } else if (weight == 0) {
                                     extracted("Weight can't Be 0");
                                 } else {
+                                    weight = Double.parseDouble(String.format("%.1f", weight));
                                     try {
                                         //If height is cm
                                         if (heightChoice.getValue().equals("C.M.")) {
@@ -434,17 +427,17 @@ public class MainController {
                                         }
                                         //Exception handled
                                     } catch (Exception e) {
-                                        extracted("Enter A Positive Number for height");
+                                        extracted("Enter A Positive Number For Height");
                                     }
                                 }
                                 //Exception handled
                             } catch (Exception e) {
-                                extracted("Enter A Positive Number for weight");
+                                extracted("Enter A Positive Number For Weight");
                             }
                         }
                         //Exception handled
                     } catch (Exception e) {
-                        extracted("Enter A Positive Number for age");
+                        extracted("Enter A Positive Number For Age");
                     }
                 }
             }
@@ -486,10 +479,7 @@ public class MainController {
             keyCheck = userInfo.containsKey(userNumberInt);
             try {
                 if (weightExercise.getText().equals("")) {
-                    leftStatus.setText("Please Enter A Weight Goal");
-                    leftStatus.setTextFill(Color.RED);
-                    rightStatus.setText("");
-                    viewDetails.setText("");
+                    extracted("Please Enter A Weight Goal");
                 } else {
                     try {
                         //If the option chosen is kilograms
@@ -505,6 +495,7 @@ public class MainController {
                         if (exerciseWeight <= 0) {
                             extracted("Please Enter A Positive Weight Goal");
                         } else {
+                            exerciseWeight = Double.parseDouble(String.format("%.1f", exerciseWeight));
                             //Getting the user choice
                             String choice = exerciseChoice.getValue();
                             //Getting the speed of exercise
@@ -622,7 +613,7 @@ public class MainController {
             //Getting the burnt calorie amount from the user
             int userNumber = calorieUser.getValue();
             //If the user didn't input anything it will ask them to input
-            if (calorieAmount == null) {
+            if (calorieAmount.getText().equals("")) {
                 extracted("Please Enter Calorie Amount");
             } else {
                 try {
