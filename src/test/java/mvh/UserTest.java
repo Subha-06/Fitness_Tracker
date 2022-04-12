@@ -306,6 +306,98 @@ class UserTest {
     }
 
     /**
+     * Test to see the hours spent doing exercise to reach the weight goal
+     */
+    @Test
+    void estimateExercise_test1() {
+
+        //Setting the variables for the test
+        String speed = "16-19 km/h";
+        String exercise = "Cycling";
+        double weight = 70;
+        double goal = 50;
+        double diff = weight - goal;
+        double calories = Calculations.estimateCalories(diff);
+
+        String expResult = """
+                You need to cycle 349.2 hours
+                at 16-19 km/h to burn 154000.0 calories
+                and lose 20.0 kgs to reach\s
+                the weight goal of 50.0 kgs""";
+        String actResult = Calculations.estimateExercise(speed,exercise,calories,weight,diff,goal);
+        assertEquals(expResult,actResult);
+    }
+
+    /**
+     * Test to see the hours spent doing exercise to reach the weight goal
+     */
+    @Test
+    void estimateExercise_test2() {
+
+        //Setting the variables for the test
+        String speed = "22-25 km/h";
+        String exercise = "Cycling";
+        double weight = 60;
+        double goal = 45;
+        double diff = weight - goal;
+        double calories = Calculations.estimateCalories(diff);
+
+        String expResult = """
+                You need to cycle 183.3 hours
+                at 22-25 km/h to burn 115500.0 calories
+                and lose 15.0 kgs to reach\s
+                the weight goal of 45.0 kgs""";
+        String actResult = Calculations.estimateExercise(speed,exercise,calories,weight,diff,goal);
+        assertEquals(expResult,actResult);
+    }
+
+    /**
+     * Test to see the hours spent doing exercise to reach the weight goal
+     */
+    @Test
+    void estimateExercise_test3() {
+
+        //Setting the variables for the test
+        String speed = "6-7 km/h";
+        String exercise = "Running";
+        double weight = 56;
+        double goal = 50;
+        double diff = weight - goal;
+        double calories = Calculations.estimateCalories(diff);
+
+        String expResult = """
+                You need to run 157.1 hours
+                at 6-7 km/h to burn 46200.0 calories
+                and lose 6.0 kgs to reach\s
+                the weight goal of 50.0 kgs""";
+        String actResult = Calculations.estimateExercise(speed,exercise,calories,weight,diff,goal);
+        assertEquals(expResult,actResult);
+    }
+
+    /**
+     * Test to see the hours spent doing exercise to reach the weight goal
+     */
+    @Test
+    void estimateExercise_test4() {
+
+        //Setting the variables for the test
+        String speed = "9-11 km/h";
+        String exercise = "Running";
+        double weight = 80;
+        double goal = 56;
+        double diff = weight - goal;
+        double calories = Calculations.estimateCalories(diff);
+
+        String expResult = """
+                You need to run 200.0 hours
+                at 9-11 km/h to burn 184800.0 calories
+                and lose 24.0 kgs to reach\s
+                the weight goal of 56.0 kgs""";
+        String actResult = Calculations.estimateExercise(speed,exercise,calories,weight,diff,goal);
+        assertEquals(expResult,actResult);
+    }
+
+    /**
      * Test to see the estimate calorie burnt to reach the weight goal
      */
     @Test
@@ -392,12 +484,14 @@ class UserTest {
      */
     @Test
     void toString_test1(){
+        //Setting the variables for creating the string output
         String name = "Subha";
         String gender = "Female";
         double age = 19;
         double weight = 45;
         double height = 156;
 
+        //Creating a new user
         User user = new User(name,gender,age,weight,height);
         String actResult = user.toString();
 
@@ -416,12 +510,14 @@ class UserTest {
      */
     @Test
     void toString_test2(){
+        //Setting the variables for creating the string output
         String name = "Amasil";
         String gender = "Male";
         double age = 21;
         double weight = 50;
         double height = 170;
 
+        //Creating a new user
         User user = new User(name,gender,age,weight,height);
         String actResult = user.toString();
 
