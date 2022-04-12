@@ -31,7 +31,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(1);
         outInfo.add(12);
@@ -51,7 +51,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(1);
         outInfo.add(12);
@@ -70,7 +70,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(15);
         outInfo.add(16);
@@ -91,7 +91,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(500);
         outInfo.add(100);
@@ -112,7 +112,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(150);
         outInfo.add(200);
@@ -133,7 +133,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(2500);
         outInfo.add(3000);
@@ -440,6 +440,27 @@ class UserTest {
     }
 
     /**
+     * Test to see the estimate calorie burnt to reach the weight goal
+     */
+    @Test
+    void getTotalCalories_test3() {
+        //Creating a new arraylist to pass in to the function
+        int keyNumber = 5;
+        HashMap<Integer,ArrayList<Integer>> calories = new HashMap<>();
+        ArrayList<Integer> cal = new ArrayList<>();
+        cal.add(7000); cal.add(100); cal.add(1900);
+
+        calories.put(keyNumber,cal);
+        //Expected total calories burnt
+        int expResult = 0;
+        //Calling the function with the values passed in and getting the result
+        int actResult = Calculations.getTotalCalories(1,calories);
+        //Comparing the result
+        assertEquals(expResult, actResult);
+
+    }
+
+    /**
      * Test to see the maximum calories a user has burnt
      */
     @Test
@@ -497,7 +518,7 @@ class UserTest {
 
         String expResult = """
                 Name: Subha\s
-                Gender: Female\s  
+                Gender: Female\s
                 Age: 19\s
                 Weight in Kgs: 45.0\s
                 Height in centimeters: 156.0\s
@@ -523,7 +544,7 @@ class UserTest {
 
         String expResult = """
                 Name: Amasil\s
-                Gender: Male\s  
+                Gender: Male\s
                 Age: 21\s
                 Weight in Kgs: 50.0\s
                 Height in centimeters: 170.0\s
