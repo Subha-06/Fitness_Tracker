@@ -147,18 +147,21 @@ public class Calculations {
         int sum = 0;
         //Initialising an arraylist
         ArrayList<Integer> calories;
-        try {
-            //Getting the information of the user using the key of the hashmap
-            calories = calInfo.get(keyNumber);
+        boolean keyCheck = calInfo.containsKey(keyNumber);
+        if (keyCheck) {
+            try {
+                //Getting the information of the user using the key of the hashmap
+                calories = calInfo.get(keyNumber);
 
-            //Looping through the arraylist assigned to the user key of the hashmap
-            for (int i : calories) {
-                //Adding the calories
-                sum = sum + i;
+                //Looping through the arraylist assigned to the user key of the hashmap
+                for (int i : calories) {
+                    //Adding the calories
+                    sum = sum + i;
+                }
+                //Exception handled
+            } catch (NumberFormatException e) {
+                System.err.println("Cannot convert string to integer type");
             }
-            //Exception handled
-        } catch (NumberFormatException e) {
-            System.err.println("Cannot convert string to integer type");
         }
         return sum;
     }
@@ -184,6 +187,7 @@ public class Calculations {
             }
         }
         //Sorting to get calories in order.
+        assert calories != null;
         Collections.sort(calories);
         return calories.get(calories.size() - 1);
     }

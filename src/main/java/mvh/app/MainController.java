@@ -154,6 +154,17 @@ public class MainController {
     }
 
     /**
+     * A method made for setting the error message
+     * @param message Message that gets printed on status
+     */
+    private void extracted(String message) {
+        leftStatus.setText(message);
+        leftStatus.setTextFill(Color.RED);
+        rightStatus.setText("");
+        viewDetails.setText("");
+    }
+
+    /**
      * Initialize the choice box to select the speed of exercise
      */
     @FXML
@@ -270,13 +281,6 @@ public class MainController {
         } catch (Exception e) {
             extracted("Please Enter All Information to Add User");
         }
-    }
-
-    private void extracted(String message) {
-        leftStatus.setText(message);
-        leftStatus.setTextFill(Color.RED);
-        rightStatus.setText("");
-        viewDetails.setText("");
     }
 
     /**
@@ -544,7 +548,6 @@ public class MainController {
                     } catch (Exception e) {
                         extracted("Enter A positive number for weight goal");
                     }
-
                 }
                 //Exception handled
             } catch (Exception e) {
