@@ -50,8 +50,7 @@
 - Running the .jar file like that should run the program and a GUI window titled **This Is A Fitness Tracking Program**
   should appear
 - This is a tracking program that will allow the user to track their weight and calories
-- For further details of the program and its authors, the user can go to the *Help* option in menu bar and look at the *
-  About*
+- For further details of the program and its authors, the user can go to the *Help* option in menu bar and look at the *About*
 - The user can either manually enter their data or can load a file with already entered information of the user.
 - In this program, the user can enter details for up to 10 people and track their data too.
 - The menu portion of the program is in the middle which the user can use to interact and get their desired feedbacks or
