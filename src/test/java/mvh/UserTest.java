@@ -31,7 +31,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(1);
         outInfo.add(12);
@@ -51,7 +51,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(1);
         outInfo.add(12);
@@ -70,7 +70,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(15);
         outInfo.add(16);
@@ -91,7 +91,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(500);
         outInfo.add(100);
@@ -112,7 +112,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(150);
         outInfo.add(200);
@@ -133,7 +133,7 @@ class UserTest {
         //Creating the test arraylist to match to
         File outFile = new File("ReaderTest.txt");
         HashMap<Integer, ArrayList<Integer>> expResult = new HashMap<>();
-        HashMap<Integer, ArrayList<Integer>> actResult = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> actResult;
         ArrayList<Integer> outInfo = new ArrayList<>();
         outInfo.add(2500);
         outInfo.add(3000);
@@ -312,15 +312,17 @@ class UserTest {
     void getTotalCalories_test1() {
         //Creating a new arraylist to pass in to the function
         int keyNumber = 1;
-        HashMap<Integer,ArrayList<Integer>> calories = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> calories = new HashMap<>();
         ArrayList<Integer> cal = new ArrayList<>();
-        cal.add(100); cal.add(160); cal.add(40);
+        cal.add(100);
+        cal.add(160);
+        cal.add(40);
 
-        calories.put(keyNumber,cal);
+        calories.put(keyNumber, cal);
         //Expected total calories burnt
         int expResult = 300;
         //Calling the function with the values passed in and getting the result
-        int actResult = Calculations.getTotalCalories(keyNumber,calories);
+        int actResult = Calculations.getTotalCalories(keyNumber, calories);
         //Comparing the result
         assertEquals(expResult, actResult);
 
@@ -333,15 +335,17 @@ class UserTest {
     void getTotalCalories_test2() {
         //Creating a new arraylist to pass in to the function
         int keyNumber = 5;
-        HashMap<Integer,ArrayList<Integer>> calories = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> calories = new HashMap<>();
         ArrayList<Integer> cal = new ArrayList<>();
-        cal.add(7000); cal.add(100); cal.add(1900);
+        cal.add(7000);
+        cal.add(100);
+        cal.add(1900);
 
-        calories.put(keyNumber,cal);
+        calories.put(keyNumber, cal);
         //Expected total calories burnt
         int expResult = 9000;
         //Calling the function with the values passed in and getting the result
-        int actResult = Calculations.getTotalCalories(keyNumber,calories);
+        int actResult = Calculations.getTotalCalories(keyNumber, calories);
         //Comparing the result
         assertEquals(expResult, actResult);
 
@@ -351,18 +355,20 @@ class UserTest {
      * Test to see the maximum calories a user has burnt
      */
     @Test
-    void getMaxCalories_test1(){
+    void getMaxCalories_test1() {
         int keyNumber = 5;
-        HashMap<Integer,ArrayList<Integer>> calories = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> calories = new HashMap<>();
         ArrayList<Integer> cal = new ArrayList<>();
 
-        cal.add(7000); cal.add(100); cal.add(1900);
+        cal.add(7000);
+        cal.add(100);
+        cal.add(1900);
 
-        calories.put(keyNumber,cal);
+        calories.put(keyNumber, cal);
         //Expected total calories burnt
         int expResult = 7000;
         //Calling the function with the values passed in and getting the result
-        int actResult = Calculations.getMaxCalories(keyNumber,calories);
+        int actResult = Calculations.getMaxCalories(keyNumber, calories);
         //Comparing the result
         assertEquals(expResult, actResult);
     }
@@ -371,18 +377,20 @@ class UserTest {
      * Test to see the maximum calories a user has burnt
      */
     @Test
-    void getMaxCalories_test2(){
+    void getMaxCalories_test2() {
         int keyNumber = 5;
-        HashMap<Integer,ArrayList<Integer>> calories = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> calories = new HashMap<>();
         ArrayList<Integer> cal = new ArrayList<>();
 
-        cal.add(100); cal.add(160); cal.add(40);
+        cal.add(100);
+        cal.add(160);
+        cal.add(40);
 
-        calories.put(keyNumber,cal);
+        calories.put(keyNumber, cal);
         //Expected total calories burnt
         int expResult = 160;
         //Calling the function with the values passed in and getting the result
-        int actResult = Calculations.getMaxCalories(keyNumber,calories);
+        int actResult = Calculations.getMaxCalories(keyNumber, calories);
         //Comparing the result
         assertEquals(expResult, actResult);
     }
@@ -391,19 +399,19 @@ class UserTest {
      * Test to if the string is getting printed correctly
      */
     @Test
-    void toString_test1(){
+    void toString_test1() {
         String name = "Subha";
         String gender = "Female";
         double age = 19;
         double weight = 45;
         double height = 156;
 
-        User user = new User(name,gender,age,weight,height);
+        User user = new User(name, gender, age, weight, height);
         String actResult = user.toString();
 
         String expResult = """
                 Name: Subha\s
-                Gender: Female\s  
+                Gender: Female\s
                 Age: 19\s
                 Weight in Kgs: 45.0\s
                 Height in centimeters: 156.0\s
@@ -415,19 +423,19 @@ class UserTest {
      * Test to if the string is getting printed correctly
      */
     @Test
-    void toString_test2(){
+    void toString_test2() {
         String name = "Amasil";
         String gender = "Male";
         double age = 21;
         double weight = 50;
         double height = 170;
 
-        User user = new User(name,gender,age,weight,height);
+        User user = new User(name, gender, age, weight, height);
         String actResult = user.toString();
 
         String expResult = """
                 Name: Amasil\s
-                Gender: Male\s  
+                Gender: Male\s
                 Age: 21\s
                 Weight in Kgs: 50.0\s
                 Height in centimeters: 170.0\s
