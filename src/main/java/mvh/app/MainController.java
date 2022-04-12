@@ -98,7 +98,6 @@ public class MainController {
         for (int i = 1; i <= 10; i++) {
             userNumber.getItems().add(i);
         }
-
         //User Gender
         userGender.getItems().clear();
         userGender.setValue("Male");
