@@ -98,7 +98,6 @@ public class MainController {
         for (int i = 1; i <= 10; i++) {
             userNumber.getItems().add(i);
         }
-
         //User Gender
         userGender.getItems().clear();
         userGender.setValue("Male");
@@ -151,6 +150,17 @@ public class MainController {
         viewInfoType.setValue("View BMI");
         viewInfoType.getItems().addAll("View BMI", "View Weight Status");
         choiceOfSpeed.setValue("6-7 km/h");
+    }
+
+    /**
+     * A method made for setting the error message
+     * @param message Message that gets printed on status
+     */
+    private void extracted(String message) {
+        leftStatus.setText(message);
+        leftStatus.setTextFill(Color.RED);
+        rightStatus.setText("");
+        viewDetails.setText("");
     }
 
     /**
@@ -270,13 +280,6 @@ public class MainController {
         } catch (Exception e) {
             extracted("Please Enter All Information to Add User");
         }
-    }
-
-    private void extracted(String message) {
-        leftStatus.setText(message);
-        leftStatus.setTextFill(Color.RED);
-        rightStatus.setText("");
-        viewDetails.setText("");
     }
 
     /**
@@ -544,7 +547,6 @@ public class MainController {
                     } catch (Exception e) {
                         extracted("Enter A positive number for weight goal");
                     }
-
                 }
                 //Exception handled
             } catch (Exception e) {
