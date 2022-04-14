@@ -17,8 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * *Members:
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
- * * Date: 1 March 2022
- * * Demo 2 Tutorial 05
+ * Date: March 2nd, 2022- April 15, 2022
+ * Tutorial 05 and Tutorial 10.
+ * Project Final Submission
  */
 
 class UserTest {
