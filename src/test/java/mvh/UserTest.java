@@ -1,3 +1,12 @@
+/**
+ * A fitness tracking program that allows the user to input their information and get back various results form that
+ * *Members:
+ * Fabiha Fairuzz Subha (UCID: 30148674)
+ * Amasil Rahim Zihad (UCID: 30164830)
+ * Date: March 2nd, 2022- April 15, 2022.
+ * Tutorial 05 and Tutorial 10.
+ * Project Final Submission
+ */
 package mvh;
 
 
@@ -14,15 +23,6 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * A fitness tracking program that allows the user to input their information and get back various results form that
- * *Members:
- * Fabiha Fairuzz Subha (UCID: 30148674)
- * Amasil Rahim Zihad (UCID: 30164830)
- * Date: March 2nd, 2022- April 15, 2022.
- * Tutorial 05 and Tutorial 10.
- * Project Final Submission
- */
 
 class UserTest {
 

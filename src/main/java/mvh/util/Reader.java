@@ -106,36 +106,30 @@ public class Reader {
                                                                     MainController.userInfo.put(userNumber, user);
                                                                 }
                                                             }
-                                                            //Exception handled
                                                             catch (Exception e) {
                                                                 System.err.println("There was a problem parsing the Height of " + userName);
                                                             }
                                                         }
                                                     }
-                                                    //Exception handled
                                                     catch (Exception e) {
                                                         System.err.println("There was a problem parsing the weight of " + userName);
                                                     }
                                                 }
                                             }
-                                            //Exception handled
                                             catch (Exception e) {
                                                 System.err.println("There was a problem parsing the age of " + userName);
                                             }
                                         }
                                     }
-                                    //Exception handled
                                     catch (Exception e) {
                                         System.err.println("There was a problem assigning the gender of " + userName);
                                     }
                                 }
                             }
-                            //Exception handled
                             catch (Exception e) {
                                 System.err.println("There is an Issue with the user number");
                             }
                         }
-                        //Exception handled
                         catch (Exception e) {
                             System.err.println("There is a problem with the user number.");
                         }
@@ -143,7 +137,6 @@ public class Reader {
                         line = b_reader.readLine();
                     }
                 }
-                //Exception handled
             } catch (Exception e) {
                 System.err.println("There is an Issue with the file");
             }
