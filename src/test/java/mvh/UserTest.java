@@ -1,5 +1,6 @@
 package mvh;
 
+import mvh.app.Main;
 import mvh.app.MainController;
 import mvh.user.User;
 import mvh.util.Reader;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * *Members:
  * Fabiha Fairuzz Subha (UCID: 30148674)
  * Amasil Rahim Zihad (UCID: 30164830)
- * Date: March 2nd, 2022- April 15, 2022
+ * Date: March 2nd, 2022- April 15, 2022.
  * Tutorial 05 and Tutorial 10.
  * Project Final Submission
  */
@@ -567,13 +568,57 @@ class UserTest {
         int keyNumber = 5;
         HashMap<Integer, ArrayList<Integer>> calories = new HashMap<>();
         ArrayList<Integer> cal = new ArrayList<>();
-        cal.add(7000);
-        cal.add(100);
-        cal.add(1900);
+        cal.add(0);
+        cal.add(1);
+        cal.add(2);
         //Adding information with the key in the hashmap
         calories.put(keyNumber, cal);
         //Expected total calories burnt
-        int expResult = 7000;
+        int expResult = 2;
+        //Calling the function with the values passed in and getting the result
+        int actResult = Calculations.getMaxCalories(keyNumber, calories);
+        //Comparing the result
+        assertEquals(expResult, actResult);
+    }
+
+    /**
+     * Test to see the maximum calories a user has burnt
+     */
+    @Test
+    void getMaxCalories_test3() {
+        int keyNumber = 5;
+        HashMap<Integer, ArrayList<Integer>> calories = new HashMap<>();
+        ArrayList<Integer> cal = new ArrayList<>();
+
+        cal.add(1000000);
+        cal.add(1600000);
+        cal.add(4000006);
+        //Adding information with the key in the hashmap
+        calories.put(keyNumber, cal);
+        //Expected total calories burnt
+        int expResult = 4000006;
+        //Calling the function with the values passed in and getting the result
+        int actResult = Calculations.getMaxCalories(keyNumber, calories);
+        //Comparing the result
+        assertEquals(expResult, actResult);
+    }
+
+    /**
+     * Test to see the maximum calories a user has burnt
+     */
+    @Test
+    void getMaxCalories_test4() {
+        int keyNumber = 5;
+        HashMap<Integer, ArrayList<Integer>> calories = new HashMap<>();
+        ArrayList<Integer> cal = new ArrayList<>();
+
+        cal.add(100);
+        cal.add(160);
+        cal.add(40);
+        //Adding information with the key in the hashmap
+        calories.put(keyNumber, cal);
+        //Expected total calories burnt
+        int expResult = 160;
         //Calling the function with the values passed in and getting the result
         int actResult = Calculations.getMaxCalories(keyNumber, calories);
         //Comparing the result
@@ -680,38 +725,140 @@ class UserTest {
         assertEquals(expResult, actResult);
     }
 
+    /**
+     * Tests the reader function
+     */
+
     @Test
     void readerTest1() throws IOException {
-        //Creating the test arraylist to match to
+        //Clearing the userInfo before starting the test
+        MainController.userInfo.clear();
+        //Opening the reader with the test file passed in and the hashmap with the userInfo
         File outFile = new File("InputInfo.txt");
         Reader.reader(outFile);
-        HashMap<Integer, Object> exp = new HashMap<>();
+        HashMap<Integer, Object> expected = new HashMap<>();
         HashMap<Integer, Object> actResult = MainController.userInfo;
+
+        //Setting the variables for creating the string output
         String name = "Subha";
         String gender = "Female";
         double age = 19;
         double weight = 90;
         double height = 90;
+        int userNumber1 = 1;
 
         //Creating a new user
         User user = new User(name, gender, age, weight, height);
-        exp.put(1, user);
+        //Adding the userNumber and the user to the hashmap
+        expected.put(userNumber1, user);
+
+        //Setting the variables for creating the string output
         String name2 = "Amasil";
         String gender2 = "Male";
         double age2 = 21;
         double height2 = 100;
         double weight2 = 100;
+        int userNumber2 = 2;
+
+        //Creating a new user
         User user2 = new User(name2, gender2, age2, weight2, height2);
-        exp.put(2, user2);
+        //Adding the userNumber and the user to the hashmap
+        expected.put(userNumber2, user2);
+
+
+        //Setting the variables for creating the string output
         String name3 = "Harry";
         String gender3 = "Preferred not to say";
         double age3 = 40;
         double height3 = 20;
         double weight3 = 20;
+        int userNumber3 = 3;
+
+        //Creating a new user
         User user3 = new User(name3, gender3, age3, weight3, height3);
-        exp.put(3, user3);
+        //Adding the userNumber and the user to the hashmap
+        expected.put(userNumber3, user3);
 
         //Checking if the user is being created correctly
-        assertEquals(exp.toString(), actResult.toString());
+        assertEquals(expected.toString(), actResult.toString());
+    }
+
+    /**
+     * Tests the reader function
+     */
+    @Test
+    void readerTest2() throws IOException {
+        //Clearing the userInfo before starting the test
+        MainController.userInfo.clear();
+        //Opening the reader with the test file passed in and the hashmap with the userInfo
+        File outFile = new File("WrongInputTest.txt");
+        Reader.reader(outFile);
+        HashMap<Integer, Object> expected = new HashMap<>();
+        HashMap<Integer, Object> actResult = MainController.userInfo;
+
+        System.err.println("There was a error reading the file" + "\n" + "Check the test result");
+        //Setting the variables for creating the string output
+        //Checking if the user is being created correctly
+        assertEquals(expected.toString(), actResult.toString());
+    }
+
+    /**
+     * Tests the reader function
+     */
+    @Test
+    void readerTest3() throws IOException {
+        //Clearing the userInfo before starting the test
+        MainController.userInfo.clear();
+        //Opening the reader with the test file passed in and the hashmap with the userInfo
+        File outFile = new File("SemiCorrect.txt");
+        Reader.reader(outFile);
+        HashMap<Integer, Object> expected = new HashMap<>();
+        HashMap<Integer, Object> actResult = MainController.userInfo;
+
+        //Setting the variables for creating the string output
+        String name = "Amasil";
+        String gender = "Male";
+        double age = 21;
+        double weight = 70;
+        double height = 183;
+        int userNUmber1 = 1;
+
+        //Creating a new user
+        User user = new User(name, gender, age, weight, height);
+        //Adding the userNumber and the user to the hashmap
+        expected.put(userNUmber1, user);
+
+        //Setting the variables for creating the string output
+        String name2 = "Subha";
+        String gender2 = "Female";
+        double age2 = 19;
+        double weight2 = 90;
+        double height2 = 90;
+        int userNumber2 = 2;
+
+        //Creating a new user
+        User user2 = new User(name2, gender2, age2, weight2, height2);
+        //Adding the userNumber and the user to the hashmap
+        expected.put(userNumber2, user2);
+
+
+        //Setting the variables for creating the string output
+        String name3 = "Harry";
+        String gender3 = "Preferred not to say";
+        double age3 = 40;
+        double height3 = 20;
+        double weight3 = 20;
+        int userNumber3 = 4;
+
+        //Creating a new user
+        User user3 = new User(name3, gender3, age3, weight3, height3);
+        //Adding the userNumber and the user to the hashmap
+        expected.put(userNumber3, user3);
+
+
+        System.out.println("\n" + "This test was designed for semi completed file, check the test result");
+        //Setting the variables for creating the string output
+        //Checking if the user is being created correctly
+        assertEquals(expected.toString(), actResult.toString());
     }
 }
