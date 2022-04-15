@@ -427,7 +427,6 @@ public class MainController {
                                                 //Creating the user
                                                 user = new User(name, gender, age, weight, height);
                                                 userInfo.put(userNumberInt, user);
-                                                leftStatus.setText("");
                                                 rightStatus.setText("Changed Information! Choose from menu");
                                                 extractedSuccess();
                                                 viewDetails.setText("");
@@ -530,7 +529,6 @@ public class MainController {
                                     //Calling the exercise option method
                                     String exercise = Calculations.estimateExercise(speed, choice, calories, weight, weightDifference, exerciseWeight);
                                     viewDetails.setText(exercise);
-
                                     rightStatus.setText("Requested info shown!");
                                     extractedSuccess();
                                 }
