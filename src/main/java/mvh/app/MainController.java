@@ -169,6 +169,14 @@ public class MainController {
     }
 
     /**
+     * A method made for setting the colour of the status message
+     */
+    private void extractedSuccess() {
+        rightStatus.setTextFill(Color.GREEN);
+        viewDetails.setText("");
+    }
+
+    /**
      * Initialize the choice box to select the speed of exercise
      */
     @FXML
@@ -281,10 +289,6 @@ public class MainController {
         }
     }
 
-    private void extractedSuccess() {
-        rightStatus.setTextFill(Color.GREEN);
-        viewDetails.setText("");
-    }
 
     /**
      * Change the information of a user
@@ -352,8 +356,7 @@ public class MainController {
                                                     userInfo.put(userNumberInt, user);
                                                     leftStatus.setText("");
                                                     rightStatus.setText("User Didn't Exist so Added User! Choose from menu");
-                                                    rightStatus.setTextFill(Color.GREEN);
-                                                    viewDetails.setText("");
+                                                    extractedSuccess();
 
                                                     //Exception handled
                                                 } catch (Exception e) {
@@ -430,8 +433,7 @@ public class MainController {
                                                 userInfo.put(userNumberInt, user);
                                                 leftStatus.setText("");
                                                 rightStatus.setText("Changed Information! Choose from menu");
-                                                rightStatus.setTextFill(Color.GREEN);
-                                                viewDetails.setText("");
+                                                extractedSuccess();
 
                                                 //Exception handled
                                             } catch (Exception e) {
@@ -724,9 +726,9 @@ public class MainController {
                 extracted("There was a problem reading the file");
             } else {
                 rightStatus.setText("File opened");
-                rightStatus.setTextFill(Color.GREEN);
+                extractedSuccess();
                 leftStatus.setText("");
-                viewDetails.setText("");
+
             }
             //Exception handled
         } catch (Exception e) {
@@ -785,9 +787,9 @@ public class MainController {
                             Writer.fileWriter(fileSave, i, name, age, gender, weight, height);
                         }
                         rightStatus.setText("File Saved");
-                        rightStatus.setTextFill(Color.GREEN);
+                        extractedSuccess();
                         leftStatus.setText("");
-                        viewDetails.setText("");
+
                     } catch (Exception e) {
                         //The Error message
                         extracted("Error: Could not write to file");

@@ -1,6 +1,6 @@
 package mvh;
 
-import mvh.app.Main;
+
 import mvh.app.MainController;
 import mvh.user.User;
 import mvh.util.Reader;
@@ -832,8 +832,8 @@ class UserTest {
         String name2 = "Subha";
         String gender2 = "Female";
         double age2 = 19;
-        double weight2 = 90;
-        double height2 = 90;
+        double weight2 = 56;
+        double height2 = 156;
         int userNumber2 = 2;
 
         //Creating a new user
