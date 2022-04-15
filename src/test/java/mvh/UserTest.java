@@ -743,8 +743,8 @@ class UserTest {
         String name = "Subha";
         String gender = "Female";
         double age = 19;
-        double weight = 90;
-        double height = 90;
+        double weight = 45;
+        double height = 156;
         int userNumber1 = 1;
 
         //Creating a new user
@@ -756,8 +756,8 @@ class UserTest {
         String name2 = "Amasil";
         String gender2 = "Male";
         double age2 = 21;
-        double height2 = 100;
-        double weight2 = 100;
+        double weight2 = 70;
+        double height2 = 183;
         int userNumber2 = 2;
 
         //Creating a new user
@@ -770,8 +770,8 @@ class UserTest {
         String name3 = "Harry";
         String gender3 = "Preferred not to say";
         double age3 = 40;
-        double height3 = 20;
-        double weight3 = 20;
+        double weight3 = 38;
+        double height3 = 160;
         int userNumber3 = 3;
 
         //Creating a new user
@@ -832,7 +832,7 @@ class UserTest {
         String name2 = "Subha";
         String gender2 = "Female";
         double age2 = 19;
-        double weight2 = 56;
+        double weight2 = 45;
         double height2 = 156;
         int userNumber2 = 2;
 
