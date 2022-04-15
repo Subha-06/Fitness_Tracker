@@ -796,7 +796,7 @@ public class MainController {
                                 
                 Authors:
                 Fabiha Fairuzz Subha (UCID: 30148674)
-                Email: FabihaFairuzz.Subha@ucalgary.ca
+                Email: fabihafairuzz.subha@ucalgary.ca
                                 
                 Amasil Rahim Zihad (UCID: 30164830)
                 Email: amasilrahim.zihad@ucalgary.ca
