@@ -168,6 +168,7 @@ public class MainController {
         viewDetails.setText("");
     }
 
+
     /**
      * A method made for setting the colour of the status message
      */
