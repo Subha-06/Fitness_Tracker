@@ -255,8 +255,7 @@ public class MainController {
                                                     userInfo.put(userNumberInt, user);
                                                     leftStatus.setText("");
                                                     rightStatus.setText("User Added! Choose from menu");
-                                                    rightStatus.setTextFill(Color.GREEN);
-                                                    viewDetails.setText("");
+                                                    extractedSuccess();
                                                 } catch (Exception e) {
                                                     extracted("Couldn't add user");
                                                 }
@@ -280,6 +279,11 @@ public class MainController {
         } catch (Exception e) {
             extracted("Please Enter All Information");
         }
+    }
+
+    private void extractedSuccess() {
+        rightStatus.setTextFill(Color.GREEN);
+        viewDetails.setText("");
     }
 
     /**
