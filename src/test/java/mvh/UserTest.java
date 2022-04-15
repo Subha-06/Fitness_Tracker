@@ -4,7 +4,6 @@ import mvh.app.MainController;
 import mvh.user.User;
 import mvh.util.Reader;
 import mvh.util.Calculations;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
