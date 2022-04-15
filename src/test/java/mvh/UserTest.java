@@ -1,8 +1,10 @@
 package mvh;
 
+import mvh.app.MainController;
 import mvh.user.User;
 import mvh.util.Reader;
 import mvh.util.Calculations;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -677,5 +679,40 @@ class UserTest {
                 """;
         //Comparing the two
         assertEquals(expResult, actResult);
+    }
+
+    @Test
+    void readerTest1() throws IOException {
+        //Creating the test arraylist to match to
+        File outFile = new File("InputInfo.txt");
+        Reader.reader(outFile);
+        HashMap<Integer, Object> exp = new HashMap<>();
+        HashMap<Integer, Object> actResult = MainController.userInfo;
+        String name = "Subha";
+        String gender = "Female";
+        double age = 19;
+        double weight = 90;
+        double height = 90;
+
+        //Creating a new user
+        User user = new User(name, gender, age, weight, height);
+        exp.put(1, user);
+        String name2 = "Amasil";
+        String gender2 = "Male";
+        double age2 = 21;
+        double height2 = 100;
+        double weight2 = 100;
+        User user2 = new User(name2, gender2, age2, weight2, height2);
+        exp.put(2, user2);
+        String name3 = "Harry";
+        String gender3 = "Preferred not to say";
+        double age3 = 40;
+        double height3 = 20;
+        double weight3 = 20;
+        User user3 = new User(name3, gender3, age3, weight3, height3);
+        exp.put(3, user3);
+
+        //Checking if the user is being created correctly
+        assertEquals(exp.toString(), actResult.toString());
     }
 }
