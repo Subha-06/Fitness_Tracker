@@ -795,8 +795,6 @@ class UserTest {
         Reader.reader(outFile);
         HashMap<Integer, Object> expected = new HashMap<>();
         HashMap<Integer, Object> actResult = MainController.userInfo;
-
-        System.err.println("There was a error reading the file" + "\n" + "Check the test result");
         //Setting the variables for creating the string output
         //Checking if the user is being created correctly
         assertEquals(expected.toString(), actResult.toString());

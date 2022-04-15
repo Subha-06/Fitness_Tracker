@@ -674,7 +674,7 @@ public class MainController {
                         File outFile = new File("User.txt");
                         HashMap<Integer, ArrayList<Integer>> calorieInfo = Reader.outReader(userNumberInt, outFile);
                         int maxCalories = Calculations.getMaxCalories(userNumberInt, calorieInfo);
-                        viewDetails.setText("Maximum calories lost in a day " + maxCalories);
+                        viewDetails.setText("Maximum calories lost in a day is" + maxCalories);
                         rightStatus.setText("Requested info shown!");
                         extractedSuccess();
                     } catch (Exception e) {
