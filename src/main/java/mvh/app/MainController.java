@@ -173,7 +173,7 @@ public class MainController {
      */
     private void extractedSuccess() {
         rightStatus.setTextFill(Color.GREEN);
-        viewDetails.setText("");
+        leftStatus.setText("");
     }
 
     /**
@@ -264,6 +264,7 @@ public class MainController {
                                                     leftStatus.setText("");
                                                     rightStatus.setText("User Added! Choose from menu");
                                                     extractedSuccess();
+                                                    viewDetails.setText("");
                                                 } catch (Exception e) {
                                                     extracted("Couldn't add user");
                                                 }
@@ -357,27 +358,22 @@ public class MainController {
                                                     leftStatus.setText("");
                                                     rightStatus.setText("User Didn't Exist so Added User! Choose from menu");
                                                     extractedSuccess();
-
-                                                    //Exception handled
+                                                    viewDetails.setText("");
                                                 } catch (Exception e) {
                                                     extracted("Couldn't add user");
                                                 }
                                             }
-                                            //Exception handled
                                         } catch (Exception e) {
                                             extracted("Enter A Positive Number For Height");
                                         }
                                     }
-                                    //Exception handled
                                 } catch (Exception e) {
                                     extracted("Enter A Positive Number For Weight");
                                 }
                             }
-                            //Exception handled
                         } catch (Exception e) {
                             extracted("Enter A Positive Number For Age");
                         }
-                        //Exception handled
                     } catch (Exception e) {
                         extracted("Please Enter All Information");
                     }
@@ -434,29 +430,24 @@ public class MainController {
                                                 leftStatus.setText("");
                                                 rightStatus.setText("Changed Information! Choose from menu");
                                                 extractedSuccess();
-
-                                                //Exception handled
+                                                viewDetails.setText("");
                                             } catch (Exception e) {
                                                 extracted("Couldn't change user Information");
                                             }
                                         }
-                                        //Exception handled
                                     } catch (Exception e) {
                                         extracted("Enter A Positive Number For Height");
                                     }
                                 }
-                                //Exception handled
                             } catch (Exception e) {
                                 extracted("Enter A Positive Number For Weight");
                             }
                         }
-                        //Exception handled
                     } catch (Exception e) {
                         extracted("Enter A Positive Number For Age");
                     }
                 }
             }
-            //Exception handled
         } catch (Exception e) {
             extracted("Please Enter All Information");
         }
@@ -474,9 +465,7 @@ public class MainController {
 
             viewDetails.setText(userInfo.get(userNumberInt).toString());
             rightStatus.setText("User Info Printed! View above");
-            rightStatus.setTextFill(Color.GREEN);
-            leftStatus.setText("");
-
+            extractedSuccess();
             //Exception handled
         } catch (Exception e) {
             extracted("No user Information found! Add user or Load From File");
@@ -543,22 +532,19 @@ public class MainController {
                                     viewDetails.setText(exercise);
 
                                     rightStatus.setText("Requested info shown!");
-                                    rightStatus.setTextFill(Color.GREEN);
+                                    extractedSuccess();
                                 }
                             } else {
                                 extracted("No user Information found! Add user or Load From File");
                             }
                         }
-                        //Exception handled
                     } catch (Exception e) {
                         extracted("Enter A positive number for weight goal");
                     }
                 }
-                //Exception handled
             } catch (Exception e) {
                 extracted("Enter A positive number for weight goal");
             }
-            //Exception handled
         } catch (Exception e) {
             extracted("No user Information found! Add user or Load From File");
         }
@@ -588,8 +574,7 @@ public class MainController {
                     viewDetails.setText(name + "’s " + "BMI is " + Calculations.bmi(weight, height) + ".");
 
                     rightStatus.setText("Requested info shown!");
-                    rightStatus.setTextFill(Color.GREEN);
-                    leftStatus.setText("");
+                    extractedSuccess();
                 } else {
                     extracted("No user Information found! Add user or Load From File");
                 }
@@ -607,13 +592,11 @@ public class MainController {
                     viewDetails.setText(name + " is " + Calculations.bmiCompare(weight, height) + ".");
 
                     rightStatus.setText("Requested info shown!");
-                    rightStatus.setTextFill(Color.GREEN);
-                    leftStatus.setText("");
+                    extractedSuccess();
                 } else {
                     extracted("No user Information found! Add user or Load From File");
                 }
             }
-            //Exception handled
         } catch (Exception e) {
             extracted("No user Information found! Add user or Load From File");
         }
@@ -643,15 +626,13 @@ public class MainController {
                         //Writing the information to a file
                         Writer.writer(calorieInfo);
                         rightStatus.setText("Calorie added to file!");
-                        rightStatus.setTextFill(Color.GREEN);
-                        leftStatus.setText("");
+                        extractedSuccess();
+                        viewDetails.setText("");
                     }
-                    //Exception handled
                 } catch (Exception e) {
                     extracted("Please Enter 0 or a positive number for calorie Amount");
                 }
             }
-            //Exception handled
         } catch (Exception e) {
             extracted("Cannot be added to file!");
         }
@@ -678,8 +659,7 @@ public class MainController {
                         int totalCalories = Calculations.getTotalCalories(userNumberInt, calorieInfo);
                         viewDetails.setText("Total calories lost " + totalCalories);
                         rightStatus.setText("Requested info shown!");
-                        rightStatus.setTextFill(Color.GREEN);
-                        leftStatus.setText("");
+                        extractedSuccess();
                     } catch (Exception e) {
                         extracted("Couldn't Read File");
                     }
@@ -696,7 +676,7 @@ public class MainController {
                         int maxCalories = Calculations.getMaxCalories(userNumberInt, calorieInfo);
                         viewDetails.setText("Maximum calories lost in a day " + maxCalories);
                         rightStatus.setText("Requested info shown!");
-                        rightStatus.setTextFill(Color.GREEN);
+                        extractedSuccess();
                     } catch (Exception e) {
                         extracted("No user Information found! Add user or Load From File");
                     }
@@ -728,7 +708,7 @@ public class MainController {
                 rightStatus.setText("File opened");
                 extractedSuccess();
                 leftStatus.setText("");
-
+                viewDetails.setText("");
             }
             //Exception handled
         } catch (Exception e) {
@@ -788,8 +768,7 @@ public class MainController {
                         }
                         rightStatus.setText("File Saved");
                         extractedSuccess();
-                        leftStatus.setText("");
-
+                        viewDetails.setText("");
                     } catch (Exception e) {
                         //The Error message
                         extracted("Error: Could not write to file");
