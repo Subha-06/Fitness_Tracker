@@ -11,7 +11,7 @@
 ### Running  the jar file
 
 - We will need [Java](https://www.oracle.com/java/technologies/downloads/) installed.
-  (Recommended version is at least java 17)
+  (Recommended version is at least java 18)
 
 ### To check the version:
 
