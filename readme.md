@@ -1,8 +1,6 @@
-# CPSC233W22Project
+# Fitness Tracking Project
 
 # Author: Amasil Rahim Zihad & Fabiha Fairuzz Subha
-
-# UCID: 30164830 & 30148674
 
 ## Version: 2.2
 
